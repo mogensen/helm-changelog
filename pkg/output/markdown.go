@@ -4,18 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 
 	"github.com/mogensen/helm-changelog/pkg/helm"
 )
 
-func init() {
-	log.SetFormatter(&log.TextFormatter{})
-	log.SetLevel(log.DebugLevel)
-}
-
 // Markdown creates a markdown representation of the changelog at the changeLogFilePath path
-func Markdown(changeLogFilePath string, releases []*helm.Release) {
+func Markdown(log *logrus.Logger, changeLogFilePath string, releases []*helm.Release) {
 
 	// reverse commits
 	for _, release := range releases {

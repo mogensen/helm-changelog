@@ -7,42 +7,41 @@ import (
 	"os/exec"
 	"strings"
 
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 )
 
-func init() {
-	log.SetFormatter(&log.TextFormatter{})
-	log.SetLevel(log.DebugLevel)
+type Git struct {
+	Log *logrus.Logger
 }
 
-func FindGitRepositoryRoot() (string, error) {
+func (g *Git) FindGitRepositoryRoot() (string, error) {
 	cmd := exec.Command("git", "rev-parse", "--show-toplevel")
-	log.Debugln(cmd)
+	g.Log.Debugln(cmd)
 
 	out, err := cmd.Output()
 	if err != nil {
 		return "", err
 	}
 
-	log.Debugf("Result: %s", out)
+	g.Log.Debugf("Result: %s", out)
 	return strings.TrimSpace(string(out)), nil
 }
 
-func GetFileContent(hash, filePath string) (string, error) {
+func (g *Git) GetFileContent(hash, filePath string) (string, error) {
 	cmd := exec.Command("git", "cat-file", "-p", hash+":"+filePath)
-	log.Debugln(cmd)
+	g.Log.Debugln(cmd)
 
 	out, err := cmd.Output()
 	if err != nil {
 		return "", err
 	}
 
-	log.Debugf("Result: %s", out)
+	g.Log.Debugf("Result: %s", out)
 	return string(out), nil
 }
 
-func GetAllCommits(chartPath string) ([]GitCommit, error) {
+func (g *Git) GetAllCommits(chartPath string) ([]GitCommit, error) {
 	cmd := exec.Command(
 		"git",
 		"log",
@@ -53,14 +52,14 @@ func GetAllCommits(chartPath string) ([]GitCommit, error) {
 		chartPath,
 		":(exclude)"+chartPath+"/Changelog.md",
 	)
-	log.Debugln(cmd)
+	g.Log.Debugln(cmd)
 
 	out, err := cmd.Output()
 	if err != nil || len(out) == 0 {
 		return []GitCommit{}, err
 	}
 
-	log.Debugf("Result: %s", out)
+	g.Log.Debugf("Result: %s", out)
 
 	gitCommitList := []GitCommit{}
 	dec := yaml.NewDecoder(bytes.NewReader(out))
@@ -80,18 +79,18 @@ func GetAllCommits(chartPath string) ([]GitCommit, error) {
 		}
 
 		if err != nil {
-			log.Error(err)
+			g.Log.Error(err)
 			continue
 		}
 
-		log.Debugf("commit: %s %s", t.Commit, t.Subject)
+		g.Log.Debugf("commit: %s %s", t.Commit, t.Subject)
 		gitCommitList = append(gitCommitList, *t)
 	}
 
 	return gitCommitList, nil
 }
 
-func GetDiffBetweenCommits(start, end, diffPath string) (string, error) {
+func (g *Git) GetDiffBetweenCommits(start, end, diffPath string) (string, error) {
 	if start == end {
 		return "", nil
 	}
@@ -103,13 +102,13 @@ func GetDiffBetweenCommits(start, end, diffPath string) (string, error) {
 		"--",
 		diffPath,
 	)
-	log.Debugln(cmd)
+	g.Log.Debugln(cmd)
 
 	out, err := cmd.Output()
 	if err != nil {
 		return "err", err
 	}
 
-	log.Debugf("Result: %s", out)
+	g.Log.Debugf("Result: %s", out)
 	return string(out), nil
 }
