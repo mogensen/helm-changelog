@@ -87,7 +87,7 @@ $ docker run --user $UID it --rm -v $(pwd):/data mogensen/helm-changelog:latest
 
 Unit tests are implemented with Go's standard test framework.
 
-All tests (with a single exception) are located in their own test-packages, enforcing that the tests only test the 
+All tests are located in their own test-packages, enforcing that the tests only test the 
 public interface of the go packages.
 
 ```bash
