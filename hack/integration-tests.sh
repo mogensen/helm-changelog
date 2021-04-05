@@ -2,9 +2,10 @@
 
 mkdir -p charts
 
-git clone git@github.com:elastic/helm-charts.git charts/elastic
+git clone git@github.com:elastic/helm-charts.git charts/elastic || true
 
 (
     cd charts/elastic
-    ../../bin/helm-changelog
+    git pull
+    ../../bin/helm-changelog create
 )

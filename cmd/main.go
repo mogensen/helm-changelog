@@ -10,8 +10,6 @@ import (
 )
 
 func init() {
-	addCommands()
-
 	var v string
 
 	rootCmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
@@ -27,11 +25,6 @@ func init() {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
-}
-
-// AddCommands adds child commands to the root command rootCmd.
-func addCommands() {
-	rootCmd.AddCommand(changelogCmd)
 }
 
 // setUpLogs set the log output ans the log level

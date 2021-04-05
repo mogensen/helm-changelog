@@ -12,11 +12,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// changelogCmd represents the simulate command
-var changelogCmd = &cobra.Command{
-	Use:   "create",
-	Short: "Create changelogs for Helm Charts, based on git history.",
-	Long:  `Create changelogs for Helm Charts, based on git history.`,
+// rootCmd represents the base command when called without any subcommands
+var rootCmd = &cobra.Command{
+	Use:   "helm-changelog",
+	Short: "Create changelogs for Helm Charts, based on git history",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		log := logrus.StandardLogger()
@@ -54,7 +53,13 @@ var changelogCmd = &cobra.Command{
 			releases := helm.CreateHelmReleases(log, chartFile, relativeChartDir, g, allCommits)
 
 			changeLogFilePath := filepath.Join(fullChartDir, "Changelog.md")
-			output.Markdown(changeLogFilePath, releases)
+			output.Markdown(log, changeLogFilePath, releases)
 		}
 	},
+}
+
+// Execute adds all child commands to the root command and sets flags appropriately.
+// This is called by main.main(). It only needs to happen once to the rootCmd.
+func Execute() {
+	cobra.CheckErr(rootCmd.Execute())
 }

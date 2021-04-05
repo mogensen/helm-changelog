@@ -11,22 +11,7 @@ All relevant commands are added to the `Makefile`
 
 ```bash
 $ make help
-
-Usage:
-  make <target>
-
-Targets:
-  help                  Display this help
-  test-unit             Run unit-tests
-  test-integration      Run integration-tests
-  build                 Build binary
-  verify                tests and builds
-  image                 build docker image
-  clean                 clean up created files
-  all                   Runs test, build and docker
-  test-coverage         Generate test coverage report
-  lint                  Generate static analysis report
-  update-docs           Upgrade automatic documentations
+{{ .Env.MAKE_HELPTEXT }}
 ```
 
 ### Run Standalone
@@ -43,22 +28,7 @@ This results in a binary in `./bin/helm-changelog`.
 ```bash
 # See all cli options
 $ ./bin/helm-changelog --help
-Create changelogs for Helm Charts, based on git history
-
-Usage:
-  helm-changelog [flags]
-
-Flags:
-  -h, --help               help for helm-changelog
-  -v, --verbosity string   Log level (debug, info, warn, error, fatal, panic (default "warning")
-Create changelogs for Helm Charts, based on git history
-
-Usage:
-  helm-changelog [flags]
-
-Flags:
-  -h, --help               help for helm-changelog
-  -v, --verbosity string   Log level (debug, info, warn, error, fatal, panic (default "warning")
+{{ .Env.HELM_CHANGELOG_HELPTEXT }}
 
 # Run helm-changelog creator with default params
 $ ./bin/helm-changelog

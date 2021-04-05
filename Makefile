@@ -10,8 +10,11 @@ help:  ## Display this help
 
 .PHONY: help build docker all clean
 
-test: ## Run unit-tests
+test-unit: ## Run unit-tests
 	go test ./...
+
+test-integration: build ## Run integration-tests
+	bash hack/integration-tests.sh
 
 build: ## Build binary
 	mkdir -p $(BINDIR)
@@ -36,3 +39,6 @@ test-coverage: ## Generate test coverage report
 
 lint: ## Generate static analysis report
 	golint ./...
+
+update-docs: build ## Upgrade automatic documentations
+	bash hack/update-readme.sh
