@@ -3,7 +3,23 @@
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fmogensen%2Fhelm-changelog%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/mogensen/helm-changelog/goto?ref=main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mogensen/helm-changelog)](https://goreportcard.com/report/github.com/mogensen/helm-changelog)
 
-Create changelogs for Helm Charts, based on git history
+Create changelogs for Helm Charts, based on git history.
+
+The application depends on the assumption that the helm chart is released on the first commit where the version number is bumped in the `Chart.yaml` file.
+
+All sub-sequent commits are grouped as commits for the next release, until the version number is bumped again.
+
+## Features
+
+The changelog contains the following things:
+
+- Commits are grouped by releases
+- Each release displays 
+  * Supported Helm version
+  * Release date
+  * App Version for the chart
+  * Supported Kubernetes version
+- Changes in default helm values
 
 ## Examples
 
