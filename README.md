@@ -51,14 +51,6 @@ Usage:
 Flags:
   -h, --help               help for helm-changelog
   -v, --verbosity string   Log level (debug, info, warn, error, fatal, panic (default "warning")
-Create changelogs for Helm Charts, based on git history
-
-Usage:
-  helm-changelog [flags]
-
-Flags:
-  -h, --help               help for helm-changelog
-  -v, --verbosity string   Log level (debug, info, warn, error, fatal, panic (default "warning")
 
 # Run helm-changelog creator with default params
 $ ./bin/helm-changelog

@@ -61,5 +61,16 @@ var rootCmd = &cobra.Command{
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
+	var v string
+
+	rootCmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
+		if err := setUpLogs(os.Stdout, v); err != nil {
+			return err
+		}
+		return nil
+	}
+
+	rootCmd.PersistentFlags().StringVarP(&v, "verbosity", "v", logrus.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic")
+
 	cobra.CheckErr(rootCmd.Execute())
 }

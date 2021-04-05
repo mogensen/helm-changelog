@@ -1,31 +1,10 @@
 package cmd
 
 import (
-	"fmt"
 	"io"
-	"os"
 
 	"github.com/sirupsen/logrus"
-	"github.com/spf13/cobra"
 )
-
-func init() {
-	var v string
-
-	rootCmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
-		if err := setUpLogs(os.Stdout, v); err != nil {
-			return err
-		}
-		return nil
-	}
-
-	rootCmd.PersistentFlags().StringVarP(&v, "verbosity", "v", logrus.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic")
-
-	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
-		os.Exit(-1)
-	}
-}
 
 // setUpLogs set the log output ans the log level
 func setUpLogs(out io.Writer, level string) error {
