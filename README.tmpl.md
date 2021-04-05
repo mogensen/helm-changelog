@@ -5,6 +5,17 @@
 
 Create changelogs for Helm Charts, based on git history
 
+## Examples
+
+This repository contains a set of example changelogs created for the github.com/elastic/helm-charts charts.
+
+ - [apm-server](https://github.com/mogensen/helm-changelog/tree/main/examples/apm-server.md)
+ - [elasticsearch](https://github.com/mogensen/helm-changelog/tree/main/examples/elasticsearch.md)
+ - [filebeat](https://github.com/mogensen/helm-changelog/tree/main/examples/filebeat.md)
+ - [kibana](https://github.com/mogensen/helm-changelog/tree/main/examples/kibana.md)
+ - [logstash](https://github.com/mogensen/helm-changelog/tree/main/examples/logstash.md)
+ - [metricbeat](https://github.com/mogensen/helm-changelog/tree/main/examples/metricbeat.md)
+
 ## Installation
 
 All relevant commands are added to the `Makefile`
@@ -49,7 +60,7 @@ $ docker run -it --rm -v $(pwd):/data mogensen/helm-changelog:latest
 ```
 
 The helm-changelog app is running as a non-root user.
-This is a security best-practice. If user `1000` does not have write access to the chart dir, you may need to run the container as an other user.
+This is a security best-practice. If user `1000` does not have write access to the chart directory, you may need to run the container as an other user.
 
 
 ```bash
