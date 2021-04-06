@@ -3,15 +3,15 @@
 mkdir -p charts
 mkdir -p examples
 
-git clone git@github.com:elastic/helm-charts.git charts/elastic || true
-
+git clone git@github.com:prometheus-community/helm-charts.git charts/prometheus-community || true
 (
-    cd charts/elastic
+    cd charts/prometheus-community/
     git pull
-    ../../bin/helm-changelog create
+    ../../bin/helm-changelog -v info
 )
 
-for changelog in $(find . -name 'Changelog.md' | sed "s|./charts/elastic/||g"); do
+for changelog in $(find charts -name 'Changelog.md'); do
+    echo $changelog
     dirName=$(dirname $changelog)
-    mv ./charts/elastic/$changelog examples/${dirName}.md
+    cp $changelog examples/$(basename ${dirName}).md
 done

@@ -23,15 +23,10 @@ The changelog contains the following things:
 
 ## Examples
 
-This repository contains a set of example changelogs created for the github.com/elastic/helm-charts charts.
+This repository contains a set of example changelogs created for the github.com/prometheus-community/helm-charts charts.
 
- - [apm-server](https://github.com/mogensen/helm-changelog/tree/main/examples/apm-server.md)
- - [elasticsearch](https://github.com/mogensen/helm-changelog/tree/main/examples/elasticsearch.md)
- - [filebeat](https://github.com/mogensen/helm-changelog/tree/main/examples/filebeat.md)
- - [kibana](https://github.com/mogensen/helm-changelog/tree/main/examples/kibana.md)
- - [logstash](https://github.com/mogensen/helm-changelog/tree/main/examples/logstash.md)
- - [metricbeat](https://github.com/mogensen/helm-changelog/tree/main/examples/metricbeat.md)
-
+ - [examples](https://github.com/mogensen/helm-changelog/tree/main/examples/)
+ 
 ## Installation
 
 All relevant commands are added to the `Makefile`
