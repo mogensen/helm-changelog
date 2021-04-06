@@ -31,7 +31,8 @@ func CreateHelmReleases(log *logrus.Logger, chartFile, chartDir string, g git.Gi
 
 		chart, err := GetChart(strings.NewReader(chartContent))
 		if err != nil {
-			log.Fatal(err)
+			log.Warn("Ignoring Chart.yaml file that cannot be parsed: %s", err)
+			continue
 		}
 
 		if chart.Version != currentRelease {
@@ -55,16 +56,17 @@ func CreateHelmReleases(log *logrus.Logger, chartFile, chartDir string, g git.Gi
 		if err == nil {
 			chart, err := GetChart(strings.NewReader(chartContent))
 			if err != nil {
-				log.Fatal(err)
-			}
-			chart.Version = "Next Release"
+				log.Warn("Ignoring Chart.yaml file that cannot be parsed: %s", err)
+			} else {
+				chart.Version = "Next Release"
 
-			r := &Release{
-				ReleaseDate: nil,
-				Chart:       chart,
-				Commits:     releaseCommits,
+				r := &Release{
+					ReleaseDate: nil,
+					Chart:       chart,
+					Commits:     releaseCommits,
+				}
+				res = append(res, r)
 			}
-			res = append(res, r)
 		}
 	}
 
