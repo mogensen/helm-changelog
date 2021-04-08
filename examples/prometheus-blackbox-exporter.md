@@ -1,5 +1,34 @@
 # Change Log
 
+## 4.10.4 
+
+**Release date:** 2021-04-08
+
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Add support for hostNetwork (#819) 
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index ccf34d9..785b1b2 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -46,6 +46,8 @@ extraContainers: []
+ ## Enable pod security policy
+ pspEnabled: true
+ 
++hostNetwork: false
++
+ strategy:
+   rollingUpdate:
+     maxSurge: 1
+```
+
 ## 4.10.3 
 
 **Release date:** 2021-01-21
