@@ -9,6 +9,7 @@ RUN go mod download
 # Build
 COPY main.go main.go
 COPY pkg pkg/
+COPY cmd cmd/
 
 RUN CGO_ENABLED=0 go build -ldflags '-w -s' -o /app/helm-changelog .
 
