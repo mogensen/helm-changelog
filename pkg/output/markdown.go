@@ -32,13 +32,11 @@ func Markdown(log *logrus.Logger, changeLogFilePath string, releases []*helm.Rel
 
 	for _, release := range releases {
 
-		deprecationNode := ""
-		if release.Chart.Deprecated {
+    if release.Chart.Deprecated {
       f.WriteString(fmt.Sprintf("## %s (DEPRECATED)\n\n", release.Chart.Version))
     } else {
       f.WriteString(fmt.Sprintf("## %s\n\n", release.Chart.Version))
     }
-
 
 		if release.ReleaseDate != nil {
 			f.WriteString(fmt.Sprintf("**Release date:** %s\n\n", release.ReleaseDate.Format("2006-01-02")))
