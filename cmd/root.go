@@ -73,8 +73,9 @@ func Execute() {
 		return nil
 	}
 
-	rootCmd.PersistentFlags().StringVarP(&v, "verbosity", "v", logrus.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic")
+
 	rootCmd.PersistentFlags().StringVarP(&changelogFilename, "filename", "f", "CHANGELOG.md", "Filename for changelog")
+	rootCmd.PersistentFlags().StringVarP(&v, "verbosity", "v", logrus.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic)")
 
 	cobra.CheckErr(rootCmd.Execute())
 }
