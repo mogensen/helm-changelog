@@ -13,8 +13,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var changelogFilename string
-
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "helm-changelog",
@@ -55,7 +53,7 @@ var rootCmd = &cobra.Command{
 
 			releases := helm.CreateHelmReleases(log, chartFile, relativeChartDir, g, allCommits)
 
-			changeLogFilePath := filepath.Join(fullChartDir, changelogFilename)
+			changeLogFilePath := filepath.Join(fullChartDir, "Changelog.md")
 			output.Markdown(log, changeLogFilePath, releases)
 		}
 	},
@@ -73,8 +71,6 @@ func Execute() {
 		return nil
 	}
 
-
-	rootCmd.PersistentFlags().StringVarP(&changelogFilename, "filename", "f", "CHANGELOG.md", "Filename for changelog")
 	rootCmd.PersistentFlags().StringVarP(&v, "verbosity", "v", logrus.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic)")
 
 	cobra.CheckErr(rootCmd.Execute())
