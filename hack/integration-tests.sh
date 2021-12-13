@@ -12,7 +12,7 @@ git clone git@github.com:prometheus-community/helm-charts.git charts/prometheus-
 
 rm examples/*.md
 
-for changelog in $(find charts -name 'CHANGELOG.md'); do
+for changelog in $(find charts -name 'Changelog.md'); do
     echo $changelog
     dirName=$(dirname $changelog)
     cp $changelog examples/$(basename ${dirName}).md
