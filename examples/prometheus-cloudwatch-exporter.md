@@ -1,6 +1,434 @@
 # Change Log
 
-## 0.14.1 
+## 0.24.0
+
+**Release date:** 2023-02-10
+
+![AppVersion: 0.15.1](https://img.shields.io/static/v1?label=AppVersion&message=0.15.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] Add labels to deployment resource (#3001)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index c5923ac1..42a63fe3 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -39,6 +39,11 @@ pod:
+   labels: {}
+   annotations: {}
+ 
++# Labels and annotations to attach to the deployment resource
++deployment:
++  labels: {}
++  annotations: {}
++
+ # Extra environment variables
+ extraEnv:
+   # - name: foo
+```
+
+## 0.23.0
+
+**Release date:** 2023-02-08
+
+![AppVersion: 0.15.1](https://img.shields.io/static/v1?label=AppVersion&message=0.15.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter]: upgrade to v0.15.1 (#3008)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 1cb5c20a..c5923ac1 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -6,7 +6,8 @@ replicaCount: 1
+ 
+ image:
+   repository: prom/cloudwatch-exporter
+-  tag: v0.15.0
++  # if not set appVersion field from Chart.yaml is used
++  tag:
+   pullPolicy: IfNotPresent
+   pullSecrets:
+   # - name: "image-pull-secret"
+```
+
+## 0.22.0
+
+**Release date:** 2022-10-14
+
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Support networking.k8s.io/v1 in helpers file for k8s clusters > 1.21 (#2560)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 37715907..1cb5c20a 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -218,6 +218,13 @@ ingress:
+   #    hosts:
+   #      - chart-example.local
+ 
++  # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
++  # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
++  # ingressClassName: nginx
++
++  # pathType is only for k8s >= 1.18
++  pathType: Prefix
++
+ securityContext:
+   runAsUser: 65534  # run as nobody user instead of root
+   fsGroup: 65534  # necessary to be able to read the EKS IAM token
+```
+
+## 0.21.1
+
+**Release date:** 2022-10-13
+
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Support networking.k8s.io/v1 in helpers file for k8s clusters > 1.21 (#2558)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.21.0
+
+**Release date:** 2022-09-29
+
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] Add extraEnv to values file to specify extra env vars being added to the deployment (#2500)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index fd470670..37715907 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -38,6 +38,11 @@ pod:
+   labels: {}
+   annotations: {}
+ 
++# Extra environment variables
++extraEnv:
++  # - name: foo
++  #   value: baa
++
+ resources: {}
+   # We usually recommend not to specify default resources and to leave this as a conscious
+   # choice for the user. This also increases chances charts run on environments with little
+```
+
+## 0.20.1
+
+**Release date:** 2022-09-28
+
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] Fix typo in README (#2392)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.20.0
+
+**Release date:** 2022-09-15
+
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] Update image tag v0.14.3 to v0.15.0 (#2458)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 45f73344..fd470670 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -6,7 +6,7 @@ replicaCount: 1
+ 
+ image:
+   repository: prom/cloudwatch-exporter
+-  tag: v0.14.3
++  tag: v0.15.0
+   pullPolicy: IfNotPresent
+   pullSecrets:
+   # - name: "image-pull-secret"
+```
+
+## 0.19.2
+
+**Release date:** 2022-07-08
+
+![AppVersion: 0.14.3](https://img.shields.io/static/v1?label=AppVersion&message=0.14.3&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] correct container service port  Signed-… (#2235)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.19.1
+
+**Release date:** 2022-06-27
+
+![AppVersion: 0.14.3](https://img.shields.io/static/v1?label=AppVersion&message=0.14.3&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] update the cloudwatch-exporter image from 0.14.0 to 0.14.3 (#2171)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 7789e917..45f73344 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -6,7 +6,7 @@ replicaCount: 1
+ 
+ image:
+   repository: prom/cloudwatch-exporter
+-  tag: v0.14.0
++  tag: v0.14.3
+   pullPolicy: IfNotPresent
+   pullSecrets:
+   # - name: "image-pull-secret"
+```
+
+## 0.19.0
+
+**Release date:** 2022-05-30
+
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] Update default image tag for Cloudwatch exporter chart (#2097)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 9d7f1eda..7789e917 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -6,7 +6,7 @@ replicaCount: 1
+ 
+ image:
+   repository: prom/cloudwatch-exporter
+-  tag: v0.12.2
++  tag: v0.14.0
+   pullPolicy: IfNotPresent
+   pullSecrets:
+   # - name: "image-pull-secret"
+```
+
+## 0.18.0
+
+**Release date:** 2022-01-14
+
+![AppVersion: 0.12.2](https://img.shields.io/static/v1?label=AppVersion&message=0.12.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix(cloudwatch-exporter): update the image from 0.10.0 to 0.12.2 (#1597)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 33ff85da..9d7f1eda 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -6,7 +6,7 @@ replicaCount: 1
+ 
+ image:
+   repository: prom/cloudwatch-exporter
+-  tag: cloudwatch_exporter-0.10.0
++  tag: v0.12.2
+   pullPolicy: IfNotPresent
+   pullSecrets:
+   # - name: "image-pull-secret"
+```
+
+## 0.17.2
+
+**Release date:** 2022-01-04
+
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix: Indentation for multiple annotations of ServiceAccounts (#1667)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 83e13e9b..33ff85da 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -80,6 +80,7 @@ serviceAccount:
+   # e.g.
+   # annotations:
+   #   eks.amazonaws.com/role-arn: arn:aws:iam::1234567890:role/prom-cloudwatch-exporter-oidc
++  #   eks.amazonaws.com/sts-regional-endpoints: "true"
+   # Specifies whether to automount API credentials for the ServiceAccount.
+   automountServiceAccountToken: true
+ 
+```
+
+## 0.17.1
+
+**Release date:** 2021-11-24
+
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Add missing whitespace to cloudwatch-exporter chart (#1533)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.17.0
+
+**Release date:** 2021-11-07
+
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] configurable pod annotations (#1294)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 956b1b07..83e13e9b 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -36,6 +36,7 @@ service:
+ 
+ pod:
+   labels: {}
++  annotations: {}
+ 
+ resources: {}
+   # We usually recommend not to specify default resources and to leave this as a conscious
+```
+
+## 0.16.0
+
+**Release date:** 2021-05-03
+
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-cloudwatch-exporter] Allow for specifying automountserviceaccounttoken for prometheus-cloudwatch-exporter (#861)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 6be9d2f4..956b1b07 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -79,6 +79,8 @@ serviceAccount:
+   # e.g.
+   # annotations:
+   #   eks.amazonaws.com/role-arn: arn:aws:iam::1234567890:role/prom-cloudwatch-exporter-oidc
++  # Specifies whether to automount API credentials for the ServiceAccount.
++  automountServiceAccountToken: true
+ 
+ rbac:
+   # Specifies whether RBAC resources should be created
+```
+
+## 0.15.0
+
+**Release date:** 2021-05-03
+
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Add container security context (#849)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
+index 25223659..6be9d2f4 100644
+--- a/charts/prometheus-cloudwatch-exporter/values.yaml
++++ b/charts/prometheus-cloudwatch-exporter/values.yaml
+@@ -213,6 +213,10 @@ securityContext:
+   runAsUser: 65534  # run as nobody user instead of root
+   fsGroup: 65534  # necessary to be able to read the EKS IAM token
+ 
++containerSecurityContext: {}
++  # allowPrivilegeEscalation: false
++  # readOnlyRootFilesystem: true
++
+ # Leverage a PriorityClass to ensure your pods survive resource shortages
+ # ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
+ # priorityClassName: system-cluster-critical
+```
+
+## 0.14.1
 
 **Release date:** 2021-02-15
 
@@ -9,7 +437,7 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Set namespace (#660) 
+* [prometheus-cloudwatch-exporter] Set namespace (#660)
 
 ### Default value changes
 
@@ -17,7 +445,7 @@
 # No changes in this release
 ```
 
-## 0.14.0 
+## 0.14.0
 
 **Release date:** 2021-02-12
 
@@ -26,13 +454,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Update to cloudwatch exporter v0.10.0 (#668) 
+* [prometheus-cloudwatch-exporter] Update to cloudwatch exporter v0.10.0 (#668)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 6602d83..2522365 100644
+index 6602d830..25223659 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -6,7 +6,7 @@ replicaCount: 1
@@ -46,7 +474,7 @@ index 6602d83..2522365 100644
    # - name: "image-pull-secret"
 ```
 
-## 0.13.0 
+## 0.13.0
 
 **Release date:** 2021-01-14
 
@@ -55,13 +483,13 @@ index 6602d83..2522365 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] - Added option to enable sts regional endpoints (#565) 
+* [prometheus-cloudwatch-exporter] - Added option to enable sts regional endpoints (#565)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 229026f..6602d83 100644
+index 229026f6..6602d830 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -51,6 +51,9 @@ resources: {}
@@ -76,7 +504,7 @@ index 229026f..6602d83 100644
    # set, aws_access_key_id is assumed to be in a field called access_key,
 ```
 
-## 0.12.1 
+## 0.12.1
 
 **Release date:** 2020-12-20
 
@@ -85,13 +513,13 @@ index 229026f..6602d83 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Add the fsGroup:65534 to the security context (#502) 
+* [prometheus-cloudwatch-exporter] Add the fsGroup:65534 to the security context (#502)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index ed13fa5..229026f 100644
+index ed13fa56..229026f6 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -208,6 +208,7 @@ ingress:
@@ -104,7 +532,7 @@ index ed13fa5..229026f 100644
  # ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 ```
 
-## 0.12.0 
+## 0.12.0
 
 **Release date:** 2020-11-24
 
@@ -113,13 +541,13 @@ index ed13fa5..229026f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Allow user-defined matchLabels for deployment and servicemonitor in prometheus-cloudwatch-exporter (#406) 
+* [prometheus-cloudwatch-exporter] Allow user-defined matchLabels for deployment and servicemonitor in prometheus-cloudwatch-exporter (#406)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 3e77bb8..ed13fa5 100644
+index 3e77bb81..ed13fa56 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -34,6 +34,9 @@ service:
@@ -134,7 +562,7 @@ index 3e77bb8..ed13fa5 100644
    # choice for the user. This also increases chances charts run on environments with little
 ```
 
-## 0.11.0 
+## 0.11.0
 
 **Release date:** 2020-11-21
 
@@ -143,13 +571,13 @@ index 3e77bb8..ed13fa5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add imagePullSecrets to prometheus-cloudwatch-exporter (#391) 
+* Add imagePullSecrets to prometheus-cloudwatch-exporter (#391)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index fa9fade..3e77bb8 100644
+index fa9fade9..3e77bb81 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -8,6 +8,8 @@ image:
@@ -163,7 +591,7 @@ index fa9fade..3e77bb8 100644
  # command:
 ```
 
-## 0.10.1 
+## 0.10.1
 
 **Release date:** 2020-11-06
 
@@ -172,13 +600,13 @@ index fa9fade..3e77bb8 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* charts/prometheus-cloudwatch-exporter: fix typo (#315) 
+* charts/prometheus-cloudwatch-exporter: fix typo (#315)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 4345295..fa9fade 100644
+index 43452954..fa9fade9 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -67,7 +67,7 @@ serviceAccount:
@@ -192,7 +620,7 @@ index 4345295..fa9fade 100644
    #   eks.amazonaws.com/role-arn: arn:aws:iam::1234567890:role/prom-cloudwatch-exporter-oidc
 ```
 
-## 0.10.0 
+## 0.10.0
 
 **Release date:** 2020-10-21
 
@@ -201,13 +629,13 @@ index 4345295..fa9fade 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Allow Helm variables in config (#220) 
+* [prometheus-cloudwatch-exporter] Allow Helm variables in config (#220)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 2b77b68..4345295 100644
+index 2b77b682..43452954 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -76,6 +76,7 @@ rbac:
@@ -220,7 +648,7 @@ index 2b77b68..4345295 100644
    region: eu-west-1
 ```
 
-## 0.9.0 
+## 0.9.0
 
 **Release date:** 2020-09-10
 
@@ -229,13 +657,13 @@ index 2b77b68..4345295 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Add priorityClassName to cloudwatch-exporter (#31) 
+* [prometheus-cloudwatch-exporter] Add priorityClassName to cloudwatch-exporter (#31)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 2b10317..2b77b68 100644
+index 2b10317e..2b77b682 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -202,3 +202,8 @@ ingress:
@@ -249,7 +677,7 @@ index 2b10317..2b77b68 100644
 +priorityClassName: ""
 ```
 
-## 0.8.4 
+## 0.8.4
 
 **Release date:** 2020-08-20
 
@@ -258,7 +686,7 @@ index 2b10317..2b77b68 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prep initial charts indexing (#14) 
+* Prep initial charts indexing (#14)
 
 ### Default value changes
 
@@ -266,7 +694,7 @@ index 2b10317..2b77b68 100644
 # No changes in this release
 ```
 
-## 0.8.3 
+## 0.8.3
 
 **Release date:** 2020-07-27
 
@@ -275,13 +703,13 @@ index 2b10317..2b77b68 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* prometheus-cloudwatch-exporter: Add containerPort, livenessProbe.path and readinessProbe.path variables (#22923) 
+* prometheus-cloudwatch-exporter: Add containerPort, livenessProbe.path and readinessProbe.path variables (#22923)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index c4da6cb..2b10317 100644
+index c4da6cb3..2b10317e 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -23,6 +23,8 @@ image:
@@ -311,7 +739,7 @@ index c4da6cb..2b10317 100644
    timeoutSeconds: 5
 ```
 
-## 0.8.2 
+## 0.8.2
 
 **Release date:** 2020-07-01
 
@@ -320,7 +748,7 @@ index c4da6cb..2b10317 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] additional docu on service account usage (#23028) 
+* [stable/prometheus-cloudwatch-exporter] additional docu on service account usage (#23028)
 
 ### Default value changes
 
@@ -328,7 +756,7 @@ index c4da6cb..2b10317 100644
 # No changes in this release
 ```
 
-## 0.8.1 
+## 0.8.1
 
 **Release date:** 2020-06-23
 
@@ -337,7 +765,7 @@ index c4da6cb..2b10317 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* stable/prometheus-cloudwatch-exporter Add shasum of secrets yaml render to annotations (#22906) 
+* stable/prometheus-cloudwatch-exporter Add shasum of secrets yaml render to annotations (#22906)
 
 ### Default value changes
 
@@ -345,7 +773,7 @@ index c4da6cb..2b10317 100644
 # No changes in this release
 ```
 
-## 0.8.0 
+## 0.8.0
 
 **Release date:** 2020-05-22
 
@@ -354,7 +782,7 @@ index c4da6cb..2b10317 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] Enable to set an existing service account name (#22272) 
+* [stable/prometheus-cloudwatch-exporter] Enable to set an existing service account name (#22272)
 
 ### Default value changes
 
@@ -362,7 +790,7 @@ index c4da6cb..2b10317 100644
 # No changes in this release
 ```
 
-## 0.7.0 
+## 0.7.0
 
 **Release date:** 2020-04-09
 
@@ -371,13 +799,13 @@ index c4da6cb..2b10317 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* stable/prometheus-cloudwatch-exporter Add prometheusRule creation. (#21838) 
+* stable/prometheus-cloudwatch-exporter Add prometheusRule creation. (#21838)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 2ddb9e2..c4da6cb 100644
+index 2ddb9e23..c4da6cb3 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -6,7 +6,7 @@ replicaCount: 1
@@ -429,7 +857,7 @@ index 2ddb9e2..c4da6cb 100644
    annotations: {}
 ```
 
-## 0.6.0 
+## 0.6.0
 
 **Release date:** 2020-01-22
 
@@ -438,13 +866,13 @@ index 2ddb9e2..c4da6cb 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] - Add annotations to serviceAccounts for EKS IAM (#20162) 
+* [stable/prometheus-cloudwatch-exporter] - Add annotations to serviceAccounts for EKS IAM (#20162)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index f7c9f83..2ddb9e2 100644
+index f7c9f83a..2ddb9e23 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -64,6 +64,11 @@ serviceAccount:
@@ -461,7 +889,7 @@ index f7c9f83..2ddb9e2 100644
    # Specifies whether RBAC resources should be created
 ```
 
-## 0.5.0 
+## 0.5.0
 
 **Release date:** 2019-11-02
 
@@ -470,7 +898,7 @@ index f7c9f83..2ddb9e2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Upgrade api versions (#17764) 
+* [prometheus-cloudwatch-exporter] Upgrade api versions (#17764)
 
 ### Default value changes
 
@@ -478,7 +906,7 @@ index f7c9f83..2ddb9e2 100644
 # No changes in this release
 ```
 
-## 0.4.13 
+## 0.4.13
 
 **Release date:** 2019-10-28
 
@@ -487,13 +915,13 @@ index f7c9f83..2ddb9e2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] Update cloudwatch-exporter version. (#18003) 
+* [stable/prometheus-cloudwatch-exporter] Update cloudwatch-exporter version. (#18003)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 279be11..f7c9f83 100644
+index 279be115..f7c9f83a 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -6,7 +6,7 @@ replicaCount: 1
@@ -507,7 +935,7 @@ index 279be11..f7c9f83 100644
  # Example proxy configuration:
 ```
 
-## 0.4.12 
+## 0.4.12
 
 **Release date:** 2019-10-28
 
@@ -516,7 +944,7 @@ index 279be11..f7c9f83 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] Add myself to owners/maintainers. (#18093) 
+* [stable/prometheus-cloudwatch-exporter] Add myself to owners/maintainers. (#18093)
 
 ### Default value changes
 
@@ -524,7 +952,7 @@ index 279be11..f7c9f83 100644
 # No changes in this release
 ```
 
-## 0.4.11 
+## 0.4.11
 
 **Release date:** 2019-10-03
 
@@ -533,7 +961,7 @@ index 279be11..f7c9f83 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] added changelog (#16579) 
+* [stable/prometheus-cloudwatch-exporter] added changelog (#16579)
 
 ### Default value changes
 
@@ -541,7 +969,7 @@ index 279be11..f7c9f83 100644
 # No changes in this release
 ```
 
-## 0.4.10 
+## 0.4.10
 
 **Release date:** 2019-08-21
 
@@ -550,13 +978,13 @@ index 279be11..f7c9f83 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* include ServiceMonitor relabelings and metricRelabelings (#16443) 
+* include ServiceMonitor relabelings and metricRelabelings (#16443)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index ecf6e51..279be11 100644
+index ecf6e51d..279be115 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -134,6 +134,17 @@ serviceMonitor:
@@ -579,7 +1007,7 @@ index ecf6e51..279be11 100644
    enabled: false
 ```
 
-## 0.4.9 
+## 0.4.9
 
 **Release date:** 2019-08-04
 
@@ -588,7 +1016,7 @@ index ecf6e51..279be11 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] Fix documentation typos (README.md) (#15745) 
+* [stable/prometheus-cloudwatch-exporter] Fix documentation typos (README.md) (#15745)
 
 ### Default value changes
 
@@ -596,7 +1024,7 @@ index ecf6e51..279be11 100644
 # No changes in this release
 ```
 
-## 0.4.8 
+## 0.4.8
 
 **Release date:** 2019-07-19
 
@@ -605,13 +1033,13 @@ index ecf6e51..279be11 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Added securityContext configuration capabilities (#12405) 
+* [prometheus-cloudwatch-exporter] Added securityContext configuration capabilities (#12405)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 2d3094c..ecf6e51 100644
+index 2d3094c8..ecf6e51d 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -148,3 +148,6 @@ ingress:
@@ -623,7 +1051,7 @@ index 2d3094c..ecf6e51 100644
 +  runAsUser: 65534  # run as nobody user instead of root
 ```
 
-## 0.4.7 
+## 0.4.7
 
 **Release date:** 2019-06-14
 
@@ -632,13 +1060,13 @@ index 2d3094c..ecf6e51 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] configurable container command (#14803) 
+* [stable/prometheus-cloudwatch-exporter] configurable container command (#14803)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 70faf35..2d3094c 100644
+index 70faf357..2d3094c8 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -9,6 +9,20 @@ image:
@@ -664,7 +1092,7 @@ index 70faf35..2d3094c 100644
    port: 9106
 ```
 
-## 0.4.6 
+## 0.4.6
 
 **Release date:** 2019-06-13
 
@@ -673,7 +1101,7 @@ index 70faf35..2d3094c 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* add torstenwalter as maintainer (#14788) 
+* add torstenwalter as maintainer (#14788)
 
 ### Default value changes
 
@@ -681,7 +1109,7 @@ index 70faf35..2d3094c 100644
 # No changes in this release
 ```
 
-## 0.4.5 
+## 0.4.5
 
 **Release date:** 2019-05-13
 
@@ -690,13 +1118,13 @@ index 70faf35..2d3094c 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] Add scrape timeout option (#13686) 
+* [stable/prometheus-cloudwatch-exporter] Add scrape timeout option (#13686)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 405bfcc..70faf35 100644
+index 405bfcc3..70faf357 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -118,6 +118,8 @@ serviceMonitor:
@@ -710,7 +1138,7 @@ index 405bfcc..70faf35 100644
    enabled: false
 ```
 
-## 0.4.4 
+## 0.4.4
 
 **Release date:** 2019-04-02
 
@@ -719,13 +1147,13 @@ index 405bfcc..70faf35 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-cloudwatch-exporter] Added ingress configuration (#12407) 
+* [prometheus-cloudwatch-exporter] Added ingress configuration (#12407)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index eeccd3f..405bfcc 100644
+index eeccd3f2..405bfcc3 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -118,3 +118,17 @@ serviceMonitor:
@@ -748,7 +1176,7 @@ index eeccd3f..405bfcc 100644
 +  #      - chart-example.local
 ```
 
-## 0.4.3 
+## 0.4.3
 
 **Release date:** 2019-04-01
 
@@ -757,13 +1185,13 @@ index eeccd3f..405bfcc 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add optional ServiceMonitor and values stub with it disabled by default (#12503) 
+* Add optional ServiceMonitor and values stub with it disabled by default (#12503)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 0f1c8be..eeccd3f 100644
+index 0f1c8be2..eeccd3f2 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -106,3 +106,15 @@ readinessProbe:
@@ -784,7 +1212,7 @@ index 0f1c8be..eeccd3f 100644
 +  # labels:
 ```
 
-## 0.4.2 
+## 0.4.2
 
 **Release date:** 2019-02-20
 
@@ -793,13 +1221,13 @@ index 0f1c8be..eeccd3f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Fix default service port and target port.  (#11264) 
+* Fix default service port and target port.  (#11264)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 6117ea9..0f1c8be 100644
+index 6117ea98..0f1c8be2 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -11,7 +11,7 @@ image:
@@ -813,7 +1241,7 @@ index 6117ea9..0f1c8be 100644
    labels: {}
 ```
 
-## 0.4.1 
+## 0.4.1
 
 **Release date:** 2019-02-18
 
@@ -822,7 +1250,7 @@ index 6117ea9..0f1c8be 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] Adjust service targetPort to reference container port name. (#11462) 
+* [stable/prometheus-cloudwatch-exporter] Adjust service targetPort to reference container port name. (#11462)
 
 ### Default value changes
 
@@ -830,7 +1258,7 @@ index 6117ea9..0f1c8be 100644
 # No changes in this release
 ```
 
-## 0.4.0 
+## 0.4.0
 
 **Release date:** 2019-01-29
 
@@ -839,13 +1267,13 @@ index 6117ea9..0f1c8be 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add support for pre-created secrets and AWS STS session tokens (#10878) 
+* Add support for pre-created secrets and AWS STS session tokens (#10878)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index e26ef68..6117ea9 100644
+index e26ef687..6117ea98 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -29,9 +29,18 @@ resources: {}
@@ -871,7 +1299,7 @@ index e26ef68..6117ea9 100644
  
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2019-01-24
 
@@ -880,13 +1308,13 @@ index e26ef68..6117ea9 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Use entrypoint from Docker image and fix probe paths (#10873) 
+* Use entrypoint from Docker image and fix probe paths (#10873)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index c089a7d..e26ef68 100644
+index c089a7d1..e26ef687 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -12,7 +12,6 @@ image:
@@ -899,7 +1327,7 @@ index c089a7d..e26ef68 100644
    labels: {}
 ```
 
-## 0.2.1 
+## 0.2.1
 
 **Release date:** 2018-10-16
 
@@ -908,13 +1336,13 @@ index c089a7d..e26ef68 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* cloudwatch-exporter - Support custom service labels and portName (#8488) 
+* cloudwatch-exporter - Support custom service labels and portName (#8488)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index bb986cf..c089a7d 100644
+index bb986cfd..c089a7d1 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -13,7 +13,9 @@ service:
@@ -929,7 +1357,7 @@ index bb986cf..c089a7d 100644
    # We usually recommend not to specify default resources and to leave this as a conscious
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2018-09-13
 
@@ -938,13 +1366,13 @@ index bb986cf..c089a7d 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] health/liveness endpoints added (#7681) 
+* [stable/prometheus-cloudwatch-exporter] health/liveness endpoints added (#7681)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 68dda8c..bb986cf 100644
+index 68dda8c2..bb986cfd 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -6,7 +6,7 @@ replicaCount: 1
@@ -977,7 +1405,7 @@ index 68dda8c..bb986cf 100644
 +  failureThreshold: 3
 ```
 
-## 0.1.4 
+## 0.1.4
 
 **Release date:** 2018-07-10
 
@@ -986,7 +1414,7 @@ index 68dda8c..bb986cf 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-cloudwatch-exporter] Fixed secret variable parsing for access/secret keys. (#6511) 
+* [stable/prometheus-cloudwatch-exporter] Fixed secret variable parsing for access/secret keys. (#6511)
 
 ### Default value changes
 
@@ -994,7 +1422,7 @@ index 68dda8c..bb986cf 100644
 # No changes in this release
 ```
 
-## 0.1.3 
+## 0.1.3
 
 **Release date:** 2018-06-29
 
@@ -1003,7 +1431,7 @@ index 68dda8c..bb986cf 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Fixed image configuration in README for the prometheus-cloudwatch-exporter (#6400) 
+* Fixed image configuration in README for the prometheus-cloudwatch-exporter (#6400)
 
 ### Default value changes
 
@@ -1011,7 +1439,7 @@ index 68dda8c..bb986cf 100644
 # No changes in this release
 ```
 
-## 0.1.2 
+## 0.1.2
 
 **Release date:** 2018-04-16
 
@@ -1020,13 +1448,13 @@ index 68dda8c..bb986cf 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Annotations and checksum (#5067) 
+* Annotations and checksum (#5067)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-cloudwatch-exporter/values.yaml b/charts/prometheus-cloudwatch-exporter/values.yaml
-index 2c4a90c..68dda8c 100644
+index 2c4a90ce..68dda8c2 100644
 --- a/charts/prometheus-cloudwatch-exporter/values.yaml
 +++ b/charts/prometheus-cloudwatch-exporter/values.yaml
 @@ -13,6 +13,7 @@ service:
@@ -1039,7 +1467,7 @@ index 2c4a90c..68dda8c 100644
    # We usually recommend not to specify default resources and to leave this as a conscious
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2018-04-03
 
@@ -1048,7 +1476,7 @@ index 2c4a90c..68dda8c 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update table/prometheus-cloudwatch-exporte (#4551) 
+* Update table/prometheus-cloudwatch-exporte (#4551)
 
 ### Default value changes
 
@@ -1056,7 +1484,7 @@ index 2c4a90c..68dda8c 100644
 # No changes in this release
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2018-03-30
 
@@ -1065,7 +1493,7 @@ index 2c4a90c..68dda8c 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add cloudwatch exporter (#4022) 
+* Add cloudwatch exporter (#4022)
 
 ### Default value changes
 

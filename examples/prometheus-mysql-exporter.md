@@ -1,6 +1,530 @@
 # Change Log
 
-## 1.1.0 
+## 1.13.0
+
+**Release date:** 2023-03-06
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Allow overriding of image registry and add quay.io default (#3099)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 77f234c0..36866c9e 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -8,7 +8,8 @@ fullnameOverride: ""
+ replicaCount: 1
+ 
+ image:
+-  repository: "prom/mysqld-exporter"
++  registry: quay.io
++  repository: prometheus/mysqld-exporter
+   ## if not set charts appVersion var is used
+   tag: ""
+   pullPolicy: "IfNotPresent"
+```
+
+## 1.12.1
+
+**Release date:** 2023-01-11
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] add imagePullSecrets and fullname override (#2905)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 559b8ad5..77f234c0 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -1,14 +1,22 @@
+-# Default values for prometheus-mysql-exporter.
+-# This is a YAML-formatted file.
+-# Declare variables to be passed into your templates.
++## Default values for prometheus-mysql-exporter.
++## This is a YAML-formatted file.
++## Declare variables to be passed into your templates.
++
++## override release name
++fullnameOverride: ""
+ 
+ replicaCount: 1
+ 
+ image:
+   repository: "prom/mysqld-exporter"
+-  tag: "v0.14.0"
++  ## if not set charts appVersion var is used
++  tag: ""
+   pullPolicy: "IfNotPresent"
+ 
++# imagePullSecrets:
++# - name: secret-name
++imagePullSecrets: []
++
+ service:
+   labels: {}
+   annotations: {}
+```
+
+## 1.11.1
+
+**Release date:** 2022-12-01
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] fix error in extraVolumes (#2770)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.11.0
+
+**Release date:** 2022-12-01
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] add extraVolumes and extraVolumeMounts to chart (#2764)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index efd628da..559b8ad5 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -62,6 +62,17 @@ affinity: {}
+ 
+ podLabels: {}
+ 
++# Extra Volume Mounts for the mysql exporter container
++extraVolumeMounts: []
++# - name: example
++#   mountPath: /example
++
++# Extra Volumes for the pod
++extraVolumes: []
++# - name: example
++#   configMap:
++#     name: example
++
+ podSecurityContext: {}
+   # fsGroup: 65534
+ 
+```
+
+## 1.10.0
+
+**Release date:** 2022-11-08
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Support Workload Identity (#2645)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index c4c77375..efd628da 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -141,7 +141,7 @@ cloudsqlproxy:
+   enabled: false
+   image:
+     repo: "gcr.io/cloudsql-docker/gce-proxy"
+-    tag: "1.30.1-alpine"
++    tag: "1.33.0-alpine"
+     pullPolicy: "IfNotPresent"
+   instanceConnectionName: "project:us-central1:dbname"
+   ipAddressTypes: ""
+@@ -149,3 +149,6 @@ cloudsqlproxy:
+   credentialsSecret: ""
+   # service account json
+   credentials: ""
++  workloadIdentity:
++    enabled: false
++    serviceAccountEmail: ""
+```
+
+## 1.9.1
+
+**Release date:** 2022-10-19
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Fix typo in README.md (#2587)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.9.0
+
+**Release date:** 2022-08-03
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Add option for ipAddressTypes (#2339)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 861a6c26..c4c77375 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -144,6 +144,7 @@ cloudsqlproxy:
+     tag: "1.30.1-alpine"
+     pullPolicy: "IfNotPresent"
+   instanceConnectionName: "project:us-central1:dbname"
++  ipAddressTypes: ""
+   port: "3306"
+   credentialsSecret: ""
+   # service account json
+```
+
+## 1.8.1
+
+**Release date:** 2022-06-01
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] add missing collect parameter (#2103)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.8.0
+
+**Release date:** 2022-05-31
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] add logLevel and logFormat options (#2099)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 645c094a..861a6c26 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -6,7 +6,7 @@ replicaCount: 1
+ 
+ image:
+   repository: "prom/mysqld-exporter"
+-  tag: "v0.12.1"
++  tag: "v0.14.0"
+   pullPolicy: "IfNotPresent"
+ 
+ service:
+@@ -73,12 +73,16 @@ securityContext: {}
+   # runAsNonRoot: true
+   # runAsUser: 65534
+ 
+-
+ annotations:
+   prometheus.io/scrape: "true"
+   prometheus.io/path: "/metrics"
+   prometheus.io/port: "9104"
+ 
++config: {}
++  # Allow to set specifc options on the exporter
++  # logLevel: info
++  # logFormat: "logger:stderr"
++
+ collectors: {}
+   # auto_increment.columns: false
+   # binlog_size: false
+@@ -137,21 +141,10 @@ cloudsqlproxy:
+   enabled: false
+   image:
+     repo: "gcr.io/cloudsql-docker/gce-proxy"
+-    tag: "1.19.1-alpine"
++    tag: "1.30.1-alpine"
+     pullPolicy: "IfNotPresent"
+   instanceConnectionName: "project:us-central1:dbname"
+   port: "3306"
+   credentialsSecret: ""
++  # service account json
+   credentials: ""
+-    # {
+-    #   "type": "service_account",
+-    #   "project_id": "project",
+-    #   "private_key_id": "KEYID1",
+-    #   "private_key": "-----BEGIN PRIVATE KEY-----\sdajsdnasd\n-----END PRIVATE KEY-----\n",
+-    #   "client_email": "user@project.iam.gserviceaccount.com",
+-    #   "client_id": "111111111",
+-    #   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+-    #   "token_uri": "https://accounts.google.com/o/oauth2/token",
+-    #   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+-    #   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/user%40project.iam.gserviceaccount.com"
+-    # }
+```
+
+## 1.7.0
+
+**Release date:** 2022-03-21
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Add relabelings to servicemonitor (#1891)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 7cedf176..645c094a 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -24,13 +24,15 @@ serviceMonitor:
+   # interval: 30s
+   # scrapeTimeout is the timeout after which the scrape is ended
+   # scrapeTimeout: 10s
+-  # additionalLabels is the set of additional labels to add to the ServiceMonitor
+   # namespace: monitoring
++  # additionalLabels is the set of additional labels to add to the ServiceMonitor
+   additionalLabels: {}
+   jobLabel: ""
+   targetLabels: []
+   podTargetLabels: []
+   metricRelabelings: []
++  # Set relabel_configs as per https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config
++  relabelings: []
+ 
+ serviceAccount:
+   # Specifies whether a ServiceAccount should be created
+```
+
+## 1.6.0
+
+**Release date:** 2022-02-14
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Add missing namespaceSelector to servicemonitor (#1786)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.5.0
+
+**Release date:** 2021-12-30
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] add annotations to service account (#1649)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 2b16ae46..7cedf176 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -38,6 +38,7 @@ serviceAccount:
+   # The name of the ServiceAccount to use.
+   # If not set and create is true, a name is generated using the fullname template
+   name:
++  annotations: {}
+ 
+ resources: {}
+   # We usually recommend not to specify default resources and to leave this as a conscious
+```
+
+## 1.4.0
+
+**Release date:** 2021-12-23
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Add namespace support to service monitor of MySQL exporter (#1630)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 20678b52..2b16ae46 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -25,6 +25,7 @@ serviceMonitor:
+   # scrapeTimeout is the timeout after which the scrape is ended
+   # scrapeTimeout: 10s
+   # additionalLabels is the set of additional labels to add to the ServiceMonitor
++  # namespace: monitoring
+   additionalLabels: {}
+   jobLabel: ""
+   targetLabels: []
+```
+
+## 1.3.0
+
+**Release date:** 2021-10-29
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Add proxysql credentials as secret (#1469)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index c735d6dc..20678b52 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -137,6 +137,7 @@ cloudsqlproxy:
+     pullPolicy: "IfNotPresent"
+   instanceConnectionName: "project:us-central1:dbname"
+   port: "3306"
++  credentialsSecret: ""
+   credentials: ""
+     # {
+     #   "type": "service_account",
+```
+
+## 1.2.2
+
+**Release date:** 2021-08-23
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Restart pod on password change (#1262)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.2.1
+
+**Release date:** 2021-06-29
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-mysql-exporter] Add ServiceAccount (#1087)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index be5bfdab..c735d6dc 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -31,6 +31,13 @@ serviceMonitor:
+   podTargetLabels: []
+   metricRelabelings: []
+ 
++serviceAccount:
++  # Specifies whether a ServiceAccount should be created
++  create: false
++  # The name of the ServiceAccount to use.
++  # If not set and create is true, a name is generated using the fullname template
++  name:
++
+ resources: {}
+   # We usually recommend not to specify default resources and to leave this as a conscious
+   # choice for the user. This also increases chances charts run on environments with little
+```
+
+## 1.2.0
+
+**Release date:** 2021-04-26
+
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* make existing secret config more flexible (#705)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index c1a3cd77..be5bfdab 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -114,7 +114,12 @@ mysql:
+   port: 3306
+   protocol: ""
+   user: "exporter"
+-  existingSecret: false
++  # secret with full DATA_SOURCE_NAME env var as stringdata
++  existingSecret: ""
++  # secret only containing the password
++  existingPasswordSecret:
++    name: ""
++    key: ""
+ 
+ # cloudsqlproxy https://cloud.google.com/sql/docs/mysql/sql-proxy
+ cloudsqlproxy:
+```
+
+## 1.1.0
 
 **Release date:** 2021-02-17
 
@@ -9,13 +533,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-mysql-exporter] Add securityContext and podSecurityContext (#662) 
+* [prometheus-mysql-exporter] Add securityContext and podSecurityContext (#662)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index f77038b..c1a3cd7 100644
+index f77038b7..c1a3cd77 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -51,6 +51,18 @@ affinity: {}
@@ -39,7 +563,7 @@ index f77038b..c1a3cd7 100644
    prometheus.io/path: "/metrics"
 ```
 
-## 1.0.2 
+## 1.0.2
 
 **Release date:** 2021-02-08
 
@@ -48,7 +572,7 @@ index f77038b..c1a3cd7 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-mysql-exporter] fixed link to Prometheus MySQL Exporter repo (#630) 
+* [prometheus-mysql-exporter] fixed link to Prometheus MySQL Exporter repo (#630)
 
 ### Default value changes
 
@@ -56,7 +580,7 @@ index f77038b..c1a3cd7 100644
 # No changes in this release
 ```
 
-## 1.0.1 
+## 1.0.1
 
 **Release date:** 2020-12-08
 
@@ -65,13 +589,13 @@ index f77038b..c1a3cd7 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* fix: use alpine cloudsqlproxy image (#464) 
+* fix: use alpine cloudsqlproxy image (#464)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index 5c0b107..f77038b 100644
+index 5c0b107a..f77038b7 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -109,7 +109,7 @@ cloudsqlproxy:
@@ -85,7 +609,7 @@ index 5c0b107..f77038b 100644
    port: "3306"
 ```
 
-## 1.0.0 
+## 1.0.0
 
 **Release date:** 2020-10-11
 
@@ -94,13 +618,13 @@ index 5c0b107..f77038b 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-mysql-exporter] update docker image, readme links & use default labels (#68) 
+* [prometheus-mysql-exporter] update docker image, readme links & use default labels (#68)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index b67a829..5c0b107 100644
+index b67a8297..5c0b107a 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -6,7 +6,7 @@ replicaCount: 1
@@ -149,7 +673,7 @@ index b67a829..5c0b107 100644
 +    # }
 ```
 
-## 0.7.1 
+## 0.7.1
 
 **Release date:** 2020-08-20
 
@@ -158,7 +682,7 @@ index b67a829..5c0b107 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prep initial charts indexing (#14) 
+* Prep initial charts indexing (#14)
 
 ### Default value changes
 
@@ -166,7 +690,7 @@ index b67a829..5c0b107 100644
 # No changes in this release
 ```
 
-## 0.7.0 
+## 0.7.0
 
 **Release date:** 2020-07-28
 
@@ -175,13 +699,13 @@ index b67a829..5c0b107 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-exporter] Add ServiceMonitor metricRelabeling (#23352) 
+* [stable/prometheus-mysql-exporter] Add ServiceMonitor metricRelabeling (#23352)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index d308647..b67a829 100644
+index d308647d..b67a8297 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -29,6 +29,7 @@ serviceMonitor:
@@ -194,7 +718,7 @@ index d308647..b67a829 100644
    # We usually recommend not to specify default resources and to leave this as a conscious
 ```
 
-## 0.6.0 
+## 0.6.0
 
 **Release date:** 2020-06-29
 
@@ -203,13 +727,13 @@ index d308647..b67a829 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-exporter]:  Add service labels and annotations (#22986) 
+* [stable/prometheus-mysql-exporter]:  Add service labels and annotations (#22986)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index 9b8afd9..d308647 100644
+index 9b8afd9f..d308647d 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -10,6 +10,8 @@ image:
@@ -223,7 +747,7 @@ index 9b8afd9..d308647 100644
    externalPort: 9104
 ```
 
-## 0.5.3 
+## 0.5.3
 
 **Release date:** 2020-06-04
 
@@ -232,7 +756,7 @@ index 9b8afd9..d308647 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-exporter]: fix docs typo (#22674) 
+* [stable/prometheus-mysql-exporter]: fix docs typo (#22674)
 
 ### Default value changes
 
@@ -240,7 +764,7 @@ index 9b8afd9..d308647 100644
 # No changes in this release
 ```
 
-## 0.5.2 
+## 0.5.2
 
 **Release date:** 2019-10-25
 
@@ -249,13 +773,13 @@ index 9b8afd9..d308647 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [mysqld-exporter] Improve Secrets (#18314) 
+* [mysqld-exporter] Improve Secrets (#18314)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index 1f2309f..9b8afd9 100644
+index 1f2309f6..9b8afd9f 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -99,6 +99,7 @@ mysql:
@@ -268,7 +792,7 @@ index 1f2309f..9b8afd9 100644
  cloudsqlproxy:
 ```
 
-## 0.5.1 
+## 0.5.1
 
 **Release date:** 2019-07-09
 
@@ -277,13 +801,13 @@ index 1f2309f..9b8afd9 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Mysql exporter managing labels (#15349) 
+* Mysql exporter managing labels (#15349)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index d1e48a4..1f2309f 100644
+index d1e48a4c..1f2309f6 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -24,6 +24,9 @@ serviceMonitor:
@@ -298,7 +822,7 @@ index d1e48a4..1f2309f 100644
    # We usually recommend not to specify default resources and to leave this as a conscious
 ```
 
-## 0.5.0 
+## 0.5.0
 
 **Release date:** 2019-06-23
 
@@ -307,13 +831,13 @@ index d1e48a4..1f2309f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* feat(stable/prometheus-mysql-exporter): add optional ServiceMonitor (#14600) 
+* feat(stable/prometheus-mysql-exporter): add optional ServiceMonitor (#14600)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index c044141..d1e48a4 100644
+index c0441410..d1e48a4c 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -15,6 +15,16 @@ service:
@@ -335,7 +859,7 @@ index c044141..d1e48a4 100644
    # choice for the user. This also increases chances charts run on environments with little
 ```
 
-## 0.4.0 
+## 0.4.0
 
 **Release date:** 2019-06-20
 
@@ -344,7 +868,7 @@ index c044141..d1e48a4 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* feat(stable/prometheus-mysql-exporter): store MySQL password in a k8s Secret (#14712) 
+* feat(stable/prometheus-mysql-exporter): store MySQL password in a k8s Secret (#14712)
 
 ### Default value changes
 
@@ -352,7 +876,7 @@ index c044141..d1e48a4 100644
 # No changes in this release
 ```
 
-## 0.3.4 
+## 0.3.4
 
 **Release date:** 2019-06-16
 
@@ -361,13 +885,13 @@ index c044141..d1e48a4 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-exporter] updated gce-proxy to 1.14 & added myself to maintainers & owners (#14776) 
+* [stable/prometheus-mysql-exporter] updated gce-proxy to 1.14 & added myself to maintainers & owners (#14776)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index 7f4828f..c044141 100644
+index 7f4828f5..c0441410 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -92,7 +92,7 @@ cloudsqlproxy:
@@ -381,7 +905,7 @@ index 7f4828f..c044141 100644
    port: "3306"
 ```
 
-## 0.3.3 
+## 0.3.3
 
 **Release date:** 2019-06-11
 
@@ -390,7 +914,7 @@ index 7f4828f..c044141 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-exporter] Fix invalid YAML with non-boolean collectors (#14701) 
+* [stable/prometheus-mysql-exporter] Fix invalid YAML with non-boolean collectors (#14701)
 
 ### Default value changes
 
@@ -398,7 +922,7 @@ index 7f4828f..c044141 100644
 # No changes in this release
 ```
 
-## 0.3.2 
+## 0.3.2
 
 **Release date:** 2019-03-26
 
@@ -407,7 +931,7 @@ index 7f4828f..c044141 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* fixed readme (#11660) 
+* fixed readme (#11660)
 
 ### Default value changes
 
@@ -415,7 +939,7 @@ index 7f4828f..c044141 100644
 # No changes in this release
 ```
 
-## 0.3.1 
+## 0.3.1
 
 **Release date:** 2019-03-25
 
@@ -424,13 +948,13 @@ index 7f4828f..c044141 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-importer] Add optional labels to each pod  (#11380) 
+* [stable/prometheus-mysql-importer] Add optional labels to each pod  (#11380)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index 7fd4de2..7f4828f 100644
+index 7fd4de24..7f4828f5 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -33,6 +33,8 @@ tolerations: []
@@ -444,7 +968,7 @@ index 7fd4de2..7f4828f 100644
    prometheus.io/path: "/metrics"
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2019-03-06
 
@@ -453,13 +977,13 @@ index 7fd4de2..7f4828f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-exporter] Collector flags config (#11569) 
+* [stable/prometheus-mysql-exporter] Collector flags config (#11569)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index 77fac30..7fd4de2 100644
+index 77fac30a..7fd4de24 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -38,6 +38,43 @@ annotations:
@@ -508,7 +1032,7 @@ index 77fac30..7fd4de2 100644
    db: ""
 ```
 
-## 0.2.1 
+## 0.2.1
 
 **Release date:** 2018-10-23
 
@@ -517,13 +1041,13 @@ index 77fac30..7fd4de2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* fixed annotations (#8431) 
+* fixed annotations (#8431)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index 58387d5..77fac30 100644
+index 58387d5d..77fac30a 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -36,7 +36,7 @@ affinity: {}
@@ -537,7 +1061,7 @@ index 58387d5..77fac30 100644
  mysql:
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2018-10-13
 
@@ -546,13 +1070,13 @@ index 58387d5..77fac30 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-mysql-exporter] split datasource in separate mysql connection vars (#8000) 
+* [stable/prometheus-mysql-exporter] split datasource in separate mysql connection vars (#8000)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
-index fa1d9c9..58387d5 100644
+index fa1d9c99..58387d5d 100644
 --- a/charts/prometheus-mysql-exporter/values.yaml
 +++ b/charts/prometheus-mysql-exporter/values.yaml
 @@ -6,7 +6,7 @@ replicaCount: 1
@@ -593,7 +1117,7 @@ index fa1d9c9..58387d5 100644
  cloudsqlproxy:
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2018-05-17
 
@@ -602,7 +1126,7 @@ index fa1d9c9..58387d5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Added prometheus mysql exporter chart (#5373) 
+* Added prometheus mysql exporter chart (#5373)
 
 ### Default value changes
 

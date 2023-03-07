@@ -1,6 +1,93 @@
 # Change Log
 
-## 0.9.0 
+## 1.0.0
+
+**Release date:** 2022-12-22
+
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-druid-exporter] fix Chart.yaml - bump version, remove engine: gotpl (#2821)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-druid-exporter/values.yaml b/charts/prometheus-druid-exporter/values.yaml
+index b636c1a4..f6ea26b8 100644
+--- a/charts/prometheus-druid-exporter/values.yaml
++++ b/charts/prometheus-druid-exporter/values.yaml
+@@ -3,7 +3,7 @@ name: druid-exporter
+ 
+ image:
+   name: quay.io/opstree/druid-exporter
+-  tag: v0.8
++  tag: v0.11
+   pullPolicy: IfNotPresent
+ 
+ annotations: {}
+```
+
+## 0.11.0
+
+**Release date:** 2021-09-21
+
+![AppVersion: v0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.8.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-druid-exporter] Add nodeSelector, tolerations, and affinity (#1345)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-druid-exporter/values.yaml b/charts/prometheus-druid-exporter/values.yaml
+index 79a66ec1..b636c1a4 100644
+--- a/charts/prometheus-druid-exporter/values.yaml
++++ b/charts/prometheus-druid-exporter/values.yaml
+@@ -32,3 +32,9 @@ serviceMonitor:
+ securityContext: {}
+ 
+ containerSecurityContext: {}
++
++nodeSelector: {}
++
++tolerations: []
++
++affinity: {}
+```
+
+## 0.10.0
+
+**Release date:** 2021-08-16
+
+![AppVersion: v0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.8.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-druid-exporter] Add securityContext and containerSecurity… (#1018)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-druid-exporter/values.yaml b/charts/prometheus-druid-exporter/values.yaml
+index 486098a6..79a66ec1 100644
+--- a/charts/prometheus-druid-exporter/values.yaml
++++ b/charts/prometheus-druid-exporter/values.yaml
+@@ -28,3 +28,7 @@ serviceMonitor:
+   scrapeTimeout: 10s
+   additionalLabels: {}
+   targetLabels: []
++
++securityContext: {}
++
++containerSecurityContext: {}
+```
+
+## 0.9.0
 
 **Release date:** 2020-11-22
 
@@ -9,13 +96,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-druid-exporter] support podAnnotations (#306) 
+* [prometheus-druid-exporter] support podAnnotations (#306)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-druid-exporter/values.yaml b/charts/prometheus-druid-exporter/values.yaml
-index 2d70aca..486098a 100644
+index 2d70acaf..486098a6 100644
 --- a/charts/prometheus-druid-exporter/values.yaml
 +++ b/charts/prometheus-druid-exporter/values.yaml
 @@ -8,6 +8,8 @@ image:
@@ -29,7 +116,7 @@ index 2d70aca..486098a 100644
  logFormat: json
 ```
 
-## 0.8.1 
+## 0.8.1
 
 **Release date:** 2020-10-24
 
@@ -38,7 +125,7 @@ index 2d70aca..486098a 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* if not enable serviceMonitor, it will auto add annotations to yaml (#254) 
+* if not enable serviceMonitor, it will auto add annotations to yaml (#254)
 
 ### Default value changes
 
@@ -46,7 +133,7 @@ index 2d70aca..486098a 100644
 # No changes in this release
 ```
 
-## 0.8.0 
+## 0.8.0
 
 **Release date:** 2020-10-12
 
@@ -55,7 +142,7 @@ index 2d70aca..486098a 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-druid-exporter] Added druid exporter (#114) 
+* [prometheus-druid-exporter] Added druid exporter (#114)
 
 ### Default value changes
 

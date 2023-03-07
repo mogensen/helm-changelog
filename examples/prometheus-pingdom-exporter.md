@@ -1,6 +1,53 @@
 # Change Log
 
-## 2.3.2 
+## 2.4.1
+
+**Release date:** 2021-09-13
+
+![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pingdom-exporter] Minor tweaks to README (#1335)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 2.4.0
+
+**Release date:** 2021-04-12
+
+![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pingdom-exporter] Add secret override for pingdom exporter (#741)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pingdom-exporter/values.yaml b/charts/prometheus-pingdom-exporter/values.yaml
+index 9be0fc8c..5e4bfb21 100644
+--- a/charts/prometheus-pingdom-exporter/values.yaml
++++ b/charts/prometheus-pingdom-exporter/values.yaml
+@@ -56,6 +56,9 @@ pod:
+     # key: "true"
+     # example: "false"
+ 
++existingSecret:
++  name: ""
++
+ secret:
+   annotations: {}
+     # key: "true"
+```
+
+## 2.3.2
 
 **Release date:** 2021-01-20
 
@@ -9,7 +56,7 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* update version (#561) 
+* update version (#561)
 
 ### Default value changes
 
@@ -17,7 +64,7 @@
 # No changes in this release
 ```
 
-## 2.3.1 
+## 2.3.1
 
 **Release date:** 2020-11-06
 
@@ -26,9 +73,9 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* charts/prometheus-pingdom-exporter: fix typo (#317) 
-* fix yaml lint 
-* added artifact hub annotations 
+* charts/prometheus-pingdom-exporter: fix typo (#317)
+* fix yaml lint
+* added artifact hub annotations
 
 ### Default value changes
 
@@ -36,7 +83,7 @@
 # No changes in this release
 ```
 
-## 2.3.0 
+## 2.3.0
 
 **Release date:** 2020-10-07
 
@@ -45,13 +92,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* update pingdom exporter 
+* update pingdom exporter
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pingdom-exporter/values.yaml b/charts/prometheus-pingdom-exporter/values.yaml
-index 7a9bdcc..9be0fc8 100644
+index 7a9bdcc4..9be0fc8c 100644
 --- a/charts/prometheus-pingdom-exporter/values.yaml
 +++ b/charts/prometheus-pingdom-exporter/values.yaml
 @@ -7,7 +7,7 @@ replicaCount: 1
@@ -65,7 +112,7 @@ index 7a9bdcc..9be0fc8 100644
  nameOverride: ""
 ```
 
-## 2.2.0 
+## 2.2.0
 
 **Release date:** 2019-09-23
 
@@ -74,13 +121,13 @@ index 7a9bdcc..9be0fc8 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* add annotations to secret (#187) 
+* add annotations to secret (#187)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pingdom-exporter/values.yaml b/charts/prometheus-pingdom-exporter/values.yaml
-index 26fd9a0..7a9bdcc 100644
+index 26fd9a0e..7a9bdcc4 100644
 --- a/charts/prometheus-pingdom-exporter/values.yaml
 +++ b/charts/prometheus-pingdom-exporter/values.yaml
 @@ -54,4 +54,9 @@ pingdom:
@@ -96,7 +143,7 @@ index 26fd9a0..7a9bdcc 100644
 +    # example: "false"
 ```
 
-## 2.1.0 
+## 2.1.0
 
 **Release date:** 2019-09-21
 
@@ -105,13 +152,13 @@ index 26fd9a0..7a9bdcc 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* add pod annotations (#186) 
+* add pod annotations (#186)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pingdom-exporter/values.yaml b/charts/prometheus-pingdom-exporter/values.yaml
-index 06b0c6e..26fd9a0 100644
+index 06b0c6e7..26fd9a0e 100644
 --- a/charts/prometheus-pingdom-exporter/values.yaml
 +++ b/charts/prometheus-pingdom-exporter/values.yaml
 @@ -50,3 +50,8 @@ pingdom:
@@ -125,7 +172,7 @@ index 06b0c6e..26fd9a0 100644
 +  # example: "false"
 ```
 
-## 2.0.0 
+## 2.0.0
 
 **Release date:** 2019-01-14
 
@@ -134,7 +181,7 @@ index 06b0c6e..26fd9a0 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prometheus pingdom exporter (#18) 
+* Prometheus pingdom exporter (#18)
 
 ### Default value changes
 

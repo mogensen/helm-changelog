@@ -1,6 +1,758 @@
 # Change Log
 
-## 0.9.0 
+## 0.26.0
+
+**Release date:** 2023-02-14
+
+![AppVersion: v0.25.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.25.0&color=success&logo=)
+![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Add support for setting priority class name (#3025)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 688fbc2f..de03023a 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -34,6 +34,9 @@ serviceAccount:
+   # If not set and create is true, a name is generated using the fullname template
+   name:
+ 
++# Sets priorityClassName in alertmanager pod
++priorityClassName: ""
++
+ podSecurityContext:
+   fsGroup: 65534
+ dnsConfig: {}
+```
+
+## 0.25.0
+
+**Release date:** 2023-01-13
+
+![AppVersion: v0.25.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.25.0&color=success&logo=)
+![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Allow to configure init containers (#2917)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index c7809487..688fbc2f 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -57,6 +57,10 @@ securityContext:
+ 
+ additionalPeers: []
+ 
++## Additional InitContainers to initialize the pod
++##
++extraInitContainers: []
++
+ livenessProbe:
+   httpGet:
+     path: /
+```
+
+## 0.24.1
+
+**Release date:** 2022-12-24
+
+![AppVersion: v0.25.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.25.0&color=success&logo=)
+![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* cleanup readme (#2857)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.24.0
+
+**Release date:** 2022-12-23
+
+![AppVersion: v0.25.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.25.0&color=success&logo=)
+![Kubernetes: >=1.16.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.16.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] updates alertmanager image to v0.25.0 (#2846)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.23.0
+
+**Release date:** 2022-12-16
+
+![AppVersion: v0.24.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.24.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] feat: support for custom volumes and environment variables (#2797)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 9592b07a..c7809487 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -206,3 +206,19 @@ configmapReload:
+ 
+ templates: {}
+ #   alertmanager.tmpl: |-
++
++## Optionally specify extra list of additional volumeMounts
++extraVolumeMounts: []
++  # - name: extras
++  #   mountPath: /usr/share/extras
++  #   readOnly: true
++
++## Optionally specify extra list of additional volumes
++extraVolumes: []
++  # - name: extras
++  #   emptyDir: {}
++
++## Optionally specify extra environment variables to add to alertmanager container
++extraEnv: []
++  # - name: FOO
++  #   value: BAR
+```
+
+## 0.22.2
+
+**Release date:** 2022-12-07
+
+![AppVersion: v0.24.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.24.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] fix broken pdb due to missing line break (#2796)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.22.1
+
+**Release date:** 2022-12-05
+
+![AppVersion: v0.24.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.24.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Refactor (#2781)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.22.0
+
+**Release date:** 2022-11-04
+
+![AppVersion: v0.24.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.24.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] update to current release (#2644)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 0dadfdf1..9592b07a 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -194,7 +194,7 @@ configmapReload:
+   ##
+   image:
+     repository: jimmidyson/configmap-reload
+-    tag: v0.5.0
++    tag: v0.8.0
+     pullPolicy: IfNotPresent
+ 
+   # containerPort: 9533
+```
+
+## 0.21.0
+
+**Release date:** 2022-09-29
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] add loadBalancerIP and loadBalancerSourceRanges (#2502)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index f20dea18..0dadfdf1 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -72,6 +72,8 @@ service:
+   type: ClusterIP
+   port: 9093
+   clusterPort: 9094
++  loadBalancerIP: ""  # Assign ext IP when Service type is LoadBalancer
++  loadBalancerSourceRanges: []  # Only allow access to loadBalancerIP from these IPs
+   # if you want to force a specific nodePort. Must be use with service.type=NodePort
+   # nodePort:
+ 
+```
+
+## 0.20.1
+
+**Release date:** 2022-09-15
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Fix all values being dumped for affinity rules (#2459)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.20.0
+
+**Release date:** 2022-09-13
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Added podAntiAffinity functionality for sts (#2428)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index d9ce2249..f20dea18 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -109,6 +109,18 @@ tolerations: []
+ 
+ affinity: {}
+ 
++## Pod anti-affinity can prevent the scheduler from placing Alertmanager replicas on the same node.
++## The default value "soft" means that the scheduler should *prefer* to not schedule two replica pods onto the same node but no guarantee is provided.
++## The value "hard" means that the scheduler is *required* to not schedule two replica pods onto the same node.
++## The value "" will disable pod anti-affinity so that no anti-affinity rules will be configured.
++##
++podAntiAffinity: ""
++
++## If anti-affinity is enabled sets the topologyKey to use for anti-affinity.
++## This can be changed to, for example, failure-domain.beta.kubernetes.io/zone
++##
++podAntiAffinityTopologyKey: kubernetes.io/hostname
++
+ ## Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.
+ ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+ topologySpreadConstraints: []
+```
+
+## 0.19.0
+
+**Release date:** 2022-07-20
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Add optional topologySpreadConstraint to statefulset (#2292)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 9ee76e15..d9ce2249 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -109,6 +109,16 @@ tolerations: []
+ 
+ affinity: {}
+ 
++## Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.
++## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
++topologySpreadConstraints: []
++  # - maxSkew: 1
++  #   topologyKey: failure-domain.beta.kubernetes.io/zone
++  #   whenUnsatisfiable: DoNotSchedule
++  #   labelSelector:
++  #     matchLabels:
++  #       app.kubernetes.io/instance: alertmanager
++
+ statefulSet:
+   annotations: {}
+ 
+```
+
+## 0.18.3
+
+**Release date:** 2022-07-06
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix(alertmanager): 🚑 resolve replicaCount comparision type issue (#2231)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.18.2
+
+**Release date:** 2022-06-17
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Upgrade pdb version to apiVersion: policy/v1 (#2165)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.18.1
+
+**Release date:** 2022-05-26
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [AlertManager] Allow IPv6 support for main AlertManager StatefulSet (#2094)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.18.0
+
+**Release date:** 2022-05-11
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Add support change cluster port (#2043)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 22eaa31d..9ee76e15 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -71,6 +71,7 @@ service:
+   annotations: {}
+   type: ClusterIP
+   port: 9093
++  clusterPort: 9094
+   # if you want to force a specific nodePort. Must be use with service.type=NodePort
+   # nodePort:
+ 
+```
+
+## 0.17.1
+
+**Release date:** 2022-05-04
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* trigger alertmanager build (#2028)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.17.0
+
+**Release date:** 2022-03-28
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Allow exposing configmap reloaders port (#1915)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 16964266..22eaa31d 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -172,6 +172,8 @@ configmapReload:
+     tag: v0.5.0
+     pullPolicy: IfNotPresent
+ 
++  # containerPort: 9533
++
+   ## configmap-reload resource requests and limits
+   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
+   ##
+```
+
+## 0.16.0
+
+**Release date:** 2022-02-09
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Add alertmanager configurable livenessProbe/readinessProbe (#1783)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 465ad01a..16964266 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -57,6 +57,16 @@ securityContext:
+ 
+ additionalPeers: []
+ 
++livenessProbe:
++  httpGet:
++    path: /
++    port: http
++
++readinessProbe:
++  httpGet:
++    path: /
++    port: http
++
+ service:
+   annotations: {}
+   type: ClusterIP
+```
+
+## 0.15.0
+
+**Release date:** 2022-02-08
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Add alertmanager extraSecretMounts (#1772)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 6a912c71..465ad01a 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -12,6 +12,15 @@ image:
+ 
+ extraArgs: {}
+ 
++## Additional Alertmanager Secret mounts
++# Defines additional mounts with secrets. Secrets must be manually created in the namespace.
++extraSecretMounts: []
++  # - name: secret-files
++  #   mountPath: /etc/secrets
++  #   subPath: ""
++  #   secretName: alertmanager-secret-files
++  #   readOnly: true
++
+ imagePullSecrets: []
+ nameOverride: ""
+ fullnameOverride: ""
+```
+
+## 0.14.0
+
+**Release date:** 2021-10-16
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] add podLabels value (#1429)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index f27cf76f..6a912c71 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -93,6 +93,7 @@ statefulSet:
+   annotations: {}
+ 
+ podAnnotations: {}
++podLabels: {}
+ 
+ # Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+ podDisruptionBudget: {}
+```
+
+## 0.13.0
+
+**Release date:** 2021-10-03
+
+![AppVersion: v0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Add support for ingressClassName (#1371)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 642fd574..f27cf76f 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -57,10 +57,15 @@ service:
+ 
+ ingress:
+   enabled: false
++  className: ""
+   annotations: {}
++    # kubernetes.io/ingress.class: nginx
++    # kubernetes.io/tls-acme: "true"
+   hosts:
+     - host: alertmanager.domain.com
+-      paths: []
++      paths:
++        - path: /
++          pathType: ImplementationSpecific
+   tls: []
+   #  - secretName: chart-example-tls
+   #    hosts:
+```
+
+## 0.12.2
+
+**Release date:** 2021-07-20
+
+![AppVersion: v0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.22.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Unit test sample for ingress version (#1149)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.12.1
+
+**Release date:** 2021-06-25
+
+![AppVersion: v0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.22.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] forse restart if configmapReload disable (#1094)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.12.0
+
+**Release date:** 2021-06-16
+
+![AppVersion: v0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.22.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Add PDF to Alertmanager chart (#1080)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index 3b385b88..642fd574 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -89,6 +89,11 @@ statefulSet:
+ 
+ podAnnotations: {}
+ 
++# Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
++podDisruptionBudget: {}
++  # maxUnavailable: 1
++  # minAvailable: 1
++
+ command: []
+ 
+ persistence:
+```
+
+## 0.11.0
+
+**Release date:** 2021-06-02
+
+![AppVersion: v0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.22.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Upgrade version to 0.22.1 (#1031)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.10.2
+
+**Release date:** 2021-05-18
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Move tolerations and nodeSelector to not disrupt volumes (#970)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.10.1
+
+**Release date:** 2021-05-12
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* AlertManager: Fixing indentation for node selector keys in case persistence is enabled (#963)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.10.0
+
+**Release date:** 2021-05-05
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager] Use quay.io image instead of docker hub (#928)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
+index bcc193b5..3b385b88 100644
+--- a/charts/alertmanager/values.yaml
++++ b/charts/alertmanager/values.yaml
+@@ -5,7 +5,7 @@
+ replicaCount: 1
+ 
+ image:
+-  repository: prom/alertmanager
++  repository: quay.io/prometheus/alertmanager
+   pullPolicy: IfNotPresent
+   # Overrides the image tag whose default is the chart appVersion.
+   tag: ""
+```
+
+## 0.9.3
+
+**Release date:** 2021-04-23
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix, cluster-peer needs to be name+service (#886)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.9.2
+
+**Release date:** 2021-04-23
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [alertmanager]fix cluster-peer name follow statefullSet name  (#881)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.9.1
+
+**Release date:** 2021-04-22
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix cluster-peer names within cluster (#878)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.9.0
 
 **Release date:** 2021-03-29
 
@@ -8,13 +760,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager] add NodePort support (#790) 
+* [alertmanager] add NodePort support (#790)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index 12f277f..bcc193b 100644
+index 12f277f5..bcc193b5 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -52,6 +52,8 @@ service:
@@ -28,7 +780,7 @@ index 12f277f..bcc193b 100644
    enabled: false
 ```
 
-## 0.8.0 
+## 0.8.0
 
 **Release date:** 2021-03-19
 
@@ -36,13 +788,13 @@ index 12f277f..bcc193b 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [Alertmanager] command podannotations (#781) 
+* [Alertmanager] command podannotations (#781)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index aa695a4..12f277f 100644
+index aa695a47..12f277f5 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -85,6 +85,10 @@ affinity: {}
@@ -58,7 +810,7 @@ index aa695a4..12f277f 100644
    ## Persistent Volume Storage Class
 ```
 
-## 0.7.1 
+## 0.7.1
 
 **Release date:** 2021-03-19
 
@@ -66,7 +818,7 @@ index aa695a4..12f277f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [Alertmanager]: Fix indent for service tpl annotation (#777) 
+* [Alertmanager]: Fix indent for service tpl annotation (#777)
 
 ### Default value changes
 
@@ -74,7 +826,7 @@ index aa695a4..12f277f 100644
 # No changes in this release
 ```
 
-## 0.7.0 
+## 0.7.0
 
 **Release date:** 2021-03-18
 
@@ -82,13 +834,13 @@ index aa695a4..12f277f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [Alertmanager]: Enable annotations for service tpl (#767) 
+* [Alertmanager]: Enable annotations for service tpl (#767)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index 0e07e8f..aa695a4 100644
+index 0e07e8f4..aa695a47 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -49,6 +49,7 @@ securityContext:
@@ -101,7 +853,7 @@ index 0e07e8f..aa695a4 100644
  
 ```
 
-## 0.6.0 
+## 0.6.0
 
 **Release date:** 2021-02-09
 
@@ -109,13 +861,13 @@ index 0e07e8f..aa695a4 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Ability for custom dnsConfig in alertmanager (#642) 
+* Ability for custom dnsConfig in alertmanager (#642)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index b8acca9..0e07e8f 100644
+index b8acca9a..0e07e8f4 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -27,7 +27,16 @@ serviceAccount:
@@ -138,7 +890,7 @@ index b8acca9..0e07e8f 100644
    #   drop:
 ```
 
-## 0.5.1 
+## 0.5.1
 
 **Release date:** 2021-02-07
 
@@ -146,13 +898,13 @@ index b8acca9..0e07e8f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* chore: bump configmap reloader (#645) 
+* chore: bump configmap reloader (#645)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index 782a531..b8acca9 100644
+index 782a531c..b8acca9a 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -123,7 +123,7 @@ configmapReload:
@@ -166,7 +918,7 @@ index 782a531..b8acca9 100644
    ## configmap-reload resource requests and limits
 ```
 
-## 0.5.0 
+## 0.5.0
 
 **Release date:** 2021-01-23
 
@@ -174,13 +926,13 @@ index 782a531..b8acca9 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager] allow possibility to use alertmanager in HA (#609) 
+* [alertmanager] allow possibility to use alertmanager in HA (#609)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index eb6188d..782a531 100644
+index eb6188d9..782a531c 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -37,6 +37,8 @@ securityContext:
@@ -194,7 +946,7 @@ index eb6188d..782a531 100644
    port: 9093
 ```
 
-## 0.4.0 
+## 0.4.0
 
 **Release date:** 2021-01-23
 
@@ -202,13 +954,13 @@ index eb6188d..782a531 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager] Add optional config reloader (#348) 
+* [alertmanager] Add optional config reloader (#348)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index de6954a..eb6188d 100644
+index de6954ad..eb6188d9 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -105,5 +105,29 @@ config:
@@ -243,7 +995,7 @@ index de6954a..eb6188d 100644
  #   alertmanager.tmpl: |-
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2020-12-12
 
@@ -251,13 +1003,13 @@ index de6954a..eb6188d 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager] Allow passing notification templates (#484) 
+* [alertmanager] Allow passing notification templates (#484)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index acbd738..de6954a 100644
+index acbd7380..de6954ad 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -90,6 +90,9 @@ config:
@@ -279,7 +1031,7 @@ index acbd738..de6954a 100644
 +#   alertmanager.tmpl: |-
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2020-11-25
 
@@ -287,13 +1039,13 @@ index acbd738..de6954a 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager] add statefulSet annotations (#414) 
+* [alertmanager] add statefulSet annotations (#414)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index 70e9a7d..acbd738 100644
+index 70e9a7de..acbd7380 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -70,6 +70,9 @@ tolerations: []
@@ -308,7 +1060,7 @@ index 70e9a7d..acbd738 100644
    ## Persistent Volume Storage Class
 ```
 
-## 0.1.4 
+## 0.1.4
 
 **Release date:** 2020-10-28
 
@@ -316,7 +1068,7 @@ index 70e9a7d..acbd738 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* alertmanager: add maintainer (#276) 
+* alertmanager: add maintainer (#276)
 
 ### Default value changes
 
@@ -324,7 +1076,7 @@ index 70e9a7d..acbd738 100644
 # No changes in this release
 ```
 
-## 0.1.3 
+## 0.1.3
 
 **Release date:** 2020-10-21
 
@@ -332,13 +1084,13 @@ index 70e9a7d..acbd738 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager] Add support change default config (#240) 
+* [alertmanager] Add support change default config (#240)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index 6f4a487..70e9a7d 100644
+index 6f4a487d..70e9a7de 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -10,6 +10,8 @@ image:
@@ -352,7 +1104,7 @@ index 6f4a487..70e9a7d 100644
  fullnameOverride: ""
 ```
 
-## 0.1.2 
+## 0.1.2
 
 **Release date:** 2020-10-20
 
@@ -360,7 +1112,7 @@ index 6f4a487..70e9a7d 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Fix alertmanager statefulset template (#236) 
+* Fix alertmanager statefulset template (#236)
 
 ### Default value changes
 
@@ -368,7 +1120,7 @@ index 6f4a487..70e9a7d 100644
 # No changes in this release
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2020-10-02
 
@@ -376,13 +1128,13 @@ index 6f4a487..70e9a7d 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager ]fix persistence (#174) 
+* [alertmanager ]fix persistence (#174)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/alertmanager/values.yaml b/charts/alertmanager/values.yaml
-index b8dac66..6f4a487 100644
+index b8dac665..6f4a487d 100644
 --- a/charts/alertmanager/values.yaml
 +++ b/charts/alertmanager/values.yaml
 @@ -69,7 +69,7 @@ tolerations: []
@@ -405,7 +1157,7 @@ index b8dac66..6f4a487 100644
    global: {}
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2020-09-27
 
@@ -413,7 +1165,7 @@ index b8dac66..6f4a487 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [alertmanager] add new chart (#64) 
+* [alertmanager] add new chart (#64)
 
 ### Default value changes
 

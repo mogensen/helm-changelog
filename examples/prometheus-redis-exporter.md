@@ -1,14 +1,74 @@
 # Change Log
 
-## 4.0.0 
+## 5.3.0
 
-**Release date:** 2020-11-23
+**Release date:** 2022-11-08
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success&logo=)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-redis-exporter] Migrate to chart v2 (#389) 
+* feat(deployment): support tls config using secrets (#2660)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index 7ad918a1..d0ff352f 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -66,6 +66,40 @@ redisAddressConfig:
+     name: ""
+     key: ""
+ 
++redisTlsConfig:
++  # Use TLS configuration
++  enabled: false
++  # Whether to to skip TLS verification
++  skipTlsVerification: false
++  # All secrets key about TLS config will be mounted into this path
++  mountPath: /tls
++
++  # REDIS_EXPORTER_TLS_CA_CERT_FILE will be set to /tls/tls-ca-cert.crt
++  caCertFile:
++    secret:
++      name: ""
++      key: ""
++  # REDIS_EXPORTER_TLS_CLIENT_KEY_FILE  will be set to /tls/tls-client-key.key
++  clientKeyFile:
++    secret:
++      name: ""
++      key: ""
++  # REDIS_EXPORTER_TLS_CLIENT_CERT_FILE will be set to /tls/tls-client-cert.crt
++  clientCertFile:
++    secret:
++      name: ""
++      key: ""
++  # REDIS_EXPORTER_TLS_SERVER_KEY_FILE will be set to /tls/tls-server-key.key
++  serverKeyFile:
++    secret:
++      name: ""
++      key: ""
++  # REDIS_EXPORTER_TLS_SERVER_CERT_FILE will be set to /tls/tls-server-cert.crt
++  serverCertFile:
++    secret:
++      name: ""
++      key: ""
++
+ serviceMonitor:
+   # When set true then use a ServiceMonitor to configure scraping
+   enabled: false
+```
+
+## 5.2.1
+
+**Release date:** 2022-10-16
+
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] Fix PSP deprecation after k8s 1.25+ (#2572)
 
 ### Default value changes
 
@@ -16,7 +76,424 @@
 # No changes in this release
 ```
 
-## 3.7.0 
+## 5.2.0
+
+**Release date:** 2022-09-26
+
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometehus-redis-exporter] update exporter to 1.44 & use appVersion as image tag (#2490)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index 97d0320e..7ad918a1 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -13,8 +13,10 @@ serviceAccount:
+ replicaCount: 1
+ image:
+   repository: oliver006/redis_exporter
+-  tag: v1.27.0
+   pullPolicy: IfNotPresent
++  # Overrides the image tag whose default is the chart appVersion.
++  tag: ""
++
+ extraArgs: {}
+ 
+ # global custom labels, applied to all resrouces
+```
+
+## 5.1.0
+
+**Release date:** 2022-08-28
+
+![AppVersion: 1.43.0](https://img.shields.io/static/v1?label=AppVersion&message=1.43.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] support redis password file secret volume mount (#2401)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index e7df3a2a..97d0320e 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -162,3 +162,14 @@ auth:
+   redisPassword: ""
+   # Redis user (version 6.X and above)
+   redisUser: ""
++  # Redis password file (e.g., https://github.com/oliver006/redis_exporter/blob/v1.27.0/contrib/sample-pwd-file.json)
++  # secret (useful for multiple redis instances with different passwords). If secret name and key are set
++  # this will ignore the single password auth.secret.*
++  redisPasswordFile:
++    # The secret key will be mounted into this path as a file
++    # e.g., if secret key is pass.json, the env variable
++    # REDIS_PASSWORD_FILE will be set to /auth/pass.json
++    mountPath: /auth
++    secret:
++      name: ""
++      key: ""
+```
+
+## 5.0.0
+
+**Release date:** 2022-06-30
+
+![AppVersion: 1.43.0](https://img.shields.io/static/v1?label=AppVersion&message=1.43.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] support multiple targets (#2199)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index e94e3fda..e7df3a2a 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -17,6 +17,7 @@ image:
+   pullPolicy: IfNotPresent
+ extraArgs: {}
+ 
++# global custom labels, applied to all resrouces
+ customLabels: {}
+ 
+ securityContext: {}
+@@ -45,7 +46,10 @@ tolerations: []
+ 
+ affinity: {}
+ 
++# If serviceMonitor.multipleTarget is enabled, this configuration is actually not used
+ redisAddress: redis://myredis:6379
++
++# deployment additional annotations and labels
+ annotations: {}
+ labels: {}
+ #  prometheus.io/path: /metrics
+@@ -63,11 +67,29 @@ redisAddressConfig:
+ serviceMonitor:
+   # When set true then use a ServiceMonitor to configure scraping
+   enabled: false
++  multipleTarget: false
++  targets: []
++  # for every targets, url and name must be set,
++  # an individual additionalRelabeling can be set for every target
++  # - url: "redis://myredis:6379"
++  #   name: "my-redis"
++  # - url: "redis://my-redis-cluster:6379"
++  #   name: "bar"
++  #   additionalRelabeling:
++  #   - sourceLabels: [type]
++  #     targetLabel: type
++  #     replacement: cluster
++  #   additionalMetricsRelabels:
++  #     type: cluster
++  additionalMetricsRelabels: {}
++  additionalRelabeling: []
++
+   # Set the namespace the ServiceMonitor should be deployed
+   # namespace: monitoring
+   # Set how frequently Prometheus should scrape
+   # interval: 30s
+   # Set path to redis-exporter telemtery-path
++  # Please set telemetryPath to /scrape if you are using multiple targets
+   # telemetryPath: /metrics
+   # Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator
+   # labels:
+```
+
+## 4.8.0
+
+**Release date:** 2022-06-15
+
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] Add tls config options for servicemonitor (#2158)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index 060ec474..e94e3fda 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -31,6 +31,7 @@ env: {}
+ service:
+   type: ClusterIP
+   port: 9121
++  portName: redis-exporter
+   annotations: {}
+   labels: {}
+     # prometheus.io/path: /metrics
+@@ -77,6 +78,9 @@ serviceMonitor:
+   # Set of labels to transfer on the Kubernetes Service onto the target.
+   # targetLabels: []
+   # metricRelabelings: []
++  # Set tls options
++  # scheme: ""
++  # tlsConfig: {}
+ 
+ ## Custom PrometheusRules to be defined
+ ## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
+```
+
+## 4.7.0
+
+**Release date:** 2022-05-17
+
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] Add support for REDIS_USER (#2063)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index 658029e9..060ec474 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -134,3 +134,5 @@ auth:
+     key: ""
+   # Redis password (when not stored in a secret)
+   redisPassword: ""
++  # Redis user (version 6.X and above)
++  redisUser: ""
+```
+
+## 4.6.0
+
+**Release date:** 2021-09-10
+
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] allow using securityContext in containers (#1329)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index d39d8a7b..658029e9 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -19,6 +19,8 @@ extraArgs: {}
+ 
+ customLabels: {}
+ 
++securityContext: {}
++
+ # Additional Environment variables
+ env: {}
+ # - name: REDIS_PASSWORD
+```
+
+## 4.5.0
+
+**Release date:** 2021-09-09
+
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* allow using annotations in deployment (#1325)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 4.4.0
+
+**Release date:** 2021-09-07
+
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* allow using custom labels (#1322)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index 2dc3548d..d39d8a7b 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -16,6 +16,9 @@ image:
+   tag: v1.27.0
+   pullPolicy: IfNotPresent
+ extraArgs: {}
++
++customLabels: {}
++
+ # Additional Environment variables
+ env: {}
+ # - name: REDIS_PASSWORD
+```
+
+## 4.3.0
+
+**Release date:** 2021-08-31
+
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] Version bump to 1.27.0 (#1297)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index 5b28ff50..2dc3548d 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -13,7 +13,7 @@ serviceAccount:
+ replicaCount: 1
+ image:
+   repository: oliver006/redis_exporter
+-  tag: v1.11.1
++  tag: v1.27.0
+   pullPolicy: IfNotPresent
+ extraArgs: {}
+ # Additional Environment variables
+```
+
+## 4.2.0
+
+**Release date:** 2021-07-23
+
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] address via configmap (#1203)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index ccbdd43f..5b28ff50 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -46,6 +46,14 @@ labels: {}
+ #  prometheus.io/port: "9121"
+ #  prometheus.io/scrape: "true"
+ 
++redisAddressConfig:
++  # Use config from configmap
++  enabled: false
++  # Use existing configmap (ignores redisAddress)
++  configmap:
++    name: ""
++    key: ""
++
+ serviceMonitor:
+   # When set true then use a ServiceMonitor to configure scraping
+   enabled: false
+```
+
+## 4.1.0
+
+**Release date:** 2021-06-23
+
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] Add custom labels support (#1102)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index a65310a8..ccbdd43f 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -41,6 +41,7 @@ affinity: {}
+ 
+ redisAddress: redis://myredis:6379
+ annotations: {}
++labels: {}
+ #  prometheus.io/path: /metrics
+ #  prometheus.io/port: "9121"
+ #  prometheus.io/scrape: "true"
+```
+
+## 4.0.2
+
+**Release date:** 2021-04-20
+
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* prometheus-redis-exporter : add relabeling configs for redis exporter (#866)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
+index 967184e3..a65310a8 100644
+--- a/charts/prometheus-redis-exporter/values.yaml
++++ b/charts/prometheus-redis-exporter/values.yaml
+@@ -58,6 +58,8 @@ serviceMonitor:
+   # labels:
+   # Set timeout for scrape
+   # timeout: 10s
++  # Set relabel_configs as per https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config
++  # relabelings: []
+   # Set of labels to transfer on the Kubernetes Service onto the target.
+   # targetLabels: []
+   # metricRelabelings: []
+```
+
+## 4.0.1
+
+**Release date:** 2021-04-12
+
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix readme (#831)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 4.0.0
+
+**Release date:** 2020-11-23
+
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-redis-exporter] Migrate to chart v2 (#389)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 3.7.0
 
 **Release date:** 2020-11-18
 
@@ -25,7 +502,7 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* feat(prometheus-redis-exporter): add configurable apiVersion (#369) 
+* feat(prometheus-redis-exporter): add configurable apiVersion (#369)
 
 ### Default value changes
 
@@ -33,7 +510,7 @@
 # No changes in this release
 ```
 
-## 3.6.0 
+## 3.6.0
 
 **Release date:** 2020-09-11
 
@@ -42,13 +519,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-redis-exporter] Upgrade exporter image to version 1.11.1 (#87) 
+* [prometheus-redis-exporter] Upgrade exporter image to version 1.11.1 (#87)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 68151d3..967184e 100644
+index 68151d3a..967184e3 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -62,7 +539,7 @@ index 68151d3..967184e 100644
  # Additional Environment variables
 ```
 
-## 3.5.2 
+## 3.5.2
 
 **Release date:** 2020-09-06
 
@@ -71,7 +548,7 @@ index 68151d3..967184e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-redis-exporter] Add zanhsieh as maintainer (#46) 
+* [prometheus-redis-exporter] Add zanhsieh as maintainer (#46)
 
 ### Default value changes
 
@@ -79,7 +556,7 @@ index 68151d3..967184e 100644
 # No changes in this release
 ```
 
-## 3.5.1 
+## 3.5.1
 
 **Release date:** 2020-08-20
 
@@ -88,7 +565,7 @@ index 68151d3..967184e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prep initial charts indexing (#14) 
+* Prep initial charts indexing (#14)
 
 ### Default value changes
 
@@ -96,7 +573,7 @@ index 68151d3..967184e 100644
 # No changes in this release
 ```
 
-## 3.5.0 
+## 3.5.0
 
 **Release date:** 2020-07-22
 
@@ -105,13 +582,13 @@ index 68151d3..967184e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Add ServiceMonitor metricRelabelings (#23289) 
+* [stable/prometheus-redis-exporter] Add ServiceMonitor metricRelabelings (#23289)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index c19f7a4..68151d3 100644
+index c19f7a4a..68151d3a 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -60,6 +60,7 @@ serviceMonitor:
@@ -124,7 +601,7 @@ index c19f7a4..68151d3 100644
  ## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
 ```
 
-## 3.4.1 
+## 3.4.1
 
 **Release date:** 2020-05-28
 
@@ -133,7 +610,7 @@ index c19f7a4..68151d3 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] fix targetLabels (#22541) 
+* [stable/prometheus-redis-exporter] fix targetLabels (#22541)
 
 ### Default value changes
 
@@ -141,7 +618,7 @@ index c19f7a4..68151d3 100644
 # No changes in this release
 ```
 
-## 3.4.0 
+## 3.4.0
 
 **Release date:** 2020-04-09
 
@@ -150,13 +627,13 @@ index c19f7a4..68151d3 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Add support for tolerations and affinity (#21848) 
+* [stable/prometheus-redis-exporter] Add support for tolerations and affinity (#21848)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index ba02195..c19f7a4 100644
+index ba021953..c19f7a4a 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -32,6 +32,13 @@ service:
@@ -175,7 +652,7 @@ index ba02195..c19f7a4 100644
  #  prometheus.io/path: /metrics
 ```
 
-## 3.3.3 
+## 3.3.3
 
 **Release date:** 2020-03-11
 
@@ -184,13 +661,13 @@ index ba02195..c19f7a4 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Add support for Prometheus Operator Rules (#21387) 
+* [stable/prometheus-redis-exporter] Add support for Prometheus Operator Rules (#21387)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 2fce50c..ba02195 100644
+index 2fce50cd..ba021953 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -54,6 +54,48 @@ serviceMonitor:
@@ -244,7 +721,7 @@ index 2fce50c..ba02195 100644
  #   configmap: prometheus-redis-exporter-script
 ```
 
-## 3.2.3 
+## 3.2.3
 
 **Release date:** 2020-03-05
 
@@ -253,7 +730,7 @@ index 2fce50c..ba02195 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Fix secret key path in deployment (#21259) 
+* [stable/prometheus-redis-exporter] Fix secret key path in deployment (#21259)
 
 ### Default value changes
 
@@ -261,7 +738,7 @@ index 2fce50c..ba02195 100644
 # No changes in this release
 ```
 
-## 3.2.2 
+## 3.2.2
 
 **Release date:** 2020-02-03
 
@@ -270,13 +747,13 @@ index 2fce50c..ba02195 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Update image for exporter (#19317) 
+* [stable/prometheus-redis-exporter] Update image for exporter (#19317)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index aacdb14..2fce50c 100644
+index aacdb14e..2fce50cd 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -290,7 +767,7 @@ index aacdb14..2fce50c 100644
  # Additional Environment variables
 ```
 
-## 3.2.1 
+## 3.2.1
 
 **Release date:** 2019-12-23
 
@@ -299,13 +776,13 @@ index aacdb14..2fce50c 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter]Add redis authoration configuration in chart (#19447) 
+* [stable/prometheus-redis-exporter]Add redis authoration configuration in chart (#19447)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 439d8c5..aacdb14 100644
+index 439d8c5c..aacdb14e 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -58,3 +58,13 @@ serviceMonitor:
@@ -324,7 +801,7 @@ index 439d8c5..aacdb14 100644
 +  redisPassword: ""
 ```
 
-## 3.2.0 
+## 3.2.0
 
 **Release date:** 2019-11-13
 
@@ -333,13 +810,13 @@ index 439d8c5..aacdb14 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/promethues-redis-exporter] Add target labels (#18818) 
+* [stable/promethues-redis-exporter] Add target labels (#18818)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 8bab250..439d8c5 100644
+index 8bab250b..439d8c5c 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -51,6 +51,8 @@ serviceMonitor:
@@ -353,7 +830,7 @@ index 8bab250..439d8c5 100644
  # script:
 ```
 
-## 3.1.0 
+## 3.1.0
 
 **Release date:** 2019-10-03
 
@@ -362,7 +839,7 @@ index 8bab250..439d8c5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update api versions to support k8s 1.16 (#17640) 
+* Update api versions to support k8s 1.16 (#17640)
 
 ### Default value changes
 
@@ -370,7 +847,7 @@ index 8bab250..439d8c5 100644
 # No changes in this release
 ```
 
-## 3.0.1 
+## 3.0.1
 
 **Release date:** 2019-08-08
 
@@ -379,13 +856,13 @@ index 8bab250..439d8c5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Updated version of redis_exporter by oliver006 to version 1.0.4 (#16179) 
+* [stable/prometheus-redis-exporter] Updated version of redis_exporter by oliver006 to version 1.0.4 (#16179)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 0886ae5..8bab250 100644
+index 0886ae5d..8bab250b 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -399,7 +876,7 @@ index 0886ae5..8bab250 100644
  # Additional Environment variables
 ```
 
-## 3.0.0 
+## 3.0.0
 
 **Release date:** 2019-07-08
 
@@ -408,13 +885,13 @@ index 0886ae5..8bab250 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update image (#15217) 
+* Update image (#15217)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 50bc214..0886ae5 100644
+index 50bc214c..0886ae5d 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -438,7 +915,7 @@ index 50bc214..0886ae5 100644
  #  prometheus.io/port: "9121"
 ```
 
-## 2.0.2 
+## 2.0.2
 
 **Release date:** 2019-06-30
 
@@ -447,7 +924,7 @@ index 50bc214..0886ae5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Adding acondrat to prometheus-redis-exporter owners (#14826) 
+* [stable/prometheus-redis-exporter] Adding acondrat to prometheus-redis-exporter owners (#14826)
 
 ### Default value changes
 
@@ -455,7 +932,7 @@ index 50bc214..0886ae5 100644
 # No changes in this release
 ```
 
-## 2.0.1 
+## 2.0.1
 
 **Release date:** 2019-06-22
 
@@ -464,13 +941,13 @@ index 50bc214..0886ae5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Adding abbility to use custom script (#14552) 
+* [stable/prometheus-redis-exporter] Adding abbility to use custom script (#14552)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 0790d82..50bc214 100644
+index 0790d82d..50bc214c 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -18,11 +18,11 @@ image:
@@ -501,7 +978,7 @@ index 0790d82..50bc214 100644
 +#   keyname: script
 ```
 
-## 2.0.0 
+## 2.0.0
 
 **Release date:** 2019-06-11
 
@@ -510,13 +987,13 @@ index 0790d82..50bc214 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* - Make redisAddress value a list instead of comma serparated string (#14696) 
+* - Make redisAddress value a list instead of comma serparated string (#14696)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 917078e..0790d82 100644
+index 917078e4..0790d82d 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -32,7 +32,8 @@ service:
@@ -531,7 +1008,7 @@ index 917078e..0790d82 100644
  #  prometheus.io/port: "9121"
 ```
 
-## 1.1.0 
+## 1.1.0
 
 **Release date:** 2019-06-09
 
@@ -540,13 +1017,13 @@ index 917078e..0790d82 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Add servicemonitor support (#14534) 
+* [stable/prometheus-redis-exporter] Add servicemonitor support (#14534)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index ea0869f..917078e 100644
+index ea0869f1..917078e4 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -27,6 +27,7 @@ service:
@@ -577,7 +1054,7 @@ index ea0869f..917078e 100644
 +  # timeout: 10s
 ```
 
-## 1.0.3 
+## 1.0.3
 
 **Release date:** 2019-06-05
 
@@ -586,7 +1063,7 @@ index ea0869f..917078e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] Support image pullSecrets (#14517) 
+* [stable/prometheus-redis-exporter] Support image pullSecrets (#14517)
 
 ### Default value changes
 
@@ -594,7 +1071,7 @@ index ea0869f..917078e 100644
 # No changes in this release
 ```
 
-## 1.0.2 
+## 1.0.2
 
 **Release date:** 2019-02-12
 
@@ -603,13 +1080,13 @@ index ea0869f..917078e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update image (#11314) 
+* Update image (#11314)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index f42021a..ea0869f 100644
+index f42021a8..ea0869f1 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -623,7 +1100,7 @@ index f42021a..ea0869f 100644
  # Additional Environment variables
 ```
 
-## 1.0.1 
+## 1.0.1
 
 **Release date:** 2019-01-02
 
@@ -632,13 +1109,13 @@ index f42021a..ea0869f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update image to 0.25.0 (#10272) 
+* Update image to 0.25.0 (#10272)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index fdc93ae..f42021a 100644
+index fdc93ae5..f42021a8 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -652,7 +1129,7 @@ index fdc93ae..f42021a 100644
  # Additional Environment variables
 ```
 
-## 1.0.0 
+## 1.0.0
 
 **Release date:** 2018-12-02
 
@@ -661,13 +1138,13 @@ index fdc93ae..f42021a 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update image to 0.22.1, and chart to 1.0.0 because stable (#9683) 
+* Update image to 0.22.1, and chart to 1.0.0 because stable (#9683)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index deec244..fdc93ae 100644
+index deec2444..fdc93ae5 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -691,7 +1168,7 @@ index deec244..fdc93ae 100644
  annotations: {}
 ```
 
-## 0.3.4 
+## 0.3.4
 
 **Release date:** 2018-11-06
 
@@ -700,13 +1177,13 @@ index deec244..fdc93ae 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Updating image of prometheus-redis-exporter to latest version (#8994) 
+* Updating image of prometheus-redis-exporter to latest version (#8994)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 62c6f82..deec244 100644
+index 62c6f824..deec2444 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -720,7 +1197,7 @@ index 62c6f82..deec244 100644
  # Additional Environment variables
 ```
 
-## 0.3.3 
+## 0.3.3
 
 **Release date:** 2018-11-04
 
@@ -729,7 +1206,7 @@ index 62c6f82..deec244 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Set redis-exporter name for port in service (#6547) 
+* Set redis-exporter name for port in service (#6547)
 
 ### Default value changes
 
@@ -737,7 +1214,7 @@ index 62c6f82..deec244 100644
 # No changes in this release
 ```
 
-## 0.3.2 
+## 0.3.2
 
 **Release date:** 2018-09-11
 
@@ -746,13 +1223,13 @@ index 62c6f82..deec244 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update image (#7630) 
+* Update image (#7630)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 9f34cc1..62c6f82 100644
+index 9f34cc15..62c6f824 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -13,7 +13,7 @@ serviceAccount:
@@ -766,7 +1243,7 @@ index 9f34cc1..62c6f82 100644
  # Additional Environment variables
 ```
 
-## 0.3.1 
+## 0.3.1
 
 **Release date:** 2018-09-02
 
@@ -775,13 +1252,13 @@ index 9f34cc1..62c6f82 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* adding additional env variable for redis (#7482) 
+* adding additional env variable for redis (#7482)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index a888120..9f34cc1 100644
+index a8881202..9f34cc15 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -16,6 +16,13 @@ image:
@@ -800,7 +1277,7 @@ index a888120..9f34cc1 100644
    port: 9121
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2018-07-25
 
@@ -809,13 +1286,13 @@ index a888120..9f34cc1 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* add option to supply extra arguments (#6516) 
+* add option to supply extra arguments (#6516)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index adecdb9..a888120 100644
+index adecdb98..a8881202 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -15,6 +15,7 @@ image:
@@ -828,7 +1305,7 @@ index adecdb9..a888120 100644
    port: 9121
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2018-06-17
 
@@ -837,13 +1314,13 @@ index adecdb9..a888120 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-redis-exporter] add RBAC resources (#6083) 
+* [stable/prometheus-redis-exporter] add RBAC resources (#6083)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index 76840cf..adecdb9 100644
+index 76840cf8..adecdb98 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -1,3 +1,15 @@
@@ -864,7 +1341,7 @@ index 76840cf..adecdb9 100644
    repository: oliver006/redis_exporter
 ```
 
-## 0.1.2 
+## 0.1.2
 
 **Release date:** 2018-05-25
 
@@ -873,7 +1350,7 @@ index 76840cf..adecdb9 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-redis-exporter] typo fix: tables lists->table lists (#5721) 
+* [prometheus-redis-exporter] typo fix: tables lists->table lists (#5721)
 
 ### Default value changes
 
@@ -881,7 +1358,7 @@ index 76840cf..adecdb9 100644
 # No changes in this release
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2018-05-02
 
@@ -890,13 +1367,13 @@ index 76840cf..adecdb9 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Added prometheus scrape annotations (#5256) 
+* Added prometheus scrape annotations (#5256)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-redis-exporter/values.yaml b/charts/prometheus-redis-exporter/values.yaml
-index e00b48d..76840cf 100644
+index e00b48d3..76840cf8 100644
 --- a/charts/prometheus-redis-exporter/values.yaml
 +++ b/charts/prometheus-redis-exporter/values.yaml
 @@ -9,3 +9,7 @@ service:
@@ -909,7 +1386,7 @@ index e00b48d..76840cf 100644
 +#  prometheus.io/scrape: "true"
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2018-04-08
 
@@ -918,7 +1395,7 @@ index e00b48d..76840cf 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* adding redis-exporter chart (#2743) 
+* adding redis-exporter chart (#2743)
 
 ### Default value changes
 

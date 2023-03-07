@@ -1,6 +1,69 @@
 # Change Log
 
-## 0.4.0 
+## 1.0.0
+
+**Release date:** 2023-02-07
+
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-consul-exporter] Increment Helm apiVersion (#2991)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.5.1
+
+**Release date:** 2022-10-16
+
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-consul-exporter] Fix PSP deprecation after k8s 1.25+ (#2567)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.5.0
+
+**Release date:** 2021-11-10
+
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-consul-exporter] Add Pod Annotations Value (#1416)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-consul-exporter/values.yaml b/charts/prometheus-consul-exporter/values.yaml
+index 22cad251..d4ad38ae 100644
+--- a/charts/prometheus-consul-exporter/values.yaml
++++ b/charts/prometheus-consul-exporter/values.yaml
+@@ -88,6 +88,9 @@ affinity: {}
+ # Extra environment variables
+ extraEnv: []
+ 
++# Annotations for the pods
++podAnnotations: {}
++
+ # Init Containers for Exporter Pod
+ initContainers: []
+ 
+```
+
+## 0.4.0
 
 **Release date:** 2020-12-02
 
@@ -9,13 +72,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* add service monitor for consul exporter (#439) 
+* add service monitor for consul exporter (#439)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-consul-exporter/values.yaml b/charts/prometheus-consul-exporter/values.yaml
-index 868a750..22cad25 100644
+index 868a7507..22cad251 100644
 --- a/charts/prometheus-consul-exporter/values.yaml
 +++ b/charts/prometheus-consul-exporter/values.yaml
 @@ -62,6 +62,23 @@ resources: {}
@@ -44,7 +107,7 @@ index 868a750..22cad25 100644
  tolerations: []
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2020-11-18
 
@@ -53,7 +116,7 @@ index 868a750..22cad25 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* feat(prometheus-consul-exporter): add configurable apiVersion (#383) 
+* feat(prometheus-consul-exporter): add configurable apiVersion (#383)
 
 ### Default value changes
 
@@ -61,7 +124,7 @@ index 868a750..22cad25 100644
 # No changes in this release
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2020-10-04
 
@@ -70,13 +133,13 @@ index 868a750..22cad25 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-consul-exporter] Support extra containers, environment variables and volumes (#162) 
+* [prometheus-consul-exporter] Support extra containers, environment variables and volumes (#162)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-consul-exporter/values.yaml b/charts/prometheus-consul-exporter/values.yaml
-index 0a8939f..868a750 100644
+index 0a8939f5..868a7507 100644
 --- a/charts/prometheus-consul-exporter/values.yaml
 +++ b/charts/prometheus-consul-exporter/values.yaml
 @@ -67,3 +67,23 @@ nodeSelector: {}
@@ -105,7 +168,7 @@ index 0a8939f..868a750 100644
 +#   mountPath: /example
 ```
 
-## 0.1.7 
+## 0.1.7
 
 **Release date:** 2020-09-07
 
@@ -114,7 +177,7 @@ index 0a8939f..868a750 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-consul-exporter] add gkarthiks as additional maintainers (#50) 
+* [prometheus-consul-exporter] add gkarthiks as additional maintainers (#50)
 
 ### Default value changes
 
@@ -122,7 +185,7 @@ index 0a8939f..868a750 100644
 # No changes in this release
 ```
 
-## 0.1.6 
+## 0.1.6
 
 **Release date:** 2020-08-20
 
@@ -131,7 +194,7 @@ index 0a8939f..868a750 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prep initial charts indexing (#14) 
+* Prep initial charts indexing (#14)
 
 ### Default value changes
 
@@ -139,7 +202,7 @@ index 0a8939f..868a750 100644
 # No changes in this release
 ```
 
-## 0.1.5 
+## 0.1.5
 
 **Release date:** 2020-07-18
 
@@ -148,7 +211,7 @@ index 0a8939f..868a750 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-consul-exporter] Fix PSP apiVersion (#22834) 
+* [stable/prometheus-consul-exporter] Fix PSP apiVersion (#22834)
 
 ### Default value changes
 
@@ -156,7 +219,7 @@ index 0a8939f..868a750 100644
 # No changes in this release
 ```
 
-## 0.1.4 
+## 0.1.4
 
 **Release date:** 2019-06-28
 
@@ -165,13 +228,13 @@ index 0a8939f..868a750 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-consul-exporter] 14589: Bugfix to support boolean flags in prometheus-consul-exporter (#14694) 
+* [stable/prometheus-consul-exporter] 14589: Bugfix to support boolean flags in prometheus-consul-exporter (#14694)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-consul-exporter/values.yaml b/charts/prometheus-consul-exporter/values.yaml
-index e4e87ac..0a8939f 100644
+index e4e87ac8..0a8939f5 100644
 --- a/charts/prometheus-consul-exporter/values.yaml
 +++ b/charts/prometheus-consul-exporter/values.yaml
 @@ -29,6 +29,8 @@ consulServer: host:port
@@ -185,7 +248,7 @@ index e4e87ac..0a8939f 100644
    type: ClusterIP
 ```
 
-## 0.1.3 
+## 0.1.3
 
 **Release date:** 2019-03-18
 
@@ -194,13 +257,13 @@ index e4e87ac..0a8939f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add possibility to disable apparmor podsecuritypolicy annotations. (#11934) 
+* Add possibility to disable apparmor podsecuritypolicy annotations. (#11934)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-consul-exporter/values.yaml b/charts/prometheus-consul-exporter/values.yaml
-index 72049c6..e4e87ac 100644
+index 72049c61..e4e87ac8 100644
 --- a/charts/prometheus-consul-exporter/values.yaml
 +++ b/charts/prometheus-consul-exporter/values.yaml
 @@ -8,6 +8,7 @@ rbac:
@@ -213,7 +276,7 @@ index 72049c6..e4e87ac 100644
    create: true
 ```
 
-## 0.1.2 
+## 0.1.2
 
 **Release date:** 2018-12-18
 
@@ -222,7 +285,7 @@ index 72049c6..e4e87ac 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-consul-exporter] Fix service selector (#9958) 
+* [stable/prometheus-consul-exporter] Fix service selector (#9958)
 
 ### Default value changes
 
@@ -230,7 +293,7 @@ index 72049c6..e4e87ac 100644
 # No changes in this release
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2018-12-13
 
@@ -239,7 +302,7 @@ index 72049c6..e4e87ac 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add service annotations for prometheus-consul-exporter (#9882) 
+* Add service annotations for prometheus-consul-exporter (#9882)
 
 ### Default value changes
 
@@ -247,7 +310,7 @@ index 72049c6..e4e87ac 100644
 # No changes in this release
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2018-12-07
 
@@ -256,7 +319,7 @@ index 72049c6..e4e87ac 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add chart for consul-exporter (#9686) 
+* Add chart for consul-exporter (#9686)
 
 ### Default value changes
 

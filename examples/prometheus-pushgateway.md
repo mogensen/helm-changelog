@@ -1,6 +1,904 @@
 # Change Log
 
-## 1.7.1 
+## 2.1.3
+
+**Release date:** 2023-02-14
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Correct spelling mistake (#3003)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 2.1.2
+
+**Release date:** 2023-02-10
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Adjust Liveness probe default to /healthy (#3017)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 23d0a0ea..0df94441 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -103,7 +103,7 @@ liveness:
+   enabled: true
+   probe:
+     httpGet:
+-      path: /-/ready
++      path: /-/healthy
+       port: 9091
+     initialDelaySeconds: 10
+     timeoutSeconds: 10
+```
+
+## 2.1.1
+
+**Release date:** 2023-02-03
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] helm template error (#2985)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 2.1.0
+
+**Release date:** 2023-02-02
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Add namespaceOverride to all resources (#2967)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index f2fd5cd1..23d0a0ea 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -8,6 +8,9 @@ nameOverride: ""
+ # Provide a name to substitute for the full names of resources
+ fullnameOverride: ""
+ 
++# Provide a namespace to substitude for the namespace on resources
++namespaceOverride: ""
++
+ image:
+   repository: prom/pushgateway
+   # if not set appVersion field from Chart.yaml is used
+```
+
+## 2.0.4
+
+**Release date:** 2023-01-30
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Fix NodePort service type (#2958)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 90cee5c8..f2fd5cd1 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -21,6 +21,7 @@ service:
+   type: ClusterIP
+   port: 9091
+   targetPort: 9091
++  # nodePort: 32100
+ 
+   # Optional - Can be used for headless if value is "None"
+   clusterIP: ""
+```
+
+## 2.0.3
+
+**Release date:** 2022-12-21
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Fix additionalLabels for service monitor (#2820)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 2.0.2
+
+**Release date:** 2022-12-05
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Fix service monitor selector (#2782) (#2783)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 2.0.1
+
+**Release date:** 2022-12-03
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Hotfix new line problem (#2779)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 2.0.0
+
+**Release date:** 2022-12-02
+
+![AppVersion: v1.5.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.5.1&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Refactor (#2746)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index e2e9ebed..90cee5c8 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -10,7 +10,8 @@ fullnameOverride: ""
+ 
+ image:
+   repository: prom/pushgateway
+-  tag: v1.4.2
++  # if not set appVersion field from Chart.yaml is used
++  tag: ""
+   pullPolicy: IfNotPresent
+ 
+ # Optional pod imagePullSecrets
+```
+
+## 1.21.1
+
+**Release date:** 2022-11-30
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Ensure PDB labels are same as the matchLabels of the owner app (#2666)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.21.0
+
+**Release date:** 2022-11-20
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Support ingress.extraPaths (#2709)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index aed41a8f..e2e9ebed 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -132,25 +132,32 @@ ingress:
+   path: /
+   pathType: ImplementationSpecific
+ 
+-    ## Annotations.
+-    ##
+-    # annotations:
+-    #   kubernetes.io/ingress.class: nginx
+-    #   kubernetes.io/tls-acme: 'true'
++  ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
++  extraPaths: []
++  # - path: /*
++  #   backend:
++  #     serviceName: ssl-redirect
++  #     servicePort: use-annotation
+ 
+-    ## Hostnames.
+-    ## Must be provided if Ingress is enabled.
+-    ##
+-    # hosts:
+-    #   - pushgateway.domain.com
++  ## Annotations.
++  ##
++  # annotations:
++  #   kubernetes.io/ingress.class: nginx
++  #   kubernetes.io/tls-acme: 'true'
+ 
+-    ## TLS configuration.
+-    ## Secrets must be manually created in the namespace.
+-    ##
+-    # tls:
+-    #   - secretName: pushgateway-tls
+-    #     hosts:
+-    #       - pushgateway.domain.com
++  ## Hostnames.
++  ## Must be provided if Ingress is enabled.
++  ##
++  # hosts:
++  #   - pushgateway.domain.com
++
++  ## TLS configuration.
++  ## Secrets must be manually created in the namespace.
++  ##
++  # tls:
++  #   - secretName: pushgateway-tls
++  #     hosts:
++  #       - pushgateway.domain.com
+ 
+ tolerations: {}
+   # - effect: NoSchedule
+```
+
+## 1.20.1
+
+**Release date:** 2022-10-19
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Omit clusterIP if service is of type LoadBalancer (#2579)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.20.0
+
+**Release date:** 2022-09-30
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] - Add extra init containers for pushgateway helm chart (#2480)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index cb81baa2..aed41a8f 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -56,6 +56,10 @@ extraVars: []
+ ##  - --persistence.interval=5m
+ extraArgs: []
+ 
++## Additional InitContainers to initialize the pod
++##
++extraInitContainers: []
++
+ # Optional additional containers (sidecar)
+ extraContainers: []
+   # - name: oAuth2-proxy
+```
+
+## 1.19.2
+
+**Release date:** 2022-09-30
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] extraVolumes and extraVolumeMounts should be empty arrays (#2495)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index aefa2bbc..cb81baa2 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -286,10 +286,10 @@ persistentVolume:
+   ##
+   subPath: ""
+ 
+-extraVolumes: {}
++extraVolumes: []
+   # - name: extra
+   #   emptyDir: {}
+-extraVolumeMounts: {}
++extraVolumeMounts: []
+   # - name: extra
+   #   mountPath: /usr/share/extras
+   #   readOnly: true
+```
+
+## 1.19.1
+
+**Release date:** 2022-09-28
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Fix topologySpreadConstraints (#2501)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.19.0
+
+**Release date:** 2022-09-27
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Add topologySpreadConstraints (#2497)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 5bb8eb2b..aefa2bbc 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -184,6 +184,10 @@ containerSecurityContext: {}
+ ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+ affinity: {}
+ 
++## Topology spread constraints for pods
++## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
++topologySpreadConstraints: []
++
+ # Enable this if you're using https://github.com/coreos/prometheus-operator
+ serviceMonitor:
+   enabled: false
+```
+
+## 1.18.3
+
+**Release date:** 2022-09-19
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] update notes.txt notify port (#2462)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.18.2
+
+**Release date:** 2022-06-10
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Fix: Metadata labels consistency (#2126)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.18.1
+
+**Release date:** 2022-05-30
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] - Upgrade pdb version to apiVersion: policy/v1 (#2096)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.18.0
+
+**Release date:** 2022-05-11
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Allow prometheus gateway to run as a StatefulSet (#2031)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 8c5992e5..5bb8eb2b 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -159,6 +159,12 @@ nodeSelector: {}
+ 
+ replicaCount: 1
+ 
++## When running more than one replica alongside with persistence, different volumes are needed
++## per replica, since sharing a `persistence.file` across replicas does not keep metrics synced.
++## For this purpose, you can enable the `runAsStatefulSet` to deploy the pushgateway as a
++## StatefulSet instead of as a Deployment.
++runAsStatefulSet: false
++
+ ## Security context to be added to push-gateway pods
+ ##
+ securityContext:
+```
+
+## 1.17.0
+
+**Release date:** 2022-05-03
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Adding extra containers (#2023)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index ecc536b6..8c5992e5 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -56,6 +56,28 @@ extraVars: []
+ ##  - --persistence.interval=5m
+ extraArgs: []
+ 
++# Optional additional containers (sidecar)
++extraContainers: []
++  # - name: oAuth2-proxy
++  #   args:
++  #     - -https-address=:9092
++  #     - -upstream=http://localhost:9091
++  #     - -skip-auth-regex=^/metrics
++  #     - -openshift-delegate-urls={"/":{"group":"monitoring.coreos.com","resource":"prometheuses","verb":"get"}}
++  #   image: openshift/oauth-proxy:v1.1.0
++  #   ports:
++  #       - containerPort: 9092
++  #         name: proxy
++  #   resources:
++  #       limits:
++  #         memory: 16Mi
++  #       requests:
++  #         memory: 4Mi
++  #         cpu: 20m
++  #   volumeMounts:
++  #     - mountPath: /etc/prometheus/secrets/pushgateway-tls
++  #       name: secret-pushgateway-tls
++
+ resources: {}
+   # We usually recommend not to specify default resources and to leave this as a conscious
+   # choice for the user. This also increases chances charts run on environments with little
+@@ -164,6 +186,14 @@ serviceMonitor:
+   # Fallback to the prometheus default unless specified
+   # interval: 10s
+ 
++  ## scheme: HTTP scheme to use for scraping. Can be used with `tlsConfig` for example if using istio mTLS.
++  # scheme: ""
++
++  ## tlsConfig: TLS configuration to use when scraping the endpoint. For example if using istio mTLS.
++  ## Of type: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#tlsconfig
++  # tlsConfig: {}
++
++  # bearerTokenFile:
+   # Fallback to the prometheus default unless specified
+   # scrapeTimeout: 30s
+ 
+```
+
+## 1.16.1
+
+**Release date:** 2022-03-01
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Fix indentation in resources example comment (#1837)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 33635c92..ecc536b6 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -63,7 +63,7 @@ resources: {}
+   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+   # limits:
+   #   cpu: 200m
+-  #    memory: 50Mi
++  #   memory: 50Mi
+   # requests:
+   #   cpu: 100m
+   #   memory: 30Mi
+```
+
+## 1.16.0
+
+**Release date:** 2022-02-24
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] give the pushgateway live/ready probes the ability to add httpHeaders (#1797)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 5d691766..33635c92 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -68,6 +68,24 @@ resources: {}
+   #   cpu: 100m
+   #   memory: 30Mi
+ 
++liveness:
++  enabled: true
++  probe:
++    httpGet:
++      path: /-/ready
++      port: 9091
++    initialDelaySeconds: 10
++    timeoutSeconds: 10
++
++readiness:
++  enabled: true
++  probe:
++    httpGet:
++      path: /-/ready
++      port: 9091
++    initialDelaySeconds: 10
++    timeoutSeconds: 10
++
+ serviceAccount:
+   # Specifies whether a ServiceAccount should be created
+   create: true
+```
+
+## 1.15.0
+
+**Release date:** 2022-01-29
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Add support for containerSecurityContext to fix #1741 (#1744)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 9b730d95..5d691766 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -126,6 +126,14 @@ securityContext:
+   runAsUser: 65534
+   runAsNonRoot: true
+ 
++## Security context to be added to push-gateway containers
++## Having a separate variable as securityContext differs for pods and containers.
++containerSecurityContext: {}
++#  allowPrivilegeEscalation: false
++#  readOnlyRootFilesystem: true
++#  runAsUser: 65534
++#  runAsNonRoot: true
++
+ ## Affinity for pod assignment
+ ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+ affinity: {}
+```
+
+## 1.14.0
+
+**Release date:** 2021-12-22
+
+![AppVersion: 1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=1.4.2&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] bump prom pushgateway to latest version - 1.4.2 (#1589)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index fbb49040..9b730d95 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -10,7 +10,7 @@ fullnameOverride: ""
+ 
+ image:
+   repository: prom/pushgateway
+-  tag: v1.4.1
++  tag: v1.4.2
+   pullPolicy: IfNotPresent
+ 
+ # Optional pod imagePullSecrets
+```
+
+## 1.13.0
+
+**Release date:** 2021-11-02
+
+![AppVersion: 1.4.1](https://img.shields.io/static/v1?label=AppVersion&message=1.4.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] Support networking.k8s.io/v1 (#1443)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index 9340c15c..fbb49040 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -84,7 +84,9 @@ ingress:
+   ##
+   enabled: false
+   # AWS ALB requires path of /*
++  className: ""
+   path: /
++  pathType: ImplementationSpecific
+ 
+     ## Annotations.
+     ##
+```
+
+## 1.12.0
+
+**Release date:** 2021-10-19
+
+![AppVersion: 1.4.1](https://img.shields.io/static/v1?label=AppVersion&message=1.4.1&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] increase version number (#1445)
+* Update pushgateway latest (#1306)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index d9ccdf5b..9340c15c 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -10,7 +10,7 @@ fullnameOverride: ""
+ 
+ image:
+   repository: prom/pushgateway
+-  tag: v1.3.0
++  tag: v1.4.1
+   pullPolicy: IfNotPresent
+ 
+ # Optional pod imagePullSecrets
+```
+
+## 1.11.0
+
+**Release date:** 2021-09-14
+
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] add extraVolumes and extraVolumeMounts to chart (#1059)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index c3f78ea1..d9ccdf5b 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -218,6 +218,14 @@ persistentVolume:
+   ##
+   subPath: ""
+ 
++extraVolumes: {}
++  # - name: extra
++  #   emptyDir: {}
++extraVolumeMounts: {}
++  # - name: extra
++  #   mountPath: /usr/share/extras
++  #   readOnly: true
++
+ # Configuration for clusters with restrictive network policies in place:
+ # - allowAll allows access to the PushGateway from any namespace
+ # - customSelector is a list of pod/namespaceSelectors to allow access from
+```
+
+## 1.10.1
+
+**Release date:** 2021-06-29
+
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Only apply clusterIP if we have a value (#954)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.10.0
+
+**Release date:** 2021-06-17
+
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] PriorityClassName for prom-pushgateway (#948)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index ae22dba7..c3f78ea1 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -168,6 +168,8 @@ serviceMonitor:
+ # If not set then a PodDisruptionBudget will not be created
+ podDisruptionBudget: {}
+ 
++priorityClassName:
++
+ # Deployment Strategy type
+ strategy:
+   type: Recreate
+```
+
+## 1.9.0
+
+**Release date:** 2021-04-26
+
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] added ClusterIP flag in values.yaml to support headless service (#324)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index cd586269..ae22dba7 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -21,8 +21,12 @@ service:
+   port: 9091
+   targetPort: 9091
+ 
++  # Optional - Can be used for headless if value is "None"
++  clusterIP: ""
++
+   loadBalancerIP: ""
+   loadBalancerSourceRanges: []
++
+ # Optional pod annotations
+ podAnnotations: {}
+ 
+```
+
+## 1.8.0
+
+**Release date:** 2021-04-12
+
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-pushgateway] add loadBalancerIP and sourceranges to pushgateway service (#671)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
+index e05ee201..cd586269 100644
+--- a/charts/prometheus-pushgateway/values.yaml
++++ b/charts/prometheus-pushgateway/values.yaml
+@@ -21,6 +21,8 @@ service:
+   port: 9091
+   targetPort: 9091
+ 
++  loadBalancerIP: ""
++  loadBalancerSourceRanges: []
+ # Optional pod annotations
+ podAnnotations: {}
+ 
+```
+
+## 1.7.1
 
 **Release date:** 2021-03-05
 
@@ -9,7 +907,7 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-pushgateway] Align resource label handling (#456) 
+* [prometheus-pushgateway] Align resource label handling (#456)
 
 ### Default value changes
 
@@ -17,7 +915,7 @@
 # No changes in this release
 ```
 
-## 1.7.0 
+## 1.7.0
 
 **Release date:** 2021-02-05
 
@@ -26,14 +924,14 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-pushgateway] fix failed release (#637) 
-* [prometheus-pushgateway] Adds ability to specify metricRelabelings and relabelings (#453) 
+* [prometheus-pushgateway] fix failed release (#637)
+* [prometheus-pushgateway] Adds ability to specify metricRelabelings and relabelings (#453)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 12e9e3d..e05ee20 100644
+index 12e9e3d0..e05ee201 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -141,6 +141,23 @@ serviceMonitor:
@@ -62,7 +960,7 @@ index 12e9e3d..e05ee20 100644
  podDisruptionBudget: {}
 ```
 
-## 1.6.0 
+## 1.6.0
 
 **Release date:** 2021-02-04
 
@@ -71,13 +969,13 @@ index 12e9e3d..e05ee20 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-pushgateway] Adds imagePullSecrets value for deployment (#608) 
+* [prometheus-pushgateway] Adds imagePullSecrets value for deployment (#608)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 4a56f4f..12e9e3d 100644
+index 4a56f4f4..12e9e3d0 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -13,6 +13,9 @@ image:
@@ -92,7 +990,7 @@ index 4a56f4f..12e9e3d 100644
    port: 9091
 ```
 
-## 1.5.1 
+## 1.5.1
 
 **Release date:** 2020-12-18
 
@@ -101,13 +999,13 @@ index 4a56f4f..12e9e3d 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-pushgateway] Add missing fields within values.yaml (#219) 
+* [prometheus-pushgateway] Add missing fields within values.yaml (#219)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 169a5cd..4a56f4f 100644
+index 169a5cd9..4a56f4f4 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -1,6 +1,13 @@
@@ -126,7 +1024,7 @@ index 169a5cd..4a56f4f 100644
    tag: v1.3.0
 ```
 
-## 1.5.0 
+## 1.5.0
 
 **Release date:** 2020-11-04
 
@@ -135,13 +1033,13 @@ index 169a5cd..4a56f4f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* pushgateway 1.3.0 - update chart version, pushgateway version and values (#195) 
+* pushgateway 1.3.0 - update chart version, pushgateway version and values (#195)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 63b2a43..169a5cd 100644
+index 63b2a43e..169a5cd9 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -155,7 +1053,7 @@ index 63b2a43..169a5cd 100644
  service:
 ```
 
-## 1.4.2 
+## 1.4.2
 
 **Release date:** 2020-08-20
 
@@ -164,7 +1062,7 @@ index 63b2a43..169a5cd 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prep initial charts indexing (#14) 
+* Prep initial charts indexing (#14)
 
 ### Default value changes
 
@@ -172,7 +1070,7 @@ index 63b2a43..169a5cd 100644
 # No changes in this release
 ```
 
-## 1.4.1 
+## 1.4.1
 
 **Release date:** 2020-07-07
 
@@ -181,7 +1079,7 @@ index 63b2a43..169a5cd 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Fix networkPolicy podSelector and ingress rule (#23053) 
+* [stable/prometheus-pushgateway] Fix networkPolicy podSelector and ingress rule (#23053)
 
 ### Default value changes
 
@@ -189,7 +1087,7 @@ index 63b2a43..169a5cd 100644
 # No changes in this release
 ```
 
-## 1.4.0 
+## 1.4.0
 
 **Release date:** 2020-04-06
 
@@ -198,13 +1096,13 @@ index 63b2a43..169a5cd 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] configureable deployment strategy (#21685) 
+* [stable/prometheus-pushgateway] configureable deployment strategy (#21685)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 1ae0906..63b2a43 100644
+index 1ae09068..63b2a43e 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -135,6 +135,10 @@ serviceMonitor:
@@ -220,7 +1118,7 @@ index 1ae0906..63b2a43 100644
    ## If false, use emptyDir
 ```
 
-## 1.3.0 
+## 1.3.0
 
 **Release date:** 2020-03-12
 
@@ -229,13 +1127,13 @@ index 1ae0906..63b2a43 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] upgrade to latest release (#21424) 
+* [stable/prometheus-pushgateway] upgrade to latest release (#21424)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 7709c9d..1ae0906 100644
+index 7709c9d6..1ae09068 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -249,7 +1147,7 @@ index 7709c9d..1ae0906 100644
  service:
 ```
 
-## 1.2.15 
+## 1.2.15
 
 **Release date:** 2020-03-04
 
@@ -258,13 +1156,13 @@ index 7709c9d..1ae0906 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* fix hard-coded path and default to "/" (#21253) 
+* fix hard-coded path and default to "/" (#21253)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 55d0bf8..7709c9d 100644
+index 55d0bf8b..7709c9d6 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -67,6 +67,8 @@ ingress:
@@ -278,7 +1176,7 @@ index 55d0bf8..7709c9d 100644
      ##
 ```
 
-## 1.2.14 
+## 1.2.14
 
 **Release date:** 2020-01-31
 
@@ -287,13 +1185,13 @@ index 55d0bf8..7709c9d 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add annotation support to pushgateway service (#20351) 
+* Add annotation support to pushgateway service (#20351)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index d9ff624..55d0bf8 100644
+index d9ff624b..55d0bf8b 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -17,6 +17,9 @@ podAnnotations: {}
@@ -308,7 +1206,7 @@ index d9ff624..55d0bf8 100644
  
 ```
 
-## 1.2.13 
+## 1.2.13
 
 **Release date:** 2020-01-13
 
@@ -317,7 +1215,7 @@ index d9ff624..55d0bf8 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Fix persistence support (#20048) 
+* [stable/prometheus-pushgateway] Fix persistence support (#20048)
 
 ### Default value changes
 
@@ -325,7 +1223,7 @@ index d9ff624..55d0bf8 100644
 # No changes in this release
 ```
 
-## 1.2.12 
+## 1.2.12
 
 **Release date:** 2020-01-10
 
@@ -334,13 +1232,13 @@ index d9ff624..55d0bf8 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Add persistence support (#16040) 
+* [stable/prometheus-pushgateway] Add persistence support (#16040)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index a714a39..d9ff624 100644
+index a714a399..d9ff624b 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -23,12 +23,20 @@ serviceLabels: {}
@@ -433,7 +1331,7 @@ index a714a39..d9ff624 100644
  # - customSelector is a list of pod/namespaceSelectors to allow access from
 ```
 
-## 1.2.11 
+## 1.2.11
 
 **Release date:** 2020-01-09
 
@@ -442,7 +1340,7 @@ index a714a39..d9ff624 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Allow to specify the nodePort when service type is NodePort (#19936) 
+* [stable/prometheus-pushgateway] Allow to specify the nodePort when service type is NodePort (#19936)
 
 ### Default value changes
 
@@ -450,7 +1348,7 @@ index a714a39..d9ff624 100644
 # No changes in this release
 ```
 
-## 1.2.10 
+## 1.2.10
 
 **Release date:** 2019-12-21
 
@@ -459,13 +1357,13 @@ index a714a39..d9ff624 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Upgrade push-gateway (#19732) 
+* [stable/prometheus-pushgateway] Upgrade push-gateway (#19732)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 5f204c2..a714a39 100644
+index 5f204c2c..a714a399 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -479,7 +1377,7 @@ index 5f204c2..a714a39 100644
  service:
 ```
 
-## 1.2.9 
+## 1.2.9
 
 **Release date:** 2019-12-20
 
@@ -488,7 +1386,7 @@ index 5f204c2..a714a39 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Fix missleading documentation about `metrics.enabled` in values documentation (#19730) 
+* [stable/prometheus-pushgateway] Fix missleading documentation about `metrics.enabled` in values documentation (#19730)
 
 ### Default value changes
 
@@ -496,7 +1394,7 @@ index 5f204c2..a714a39 100644
 # No changes in this release
 ```
 
-## 1.2.8 
+## 1.2.8
 
 **Release date:** 2019-12-18
 
@@ -505,13 +1403,13 @@ index 5f204c2..a714a39 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] fix default values for podDisruptionBudget and networkPolicy (#19680) 
+* [stable/prometheus-pushgateway] fix default values for podDisruptionBudget and networkPolicy (#19680)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index c975263..5f204c2 100644
+index c9752632..5f204c2c 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -113,13 +113,13 @@ serviceMonitor:
@@ -532,7 +1430,7 @@ index c975263..5f204c2 100644
    #   - namespaceSelector:
 ```
 
-## 1.2.7 
+## 1.2.7
 
 **Release date:** 2019-12-16
 
@@ -541,7 +1439,7 @@ index c975263..5f204c2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update readiness liveness probe path for prometheus pushgateway (#19580) 
+* Update readiness liveness probe path for prometheus pushgateway (#19580)
 
 ### Default value changes
 
@@ -549,7 +1447,7 @@ index c975263..5f204c2 100644
 # No changes in this release
 ```
 
-## 1.2.6 
+## 1.2.6
 
 **Release date:** 2019-11-22
 
@@ -558,13 +1456,13 @@ index c975263..5f204c2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] support for networkpolicies (#19057) 
+* [stable/prometheus-pushgateway] support for networkpolicies (#19057)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 8a60aa0..c975263 100644
+index 8a60aa02..c9752632 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -114,3 +114,17 @@ serviceMonitor:
@@ -587,7 +1485,7 @@ index 8a60aa0..c975263 100644
 +  #         app: myapp
 ```
 
-## 1.2.5 
+## 1.2.5
 
 **Release date:** 2019-11-15
 
@@ -596,13 +1494,13 @@ index 8a60aa0..c975263 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Add servicemonitor configuration options (#18907) 
+* [stable/prometheus-pushgateway] Add servicemonitor configuration options (#18907)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 26d3ceb..8a60aa0 100644
+index 26d3ceb7..8a60aa02 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -96,9 +96,13 @@ affinity: {}
@@ -622,7 +1520,7 @@ index 26d3ceb..8a60aa0 100644
    additionalLabels: {}
 ```
 
-## 1.2.4 
+## 1.2.4
 
 **Release date:** 2019-11-15
 
@@ -631,13 +1529,13 @@ index 26d3ceb..8a60aa0 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Adjust servicemonitor labels (#18877) 
+* [stable/prometheus-pushgateway] Adjust servicemonitor labels (#18877)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index bc19c11..26d3ceb 100644
+index bc19c116..26d3ceb7 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -98,11 +98,11 @@ serviceMonitor:
@@ -659,7 +1557,7 @@ index bc19c11..26d3ceb 100644
    honorLabels: true
 ```
 
-## 1.2.3 
+## 1.2.3
 
 **Release date:** 2019-11-14
 
@@ -668,7 +1566,7 @@ index bc19c11..26d3ceb 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Use fullname for the servicemonitor name (#18872) 
+* [stable/prometheus-pushgateway] Use fullname for the servicemonitor name (#18872)
 
 ### Default value changes
 
@@ -676,7 +1574,7 @@ index bc19c11..26d3ceb 100644
 # No changes in this release
 ```
 
-## 1.2.2 
+## 1.2.2
 
 **Release date:** 2019-11-08
 
@@ -685,7 +1583,7 @@ index bc19c11..26d3ceb 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Compat k8s 1.16 (#18598) 
+* [stable/prometheus-pushgateway] Compat k8s 1.16 (#18598)
 
 ### Default value changes
 
@@ -693,7 +1591,7 @@ index bc19c11..26d3ceb 100644
 # No changes in this release
 ```
 
-## 1.2.1 
+## 1.2.1
 
 **Release date:** 2019-11-07
 
@@ -702,7 +1600,7 @@ index bc19c11..26d3ceb 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Follow the Call for maintainers (#18662) 
+* [stable/prometheus-pushgateway] Follow the Call for maintainers (#18662)
 
 ### Default value changes
 
@@ -710,7 +1608,7 @@ index bc19c11..26d3ceb 100644
 # No changes in this release
 ```
 
-## 1.2.0 
+## 1.2.0
 
 **Release date:** 2019-11-05
 
@@ -719,7 +1617,7 @@ index bc19c11..26d3ceb 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Fix deprecated apiVersion for Deployment (#18586) 
+* Fix deprecated apiVersion for Deployment (#18586)
 
 ### Default value changes
 
@@ -727,7 +1625,7 @@ index bc19c11..26d3ceb 100644
 # No changes in this release
 ```
 
-## 1.1.1 
+## 1.1.1
 
 **Release date:** 2019-10-30
 
@@ -736,7 +1634,7 @@ index bc19c11..26d3ceb 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Fix podDisruptionBudget template (#18187) 
+* [stable/prometheus-pushgateway] Fix podDisruptionBudget template (#18187)
 
 ### Default value changes
 
@@ -744,7 +1642,7 @@ index bc19c11..26d3ceb 100644
 # No changes in this release
 ```
 
-## 1.1.0 
+## 1.1.0
 
 **Release date:** 2019-10-21
 
@@ -753,13 +1651,13 @@ index bc19c11..26d3ceb 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] Update default version to v1.0.0 (#18091) 
+* [stable/prometheus-pushgateway] Update default version to v1.0.0 (#18091)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index b08f2a7..bc19c11 100644
+index b08f2a74..bc19c116 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -773,7 +1671,7 @@ index b08f2a7..bc19c11 100644
  service:
 ```
 
-## 1.0.1 
+## 1.0.1
 
 **Release date:** 2019-08-03
 
@@ -782,13 +1680,13 @@ index b08f2a7..bc19c11 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* upgrade pushgateway (#16061) 
+* upgrade pushgateway (#16061)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index adb9080..b08f2a7 100644
+index adb90803..b08f2a74 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -802,7 +1700,7 @@ index adb9080..b08f2a7 100644
  service:
 ```
 
-## 1.0.0 
+## 1.0.0
 
 **Release date:** 2019-07-29
 
@@ -811,13 +1709,13 @@ index adb9080..b08f2a7 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] upgrade to latest release, set chart to v1 (#15912) 
+* [stable/prometheus-pushgateway] upgrade to latest release, set chart to v1 (#15912)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 2eaa38e..adb9080 100644
+index 2eaa38ee..adb90803 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -831,7 +1729,7 @@ index 2eaa38e..adb9080 100644
  service:
 ```
 
-## 0.4.1 
+## 0.4.1
 
 **Release date:** 2019-07-03
 
@@ -840,13 +1738,13 @@ index 2eaa38e..adb9080 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-pushgateway] add optional PodDisruptionBudget (#13293) 
+* [stable/prometheus-pushgateway] add optional PodDisruptionBudget (#13293)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 77a1921..2eaa38e 100644
+index 77a1921a..2eaa38ee 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -106,3 +106,7 @@ serviceMonitor:
@@ -859,7 +1757,7 @@ index 77a1921..2eaa38e 100644
 +podDisruptionBudget:
 ```
 
-## 0.4.0 
+## 0.4.0
 
 **Release date:** 2019-04-14
 
@@ -868,13 +1766,13 @@ index 77a1921..2eaa38e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* upgrade promteheus pushgateway (#13038) 
+* upgrade promteheus pushgateway (#13038)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index ad5a4ce..77a1921 100644
+index ad5a4ce5..77a1921a 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -888,7 +1786,7 @@ index ad5a4ce..77a1921 100644
  service:
 ```
 
-## 0.3.1 
+## 0.3.1
 
 **Release date:** 2019-03-25
 
@@ -897,13 +1795,13 @@ index ad5a4ce..77a1921 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Allow for customization of env vars on prometheus-pushgateway (#12196) 
+* Allow for customization of env vars on prometheus-pushgateway (#12196)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index cc06ed0..ad5a4ce 100644
+index cc06ed09..ad5a4ce5 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -26,6 +26,9 @@ serviceAccountLabels: {}
@@ -918,7 +1816,7 @@ index cc06ed0..ad5a4ce 100644
    # choice for the user. This also increases chances charts run on environments with little
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2019-01-17
 
@@ -927,13 +1825,13 @@ index cc06ed0..ad5a4ce 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Fix pushgateway labels honoring (#10728) 
+* Fix pushgateway labels honoring (#10728)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 9900bda..cc06ed0 100644
+index 9900bda6..cc06ed09 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -100,3 +100,6 @@ serviceMonitor:
@@ -945,7 +1843,7 @@ index 9900bda..cc06ed0 100644
 +  honorLabels: true
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2018-11-19
 
@@ -954,13 +1852,13 @@ index 9900bda..cc06ed0 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* add prometheus servicemonitor support to pushgateway (#9385) 
+* add prometheus servicemonitor support to pushgateway (#9385)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 5dd7a07..9900bda 100644
+index 5dd7a076..9900bda6 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -88,3 +88,15 @@ replicaCount: 1
@@ -981,7 +1879,7 @@ index 5dd7a07..9900bda 100644
 +    prometheus: kube-prometheus
 ```
 
-## 0.1.6 
+## 0.1.6
 
 **Release date:** 2018-11-06
 
@@ -990,7 +1888,7 @@ index 5dd7a07..9900bda 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add the serviceAccountLabels variable i forgot to document in #8567 (#8913) 
+* Add the serviceAccountLabels variable i forgot to document in #8567 (#8913)
 
 ### Default value changes
 
@@ -998,7 +1896,7 @@ index 5dd7a07..9900bda 100644
 # No changes in this release
 ```
 
-## 0.1.5 
+## 0.1.5
 
 **Release date:** 2018-10-30
 
@@ -1007,13 +1905,13 @@ index 5dd7a07..9900bda 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add pod and service labels support (#8567) 
+* Add pod and service labels support (#8567)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index c6abed5..5dd7a07 100644
+index c6abed5d..5dd7a076 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -14,6 +14,15 @@ service:
@@ -1034,7 +1932,7 @@ index c6abed5..5dd7a07 100644
  
 ```
 
-## 0.1.4 
+## 0.1.4
 
 **Release date:** 2018-10-30
 
@@ -1043,7 +1941,7 @@ index c6abed5..5dd7a07 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update appVersion and image tag (#8864) 
+* Update appVersion and image tag (#8864)
 
 ### Default value changes
 
@@ -1051,7 +1949,7 @@ index c6abed5..5dd7a07 100644
 # No changes in this release
 ```
 
-## 0.1.3 
+## 0.1.3
 
 **Release date:** 2018-10-26
 
@@ -1060,13 +1958,13 @@ index c6abed5..5dd7a07 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update appVersion and image tag (#8794) 
+* Update appVersion and image tag (#8794)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 90e0821..c6abed5 100644
+index 90e08214..c6abed5d 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -3,7 +3,7 @@
@@ -1080,7 +1978,7 @@ index 90e0821..c6abed5 100644
  service:
 ```
 
-## 0.1.2 
+## 0.1.2
 
 **Release date:** 2018-05-09
 
@@ -1089,13 +1987,13 @@ index 90e0821..c6abed5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* pod annotations on prometheus-pushgateway pod (#5469) 
+* pod annotations on prometheus-pushgateway pod (#5469)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-pushgateway/values.yaml b/charts/prometheus-pushgateway/values.yaml
-index 70a2bc4..90e0821 100644
+index 70a2bc42..90e08214 100644
 --- a/charts/prometheus-pushgateway/values.yaml
 +++ b/charts/prometheus-pushgateway/values.yaml
 @@ -11,6 +11,9 @@ service:
@@ -1110,7 +2008,7 @@ index 70a2bc4..90e0821 100644
  
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2018-04-04
 
@@ -1119,7 +2017,7 @@ index 70a2bc4..90e0821 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* review wrong service port in pushgateway readme (#4679) 
+* review wrong service port in pushgateway readme (#4679)
 
 ### Default value changes
 
@@ -1127,7 +2025,7 @@ index 70a2bc4..90e0821 100644
 # No changes in this release
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2018-04-03
 
@@ -1136,7 +2034,7 @@ index 70a2bc4..90e0821 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add prometheus pushgateway (#4620) 
+* Add prometheus pushgateway (#4620)
 
 ### Default value changes
 

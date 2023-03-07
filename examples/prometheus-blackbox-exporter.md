@@ -1,6 +1,928 @@
 # Change Log
 
-## 4.10.4 
+## 7.6.1
+
+**Release date:** 2023-03-04
+
+![AppVersion: 0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Update PSP-related templates (#3093)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 7.6.0
+
+**Release date:** 2023-03-02
+
+![AppVersion: 0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Make it possible to unset the container "securityContext“ (#3087)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 7.5.0
+
+**Release date:** 2023-02-03
+
+![AppVersion: 0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Support for Kubernetes version override (#2979)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index c387c41d..57eef316 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -6,6 +6,9 @@ kind: Deployment
+ ##
+ namespaceOverride: ""
+ 
++# Override Kubernetes version if your distribution does not follow semver v2
++kubeVersionOverride: ""
++
+ ## set to true to add the release label so scraping of the servicemonitor with kube-prometheus-stack works out of the box
+ releaseLabel: false
+ 
+```
+
+## 7.4.0
+
+**Release date:** 2023-02-02
+
+![AppVersion: 0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* update the prom/blackbox-exporter image to version/tag 0.23.0 (#2980)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 06d585aa..c387c41d 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -75,7 +75,7 @@ strategy:
+ 
+ image:
+   repository: prom/blackbox-exporter
+-  tag: v0.22.0
++  tag: v0.23.0
+   pullPolicy: IfNotPresent
+ 
+   ## Optionally specify an array of imagePullSecrets.
+```
+
+## 7.3.0
+
+**Release date:** 2023-02-02
+
+![AppVersion: 0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] adding optional additional hostname parameter to servicemonitor  (#2974)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 70f520d1..06d585aa 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -250,6 +250,7 @@ serviceMonitor:
+   targets:
+ #    - name: example                    # Human readable URL that will appear in Prometheus / AlertManager
+ #      url: http://example.com/healthz  # The URL that blackbox will scrape
++#      hostname: example.com            # HTTP probes can accept an additional `hostname` parameter that will set `Host` header and TLS SNI
+ #      labels: {}                       # Map of labels for ServiceMonitor. Overrides value set in `defaults`
+ #      interval: 60s                    # Scraping interval. Overrides value set in `defaults`
+ #      scrapeTimeout: 60s               # Scrape timeout. Overrides value set in `defaults`
+```
+
+## 7.2.0
+
+**Release date:** 2023-01-06
+
+![AppVersion: 0.23.0](https://img.shields.io/static/v1?label=AppVersion&message=0.23.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Update blackbox-exporter to 0.23.0 (#2886)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 5c64e18b..70f520d1 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -6,6 +6,9 @@ kind: Deployment
+ ##
+ namespaceOverride: ""
+ 
++## set to true to add the release label so scraping of the servicemonitor with kube-prometheus-stack works out of the box
++releaseLabel: false
++
+ podDisruptionBudget: {}
+   # maxUnavailable: 0
+ 
+```
+
+## 7.1.3
+
+**Release date:** 2022-10-26
+
+![AppVersion: 0.22.0](https://img.shields.io/static/v1?label=AppVersion&message=0.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] selfmonitor template refactor (#2590)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 7.1.2
+
+**Release date:** 2022-10-18
+
+![AppVersion: 0.22.0](https://img.shields.io/static/v1?label=AppVersion&message=0.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix invalid serviceMonitoring relabelings, see issue #2498 (#2581)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 7.1.1
+
+**Release date:** 2022-10-16
+
+![AppVersion: 0.22.0](https://img.shields.io/static/v1?label=AppVersion&message=0.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Fix PSP deprecation after k8s 1.25+ (#2566)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 7.1.0
+
+**Release date:** 2022-09-22
+
+![AppVersion: 0.22.0](https://img.shields.io/static/v1?label=AppVersion&message=0.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Add selfMonitor support (#2471)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 7bfbf405..5c64e18b 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -214,7 +214,18 @@ replicas: 1
+ 
+ serviceMonitor:
+   ## If true, a ServiceMonitor CRD is created for a prometheus operator
+-  ## https://github.com/coreos/prometheus-operator
++  ## https://github.com/coreos/prometheus-operator for blackbox-exporter itself
++  ##
++  selfMonitor:
++    enabled: false
++    additionalMetricsRelabels: {}
++    additionalRelabeling: []
++    labels: {}
++    interval: 30s
++    scrapeTimeout: 30s
++
++  ## If true, a ServiceMonitor CRD is created for a prometheus operator
++  ## https://github.com/coreos/prometheus-operator for each target
+   ##
+   enabled: false
+ 
+```
+
+## 7.0.1
+
+**Release date:** 2022-09-18
+
+![AppVersion: 0.22.0](https://img.shields.io/static/v1?label=AppVersion&message=0.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Fix rule rendering, #2450 (#2451)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 7.0.0
+
+**Release date:** 2022-08-10
+
+![AppVersion: 0.22.0](https://img.shields.io/static/v1?label=AppVersion&message=0.22.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Drop all capabilities in case that it is not needed (#2348)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 2fe4ec47..7bfbf405 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -72,7 +72,7 @@ strategy:
+ 
+ image:
+   repository: prom/blackbox-exporter
+-  tag: v0.20.0
++  tag: v0.22.0
+   pullPolicy: IfNotPresent
+ 
+   ## Optionally specify an array of imagePullSecrets.
+@@ -82,12 +82,20 @@ image:
+   # pullSecrets:
+   #   - myRegistrKeySecretName
+ 
++podSecurityContext: {}
++# fsGroup: 1000
++
+ ## User and Group to run blackbox-exporter container as
+-runAsUser: 1000
+-runAsGroup: 1000
+-readOnlyRootFilesystem: true
+-runAsNonRoot: true
+-allowPrivilegeEscalation: false
++securityContext:
++  runAsUser: 1000
++  runAsGroup: 1000
++  readOnlyRootFilesystem: true
++  runAsNonRoot: true
++  allowPrivilegeEscalation: false
++  capabilities:
++    drop: ["ALL"]
++# Add NET_RAW to enable ICMP
++#    add: ["NET_RAW"]
+ 
+ livenessProbe:
+   httpGet:
+@@ -139,8 +147,6 @@ extraSecretMounts: []
+   #   readOnly: true
+   #   defaultMode: 420
+ 
+-allowIcmp: false
+-
+ resources: {}
+   # limits:
+   #   memory: 300Mi
+```
+
+## 6.0.0
+
+**Release date:** 2022-07-11
+
+![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Bugfix: additionalRelabeling was appen… (#2179)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.8.2
+
+**Release date:** 2022-06-29
+
+![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Use pdb/psp apiVersion policy/v1 if available (#2201)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.8.1
+
+**Release date:** 2022-05-17
+
+![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] need default for additionalRelabeling (#2036)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.8.0
+
+**Release date:** 2022-05-06
+
+![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Add custom relabeling and quote values (#2033)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 720da8c5..2fe4ec47 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -215,6 +215,7 @@ serviceMonitor:
+   # Default values that will be used for all ServiceMonitors created by `targets`
+   defaults:
+     additionalMetricsRelabels: {}
++    additionalRelabeling: []
+     labels: {}
+     interval: 30s
+     scrapeTimeout: 30s
+@@ -234,6 +235,7 @@ serviceMonitor:
+ #      scrapeTimeout: 60s               # Scrape timeout. Overrides value set in `defaults`
+ #      module: http_2xx                 # Module used for scraping. Overrides value set in `defaults`
+ #      additionalMetricsRelabels: {}    # Map of metric labels and values to add
++#      additionalRelabeling: []         # List of metric relabeling actions to run
+ 
+ ## Custom PrometheusRules to be defined
+ ## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
+```
+
+## 5.7.0
+
+**Release date:** 2022-04-19
+
+![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Upgrade blackbox exporter from v0.19.0 to v0.20.0 (#1995)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 16e76d64..720da8c5 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -72,7 +72,7 @@ strategy:
+ 
+ image:
+   repository: prom/blackbox-exporter
+-  tag: v0.19.0
++  tag: v0.20.0
+   pullPolicy: IfNotPresent
+ 
+   ## Optionally specify an array of imagePullSecrets.
+```
+
+## 5.6.0
+
+**Release date:** 2022-03-26
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] disallow privilege escalation (#1877)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 4f842c1f..16e76d64 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -87,6 +87,7 @@ runAsUser: 1000
+ runAsGroup: 1000
+ readOnlyRootFilesystem: true
+ runAsNonRoot: true
++allowPrivilegeEscalation: false
+ 
+ livenessProbe:
+   httpGet:
+```
+
+## 5.5.1
+
+**Release date:** 2022-03-21
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Fix namespace override (#1894)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.5.0
+
+**Release date:** 2022-03-18
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Configure namespace on prometheus-blackbox-exporter chart (#1878)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 39281b4a..4f842c1f 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -2,6 +2,10 @@ restartPolicy: Always
+ 
+ kind: Deployment
+ 
++## Override the namespace
++##
++namespaceOverride: ""
++
+ podDisruptionBudget: {}
+   # maxUnavailable: 0
+ 
+```
+
+## 5.4.1
+
+**Release date:** 2022-02-25
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] fix servicemonitor sourceLabels (#1826)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.4.0
+
+**Release date:** 2022-02-21
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Expose ingress labels (#1813)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index d1564e5d..39281b4a 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -169,6 +169,7 @@ serviceAccount:
+ ingress:
+   enabled: false
+   className: ""
++  labels: {}
+   annotations: {}
+     # kubernetes.io/ingress.class: nginx
+     # kubernetes.io/tls-acme: "true"
+```
+
+## 5.3.2
+
+**Release date:** 2022-02-01
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Added runAsGroup to Deployment (#1760)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index ed504872..d1564e5d 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -78,8 +78,9 @@ image:
+   # pullSecrets:
+   #   - myRegistrKeySecretName
+ 
+-## User to run blackbox-exporter container as
++## User and Group to run blackbox-exporter container as
+ runAsUser: 1000
++runAsGroup: 1000
+ readOnlyRootFilesystem: true
+ runAsNonRoot: true
+ 
+```
+
+## 5.3.1
+
+**Release date:** 2021-10-27
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] revert change from #1450 and fix service labels (#1465)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.3.0
+
+**Release date:** 2021-10-26
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Service labels fix (#1449) (#1450)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.2.0
+
+**Release date:** 2021-10-14
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] skip managing security context (#1412)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.1.0
+
+**Release date:** 2021-09-27
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Allow automount of the serviceaccount token for sidecar containers (#1324)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index effd151f..ed504872 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -5,6 +5,9 @@ kind: Deployment
+ podDisruptionBudget: {}
+   # maxUnavailable: 0
+ 
++## Allow automount the serviceaccount token for sidecar container (eg: oauthproxy)
++automountServiceAccountToken: false
++
+ ## Additional blackbox-exporter container environment variables
+ ## For instance to add a http_proxy
+ ##
+```
+
+## 5.0.3
+
+**Release date:** 2021-07-21
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix servicemonitor range (#1192)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.0.2
+
+**Release date:** 2021-07-20
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* fix servicemonitor labels (#1187)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.0.1
+
+**Release date:** 2021-07-19
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* blackbox_exporter: Do not automount service account token (#1168)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.0.0
+
+**Release date:** 2021-07-18
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] remove helm2 support, ingress update, fix docs & use label template (#1121)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 88601a18..effd151f 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -80,7 +80,6 @@ runAsUser: 1000
+ readOnlyRootFilesystem: true
+ runAsNonRoot: true
+ 
+-
+ livenessProbe:
+   httpGet:
+     path: /health
+@@ -165,17 +164,19 @@ serviceAccount:
+ ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ ingress:
+   enabled: false
+-  hosts: []
+-     # - chart-example.local
+-  path: '/'
++  className: ""
+   annotations: {}
+     # kubernetes.io/ingress.class: nginx
+     # kubernetes.io/tls-acme: "true"
++  hosts:
++    - host: chart-example.local
++      paths:
++        - path: /
++          pathType: ImplementationSpecific
+   tls: []
+-    # Secrets must be manually created in the namespace.
+-    # - secretName: chart-example-tls
+-    #   hosts:
+-    #     - chart-example.local
++  #  - secretName: chart-example-tls
++  #    hosts:
++  #      - chart-example.local
+ 
+ podAnnotations: {}
+ 
+@@ -191,7 +192,7 @@ pod:
+   labels: {}
+ 
+ extraArgs: []
+-#  --history.limit=1000
++  # - --history.limit=1000
+ 
+ replicas: 1
+ 
+```
+
+## 4.15.0
+
+**Release date:** 2021-06-29
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] 4.15.0 Allow to configure init containers (#1124)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 04c36f16..88601a18 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -27,6 +27,10 @@ extraVolumeMounts:
+   # - name: ca-certs
+   #   mountPath: /etc/ssl/certs/ca-certificates.crt
+ 
++## Additional InitContainers to initialize the pod
++##
++extraInitContainers: []
++
+ extraContainers: []
+   # - name: oAuth2-proxy
+   #   args:
+```
+
+## 4.14.0
+
+**Release date:** 2021-06-09
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] Allow specifying volumeMounts for container (#1052)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index fe98ca88..04c36f16 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -22,6 +22,11 @@ extraVolumes: []
+   #   persistentVolumeClaim:
+   #     claimName: example
+ 
++## Additional volumes that will be attached to the blackbox-exporter container
++extraVolumeMounts:
++  # - name: ca-certs
++  #   mountPath: /etc/ssl/certs/ca-certificates.crt
++
+ extraContainers: []
+   # - name: oAuth2-proxy
+   #   args:
+```
+
+## 4.13.0
+
+**Release date:** 2021-05-25
+
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Bump blackbox exporter to v0.19.0 (#999)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 61f498d0..fe98ca88 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -56,7 +56,7 @@ strategy:
+ 
+ image:
+   repository: prom/blackbox-exporter
+-  tag: v0.18.0
++  tag: v0.19.0
+   pullPolicy: IfNotPresent
+ 
+   ## Optionally specify an array of imagePullSecrets.
+@@ -99,7 +99,7 @@ config:
+       timeout: 5s
+       http:
+         valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+-        no_follow_redirects: false
++        follow_redirects: true
+         preferred_ip_protocol: "ip4"
+ 
+ # Set custom config path, other than default /config/blackbox.yaml. If let empty, path will be "/config/blackbox.yaml"
+```
+
+## 4.12.0
+
+**Release date:** 2021-05-20
+
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* Added option to customize config path by setting it into values file (#983)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 7d70c9c9..61f498d0 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -102,6 +102,9 @@ config:
+         no_follow_redirects: false
+         preferred_ip_protocol: "ip4"
+ 
++# Set custom config path, other than default /config/blackbox.yaml. If let empty, path will be "/config/blackbox.yaml"
++# configPath: "/foo/bar"
++
+ extraConfigmapMounts: []
+   # - name: certs-configmap
+   #   mountPath: /etc/secrets/ssl/
+```
+
+## 4.11.0
+
+**Release date:** 2021-04-20
+
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-blackbox-exporter] feat(blackbox-exporter): implement host aliases (#865)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
+index 785b1b21..7d70c9c9 100644
+--- a/charts/prometheus-blackbox-exporter/values.yaml
++++ b/charts/prometheus-blackbox-exporter/values.yaml
+@@ -167,6 +167,14 @@ ingress:
+ 
+ podAnnotations: {}
+ 
++# Hostaliases allow to add additional DNS entries to be injected directly into pods.
++# This will take precedence over your implemented DNS solution
++hostAliases: []
++#  - ip: 192.168.1.1
++#    hostNames:
++#      - test.example.com
++#      - another.example.net
++
+ pod:
+   labels: {}
+ 
+```
+
+## 4.10.4
 
 **Release date:** 2021-04-08
 
@@ -9,13 +931,13 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Add support for hostNetwork (#819) 
+* [prometheus-blackbox-exporter] Add support for hostNetwork (#819)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index ccf34d9..785b1b2 100644
+index ccf34d9b..785b1b21 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -46,6 +46,8 @@ extraContainers: []
@@ -29,7 +951,7 @@ index ccf34d9..785b1b2 100644
      maxSurge: 1
 ```
 
-## 4.10.3 
+## 4.10.3
 
 **Release date:** 2021-01-21
 
@@ -38,7 +960,7 @@ index ccf34d9..785b1b2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Fix chart name in readme (#604) 
+* [prometheus-blackbox-exporter] Fix chart name in readme (#604)
 
 ### Default value changes
 
@@ -46,7 +968,7 @@ index ccf34d9..785b1b2 100644
 # No changes in this release
 ```
 
-## 4.10.2 
+## 4.10.2
 
 **Release date:** 2021-01-15
 
@@ -55,13 +977,13 @@ index ccf34d9..785b1b2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Changing default container port in prometheus-blackbox-exporter (#445) 
+* Changing default container port in prometheus-blackbox-exporter (#445)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 6b467c2..ccf34d9 100644
+index 6b467c2f..ccf34d9b 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -132,7 +132,11 @@ service:
@@ -79,7 +1001,7 @@ index 6b467c2..ccf34d9 100644
    create: true
 ```
 
-## 4.10.1 
+## 4.10.1
 
 **Release date:** 2020-11-19
 
@@ -88,13 +1010,13 @@ index 6b467c2..ccf34d9 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] add detail comment to the option allowMonitoringNamespace in values.yaml (#378) 
+* [prometheus-blackbox-exporter] add detail comment to the option allowMonitoringNamespace in values.yaml (#378)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index bb7cdfe..6b467c2 100644
+index bb7cdfee..6b467c2f 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -211,6 +211,8 @@ networkPolicy:
@@ -108,7 +1030,7 @@ index bb7cdfe..6b467c2 100644
  ## dnsPolicy and dnsConfig for Deployments and Daemonsets if you want non-default settings.
 ```
 
-## 4.10.0 
+## 4.10.0
 
 **Release date:** 2020-10-25
 
@@ -117,13 +1039,13 @@ index bb7cdfe..6b467c2 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Feat use external secret for configura… (#139) 
+* [prometheus-blackbox-exporter] Feat use external secret for configura… (#139)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 1b9778e..bb7cdfe 100644
+index 1b9778ec..bb7cdfee 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -84,6 +84,11 @@ nodeSelector: {}
@@ -140,7 +1062,7 @@ index 1b9778e..bb7cdfe 100644
    modules:
 ```
 
-## 4.9.1 
+## 4.9.1
 
 **Release date:** 2020-10-18
 
@@ -149,7 +1071,7 @@ index 1b9778e..bb7cdfe 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] fix service monitor template (#227) 
+* [prometheus-blackbox-exporter] fix service monitor template (#227)
 
 ### Default value changes
 
@@ -157,7 +1079,7 @@ index 1b9778e..bb7cdfe 100644
 # No changes in this release
 ```
 
-## 4.9.0 
+## 4.9.0
 
 **Release date:** 2020-10-17
 
@@ -166,13 +1088,13 @@ index 1b9778e..bb7cdfe 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Bump blackbox exporter to v0.18.0. (#226) 
+* Bump blackbox exporter to v0.18.0. (#226)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 2542314..1b9778e 100644
+index 2542314e..1b9778ec 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -54,7 +54,7 @@ strategy:
@@ -186,7 +1108,7 @@ index 2542314..1b9778e 100644
    ## Optionally specify an array of imagePullSecrets.
 ```
 
-## 4.8.0 
+## 4.8.0
 
 **Release date:** 2020-10-16
 
@@ -195,13 +1117,13 @@ index 2542314..1b9778e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Added support of sidecars and extraVolumes (#194) 
+* [prometheus-blackbox-exporter] Added support of sidecars and extraVolumes (#194)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 4d395d1..2542314 100644
+index 4d395d19..2542314e 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -13,6 +13,36 @@ podDisruptionBudget: {}
@@ -273,7 +1195,7 @@ index 4d395d1..2542314 100644
  #    - name: example                    # Human readable URL that will appear in Prometheus / AlertManager
 ```
 
-## 4.7.0 
+## 4.7.0
 
 **Release date:** 2020-10-07
 
@@ -282,13 +1204,13 @@ index 4d395d1..2542314 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Add additional env variables to blackbox-exporter container (#182) 
+* [prometheus-blackbox-exporter] Add additional env variables to blackbox-exporter container (#182)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 564ef2e..4d395d1 100644
+index 564ef2ef..4d395d19 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -5,6 +5,14 @@ kind: Deployment
@@ -308,7 +1230,7 @@ index 564ef2e..4d395d1 100644
  
 ```
 
-## 4.6.0 
+## 4.6.0
 
 **Release date:** 2020-09-22
 
@@ -317,13 +1239,13 @@ index 564ef2e..4d395d1 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Allow custom labels for pods. Add service labels to values.yaml. (#125) 
+* [prometheus-blackbox-exporter] Allow custom labels for pods. Add service labels to values.yaml. (#125)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 3fae201..564ef2e 100644
+index 3fae201d..564ef2ef 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -85,6 +85,7 @@ priorityClassName: ""
@@ -346,7 +1268,7 @@ index 3fae201..564ef2e 100644
  
 ```
 
-## 4.5.2 
+## 4.5.2
 
 **Release date:** 2020-09-18
 
@@ -355,13 +1277,13 @@ index 3fae201..564ef2e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* fix http_2xx defaults (#101) 
+* fix http_2xx defaults (#101)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index b7db0e0..3fae201 100644
+index b7db0e0a..3fae201d 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -52,7 +52,7 @@ config:
@@ -375,7 +1297,7 @@ index b7db0e0..3fae201 100644
  
 ```
 
-## 4.5.1 
+## 4.5.1
 
 **Release date:** 2020-09-08
 
@@ -384,7 +1306,7 @@ index b7db0e0..3fae201 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [blackbox-exporter] added monotek to maintainers (#58) 
+* [blackbox-exporter] added monotek to maintainers (#58)
 
 ### Default value changes
 
@@ -392,7 +1314,7 @@ index b7db0e0..3fae201 100644
 # No changes in this release
 ```
 
-## 4.5.0 
+## 4.5.0
 
 **Release date:** 2020-09-08
 
@@ -401,13 +1323,13 @@ index b7db0e0..3fae201 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Add additional metrics relabels blackbox and update to 0.17.0 (#69) 
+* [prometheus-blackbox-exporter] Add additional metrics relabels blackbox and update to 0.17.0 (#69)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index e6e8f1e..b7db0e0 100644
+index e6e8f1e3..b7db0e0a 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -16,7 +16,7 @@ strategy:
@@ -442,7 +1364,7 @@ index e6e8f1e..b7db0e0 100644
  ## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
 ```
 
-## 4.4.0 
+## 4.4.0
 
 **Release date:** 2020-09-08
 
@@ -451,13 +1373,13 @@ index e6e8f1e..b7db0e0 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] allow configurable DNS settings (#42) 
+* [prometheus-blackbox-exporter] allow configurable DNS settings (#42)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 5797022..e6e8f1e 100644
+index 57970220..e6e8f1e3 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -156,3 +156,8 @@ networkPolicy:
@@ -471,7 +1393,7 @@ index 5797022..e6e8f1e 100644
 +dnsConfig:
 ```
 
-## 4.3.2 
+## 4.3.2
 
 **Release date:** 2020-09-07
 
@@ -480,7 +1402,7 @@ index 5797022..e6e8f1e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] fix linting failure due to deprecated api version (see issue #56) (#57) 
+* [prometheus-blackbox-exporter] fix linting failure due to deprecated api version (see issue #56) (#57)
 
 ### Default value changes
 
@@ -488,7 +1410,7 @@ index 5797022..e6e8f1e 100644
 # No changes in this release
 ```
 
-## 4.3.1 
+## 4.3.1
 
 **Release date:** 2020-08-20
 
@@ -497,7 +1419,7 @@ index 5797022..e6e8f1e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prep initial charts indexing (#14) 
+* Prep initial charts indexing (#14)
 
 ### Default value changes
 
@@ -505,7 +1427,7 @@ index 5797022..e6e8f1e 100644
 # No changes in this release
 ```
 
-## 4.3.0 
+## 4.3.0
 
 **Release date:** 2020-08-04
 
@@ -514,13 +1436,13 @@ index 5797022..e6e8f1e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] added network policy (#23273) 
+* [stable/prometheus-blackbox-exporter] added network policy (#23273)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index e8488f6..5797022 100644
+index e8488f66..57970220 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -149,3 +149,10 @@ prometheusRule:
@@ -536,7 +1458,7 @@ index e8488f6..5797022 100644
 +  allowMonitoringNamespace: false
 ```
 
-## 4.2.2 
+## 4.2.2
 
 **Release date:** 2020-08-03
 
@@ -545,7 +1467,7 @@ index e8488f6..5797022 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* fix(helm#23318): [stable/prometheus-blackbox-exporter] (#23319) 
+* fix(helm#23318): [stable/prometheus-blackbox-exporter] (#23319)
 
 ### Default value changes
 
@@ -553,7 +1475,7 @@ index e8488f6..5797022 100644
 # No changes in this release
 ```
 
-## 4.2.1 
+## 4.2.1
 
 **Release date:** 2020-08-03
 
@@ -562,7 +1484,7 @@ index e8488f6..5797022 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] remove replicas and strategy keys from daemonset template (#23421) 
+* [stable/prometheus-blackbox-exporter] remove replicas and strategy keys from daemonset template (#23421)
 
 ### Default value changes
 
@@ -570,7 +1492,7 @@ index e8488f6..5797022 100644
 # No changes in this release
 ```
 
-## 4.2.0 
+## 4.2.0
 
 **Release date:** 2020-07-27
 
@@ -579,7 +1501,7 @@ index e8488f6..5797022 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Fix blackbox target's metrics labels (#22546) 
+* Fix blackbox target's metrics labels (#22546)
 
 ### Default value changes
 
@@ -587,7 +1509,7 @@ index e8488f6..5797022 100644
 # No changes in this release
 ```
 
-## 4.1.1 
+## 4.1.1
 
 **Release date:** 2020-06-15
 
@@ -596,7 +1518,7 @@ index e8488f6..5797022 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Fix broken additionalLabels for protmetheusrule (#22800) 
+* [stable/prometheus-blackbox-exporter] Fix broken additionalLabels for protmetheusrule (#22800)
 
 ### Default value changes
 
@@ -604,7 +1526,7 @@ index e8488f6..5797022 100644
 # No changes in this release
 ```
 
-## 4.1.0 
+## 4.1.0
 
 **Release date:** 2020-05-14
 
@@ -613,13 +1535,13 @@ index e8488f6..5797022 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add vars for liveness and readyness (#22201) 
+* Add vars for liveness and readyness (#22201)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 59c0955..e8488f6 100644
+index 59c09551..e8488f66 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -31,6 +31,16 @@ runAsUser: 1000
@@ -641,7 +1563,7 @@ index 59c0955..e8488f6 100644
  affinity: {}
 ```
 
-## 4.0.0 
+## 4.0.0
 
 **Release date:** 2020-05-14
 
@@ -650,13 +1572,13 @@ index 59c0955..e8488f6 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add pod security policy support and create service account by default (#21796) 
+* Add pod security policy support and create service account by default (#21796)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index d8f27ad..59c0955 100644
+index d8f27ad3..59c09551 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -5,6 +5,9 @@ kind: Deployment
@@ -680,7 +1602,7 @@ index d8f27ad..59c0955 100644
    name:
 ```
 
-## 3.5.0 
+## 3.5.0
 
 **Release date:** 2020-04-28
 
@@ -689,13 +1611,13 @@ index d8f27ad..59c0955 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add Ingress path (#22142) 
+* Add Ingress path (#22142)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index c0409be..d8f27ad 100644
+index c0409be1..d8f27ad3 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -91,6 +91,7 @@ ingress:
@@ -708,7 +1630,7 @@ index c0409be..d8f27ad 100644
      # kubernetes.io/tls-acme: "true"
 ```
 
-## 3.4.1 
+## 3.4.1
 
 **Release date:** 2020-04-27
 
@@ -717,7 +1639,7 @@ index c0409be..d8f27ad 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] prometheusrule additionalLabels have too many indents/spaces (#22051) 
+* [stable/prometheus-blackbox-exporter] prometheusrule additionalLabels have too many indents/spaces (#22051)
 
 ### Default value changes
 
@@ -725,7 +1647,7 @@ index c0409be..d8f27ad 100644
 # No changes in this release
 ```
 
-## 3.4.0 
+## 3.4.0
 
 **Release date:** 2020-04-07
 
@@ -734,13 +1656,13 @@ index c0409be..d8f27ad 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Add PrometheusRule support (#21776) 
+* [stable/prometheus-blackbox-exporter] Add PrometheusRule support (#21776)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 4c2851d..c0409be 100644
+index 4c2851dd..c0409be1 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -127,3 +127,11 @@ serviceMonitor:
@@ -757,7 +1679,7 @@ index 4c2851d..c0409be 100644
 +  rules: []
 ```
 
-## 3.3.0 
+## 3.3.0
 
 **Release date:** 2020-04-02
 
@@ -766,13 +1688,13 @@ index 4c2851d..c0409be 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Add serviceAccount support (#21726) 
+* [stable/prometheus-blackbox-exporter] Add serviceAccount support (#21726)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index f6e7eac..4c2851d 100644
+index f6e7eac1..4c2851dd 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -75,6 +75,14 @@ service:
@@ -792,7 +1714,7 @@ index f6e7eac..4c2851d 100644
  ## from outside the Kubernetes cluster.
 ```
 
-## 3.2.0 
+## 3.2.0
 
 **Release date:** 2020-02-11
 
@@ -801,13 +1723,13 @@ index f6e7eac..4c2851d 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Add possibility to set blackbox to daemonset (#19097) 
+* Add possibility to set blackbox to daemonset (#19097)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 53e2f33..f6e7eac 100644
+index 53e2f33e..f6e7eac1 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -1,5 +1,7 @@
@@ -820,7 +1742,7 @@ index 53e2f33..f6e7eac 100644
  
 ```
 
-## 3.1.0 
+## 3.1.0
 
 **Release date:** 2020-02-03
 
@@ -829,13 +1751,13 @@ index 53e2f33..f6e7eac 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] add "allowIcmp" setting (#20409) 
+* [stable/prometheus-blackbox-exporter] add "allowIcmp" setting (#20409)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index e52e351..53e2f33 100644
+index e52e3511..53e2f33e 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -58,6 +58,8 @@ extraSecretMounts: []
@@ -849,7 +1771,7 @@ index e52e351..53e2f33 100644
    #   memory: 300Mi
 ```
 
-## 3.0.1 
+## 3.0.1
 
 **Release date:** 2020-01-30
 
@@ -858,7 +1780,7 @@ index e52e351..53e2f33 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Fix multiple target servicemonitor  (#20296) 
+* [stable/prometheus-blackbox-exporter] Fix multiple target servicemonitor  (#20296)
 
 ### Default value changes
 
@@ -866,7 +1788,7 @@ index e52e351..53e2f33 100644
 # No changes in this release
 ```
 
-## 3.0.0 
+## 3.0.0
 
 **Release date:** 2020-01-20
 
@@ -875,13 +1797,13 @@ index e52e351..53e2f33 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Allow scraping multiple targets (#19620) 
+* [stable/prometheus-blackbox-exporter] Allow scraping multiple targets (#19620)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 5469f07..e52e351 100644
+index 5469f07b..e52e3511 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -100,11 +100,18 @@ serviceMonitor:
@@ -913,7 +1835,7 @@ index 5469f07..e52e351 100644
 +#      module: http_2xx                 # Module used for scraping. Overrides value set in `defaults`
 ```
 
-## 2.0.0 
+## 2.0.0
 
 **Release date:** 2020-01-08
 
@@ -922,13 +1844,13 @@ index 5469f07..e52e351 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Fix PodDisruptionBudget configuration (#19707) 
+* [stable/prometheus-blackbox-exporter] Fix PodDisruptionBudget configuration (#19707)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 71d7a01..5469f07 100644
+index 71d7a011..5469f07b 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -1,8 +1,7 @@
@@ -944,7 +1866,7 @@ index 71d7a01..5469f07 100644
    rollingUpdate:
 ```
 
-## 1.6.0 
+## 1.6.0
 
 **Release date:** 2019-12-16
 
@@ -953,13 +1875,13 @@ index 71d7a01..5469f07 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Able to mount extra secrets int… (#19119) 
+* [stable/prometheus-blackbox-exporter] Able to mount extra secrets int… (#19119)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 0c44610..71d7a01 100644
+index 0c446108..71d7a011 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -12,7 +12,7 @@ strategy:
@@ -997,7 +1919,7 @@ index 0c44610..71d7a01 100644
    #   memory: 300Mi
 ```
 
-## 1.5.1 
+## 1.5.1
 
 **Release date:** 2019-11-13
 
@@ -1006,7 +1928,7 @@ index 0c44610..71d7a01 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Update the Ingress apiversion to networking.k8s.io/v1beta1 (#18645) 
+* [stable/prometheus-blackbox-exporter] Update the Ingress apiversion to networking.k8s.io/v1beta1 (#18645)
 
 ### Default value changes
 
@@ -1014,7 +1936,7 @@ index 0c44610..71d7a01 100644
 # No changes in this release
 ```
 
-## 1.5.0 
+## 1.5.0
 
 **Release date:** 2019-11-04
 
@@ -1023,13 +1945,13 @@ index 0c44610..71d7a01 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] removes configmap-reload in favor of a configmap checksum (#17687) 
+* [stable/prometheus-blackbox-exporter] removes configmap-reload in favor of a configmap checksum (#17687)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 618baa3..0c44610 100644
+index 618baa37..0c446108 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -78,30 +78,6 @@ extraArgs: []
@@ -1065,7 +1987,7 @@ index 618baa3..0c44610 100644
    ## If true, a ServiceMonitor CRD is created for a prometheus operator
 ```
 
-## 1.4.0 
+## 1.4.0
 
 **Release date:** 2019-10-23
 
@@ -1074,13 +1996,13 @@ index 618baa3..0c44610 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Add option to enable/disable PodDisruptionBudget. (#18235) 
+* [stable/prometheus-blackbox-exporter] Add option to enable/disable PodDisruptionBudget. (#18235)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 9777a5e..618baa3 100644
+index 9777a5e5..618baa37 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -1,6 +1,7 @@
@@ -1093,7 +2015,7 @@ index 9777a5e..618baa3 100644
  strategy:
 ```
 
-## 1.3.1 
+## 1.3.1
 
 **Release date:** 2019-10-02
 
@@ -1102,13 +2024,13 @@ index 9777a5e..618baa3 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] updated docker image to 0.15.1 (#17560) 
+* [stable/prometheus-blackbox-exporter] updated docker image to 0.15.1 (#17560)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 62305b7..9777a5e 100644
+index 62305b7f..9777a5e5 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -11,7 +11,7 @@ strategy:
@@ -1122,7 +2044,7 @@ index 62305b7..9777a5e 100644
    ## Optionally specify an array of imagePullSecrets.
 ```
 
-## 1.3.0 
+## 1.3.0
 
 **Release date:** 2019-09-12
 
@@ -1131,13 +2053,13 @@ index 62305b7..9777a5e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/blackbox-exporter]: upgrade (#17083) 
+* [stable/blackbox-exporter]: upgrade (#17083)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 8dfb9d0..62305b7 100644
+index 8dfb9d0f..62305b7f 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -11,7 +11,7 @@ strategy:
@@ -1151,7 +2073,7 @@ index 8dfb9d0..62305b7 100644
    ## Optionally specify an array of imagePullSecrets.
 ```
 
-## 1.2.0 
+## 1.2.0
 
 **Release date:** 2019-09-05
 
@@ -1160,13 +2082,13 @@ index 8dfb9d0..62305b7 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometehus-blackbox-exporter] Improve configurability. (#16815) 
+* [stable/prometehus-blackbox-exporter] Improve configurability. (#16815)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 2558b75..8dfb9d0 100644
+index 2558b75a..8dfb9d0f 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -1,5 +1,14 @@
@@ -1195,7 +2117,7 @@ index 2558b75..8dfb9d0 100644
    type: ClusterIP
 ```
 
-## 1.1.0 
+## 1.1.0
 
 **Release date:** 2019-08-22
 
@@ -1204,13 +2126,13 @@ index 2558b75..8dfb9d0 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Allow custom module for blackbox service monitor (#15987) 
+* Allow custom module for blackbox service monitor (#15987)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 81e4e65..2558b75 100644
+index 81e4e65a..2558b75a 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -99,6 +99,7 @@ serviceMonitor:
@@ -1223,7 +2145,7 @@ index 81e4e65..2558b75 100644
    # Optional human readable URL that will appear in Prometheus / AlertManager
 ```
 
-## 1.0.1 
+## 1.0.1
 
 **Release date:** 2019-08-05
 
@@ -1232,13 +2154,13 @@ index 81e4e65..2558b75 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Fixes issue where containers in deployment were running as root (#15154) 
+* [stable/prometheus-blackbox-exporter] Fixes issue where containers in deployment were running as root (#15154)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index d3b96be..81e4e65 100644
+index d3b96bec..81e4e65a 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -12,6 +12,11 @@ image:
@@ -1267,7 +2189,7 @@ index d3b96be..81e4e65 100644
    image:
 ```
 
-## 1.0.0 
+## 1.0.0
 
 **Release date:** 2019-07-24
 
@@ -1276,13 +2198,13 @@ index d3b96be..81e4e65 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Breaking change: general upgrade and ServiceMonitor (#11426) 
+* [stable/prometheus-blackbox-exporter] Breaking change: general upgrade and ServiceMonitor (#11426)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index ad96e18..d3b96be 100644
+index ad96e18b..d3b96bec 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -80,3 +80,16 @@ configmapReload:
@@ -1304,7 +2226,7 @@ index ad96e18..d3b96be 100644
 +  urlHumanReadable:  # www.changemeoriwillfail.com
 ```
 
-## 0.4.0 
+## 0.4.0
 
 **Release date:** 2019-06-27
 
@@ -1313,13 +2235,13 @@ index ad96e18..d3b96be 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] Add support for imagePullSecrets (#14903) 
+* [stable/prometheus-blackbox-exporter] Add support for imagePullSecrets (#14903)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 46041d0..ad96e18 100644
+index 46041d03..ad96e18b 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -5,6 +5,13 @@ image:
@@ -1338,7 +2260,7 @@ index 46041d0..ad96e18 100644
  affinity: {}
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2019-04-29
 
@@ -1347,13 +2269,13 @@ index 46041d0..ad96e18 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-blackbox-exporter] add option to store config as a Secret (#12731) 
+* [stable/prometheus-blackbox-exporter] add option to store config as a Secret (#12731)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 3b942ad..46041d0 100644
+index 3b942adc..46041d03 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -9,6 +9,7 @@ nodeSelector: {}
@@ -1366,7 +2288,7 @@ index 3b942ad..46041d0 100644
      http_2xx:
 ```
 
-## 0.2.1 
+## 0.2.1
 
 **Release date:** 2019-04-19
 
@@ -1375,13 +2297,13 @@ index 3b942ad..46041d0 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Update blackbox exporter to v0.14.0 (#11933) 
+* Update blackbox exporter to v0.14.0 (#11933)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 6b56a83..3b942ad 100644
+index 6b56a835..3b942adc 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -2,7 +2,7 @@ restartPolicy: Always
@@ -1395,7 +2317,7 @@ index 6b56a83..3b942ad 100644
  nodeSelector: {}
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2018-11-05
 
@@ -1404,13 +2326,13 @@ index 6b56a83..3b942ad 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Blackbox-exporter: Add support for affinity and tolerations (#8865) 
+* Blackbox-exporter: Add support for affinity and tolerations (#8865)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 0a6d91e..6b56a83 100644
+index 0a6d91ec..6b56a835 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -6,6 +6,8 @@ image:
@@ -1424,7 +2346,7 @@ index 0a6d91e..6b56a83 100644
    modules:
 ```
 
-## 0.1.3 
+## 0.1.3
 
 **Release date:** 2018-10-24
 
@@ -1433,13 +2355,13 @@ index 0a6d91e..6b56a83 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Fixing minor syntax error (#8674) 
+* [prometheus-blackbox-exporter] Fixing minor syntax error (#8674)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index c8859ab..0a6d91e 100644
+index c8859ab3..0a6d91ec 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -17,7 +17,7 @@ config:
@@ -1453,7 +2375,7 @@ index c8859ab..0a6d91e 100644
    # requests:
 ```
 
-## 0.1.2 
+## 0.1.2
 
 **Release date:** 2018-10-24
 
@@ -1462,13 +2384,13 @@ index c8859ab..0a6d91e 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-blackbox-exporter] Allowing custom service annotations and labels (#8673) 
+* [prometheus-blackbox-exporter] Allowing custom service annotations and labels (#8673)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index 55d7de9..c8859ab 100644
+index 55d7de95..c8859ab3 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -24,6 +24,7 @@ resources:
@@ -1481,7 +2403,7 @@ index 55d7de9..c8859ab 100644
  
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2018-07-15
 
@@ -1490,13 +2412,13 @@ index 55d7de9..c8859ab 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Review readme (#6399) 
+* Review readme (#6399)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-blackbox-exporter/values.yaml b/charts/prometheus-blackbox-exporter/values.yaml
-index a26fdc1..55d7de9 100644
+index a26fdc12..55d7de95 100644
 --- a/charts/prometheus-blackbox-exporter/values.yaml
 +++ b/charts/prometheus-blackbox-exporter/values.yaml
 @@ -7,14 +7,15 @@ image:
@@ -1525,7 +2447,7 @@ index a26fdc1..55d7de9 100644
    # limits:
 ```
 
-## 0.1.0 
+## 0.1.0
 
 **Release date:** 2018-06-28
 
@@ -1534,7 +2456,7 @@ index a26fdc1..55d7de9 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Create helm chart for blackbox exporter (#6134) 
+* Create helm chart for blackbox exporter (#6134)
 
 ### Default value changes
 

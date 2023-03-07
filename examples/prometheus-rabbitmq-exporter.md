@@ -1,6 +1,126 @@
 # Change Log
 
-## 1.0.0 
+## 1.4.0
+
+**Release date:** 2023-01-11
+
+![AppVersion: v0.29.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.29.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-rabbitmq-exporter] Add support of EXCLUDE_METRICS (#2900)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
+index 75fae33c..0ecb6d5e 100644
+--- a/charts/prometheus-rabbitmq-exporter/values.yaml
++++ b/charts/prometheus-rabbitmq-exporter/values.yaml
+@@ -50,6 +50,7 @@ rabbitmq:
+   output_format: "TTY"
+   timeout: 30
+   max_queues: 0
++  excludeMetrics: ""
+ 
+ ## Additional labels to set in the Deployment object. Together with standard labels from
+ ## the chart
+```
+
+## 1.3.0
+
+**Release date:** 2022-07-25
+
+![AppVersion: v0.29.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.29.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-rabbitmq-exporter] Add imagePullSecrets feature flag (#2289)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
+index c8a5c0c9..75fae33c 100644
+--- a/charts/prometheus-rabbitmq-exporter/values.yaml
++++ b/charts/prometheus-rabbitmq-exporter/values.yaml
+@@ -6,6 +6,8 @@ image:
+   repository: kbudde/rabbitmq-exporter
+   tag: v0.29.0
+   pullPolicy: IfNotPresent
++  pullSecrets: []
++
+ service:
+   type: ClusterIP
+   externalPort: 9419
+```
+
+## 1.2.0
+
+**Release date:** 2022-04-09
+
+![AppVersion: v0.29.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.29.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* feat(rabbitmq-exporter): :sparkles: Added Service Account (#1965)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
+index aabeb28f..c8a5c0c9 100644
+--- a/charts/prometheus-rabbitmq-exporter/values.yaml
++++ b/charts/prometheus-rabbitmq-exporter/values.yaml
+@@ -69,3 +69,11 @@ prometheus:
+   rules:
+     enabled: false
+     additionalLabels: {}
++
++serviceAccount:
++  # Specifies whether a ServiceAccount should be created
++  create: true
++  # The name of the ServiceAccount to use.
++  # If not set and create is true, a name is generated using the fullname template
++  name:
++  annotations: {}
+```
+
+## 1.1.0
+
+**Release date:** 2022-01-19
+
+![AppVersion: v0.29.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.29.0&color=success&logo=)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+
+* [prometheus-rabbitmq-exporter] Introduce a new field to add additional labels for prometheus-rabbitmq-exporter deployment object (#1724)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
+index 30b7b8fd..aabeb28f 100644
+--- a/charts/prometheus-rabbitmq-exporter/values.yaml
++++ b/charts/prometheus-rabbitmq-exporter/values.yaml
+@@ -49,6 +49,10 @@ rabbitmq:
+   timeout: 30
+   max_queues: 0
+ 
++## Additional labels to set in the Deployment object. Together with standard labels from
++## the chart
++additionalLabels: {}
++
+ podLabels: {}
+ 
+ annotations: {}
+```
+
+## 1.0.0
 
 **Release date:** 2021-04-06
 
@@ -9,7 +129,7 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-rabbitmq-exporter] Polish up Prometheus rules (#724) 
+* [prometheus-rabbitmq-exporter] Polish up Prometheus rules (#724)
 
 ### Default value changes
 
@@ -17,7 +137,7 @@
 # No changes in this release
 ```
 
-## 0.7.0 
+## 0.7.0
 
 **Release date:** 2021-03-19
 
@@ -26,14 +146,14 @@
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-rabbitmq-exporter] update default rabbitmq secret key (#778) 
-* [prometheus-rabbitmq-exporter] Make it possible to add podLabels and priorityClass  (#513) 
+* [prometheus-rabbitmq-exporter] update default rabbitmq secret key (#778)
+* [prometheus-rabbitmq-exporter] Make it possible to add podLabels and priorityClass  (#513)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index b2b7a0f..30b7b8f 100644
+index b2b7a0f2..30b7b8fd 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -37,6 +37,7 @@ rabbitmq:
@@ -55,7 +175,7 @@ index b2b7a0f..30b7b8f 100644
  #  prometheus.io/path: "/metrics"
 ```
 
-## 0.6.0 
+## 0.6.0
 
 **Release date:** 2021-01-16
 
@@ -64,13 +184,13 @@ index b2b7a0f..30b7b8f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-rabbitmq-exporter] Add the possibility to specify a priority class (#416) 
+* [prometheus-rabbitmq-exporter] Add the possibility to specify a priority class (#416)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index 33ea475..b2b7a0f 100644
+index 33ea475d..b2b7a0f2 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -22,6 +22,8 @@ resources: {}
@@ -84,7 +204,7 @@ index 33ea475..b2b7a0f 100644
  tolerations: []
 ```
 
-## 0.5.8 
+## 0.5.8
 
 **Release date:** 2021-01-15
 
@@ -93,7 +213,7 @@ index 33ea475..b2b7a0f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-rabbitmq-exporter] Add desaintmartin & monotek as maintainers (#571) 
+* [prometheus-rabbitmq-exporter] Add desaintmartin & monotek as maintainers (#571)
 
 ### Default value changes
 
@@ -101,7 +221,7 @@ index 33ea475..b2b7a0f 100644
 # No changes in this release
 ```
 
-## 0.5.7 
+## 0.5.7
 
 **Release date:** 2021-01-13
 
@@ -110,7 +230,7 @@ index 33ea475..b2b7a0f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-rabbitmq-exporter] Updated rabbitmq exporter maintainer list (#282) 
+* [prometheus-rabbitmq-exporter] Updated rabbitmq exporter maintainer list (#282)
 
 ### Default value changes
 
@@ -118,7 +238,7 @@ index 33ea475..b2b7a0f 100644
 # No changes in this release
 ```
 
-## 0.5.6 
+## 0.5.6
 
 **Release date:** 2020-08-20
 
@@ -127,7 +247,7 @@ index 33ea475..b2b7a0f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Prep initial charts indexing (#14) 
+* Prep initial charts indexing (#14)
 
 ### Default value changes
 
@@ -135,7 +255,7 @@ index 33ea475..b2b7a0f 100644
 # No changes in this release
 ```
 
-## 0.5.5 
+## 0.5.5
 
 **Release date:** 2019-12-02
 
@@ -144,13 +264,13 @@ index 33ea475..b2b7a0f 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-rabbitmq-exporter] Fix ServiceMonitor + adds alerts (#19276) 
+* [stable/prometheus-rabbitmq-exporter] Fix ServiceMonitor + adds alerts (#19276)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index f68e5f7..33ea475 100644
+index f68e5f7e..33ea475d 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -57,3 +57,6 @@ prometheus:
@@ -162,7 +282,7 @@ index f68e5f7..33ea475 100644
 +    additionalLabels: {}
 ```
 
-## 0.5.3 
+## 0.5.3
 
 **Release date:** 2019-09-15
 
@@ -171,7 +291,7 @@ index f68e5f7..33ea475 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-rabbitmq-exporter] ServiceMonitor Port Bugfix (#15801) 
+* [stable/prometheus-rabbitmq-exporter] ServiceMonitor Port Bugfix (#15801)
 
 ### Default value changes
 
@@ -179,7 +299,7 @@ index f68e5f7..33ea475 100644
 # No changes in this release
 ```
 
-## 0.5.2 
+## 0.5.2
 
 **Release date:** 2019-08-13
 
@@ -188,7 +308,7 @@ index f68e5f7..33ea475 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Rabbitmq prometheus exporter should use the same name for the port, otherwise servicemonitor will not scrape successfully (#16134) 
+* Rabbitmq prometheus exporter should use the same name for the port, otherwise servicemonitor will not scrape successfully (#16134)
 
 ### Default value changes
 
@@ -196,7 +316,7 @@ index f68e5f7..33ea475 100644
 # No changes in this release
 ```
 
-## 0.5.1 
+## 0.5.1
 
 **Release date:** 2019-06-22
 
@@ -205,13 +325,13 @@ index f68e5f7..33ea475 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Added support for existing rabbitmq password secret (#14958) 
+* Added support for existing rabbitmq password secret (#14958)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index 596c45b..f68e5f7 100644
+index 596c45b5..f68e5f7e 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -33,6 +33,8 @@ rabbitmq:
@@ -225,7 +345,7 @@ index 596c45b..f68e5f7 100644
    include_vhost: ".*"
 ```
 
-## 0.5.0 
+## 0.5.0
 
 **Release date:** 2019-06-04
 
@@ -234,13 +354,13 @@ index 596c45b..f68e5f7 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-rabbitmq-exporter] Adding Prometheus Operator Service Monitor (#12723) 
+* [stable/prometheus-rabbitmq-exporter] Adding Prometheus Operator Service Monitor (#12723)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index 5429c20..596c45b 100644
+index 5429c20e..596c45b5 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -47,4 +47,11 @@ rabbitmq:
@@ -258,7 +378,7 @@ index 5429c20..596c45b 100644
 +    namespace: []
 ```
 
-## 0.4.1 
+## 0.4.1
 
 **Release date:** 2019-04-29
 
@@ -267,13 +387,13 @@ index 5429c20..596c45b 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-rabbitmq-exporter] Fix default parameters in readme  (#12858) 
+* [stable/prometheus-rabbitmq-exporter] Fix default parameters in readme  (#12858)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index ad98034..5429c20 100644
+index ad98034d..5429c20e 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -47,4 +47,4 @@ rabbitmq:
@@ -284,7 +404,7 @@ index ad98034..5429c20 100644
 +#  prometheus.io/port: "9419"
 ```
 
-## 0.4.0 
+## 0.4.0
 
 **Release date:** 2019-02-08
 
@@ -293,13 +413,13 @@ index ad98034..5429c20 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-rabbitmq-export] Add skip_verify to rabbitmq-exporter (#11107) 
+* [prometheus-rabbitmq-export] Add skip_verify to rabbitmq-exporter (#11107)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index 9eb82a5..ad98034 100644
+index 9eb82a5b..ad98034d 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -37,6 +37,7 @@ rabbitmq:
@@ -312,7 +432,7 @@ index 9eb82a5..ad98034 100644
    output_format: "TTY"
 ```
 
-## 0.3.0 
+## 0.3.0
 
 **Release date:** 2019-01-09
 
@@ -321,13 +441,13 @@ index 9eb82a5..ad98034 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Rabbitmq exporter env vars (#9244) 
+* Rabbitmq exporter env vars (#9244)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index d75baf7..9eb82a5 100644
+index d75baf78..9eb82a5b 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -38,6 +38,10 @@ rabbitmq:
@@ -343,7 +463,7 @@ index d75baf7..9eb82a5 100644
  #  prometheus.io/scrape: "true"
 ```
 
-## 0.2.0 
+## 0.2.0
 
 **Release date:** 2019-01-04
 
@@ -352,13 +472,13 @@ index d75baf7..9eb82a5 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-rabbitmq-exporter] Bump to v0.29.0 (#10273) 
+* [stable/prometheus-rabbitmq-exporter] Bump to v0.29.0 (#10273)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index f7bf6ce..d75baf7 100644
+index f7bf6cec..d75baf78 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -4,7 +4,7 @@
@@ -382,7 +502,7 @@ index f7bf6ce..d75baf7 100644
  #  prometheus.io/scrape: "true"
 ```
 
-## 0.1.4 
+## 0.1.4
 
 **Release date:** 2018-08-15
 
@@ -391,13 +511,13 @@ index f7bf6ce..d75baf7 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [stable/prometheus-rabbitmq-exporter] fix values (#7078) 
+* [stable/prometheus-rabbitmq-exporter] fix values (#7078)
 
 ### Default value changes
 
 ```diff
 diff --git a/charts/prometheus-rabbitmq-exporter/values.yaml b/charts/prometheus-rabbitmq-exporter/values.yaml
-index e18c062..f7bf6ce 100644
+index e18c062a..f7bf6cec 100644
 --- a/charts/prometheus-rabbitmq-exporter/values.yaml
 +++ b/charts/prometheus-rabbitmq-exporter/values.yaml
 @@ -37,7 +37,7 @@ rabbitmq:
@@ -411,7 +531,7 @@ index e18c062..f7bf6ce 100644
  #  prometheus.io/port: 9419
 ```
 
-## 0.1.3 
+## 0.1.3
 
 **Release date:** 2018-05-25
 
@@ -420,7 +540,7 @@ index e18c062..f7bf6ce 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* [prometheus-rabbitmq-exporter] Typo fix: tables lists->table lists (#5727) 
+* [prometheus-rabbitmq-exporter] Typo fix: tables lists->table lists (#5727)
 
 ### Default value changes
 
@@ -428,7 +548,7 @@ index e18c062..f7bf6ce 100644
 # No changes in this release
 ```
 
-## 0.1.2 
+## 0.1.2
 
 **Release date:** 2018-05-23
 
@@ -437,7 +557,7 @@ index e18c062..f7bf6ce 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* fix typo in prometheus-rabbitmq-exporter's readme (#5666) 
+* fix typo in prometheus-rabbitmq-exporter's readme (#5666)
 
 ### Default value changes
 
@@ -445,7 +565,7 @@ index e18c062..f7bf6ce 100644
 # No changes in this release
 ```
 
-## 0.1.1 
+## 0.1.1
 
 **Release date:** 2018-05-16
 
@@ -454,7 +574,7 @@ index e18c062..f7bf6ce 100644
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 
-* Added prometheus-rabbitmq-exporter helm chart (#5311) 
+* Added prometheus-rabbitmq-exporter helm chart (#5311)
 
 ### Default value changes
 
