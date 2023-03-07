@@ -6,7 +6,10 @@ on:
       - v*.*.*
 
 jobs:
-  build:
+  release:
+    permissions:
+      id-token: write
+      contents: write
     runs-on: ubuntu-latest
     name: goreleaser
     steps:
