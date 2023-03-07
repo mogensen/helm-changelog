@@ -11,12 +11,13 @@ refs: "%D"
 subject: |-
   %s
 
-author: { "name": "%aN", "email": "%aE", "date": "%ad" }
-commiter: { "name": "%cN", "email": "%cE", "date": "%cd" }
+author: { "email": "%aE", "date": "%ad" }
+commiter: { "email": "%cE", "date": "%cd" }
 `
 
+// I removed the Name field from the GitPerson as it is not currently used and I bumped in a quote in a name that caused yaml panic: https://github.com/argoproj/argo-helm/commit/0956363ebb0d1449e86be457e2fa96fb77ddf6d4.patch
+// If needed this field in the future we can do some complicated quote escaping: https://gist.github.com/textarcana/1306223?permalink_comment_id=3915918#gistcomment-3915918
 type GitPerson struct {
-	Name  string     `yaml:"name"`
 	Email string     `yaml:"email"`
 	Date  *time.Time `yaml:"date"`
 }
