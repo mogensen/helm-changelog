@@ -16,6 +16,8 @@ test-unit: ## Run unit-tests
 test-integration: build ## Run integration-tests
 	bash hack/integration-tests.sh
 
+test: test-unit test-integration ## Run unit and integration tests
+
 build: ## Build binary
 	mkdir -p $(BINDIR)
 	CGO_ENABLED=0 go build -o ./bin/${PROJECT_NAME} .
