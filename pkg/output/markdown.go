@@ -10,7 +10,7 @@ import (
 )
 
 // Markdown creates a markdown representation of the changelog at the changeLogFilePath path
-func Markdown(log *logrus.Logger, changeLogFilePath string, releases []*helm.Release) {
+func Markdown(log *logrus.Logger, changeLogFilePath, releaseTemplatePath string, releases []*helm.Release) {
 
 	// reverse commits
 	for _, release := range releases {
@@ -30,7 +30,7 @@ func Markdown(log *logrus.Logger, changeLogFilePath string, releases []*helm.Rel
 
 	f.WriteString("# Change Log\n\n")
 
-	tmpl, err := getReleaseTemplate(changeLogFilePath)
+	tmpl, err := getReleaseTemplate(changeLogFilePath, releaseTemplatePath)
 	if err != nil {
 		log.Fatal("Error retrieving release template: ", err)
 	}
