@@ -1,12 +1,56 @@
 # Change Log
 
+## 0.7.1
+
+**Release date:** 2023-05-25
+
+![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-json-exporter] Add xiu as a maintainer (#3406)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.7.0
+
+**Release date:** 2023-05-21
+
+![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-json-exporter] Add extra init containers (#3403)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-json-exporter/values.yaml b/charts/prometheus-json-exporter/values.yaml
+index 5d3c2b6b..5a62e7a8 100644
+--- a/charts/prometheus-json-exporter/values.yaml
++++ b/charts/prometheus-json-exporter/values.yaml
+@@ -185,3 +185,10 @@ additionalVolumeMounts: []
+   # - name: password-file
+   #   mountPath: "/tmp/mysecret.txt"
+   #   subPath: mysecret.txt
++
++## Additional init containers
++# These will be added to the prometheus-json-exporter pod.
++extraInitContainers: []
++  # - name: init-myservice
++  #   image: busybox:1.28
++  #   command: [ 'sh', '-c', "sleep 10; done" ]
+
+```
+
 ## 0.6.1
 
 **Release date:** 2022-12-22
 
-![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success&logo=)
+![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Automatically rollover deployment when configmap changed. (#2831)
 
@@ -20,9 +64,8 @@
 
 **Release date:** 2022-12-21
 
-![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success&logo=)
+![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] Add support for env variables (#2807)
 
@@ -49,15 +92,15 @@ index fb1c5c09..5d3c2b6b 100644
  autoscaling:
    enabled: false
    minReplicas: 1
+
 ```
 
 ## 0.5.0
 
 **Release date:** 2022-10-02
 
-![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success&logo=)
+![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] - Allow to pass name of the module for scraping targets for json exporter (#2512)
 
@@ -76,15 +119,15 @@ index c822dafe..fb1c5c09 100644
  
  ingress:
    enabled: false
+
 ```
 
 ## 0.4.0
 
 **Release date:** 2022-09-03
 
-![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success&logo=)
+![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] open service configuration (#2414)
 
@@ -104,15 +147,15 @@ index dd3d3516..c822dafe 100644
  
  serviceMonitor:
    ## If true, a ServiceMonitor CRD is created for a prometheus operator
+
 ```
 
 ## 0.3.0
 
 **Release date:** 2022-08-08
 
-![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success&logo=)
+![AppVersion: v0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] feat: Implement mounting of additional volumes. (#2352)
 
@@ -227,15 +270,15 @@ index 57d8ce95..dd3d3516 100644
 +  # - name: password-file
 +  #   mountPath: "/tmp/mysecret.txt"
 +  #   subPath: mysecret.txt
+
 ```
 
 ## 0.2.3
 
 **Release date:** 2022-07-31
 
-![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success&logo=)
+![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix: Multiple targets are now created as differently named ServiceMonitors. (#2328)
 
@@ -249,9 +292,8 @@ index 57d8ce95..dd3d3516 100644
 
 **Release date:** 2022-06-12
 
-![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success&logo=)
+![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] fix cve-2021-25742 (#2148)
 
@@ -265,9 +307,8 @@ index 57d8ce95..dd3d3516 100644
 
 **Release date:** 2022-06-07
 
-![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success&logo=)
+![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] Allow specifying additional pod labels (#2113)
 
@@ -288,15 +329,15 @@ index bc8dbced..57d8ce95 100644
  securityContext: {}
  # capabilities:
  #   drop:
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2022-03-09
 
-![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success&logo=)
+![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] Add ability to create a serviceMonitor and prometheus rules (#1858)
 
@@ -350,15 +391,15 @@ index f7cd487e..bc8dbced 100644
 +  additionalLabels: {}
 +  namespace: ""
 +  rules: []
+
 ```
 
 ## 0.1.2
 
 **Release date:** 2022-02-23
 
-![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success&logo=)
+![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] Add zanhsieh as one of maintainers (#1821)
 
@@ -372,9 +413,8 @@ index f7cd487e..bc8dbced 100644
 
 **Release date:** 2022-01-20
 
-![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success&logo=)
+![AppVersion: v0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.3.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] Fix typo in deployment nodeselector  (#1716)
 
@@ -394,15 +434,15 @@ index 93b6df0f..f7cd487e 100644
  
  imagePullSecrets: []
  nameOverride: ""
+
 ```
 
 ## 0.1.0
 
 **Release date:** 2021-10-29
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-json-exporter] New Exporter (#1460)
 
@@ -537,6 +577,7 @@ configuration:
     #     username: myuser
     #     #password: veryverysecret
     #     password_file: /tmp/mysecret.txt
+
 ```
 
 ---

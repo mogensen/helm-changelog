@@ -1,12 +1,26 @@
 # Change Log
 
+## 0.1.1
+
+**Release date:** 2023-05-01
+
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-nginx-exporter] Add a maintainer (#3315)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 0.1.0
 
 **Release date:** 2022-11-15
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-nginx-exporter] New chart (#2684)
 
@@ -144,6 +158,7 @@ extraVolumeMounts: []
 # This is only needed for the CI job so it should always be disabled.
 nginx:
   enabled: false
+
 ```
 
 ---

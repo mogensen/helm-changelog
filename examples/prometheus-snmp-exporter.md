@@ -1,13 +1,62 @@
 # Change Log
 
+## 1.5.0
+
+**Release date:** 2023-05-26
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-snmp-exporter] Add extra init containers (#3402)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-snmp-exporter/values.yaml b/charts/prometheus-snmp-exporter/values.yaml
+index 5a0bea0a..7ec8fba9 100644
+--- a/charts/prometheus-snmp-exporter/values.yaml
++++ b/charts/prometheus-snmp-exporter/values.yaml
+@@ -39,6 +39,13 @@ extraConfigmapMounts: []
+   #   readOnly: true
+   #   defaultMode: 420
+ 
++## Additional init containers
++# These will be added to the prometheus-snmp-exporter pod.
++extraInitContainers: []
++  # - name: init-myservice
++  #   image: busybox:1.28
++  #   command: [ 'sh', '-c', "sleep 10; done" ]
++
+ ## Additional secret mounts
+ # Defines additional mounts with secrets. Secrets must be manually created in the namespace.
+ extraSecretMounts: []
+
+```
+
+## 1.4.1
+
+**Release date:** 2023-05-25
+
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-snmp-exporter] Add xiu as a maintainer (#3405)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 1.4.0
 
 **Release date:** 2023-02-26
 
-![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Correct ingress template (#3072)
 
@@ -29,16 +78,16 @@ index 28525db0..5a0bea0a 100644
    hosts: []
      # - chart-example.local
    annotations: {}
+
 ```
 
 ## 1.3.0
 
 **Release date:** 2023-02-14
 
-![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success&logo=)
+![AppVersion: v0.21.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.21.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] Fix service monitor relabelings (#2989)
 
@@ -135,16 +184,16 @@ index f7963d0e..28525db0 100644
 +    #   relabelings: []
 +    # Map of metric labels and values to add. Overrides value set in serviceMonitor.additionalMetricsRelabels
 +    #   additionalMetricsRelabels: {}
+
 ```
 
 ## 1.2.1
 
 **Release date:** 2022-09-03
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] update ingress api version template to support multiple kubernetes versions (#2395)
 
@@ -158,10 +207,9 @@ index f7963d0e..28525db0 100644
 
 **Release date:** 2022-08-24
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] make DaemonSet available (#2394)
 
@@ -180,16 +228,16 @@ index 4b9c482a..f7963d0e 100644
  image:
    repository: prom/snmp-exporter
    tag: v0.19.0
+
 ```
 
 ## 1.1.0
 
 **Release date:** 2022-04-22
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add pod and container security context to snmp-exporter (#2002)
 
@@ -219,16 +267,16 @@ index 72917b0a..4b9c482a 100644
  ## Additional labels to add to all resources
  customLabels: {}
    # app: snmp-exporter
+
 ```
 
 ## 1.0.1
 
 **Release date:** 2022-03-31
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] Fix README.md (#1941)
 
@@ -240,12 +288,11 @@ index 72917b0a..4b9c482a 100644
 
 ## 1.0.0
 
-**Release date:** 2022-03-15
+**Release date:** 2022-03-14
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] Support for multiple targets when using ServiceMonitor (#1870)
 
@@ -303,16 +350,16 @@ index f13f3d0a..72917b0a 100644
 +    #   scrapeTimeout: 30s              # Scrape timeout. Overrides value set in `serviceMonitor.scrapeTimeout`
 +    #   relabelings: []                 # MetricRelabelConfigs to apply to samples before ingestion. Overrides value set in `serviceMonitor.relabelings`
 +    #   additionalMetricsRelabels: {}   # Map of metric labels and values to add
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2022-01-31
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] Added missing imagePullSecrets property (#1756)
 
@@ -331,16 +378,16 @@ index 8f0001cb..f13f3d0a 100644
  nodeSelector: {}
  tolerations: []
  affinity: {}
+
 ```
 
 ## 0.1.5
 
 **Release date:** 2021-10-20
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add: can customize probes (#1448)
 
@@ -367,16 +414,16 @@ index fc42cac2..8f0001cb 100644
  service:
    annotations: {}
    type: ClusterIP
+
 ```
 
 ## 0.1.4
 
 **Release date:** 2021-08-16
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus-snmp-exporter:getting error in  servicemonitor.yaml after enabling  serviceMonitor  (#1251)
 * [prometheus-snmp-exporter] Kubernetes recommanded labels and custom labels (#1028)
@@ -399,16 +446,16 @@ index b067cd8f..fc42cac2 100644
  # config:
  
  extraConfigmapMounts: []
+
 ```
 
 ## 0.1.3
 
 **Release date:** 2021-07-15
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Merge duplicate security context in deployment (#1143)
 
@@ -422,10 +469,9 @@ index b067cd8f..fc42cac2 100644
 
 **Release date:** 2021-02-09
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * chore: bump configmap reloader (#646)
 
@@ -445,16 +491,16 @@ index 32a7bc7f..b067cd8f 100644
      pullPolicy: IfNotPresent
  
    ## configmap-reload resource requests and limits
+
 ```
 
 ## 0.1.1
 
 **Release date:** 2020-11-26
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] Fixes #398 and adds some features (#399)
 
@@ -466,12 +512,11 @@ index 32a7bc7f..b067cd8f 100644
 
 ## 0.1.0
 
-**Release date:** 2020-11-22
+**Release date:** 2020-11-21
 
-![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success&logo=)
+![AppVersion: 0.19.0](https://img.shields.io/static/v1?label=AppVersion&message=0.19.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-snmp-exporter] Add support mount extra secret and configmap  (#218)
 
@@ -515,16 +560,16 @@ index 0695068a..32a7bc7f 100644
  ## For RBAC support:
  rbac:
    # Specifies whether RBAC resources should be created
+
 ```
 
 ## 0.0.6
 
 **Release date:** 2020-08-20
 
-![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -538,10 +583,9 @@ index 0695068a..32a7bc7f 100644
 
 **Release date:** 2020-03-14
 
-![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-snmp-exporter] Fix serviceMonitor params (#19985)
 
@@ -553,12 +597,11 @@ index 0695068a..32a7bc7f 100644
 
 ## 0.0.4
 
-**Release date:** 2019-06-27
+**Release date:** 2019-06-28
 
-![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-snmp-exporter] Don't run config through toYaml (#13884)
 
@@ -572,10 +615,9 @@ index 0695068a..32a7bc7f 100644
 
 **Release date:** 2019-06-11
 
-![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-snmp-exporter] add namespace metadata (#14328)
 
@@ -589,10 +631,9 @@ index 0695068a..32a7bc7f 100644
 
 **Release date:** 2019-03-19
 
-![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add servicemonitor to prometheus-snmp-exporter chart (#12320)
 
@@ -635,16 +676,16 @@ index 38dee25c..0695068a 100644
 +
 +  path: /snmp
 +  scrapeTimeout: 10s
+
 ```
 
 ## 0.0.1
 
 **Release date:** 2019-01-21
 
-![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add prometheus-snmp-exporter chart (#10734)
 
@@ -730,6 +771,7 @@ configmapReload:
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources: {}
+
 ```
 
 ---

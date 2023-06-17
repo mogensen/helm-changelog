@@ -1,12 +1,176 @@
 # Change Log
 
+## 1.4.1
+
+**Release date:** 2023-06-06
+
+![AppVersion: v1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [jiralert] fix invalid PodDisruptionBudget (#3458)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.4.0
+
+**Release date:** 2023-06-02
+
+![AppVersion: v1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [jiralert] add PodDisruptionBudget and topologySpreadConstraints (#3452)
+
+### Default value changes
+
+```diff
+diff --git a/charts/jiralert/values.yaml b/charts/jiralert/values.yaml
+index 7096adda..541a485e 100755
+--- a/charts/jiralert/values.yaml
++++ b/charts/jiralert/values.yaml
+@@ -61,6 +61,21 @@ podSecurityContext:
+   seccompProfile:
+     type: RuntimeDefault
+ 
++# Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
++podDisruptionBudget: {}
++  # maxUnavailable: 1
++  # minAvailable: 1
++
++## Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.
++## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
++topologySpreadConstraints: []
++  # - maxSkew: 1
++  #   topologyKey: failure-domain.beta.kubernetes.io/zone
++  #   whenUnsatisfiable: DoNotSchedule
++  #   labelSelector:
++  #     matchLabels:
++  #       app.kubernetes.io/instance: jiralert
++
+ # Container security context
+ securityContext:
+   runAsUser: 1001
+@@ -88,6 +103,7 @@ serviceAccount:
+   annotations: {}
+   # -- Labels for service account. Evaluated as a template.
+   labels: {}
++  automountServiceAccountToken: false
+ 
+ existingConfigSecret: ~
+ 
+
+```
+
+## 1.3.1
+
+**Release date:** 2023-05-29
+
+![AppVersion: v1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [jiralert] fix podSecurityContext and define defaults (#3438)
+
+### Default value changes
+
+```diff
+diff --git a/charts/jiralert/values.yaml b/charts/jiralert/values.yaml
+index 809dda6c..7096adda 100755
+--- a/charts/jiralert/values.yaml
++++ b/charts/jiralert/values.yaml
+@@ -57,14 +57,16 @@ annotations: {}
+ podAnnotations: {}
+ 
+ # -- jiralert pods' Security Context.
+-podSecurityContext: {}
+-# fsGroup: 2000
++podSecurityContext:
++  seccompProfile:
++    type: RuntimeDefault
+ 
+ # Container security context
+ securityContext:
+   runAsUser: 1001
+   runAsGroup: 1001
+   runAsNonRoot: true
++  allowPrivilegeEscalation: false
+   readOnlyRootFilesystem: true
+ 
+ livenessProbe:
+
+```
+
+## 1.3.0
+
+**Release date:** 2023-05-25
+
+![AppVersion: v1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [jiralert] add extra env and volumes for use with csi-secrets (#3356)
+
+### Default value changes
+
+```diff
+diff --git a/charts/jiralert/values.yaml b/charts/jiralert/values.yaml
+index 4c36bfbe..809dda6c 100755
+--- a/charts/jiralert/values.yaml
++++ b/charts/jiralert/values.yaml
+@@ -21,6 +21,13 @@ image:
+ extraArgs:
+   - -log.level=debug
+ 
++
++# -- Additional Volume mounts
++extraVolumeMounts: []
++
++# -- Additional Volumes
++extraVolumes: []
++
+ # Number of pod replicas
+ replicaCount: 1
+ 
+
+```
+
+## 1.2.1
+
+**Release date:** 2023-05-12
+
+![AppVersion: v1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* jiralert: values: fixed config: there is no need to do escaping (#3372)
+
+### Default value changes
+
+```diff
+diff --git a/charts/jiralert/values.yaml b/charts/jiralert/values.yaml
+index 9b3e78a4..4c36bfbe 100755
+--- a/charts/jiralert/values.yaml
++++ b/charts/jiralert/values.yaml
+@@ -99,8 +99,8 @@ config:
+     api_url: "https://example.atlassian.net"
+     # user: {{ .config.jiraUser }}
+     # password: '{{ .config.jiraToken }}'
+-    summary: '{{`{{ template "jira.summary" . }}`}}'
+-    description: '{{`{{ template "jira.description" . }}`}}'
++    summary: '{{ template "jira.summary" . }}'
++    description: '{{ template "jira.description" . }}'
+     issue_type: Bug
+     reopen_state: "To Do"
+     reopen_duration: 0h
+
+```
+
 ## 1.2.0
 
 **Release date:** 2023-02-23
 
-![AppVersion: v1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.0&color=success&logo=)
+![AppVersion: v1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [jiralert] Bump version to v1.3.0 (#3065)
 
@@ -20,9 +184,8 @@
 
 **Release date:** 2023-02-10
 
-![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success&logo=)
+![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [jiralert] Make tplConfig toggable and introduce a value for complex configurations (#3004)
 
@@ -57,15 +220,15 @@ index f8d4e4e7..9b3e78a4 100755
  # -- Affinity for pod assignment
  affinity: {}
  
+
 ```
 
 ## 1.0.1
 
 **Release date:** 2022-12-03
 
-![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success&logo=)
+![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [jiralert] Add annotations for deployment and remove annotation config hash if existingSecret (#2776)
 
@@ -86,15 +249,15 @@ index de1a5859..f8d4e4e7 100755
  # -- Annotations for jiralert pods
  podAnnotations: {}
  
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2022-11-25
 
-![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success&logo=)
+![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [jiralert] Standardized labels (#2735)
 
@@ -108,9 +271,8 @@ index de1a5859..f8d4e4e7 100755
 
 **Release date:** 2022-11-25
 
-![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success&logo=)
+![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [jiralert] Add ServiceMonitor (#2734)
 
@@ -169,15 +331,15 @@ index f49cd51e..de1a5859 100755
 +  #   targetLabel: nodename
 +  #   replacement: $1
 +  #   action: replace
+
 ```
 
 ## 0.1.0
 
 **Release date:** 2022-10-30
 
-![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success&logo=)
+![AppVersion: 1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [jiralert] Setup chart (#2591)
 
@@ -331,6 +493,7 @@ issueTemplate: |
   {{ end }}
   Source: {{ .GeneratorURL }}
   {{ end }}{{ end }}`}}
+
 ```
 
 ---

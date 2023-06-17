@@ -56,9 +56,8 @@ func CreateHelmReleases(log *logrus.Logger, chartFile, chartDir string, g git.Gi
 			} else {
 				chart.Version = "Next Release"
 				res = append(res, &Release{
-					ReleaseDate: nil,
-					Chart:       chart,
-					Commits:     releaseCommits,
+					Chart:   chart,
+					Commits: releaseCommits,
 				})
 			}
 		}

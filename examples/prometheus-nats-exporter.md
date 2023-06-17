@@ -1,13 +1,28 @@
 # Change Log
 
+## 2.12.0
+
+**Release date:** 2023-04-28
+
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* feat: bump prometheus-nats-exporter version (#3303)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 2.11.0
 
 **Release date:** 2023-02-07
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-nats-exporter] service labels and servicemonitor targetLabels (#2994)
 
@@ -34,16 +49,16 @@ index d9d580d1..d47b27ae 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 2.10.1
 
 **Release date:** 2022-11-17
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat: bump prometheus-nats-exporter to 0.10.1 (#2651)
 
@@ -57,10 +72,9 @@ index d9d580d1..d47b27ae 100644
 
 **Release date:** 2022-08-22
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat: bump nats-exporter version (#2387)
 
@@ -74,10 +88,9 @@ index d9d580d1..d47b27ae 100644
 
 **Release date:** 2022-05-27
 
-![AppVersion: 0.9.3](https://img.shields.io/static/v1?label=AppVersion&message=0.9.3&color=success&logo=)
+![AppVersion: 0.9.3](https://img.shields.io/static/v1?label=AppVersion&message=0.9.3&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat: prometheus-nats-exporter version 0.9.3 (#2083)
 
@@ -91,10 +104,9 @@ index d9d580d1..d47b27ae 100644
 
 **Release date:** 2022-05-20
 
-![AppVersion: 0.9.2](https://img.shields.io/static/v1?label=AppVersion&message=0.9.2&color=success&logo=)
+![AppVersion: 0.9.2](https://img.shields.io/static/v1?label=AppVersion&message=0.9.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-nats-exporter] feat: bump nats-exporter to 0.9.2 (#1994)
 
@@ -114,16 +126,16 @@ index 74d1ebf8..d9d580d1 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.9.1
 
 **Release date:** 2022-01-22
 
-![AppVersion: 0.9.1](https://img.shields.io/static/v1?label=AppVersion&message=0.9.1&color=success&logo=)
+![AppVersion: 0.9.1](https://img.shields.io/static/v1?label=AppVersion&message=0.9.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-nats-exporter] feature: prometheus-nats-exporter version 0.9.1 (#1735)
 
@@ -143,16 +155,16 @@ index 06dc1974..74d1ebf8 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.9.0
 
 **Release date:** 2022-01-02
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-nats-exporter] feature: bump prometheus-nats-exporter version (#1473)
 
@@ -180,16 +192,16 @@ index c6f0cdb8..06dc1974 100644
      routez: true
      serverz: true
      subz: true
+
 ```
 
 ## 2.8.1
 
 **Release date:** 2021-10-29
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * bugfix: typo in prometheus-nats-exporter setting (#1468)
 
@@ -209,16 +221,16 @@ index 2b8bfd95..c6f0cdb8 100644
      gatewayz: true
      routez: true
      serverz: true
+
 ```
 
 ## 2.8.0
 
 **Release date:** 2021-08-27
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Bump prometheus-nats-exporter version to 0.8.0 (#1139)
 
@@ -255,16 +267,16 @@ index 5fe28072..2b8bfd95 100644
  
  nodeSelector: {}
  
+
 ```
 
 ## 2.7.0
 
 **Release date:** 2021-04-29
 
-![AppVersion: 0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=0.7.0&color=success&logo=)
+![AppVersion: 0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-nats-exporter] support service annotations (#914)
 
@@ -283,16 +295,16 @@ index 7ab7e94c..5fe28072 100644
    type: ClusterIP
    port: 80
    targetPort: 7777
+
 ```
 
 ## 2.6.0
 
 **Release date:** 2021-03-05
 
-![AppVersion: 0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=0.7.0&color=success&logo=)
+![AppVersion: 0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-nats-exporter] Bump prometheus-nats-expoter app version (#722)
 
@@ -314,16 +326,16 @@ index 7de0f86d..7ab7e94c 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.5.1
 
 **Release date:** 2020-08-20
 
-![AppVersion: 0.6.2](https://img.shields.io/static/v1?label=AppVersion&message=0.6.2&color=success&logo=)
+![AppVersion: 0.6.2](https://img.shields.io/static/v1?label=AppVersion&message=0.6.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -342,16 +354,16 @@ index bd26c22b..7de0f86d 100644
      service: nats-nats-monitoring
      namespace: default
      port: 8222
+
 ```
 
 ## 2.5.0
 
 **Release date:** 2020-04-29
 
-![AppVersion: 0.6.2](https://img.shields.io/static/v1?label=AppVersion&message=0.6.2&color=success&logo=)
+![AppVersion: 0.6.2](https://img.shields.io/static/v1?label=AppVersion&message=0.6.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-nats-exporter] Update prometheus-nats-exporter version (#22178)
 
@@ -379,16 +391,16 @@ index 98325ea0..bd26c22b 100644
  
  nodeSelector: {}
  
+
 ```
 
 ## 2.4.0
 
 **Release date:** 2020-02-28
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-nats-exporter]: add prometheus-operator servicemonitor support (#21088)
 
@@ -413,16 +425,16 @@ index 3f486e47..98325ea0 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 2.3.0
 
 **Release date:** 2019-10-12
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-nats-exporter]: upgrade (#17085)
 
@@ -442,16 +454,16 @@ index 4f3f7b1d..3f486e47 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.2.1
 
 **Release date:** 2019-08-04
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * bump chart version; fix hardcoded cluster dns name (#16075)
 
@@ -465,10 +477,9 @@ index 4f3f7b1d..3f486e47 100644
 
 **Release date:** 2019-07-27
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Updated prometheus-nats-exporter to 0.5.0 (#15921)
 
@@ -488,16 +499,16 @@ index a0ef8ed6..4f3f7b1d 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.1.0
 
 **Release date:** 2019-06-25
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update prometheus-nats-exporter to version 0.4.0 (#15048)
 
@@ -517,16 +528,16 @@ index d4a0f915..a0ef8ed6 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.0.0
 
 **Release date:** 2019-06-09
 
-![AppVersion: 0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=0.3.0&color=success&logo=)
+![AppVersion: 0.3.0](https://img.shields.io/static/v1?label=AppVersion&message=0.3.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-nats-exporter] upgrade to official image (#14528)
 
@@ -569,16 +580,16 @@ index 90e4a8f1..d4a0f915 100644
  
  nodeSelector: {}
  
+
 ```
 
 ## 1.0.1
 
 **Release date:** 2019-06-05
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * added me to prometheus-nats-exporter/OWNERS (#14525)
 
@@ -592,10 +603,9 @@ index 90e4a8f1..d4a0f915 100644
 
 **Release date:** 2019-03-14
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prometheus NATS exporter (#10742)
 
@@ -647,6 +657,7 @@ annotations: {}
 extraContainers: |
 
 extraVolumes: |
+
 ```
 
 ---

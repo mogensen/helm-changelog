@@ -1,12 +1,26 @@
 # Change Log
 
+## 3.1.3
+
+**Release date:** 2023-05-02
+
+![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-mongodb-exporter] Add a maintainer (#3316)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 3.1.2
 
 **Release date:** 2022-10-15
 
-![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success&logo=)
+![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mongodb-exporter] Update ServiceMonitor documentation (#2563)
 
@@ -20,9 +34,8 @@
 
 **Release date:** 2022-08-26
 
-![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success&logo=)
+![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mongodb-exporter] fixing default mongodb uri (#2379)
 
@@ -42,15 +55,15 @@ index 21561244..9ee7f8d3 100644
  
  # Name of an externally managed secret (in the same namespace) containing the connection uri as key `mongodb-uri`.
  # If this is provided, the value mongodb.uri is ignored.
+
 ```
 
 ## 3.1.0
 
 **Release date:** 2022-06-18
 
-![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success&logo=)
+![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add tls configuration option for service monitor and add an argument to rename service port name (#2170)
 
@@ -77,15 +90,15 @@ index b5d7272c..21561244 100644
 +  tlsConfig: {}
  
  tolerations: []
+
 ```
 
 ## 3.0.0
 
 **Release date:** 2022-06-10
 
-![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success&logo=)
+![AppVersion: 0.31.0](https://img.shields.io/static/v1?label=AppVersion&message=0.31.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * update mongo exporter (#2108)
 
@@ -155,16 +168,16 @@ index e7417846..b5d7272c 100644
    interval: 30s
    scrapeTimeout: 10s
    namespace:
+
 ```
 
 ## 2.10.0
 
 **Release date:** 2022-06-02
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mongodb-exporter] - Added podLabels (#2105)
 
@@ -193,16 +206,16 @@ index 0e245ad9..e7417846 100644
  port: "9216"
  
  priorityClassName: ""
+
 ```
 
 ## 2.9.0
 
 **Release date:** 2022-01-12
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mongodb-exporter] Add volumes support (#1706)
 
@@ -226,16 +239,16 @@ index 446e2a07..0e245ad9 100644
  securityContext:
    allowPrivilegeEscalation: false
    capabilities:
+
 ```
 
 ## 2.8.1
 
 **Release date:** 2020-08-20
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -247,12 +260,11 @@ index 446e2a07..0e245ad9 100644
 
 ## 2.8.0
 
-**Release date:** 2020-07-28
+**Release date:** 2020-07-27
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Add ServiceMonitor metricRelabelings (#23290)
 
@@ -270,16 +282,16 @@ index 32fc30a5..446e2a07 100644
 +  metricRelabelings: []
  
  tolerations: []
+
 ```
 
 ## 2.7.0
 
 **Release date:** 2020-07-20
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Possibility to also add a custom key in the secret (#23262)
 
@@ -298,16 +310,16 @@ index 90b7eb02..32fc30a5 100644
  
  nameOverride: ""
  
+
 ```
 
 ## 2.6.0
 
 **Release date:** 2020-07-08
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Add serviceMonitor targetLabels and service labels (#22952)
 
@@ -333,16 +345,16 @@ index e7baf986..90b7eb02 100644
 +  targetLabels: []
  
  tolerations: []
+
 ```
 
 ## 2.5.0
 
 **Release date:** 2020-04-25
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Provide the possibility for referring to an existing secret to use the MongoDB URI from (#21931)
 
@@ -370,16 +382,16 @@ index 5fbd3938..e7baf986 100644
  
  nameOverride: ""
  
+
 ```
 
 ## 2.4.0
 
 **Release date:** 2019-11-12
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * chore(prometheus-mongodb-exporter): version bump percona mongdb exporter (#18388)
 
@@ -406,16 +418,16 @@ index 0f2910dd..5fbd3938 100644
  
  imagePullSecrets: []
  
+
 ```
 
 ## 2.3.0
 
 **Release date:** 2019-09-27
 
-![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success&logo=)
+![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/promethus-mongodb-exporter] Customize serviceAccountName for mongodb-exporter deployment (#17133)
 
@@ -439,16 +451,16 @@ index 431746be..0f2910dd 100644
  serviceMonitor:
    enabled: true
    interval: 30s
+
 ```
 
 ## 2.2.1
 
 **Release date:** 2019-09-04
 
-![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success&logo=)
+![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Redeploy pods on config changes. (#16835)
 
@@ -462,10 +474,9 @@ index 431746be..0f2910dd 100644
 
 **Release date:** 2019-07-30
 
-![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success&logo=)
+![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Add Service object for ServiceMonitor to work properly (#15218)
 
@@ -488,16 +499,16 @@ index 5b58202a..431746be 100644
  serviceMonitor:
    enabled: true
    interval: 30s
+
 ```
 
 ## 2.1.0
 
 **Release date:** 2019-05-17
 
-![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success&logo=)
+![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Add MONGODB_URI env variable secret (#13959)
 
@@ -511,10 +522,9 @@ index 5b58202a..431746be 100644
 
 **Release date:** 2019-05-14
 
-![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success&logo=)
+![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Fix mongodb-exporter default values (#13756)
 
@@ -538,16 +548,16 @@ index d3449a5d..5b58202a 100644
  #   memory: 128Mi
  
  # Extra environment variables that will be passed into the exporter pod
+
 ```
 
 ## 2.0.0
 
 **Release date:** 2019-04-25
 
-![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success&logo=)
+![AppVersion: v0.7.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.7.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Remove service & bump to v0.7.0 (#12796)
 
@@ -622,16 +632,16 @@ index eb85d061..d3449a5d 100644
  serviceMonitor:
    enabled: true
    interval: 30s
+
 ```
 
 ## 1.1.1
 
 **Release date:** 2019-04-15
 
-![AppVersion: v0.6.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.6.1&color=success&logo=)
+![AppVersion: v0.6.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.6.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * adds mongodb prometheus exporter scrape timeout config option (#13063)
 
@@ -650,16 +660,16 @@ index 7d5bd048..eb85d061 100644
    namespace:
    additionalLabels: {}
  
+
 ```
 
 ## 1.1.0
 
 **Release date:** 2019-04-01
 
-![AppVersion: v0.6.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.6.1&color=success&logo=)
+![AppVersion: v0.6.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.6.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Add envs to deployment template (#12615)
 
@@ -680,16 +690,16 @@ index f6b50602..7d5bd048 100644
  securityContext:
    allowPrivilegeEscalation: false
    capabilities:
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2019-02-08
 
-![AppVersion: v0.6.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.6.1&color=success&logo=)
+![AppVersion: v0.6.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.6.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mongodb-exporter] Add MongoDB Exporter chart (#10979)
 
@@ -769,6 +779,7 @@ serviceMonitor:
   additionalLabels: {}
 
 tolerations: []
+
 ```
 
 ---

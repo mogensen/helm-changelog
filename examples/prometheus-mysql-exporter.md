@@ -1,13 +1,37 @@
 # Change Log
 
+## 1.14.0
+
+**Release date:** 2023-04-26
+
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-mysql-exporter] Add option for extraArgs in cloudsqlproxy (#3284)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-mysql-exporter/values.yaml b/charts/prometheus-mysql-exporter/values.yaml
+index 36866c9e..503099fe 100644
+--- a/charts/prometheus-mysql-exporter/values.yaml
++++ b/charts/prometheus-mysql-exporter/values.yaml
+@@ -172,3 +172,4 @@ cloudsqlproxy:
+   workloadIdentity:
+     enabled: false
+     serviceAccountEmail: ""
++  extraArgs: ""
+
+```
+
 ## 1.13.0
 
 **Release date:** 2023-03-06
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Allow overriding of image registry and add quay.io default (#3099)
 
@@ -28,16 +52,16 @@ index 77f234c0..36866c9e 100644
    ## if not set charts appVersion var is used
    tag: ""
    pullPolicy: "IfNotPresent"
+
 ```
 
 ## 1.12.1
 
 **Release date:** 2023-01-11
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] add imagePullSecrets and fullname override (#2905)
 
@@ -75,16 +99,16 @@ index 559b8ad5..77f234c0 100644
  service:
    labels: {}
    annotations: {}
+
 ```
 
 ## 1.11.1
 
 **Release date:** 2022-12-01
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] fix error in extraVolumes (#2770)
 
@@ -98,10 +122,9 @@ index 559b8ad5..77f234c0 100644
 
 **Release date:** 2022-12-01
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] add extraVolumes and extraVolumeMounts to chart (#2764)
 
@@ -130,16 +153,16 @@ index efd628da..559b8ad5 100644
  podSecurityContext: {}
    # fsGroup: 65534
  
+
 ```
 
 ## 1.10.0
 
 **Release date:** 2022-11-08
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Support Workload Identity (#2645)
 
@@ -166,16 +189,16 @@ index c4c77375..efd628da 100644
 +  workloadIdentity:
 +    enabled: false
 +    serviceAccountEmail: ""
+
 ```
 
 ## 1.9.1
 
 **Release date:** 2022-10-19
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Fix typo in README.md (#2587)
 
@@ -189,10 +212,9 @@ index c4c77375..efd628da 100644
 
 **Release date:** 2022-08-03
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Add option for ipAddressTypes (#2339)
 
@@ -211,16 +233,16 @@ index 861a6c26..c4c77375 100644
    port: "3306"
    credentialsSecret: ""
    # service account json
+
 ```
 
 ## 1.8.1
 
 **Release date:** 2022-06-01
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] add missing collect parameter (#2103)
 
@@ -234,10 +256,9 @@ index 861a6c26..c4c77375 100644
 
 **Release date:** 2022-05-31
 
-![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success&logo=)
+![AppVersion: v0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] add logLevel and logFormat options (#2099)
 
@@ -299,16 +320,16 @@ index 645c094a..861a6c26 100644
 -    #   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
 -    #   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/user%40project.iam.gserviceaccount.com"
 -    # }
+
 ```
 
 ## 1.7.0
 
 **Release date:** 2022-03-21
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Add relabelings to servicemonitor (#1891)
 
@@ -336,16 +357,16 @@ index 7cedf176..645c094a 100644
  
  serviceAccount:
    # Specifies whether a ServiceAccount should be created
+
 ```
 
 ## 1.6.0
 
 **Release date:** 2022-02-14
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Add missing namespaceSelector to servicemonitor (#1786)
 
@@ -359,10 +380,9 @@ index 7cedf176..645c094a 100644
 
 **Release date:** 2021-12-30
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] add annotations to service account (#1649)
 
@@ -381,16 +401,16 @@ index 2b16ae46..7cedf176 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 1.4.0
 
 **Release date:** 2021-12-23
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Add namespace support to service monitor of MySQL exporter (#1630)
 
@@ -409,16 +429,16 @@ index 20678b52..2b16ae46 100644
    additionalLabels: {}
    jobLabel: ""
    targetLabels: []
+
 ```
 
 ## 1.3.0
 
-**Release date:** 2021-10-29
+**Release date:** 2021-10-30
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Add proxysql credentials as secret (#1469)
 
@@ -437,16 +457,16 @@ index c735d6dc..20678b52 100644
    credentials: ""
      # {
      #   "type": "service_account",
+
 ```
 
 ## 1.2.2
 
 **Release date:** 2021-08-23
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Restart pod on password change (#1262)
 
@@ -460,10 +480,9 @@ index c735d6dc..20678b52 100644
 
 **Release date:** 2021-06-29
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Add ServiceAccount (#1087)
 
@@ -488,16 +507,16 @@ index be5bfdab..c735d6dc 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 1.2.0
 
 **Release date:** 2021-04-26
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * make existing secret config more flexible (#705)
 
@@ -522,16 +541,16 @@ index c1a3cd77..be5bfdab 100644
  
  # cloudsqlproxy https://cloud.google.com/sql/docs/mysql/sql-proxy
  cloudsqlproxy:
+
 ```
 
 ## 1.1.0
 
 **Release date:** 2021-02-17
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] Add securityContext and podSecurityContext (#662)
 
@@ -561,16 +580,16 @@ index f77038b7..c1a3cd77 100644
  annotations:
    prometheus.io/scrape: "true"
    prometheus.io/path: "/metrics"
+
 ```
 
 ## 1.0.2
 
 **Release date:** 2021-02-08
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] fixed link to Prometheus MySQL Exporter repo (#630)
 
@@ -584,10 +603,9 @@ index f77038b7..c1a3cd77 100644
 
 **Release date:** 2020-12-08
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix: use alpine cloudsqlproxy image (#464)
 
@@ -607,16 +625,16 @@ index 5c0b107a..f77038b7 100644
      pullPolicy: "IfNotPresent"
    instanceConnectionName: "project:us-central1:dbname"
    port: "3306"
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2020-10-11
 
-![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success&logo=)
+![AppVersion: v0.12.1](https://img.shields.io/static/v1?label=AppVersion&message=v0.12.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-mysql-exporter] update docker image, readme links & use default labels (#68)
 
@@ -671,16 +689,16 @@ index b67a8297..5c0b107a 100644
 +    #   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
 +    #   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/user%40project.iam.gserviceaccount.com"
 +    # }
+
 ```
 
 ## 0.7.1
 
 **Release date:** 2020-08-20
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -692,12 +710,11 @@ index b67a8297..5c0b107a 100644
 
 ## 0.7.0
 
-**Release date:** 2020-07-28
+**Release date:** 2020-07-27
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-exporter] Add ServiceMonitor metricRelabeling (#23352)
 
@@ -716,16 +733,16 @@ index d308647d..b67a8297 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 0.6.0
 
 **Release date:** 2020-06-29
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-exporter]:  Add service labels and annotations (#22986)
 
@@ -745,16 +762,16 @@ index 9b8afd9f..d308647d 100644
    name: mysql-exporter
    type: ClusterIP
    externalPort: 9104
+
 ```
 
 ## 0.5.3
 
-**Release date:** 2020-06-04
+**Release date:** 2020-06-05
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-exporter]: fix docs typo (#22674)
 
@@ -768,10 +785,9 @@ index 9b8afd9f..d308647d 100644
 
 **Release date:** 2019-10-25
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [mysqld-exporter] Improve Secrets (#18314)
 
@@ -790,16 +806,16 @@ index 1f2309f6..9b8afd9f 100644
  
  # cloudsqlproxy https://cloud.google.com/sql/docs/mysql/sql-proxy
  cloudsqlproxy:
+
 ```
 
 ## 0.5.1
 
 **Release date:** 2019-07-09
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Mysql exporter managing labels (#15349)
 
@@ -820,16 +836,16 @@ index d1e48a4c..1f2309f6 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 0.5.0
 
 **Release date:** 2019-06-23
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(stable/prometheus-mysql-exporter): add optional ServiceMonitor (#14600)
 
@@ -857,16 +873,16 @@ index c0441410..d1e48a4c 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 0.4.0
 
 **Release date:** 2019-06-20
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(stable/prometheus-mysql-exporter): store MySQL password in a k8s Secret (#14712)
 
@@ -880,10 +896,9 @@ index c0441410..d1e48a4c 100644
 
 **Release date:** 2019-06-16
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-exporter] updated gce-proxy to 1.14 & added myself to maintainers & owners (#14776)
 
@@ -903,16 +918,16 @@ index 7f4828f5..c0441410 100644
      pullPolicy: "IfNotPresent"
    instanceConnectionName: "project:us-central1:dbname"
    port: "3306"
+
 ```
 
 ## 0.3.3
 
 **Release date:** 2019-06-11
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-exporter] Fix invalid YAML with non-boolean collectors (#14701)
 
@@ -926,10 +941,9 @@ index 7f4828f5..c0441410 100644
 
 **Release date:** 2019-03-26
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fixed readme (#11660)
 
@@ -943,10 +957,9 @@ index 7f4828f5..c0441410 100644
 
 **Release date:** 2019-03-25
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-importer] Add optional labels to each pod  (#11380)
 
@@ -966,16 +979,16 @@ index 7fd4de24..7f4828f5 100644
  annotations:
    prometheus.io/scrape: "true"
    prometheus.io/path: "/metrics"
+
 ```
 
 ## 0.3.0
 
-**Release date:** 2019-03-06
+**Release date:** 2019-03-05
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-exporter] Collector flags config (#11569)
 
@@ -1030,16 +1043,16 @@ index 77fac30a..7fd4de24 100644
  # mysql connection params which build the DATA_SOURCE_NAME env var of the docker container
  mysql:
    db: ""
+
 ```
 
 ## 0.2.1
 
 **Release date:** 2018-10-23
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fixed annotations (#8431)
 
@@ -1059,16 +1072,16 @@ index 58387d5d..77fac30a 100644
  
  # mysql connection params which build the DATA_SOURCE_NAME env var of the docker container
  mysql:
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2018-10-13
 
-![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success&logo=)
+![AppVersion: v0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-mysql-exporter] split datasource in separate mysql connection vars (#8000)
 
@@ -1115,16 +1128,16 @@ index fa1d9c99..58387d5d 100644
  
  # cloudsqlproxy https://cloud.google.com/sql/docs/mysql/sql-proxy
  cloudsqlproxy:
+
 ```
 
 ## 0.1.0
 
 **Release date:** 2018-05-17
 
-![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success&logo=)
+![AppVersion: v0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=v0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Added prometheus mysql exporter chart (#5373)
 
@@ -1196,6 +1209,7 @@ cloudsqlproxy:
       "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
       "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/user%40project.iam.gserviceaccount.com"
     }'
+
 ```
 
 ---

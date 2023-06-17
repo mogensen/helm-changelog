@@ -1,12 +1,114 @@
 # Change Log
 
+## 2.2.0
+
+**Release date:** 2023-06-01
+
+![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success)
+![Kubernetes: >=1.19.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.19.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-kafka-exporter] Change chart PSP default state to off (#3127)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-kafka-exporter/values.yaml b/charts/prometheus-kafka-exporter/values.yaml
+index 5e52908b..f7cdf6bc 100644
+--- a/charts/prometheus-kafka-exporter/values.yaml
++++ b/charts/prometheus-kafka-exporter/values.yaml
+@@ -39,7 +39,7 @@ rbac:
+   # Specifies whether RBAC resources should be created
+   create: true
+   # Specifies whether a PodSecurityPolicy should be created
+-  pspEnabled: true
++  pspEnabled: false
+ 
+ serviceAccount:
+   # Specifies whether a ServiceAccount should be created
+
+```
+
+## 2.1.0
+
+**Release date:** 2023-05-04
+
+![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success)
+![Kubernetes: >=1.19.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.19.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-kafka-exporter] Add imagePullSecrets to kafka-exporter (#3291)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-kafka-exporter/values.yaml b/charts/prometheus-kafka-exporter/values.yaml
+index f33dc2ed..5e52908b 100644
+--- a/charts/prometheus-kafka-exporter/values.yaml
++++ b/charts/prometheus-kafka-exporter/values.yaml
+@@ -4,6 +4,22 @@ image:
+   tag: ""
+   pullPolicy: IfNotPresent
+ 
++imagePullSecrets: []
++
++global:
++  # To help compatibility with other charts which use global.imagePullSecrets.
++  # Allow either an array of {name: pullSecret} maps (k8s-style), or an array of strings (more common helm-style).
++  # global:
++  #   imagePullSecrets:
++  #   - name: pullSecret1
++  #   - name: pullSecret2
++  # or
++  # global:
++  #   imagePullSecrets:
++  #   - pullSecret1
++  #   - pullSecret2
++  imagePullSecrets: []
++
+ replicaCount: 1
+ 
+ kafkaServer:
+
+```
+
+## 2.0.0
+
+**Release date:** 2023-05-03
+
+![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success)
+![Kubernetes: >=1.19.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.19.0-0&color=informational&logo=kubernetes)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-kafka-exporter] fix Chart.yaml - remove engine: gotpl (#3199)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 1.8.1
+
+**Release date:** 2023-05-01
+
+![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-kafka-exporter] Add a maintainer (#3317)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 1.8.0
 
 **Release date:** 2023-01-09
 
-![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success&logo=)
+![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Add support for securityContext (#2903)
 
@@ -44,15 +146,15 @@ index 941825f6..f33dc2ed 100644
 +  # runAsUser: 10001
 +  # seccompProfile:
 +  #   type: RuntimeDefault
+
 ```
 
 ## 1.7.0
 
 **Release date:** 2022-10-26
 
-![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success&logo=)
+![AppVersion: v1.6.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.6.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Bump kafka-exporter to 1.6.0 (#2613)
 
@@ -72,15 +174,15 @@ index d76f76c8..941825f6 100644
    pullPolicy: IfNotPresent
  
  replicaCount: 1
+
 ```
 
 ## 1.6.1
 
 **Release date:** 2022-10-16
 
-![AppVersion: v1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.2&color=success&logo=)
+![AppVersion: v1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Fix PSP deprecation after k8s 1.25+ (#2575)
 
@@ -94,9 +196,8 @@ index d76f76c8..941825f6 100644
 
 **Release date:** 2022-06-11
 
-![AppVersion: v1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.2&color=success&logo=)
+![AppVersion: v1.4.2](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Bump kafka-exporter to 1.4.2, bump bitnami kafka (#2116)
 
@@ -139,15 +240,15 @@ index b8962a11..d76f76c8 100644
  # If enabled Kafka dependency chart will be used.
  # This is only needed for the CI job so it should always be disabled.
  kafka:
+
 ```
 
 ## 1.5.0
 
 **Release date:** 2021-09-18
 
-![AppVersion: v1.4.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.1&color=success&logo=)
+![AppVersion: v1.4.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] - added SASL support and upgrade to latest version (#1349)
 
@@ -215,15 +316,15 @@ index c5a977d1..b8962a11 100644
  # If enabled Kafka dependency chart will be used.
  # This is only needed for the CI job so it should always be disabled.
  kafka:
+
 ```
 
 ## 1.4.0
 
 **Release date:** 2021-09-14
 
-![AppVersion: v1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.1&color=success&logo=)
+![AppVersion: v1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Add: securitycontext to deployment.yaml (#1334)
 
@@ -244,15 +345,15 @@ index ed32c7ba..c5a977d1 100644
 +  # runAsUser:
 +  # runAsGroup:
 +  # fsGroup:
+
 ```
 
 ## 1.3.0
 
 **Release date:** 2021-09-02
 
-![AppVersion: v1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.1&color=success&logo=)
+![AppVersion: v1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Kafka exporter chart not propagating service labels (#1300)
 
@@ -279,15 +380,15 @@ index 894e072d..ed32c7ba 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 1.2.0
 
 **Release date:** 2021-08-24
 
-![AppVersion: v1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.1&color=success&logo=)
+![AppVersion: v1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=v1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Configure log level and extra args (#1275)
 
@@ -340,15 +441,15 @@ index 98156b10..894e072d 100644
    # mountPath: /secret/certs
    # secretName: <name of an existing secret>
  
+
 ```
 
 ## 1.1.1
 
 **Release date:** 2021-06-16
 
-![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success&logo=)
+![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Add missing key `annotations` in `values.yml` example (#1078)
 
@@ -368,15 +469,15 @@ index 4785de2e..98156b10 100644
  tolerations: []
  
  affinity: {}
+
 ```
 
 ## 1.1.0
 
 **Release date:** 2021-04-28
 
-![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success&logo=)
+![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Add kafka broker version (#896)
 
@@ -397,15 +498,15 @@ index cb810890..4785de2e 100644
  rbac:
    # Specifies whether RBAC resources should be created
    create: true
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2021-01-24
 
-![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success&logo=)
+![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Use helm test hooks (#498)
 
@@ -469,16 +570,16 @@ index f238a90b..cb810890 100644
 +# This is only needed for the CI job so it should always be disabled.
 +kafka:
 +  enabled: false
+
 ```
 
 ## 0.2.1
 
 **Release date:** 2021-01-20
 
-![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success&logo=)
+![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add environment variables for prometheus-kafka-exporter (#601)
 
@@ -498,16 +599,16 @@ index d15a7353..f238a90b 100644
  service:
    type: ClusterIP
    port: 9308
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2020-11-18
 
-![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success&logo=)
+![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(prometheus-kafka-exporter): add configurable apiVersion (#385)
 
@@ -521,10 +622,9 @@ index d15a7353..f238a90b 100644
 
 **Release date:** 2020-11-18
 
-![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success&logo=)
+![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] Servicemonitor is not able to find endpoints for kafka-exporter target (shows 0/0 up) #343 (#374)
 
@@ -548,16 +648,16 @@ index b4a72e05..d15a7353 100644
      additionalLabels: {}
  
  resources: {}
+
 ```
 
 ## 0.1.4
 
 **Release date:** 2020-10-18
 
-![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success&logo=)
+![AppVersion: v1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.2.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-kafka-exporter] new chart donation (#216)
 
@@ -637,6 +737,7 @@ tls:
   enabled: false
   # mountPath: /secret/certs
   # secretName: <name of an existing secret>
+
 ```
 
 ---

@@ -3,7 +3,7 @@
 mkdir -p charts
 mkdir -p examples
 
-git clone git@github.com:prometheus-community/helm-charts.git charts/prometheus-community || true
+git clone git@github.com:prometheus-community/helm-charts.git charts/prometheus-community || true
 (
     cd charts/prometheus-community/
     git pull

@@ -14,6 +14,7 @@ import (
 )
 
 var changelogFilename string
+var releaseTemplatePath string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -56,7 +57,7 @@ var rootCmd = &cobra.Command{
 			releases := helm.CreateHelmReleases(log, chartFile, relativeChartDir, g, allCommits)
 
 			changeLogFilePath := filepath.Join(fullChartDir, changelogFilename)
-			output.Markdown(log, changeLogFilePath, releases)
+			output.Markdown(log, changeLogFilePath, releaseTemplatePath, releases)
 		}
 	},
 }
@@ -75,6 +76,7 @@ func Execute() {
 
 	rootCmd.PersistentFlags().StringVarP(&changelogFilename, "filename", "f", "Changelog.md", "Filename for changelog")
 	rootCmd.PersistentFlags().StringVarP(&v, "verbosity", "v", logrus.WarnLevel.String(), "Log level (debug, info, warn, error, fatal, panic)")
+	rootCmd.PersistentFlags().StringVarP(&releaseTemplatePath, "release-template", "r", "", "Path to a Go template used for each release")
 
 	cobra.CheckErr(rootCmd.Execute())
 }

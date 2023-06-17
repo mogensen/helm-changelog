@@ -1,13 +1,44 @@
 # Change Log
 
+## 0.25.1
+
+**Release date:** 2023-06-16
+
+![AppVersion: 0.15.4](https://img.shields.io/static/v1?label=AppVersion&message=0.15.4&color=success)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* update image version (#3500)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 0.25.0
+
+**Release date:** 2023-05-01
+
+![AppVersion: 0.15.3](https://img.shields.io/static/v1?label=AppVersion&message=0.15.3&color=success)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-cloudwatch-exporter] Appversion bump to 0.15.3 (#3241)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 0.24.0
 
 **Release date:** 2023-02-10
 
-![AppVersion: 0.15.1](https://img.shields.io/static/v1?label=AppVersion&message=0.15.1&color=success&logo=)
+![AppVersion: 0.15.1](https://img.shields.io/static/v1?label=AppVersion&message=0.15.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Add labels to deployment resource (#3001)
 
@@ -30,16 +61,16 @@ index c5923ac1..42a63fe3 100644
  # Extra environment variables
  extraEnv:
    # - name: foo
+
 ```
 
 ## 0.23.0
 
 **Release date:** 2023-02-08
 
-![AppVersion: 0.15.1](https://img.shields.io/static/v1?label=AppVersion&message=0.15.1&color=success&logo=)
+![AppVersion: 0.15.1](https://img.shields.io/static/v1?label=AppVersion&message=0.15.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter]: upgrade to v0.15.1 (#3008)
 
@@ -60,16 +91,16 @@ index 1cb5c20a..c5923ac1 100644
    pullPolicy: IfNotPresent
    pullSecrets:
    # - name: "image-pull-secret"
+
 ```
 
 ## 0.22.0
 
 **Release date:** 2022-10-14
 
-![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Support networking.k8s.io/v1 in helpers file for k8s clusters > 1.21 (#2560)
 
@@ -94,16 +125,16 @@ index 37715907..1cb5c20a 100644
  securityContext:
    runAsUser: 65534  # run as nobody user instead of root
    fsGroup: 65534  # necessary to be able to read the EKS IAM token
+
 ```
 
 ## 0.21.1
 
 **Release date:** 2022-10-13
 
-![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Support networking.k8s.io/v1 in helpers file for k8s clusters > 1.21 (#2558)
 
@@ -117,10 +148,9 @@ index 37715907..1cb5c20a 100644
 
 **Release date:** 2022-09-29
 
-![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Add extraEnv to values file to specify extra env vars being added to the deployment (#2500)
 
@@ -143,16 +173,16 @@ index fd470670..37715907 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 0.20.1
 
 **Release date:** 2022-09-28
 
-![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Fix typo in README (#2392)
 
@@ -166,10 +196,9 @@ index fd470670..37715907 100644
 
 **Release date:** 2022-09-15
 
-![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success&logo=)
+![AppVersion: 0.15.0](https://img.shields.io/static/v1?label=AppVersion&message=0.15.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Update image tag v0.14.3 to v0.15.0 (#2458)
 
@@ -189,16 +218,16 @@ index 45f73344..fd470670 100644
    pullPolicy: IfNotPresent
    pullSecrets:
    # - name: "image-pull-secret"
+
 ```
 
 ## 0.19.2
 
 **Release date:** 2022-07-08
 
-![AppVersion: 0.14.3](https://img.shields.io/static/v1?label=AppVersion&message=0.14.3&color=success&logo=)
+![AppVersion: 0.14.3](https://img.shields.io/static/v1?label=AppVersion&message=0.14.3&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] correct container service port  Signed-… (#2235)
 
@@ -212,10 +241,9 @@ index 45f73344..fd470670 100644
 
 **Release date:** 2022-06-27
 
-![AppVersion: 0.14.3](https://img.shields.io/static/v1?label=AppVersion&message=0.14.3&color=success&logo=)
+![AppVersion: 0.14.3](https://img.shields.io/static/v1?label=AppVersion&message=0.14.3&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] update the cloudwatch-exporter image from 0.14.0 to 0.14.3 (#2171)
 
@@ -235,16 +263,16 @@ index 7789e917..45f73344 100644
    pullPolicy: IfNotPresent
    pullSecrets:
    # - name: "image-pull-secret"
+
 ```
 
 ## 0.19.0
 
 **Release date:** 2022-05-30
 
-![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success&logo=)
+![AppVersion: 0.14.0](https://img.shields.io/static/v1?label=AppVersion&message=0.14.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Update default image tag for Cloudwatch exporter chart (#2097)
 
@@ -264,16 +292,16 @@ index 9d7f1eda..7789e917 100644
    pullPolicy: IfNotPresent
    pullSecrets:
    # - name: "image-pull-secret"
+
 ```
 
 ## 0.18.0
 
 **Release date:** 2022-01-14
 
-![AppVersion: 0.12.2](https://img.shields.io/static/v1?label=AppVersion&message=0.12.2&color=success&logo=)
+![AppVersion: 0.12.2](https://img.shields.io/static/v1?label=AppVersion&message=0.12.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix(cloudwatch-exporter): update the image from 0.10.0 to 0.12.2 (#1597)
 
@@ -293,16 +321,16 @@ index 33ff85da..9d7f1eda 100644
    pullPolicy: IfNotPresent
    pullSecrets:
    # - name: "image-pull-secret"
+
 ```
 
 ## 0.17.2
 
 **Release date:** 2022-01-04
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix: Indentation for multiple annotations of ServiceAccounts (#1667)
 
@@ -321,16 +349,16 @@ index 83e13e9b..33ff85da 100644
    # Specifies whether to automount API credentials for the ServiceAccount.
    automountServiceAccountToken: true
  
+
 ```
 
 ## 0.17.1
 
 **Release date:** 2021-11-24
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add missing whitespace to cloudwatch-exporter chart (#1533)
 
@@ -344,10 +372,9 @@ index 83e13e9b..33ff85da 100644
 
 **Release date:** 2021-11-07
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] configurable pod annotations (#1294)
 
@@ -366,16 +393,16 @@ index 956b1b07..83e13e9b 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 0.16.0
 
 **Release date:** 2021-05-03
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Allow for specifying automountserviceaccounttoken for prometheus-cloudwatch-exporter (#861)
 
@@ -395,16 +422,16 @@ index 6be9d2f4..956b1b07 100644
  
  rbac:
    # Specifies whether RBAC resources should be created
+
 ```
 
 ## 0.15.0
 
 **Release date:** 2021-05-03
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add container security context (#849)
 
@@ -426,16 +453,16 @@ index 25223659..6be9d2f4 100644
  # Leverage a PriorityClass to ensure your pods survive resource shortages
  # ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
  # priorityClassName: system-cluster-critical
+
 ```
 
 ## 0.14.1
 
-**Release date:** 2021-02-15
+**Release date:** 2021-02-16
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Set namespace (#660)
 
@@ -449,10 +476,9 @@ index 25223659..6be9d2f4 100644
 
 **Release date:** 2021-02-12
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Update to cloudwatch exporter v0.10.0 (#668)
 
@@ -472,16 +498,16 @@ index 6602d830..25223659 100644
    pullPolicy: IfNotPresent
    pullSecrets:
    # - name: "image-pull-secret"
+
 ```
 
 ## 0.13.0
 
 **Release date:** 2021-01-14
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] - Added option to enable sts regional endpoints (#565)
 
@@ -502,16 +528,16 @@ index 229026f6..6602d830 100644
  
    # The name of a pre-created secret in which AWS credentials are stored. When
    # set, aws_access_key_id is assumed to be in a field called access_key,
+
 ```
 
 ## 0.12.1
 
 **Release date:** 2020-12-20
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Add the fsGroup:65534 to the security context (#502)
 
@@ -530,16 +556,16 @@ index ed13fa56..229026f6 100644
  
  # Leverage a PriorityClass to ensure your pods survive resource shortages
  # ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
+
 ```
 
 ## 0.12.0
 
 **Release date:** 2020-11-24
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Allow user-defined matchLabels for deployment and servicemonitor in prometheus-cloudwatch-exporter (#406)
 
@@ -560,16 +586,16 @@ index 3e77bb81..ed13fa56 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 0.11.0
 
 **Release date:** 2020-11-21
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add imagePullSecrets to prometheus-cloudwatch-exporter (#391)
 
@@ -589,16 +615,16 @@ index fa9fade9..3e77bb81 100644
  
  # Example proxy configuration:
  # command:
+
 ```
 
 ## 0.10.1
 
 **Release date:** 2020-11-06
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * charts/prometheus-cloudwatch-exporter: fix typo (#315)
 
@@ -618,16 +644,16 @@ index 43452954..fa9fade9 100644
    # e.g.
    # annotations:
    #   eks.amazonaws.com/role-arn: arn:aws:iam::1234567890:role/prom-cloudwatch-exporter-oidc
+
 ```
 
 ## 0.10.0
 
 **Release date:** 2020-10-21
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Allow Helm variables in config (#220)
 
@@ -646,16 +672,16 @@ index 2b77b682..43452954 100644
  config: |-
    # This is the default configuration for prometheus-cloudwatch-exporter
    region: eu-west-1
+
 ```
 
 ## 0.9.0
 
 **Release date:** 2020-09-10
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Add priorityClassName to cloudwatch-exporter (#31)
 
@@ -675,16 +701,16 @@ index 2b10317e..2b77b682 100644
 +# ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 +# priorityClassName: system-cluster-critical
 +priorityClassName: ""
+
 ```
 
 ## 0.8.4
 
 **Release date:** 2020-08-20
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -698,10 +724,9 @@ index 2b10317e..2b77b682 100644
 
 **Release date:** 2020-07-27
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus-cloudwatch-exporter: Add containerPort, livenessProbe.path and readinessProbe.path variables (#22923)
 
@@ -737,16 +762,16 @@ index c4da6cb3..2b10317e 100644
    initialDelaySeconds: 30
    periodSeconds: 5
    timeoutSeconds: 5
+
 ```
 
 ## 0.8.2
 
 **Release date:** 2020-07-01
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] additional docu on service account usage (#23028)
 
@@ -760,10 +785,9 @@ index c4da6cb3..2b10317e 100644
 
 **Release date:** 2020-06-23
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * stable/prometheus-cloudwatch-exporter Add shasum of secrets yaml render to annotations (#22906)
 
@@ -775,12 +799,11 @@ index c4da6cb3..2b10317e 100644
 
 ## 0.8.0
 
-**Release date:** 2020-05-22
+**Release date:** 2020-05-21
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] Enable to set an existing service account name (#22272)
 
@@ -794,10 +817,9 @@ index c4da6cb3..2b10317e 100644
 
 **Release date:** 2020-04-09
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * stable/prometheus-cloudwatch-exporter Add prometheusRule creation. (#21838)
 
@@ -855,16 +877,16 @@ index 2ddb9e23..c4da6cb3 100644
  ingress:
    enabled: false
    annotations: {}
+
 ```
 
 ## 0.6.0
 
 **Release date:** 2020-01-22
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] - Add annotations to serviceAccounts for EKS IAM (#20162)
 
@@ -887,16 +909,16 @@ index f7c9f83a..2ddb9e23 100644
  
  rbac:
    # Specifies whether RBAC resources should be created
+
 ```
 
 ## 0.5.0
 
 **Release date:** 2019-11-02
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Upgrade api versions (#17764)
 
@@ -910,10 +932,9 @@ index f7c9f83a..2ddb9e23 100644
 
 **Release date:** 2019-10-28
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] Update cloudwatch-exporter version. (#18003)
 
@@ -933,16 +954,16 @@ index 279be115..f7c9f83a 100644
    pullPolicy: IfNotPresent
  
  # Example proxy configuration:
+
 ```
 
 ## 0.4.12
 
 **Release date:** 2019-10-28
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] Add myself to owners/maintainers. (#18093)
 
@@ -956,10 +977,9 @@ index 279be115..f7c9f83a 100644
 
 **Release date:** 2019-10-03
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] added changelog (#16579)
 
@@ -973,10 +993,9 @@ index 279be115..f7c9f83a 100644
 
 **Release date:** 2019-08-21
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * include ServiceMonitor relabelings and metricRelabelings (#16443)
 
@@ -1005,16 +1024,16 @@ index ecf6e51d..279be115 100644
  
  ingress:
    enabled: false
+
 ```
 
 ## 0.4.9
 
 **Release date:** 2019-08-04
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] Fix documentation typos (README.md) (#15745)
 
@@ -1028,10 +1047,9 @@ index ecf6e51d..279be115 100644
 
 **Release date:** 2019-07-19
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Added securityContext configuration capabilities (#12405)
 
@@ -1049,16 +1067,16 @@ index 2d3094c8..ecf6e51d 100644
 +
 +securityContext:
 +  runAsUser: 65534  # run as nobody user instead of root
+
 ```
 
 ## 0.4.7
 
 **Release date:** 2019-06-14
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] configurable container command (#14803)
 
@@ -1090,16 +1108,16 @@ index 70faf357..2d3094c8 100644
  service:
    type: ClusterIP
    port: 9106
+
 ```
 
 ## 0.4.6
 
 **Release date:** 2019-06-13
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add torstenwalter as maintainer (#14788)
 
@@ -1113,10 +1131,9 @@ index 70faf357..2d3094c8 100644
 
 **Release date:** 2019-05-13
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] Add scrape timeout option (#13686)
 
@@ -1136,16 +1153,16 @@ index 405bfcc3..70faf357 100644
  
  ingress:
    enabled: false
+
 ```
 
 ## 0.4.4
 
 **Release date:** 2019-04-02
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-cloudwatch-exporter] Added ingress configuration (#12407)
 
@@ -1174,16 +1191,16 @@ index eeccd3f2..405bfcc3 100644
 +  #  - secretName: chart-example-tls
 +  #    hosts:
 +  #      - chart-example.local
+
 ```
 
 ## 0.4.3
 
 **Release date:** 2019-04-01
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add optional ServiceMonitor and values stub with it disabled by default (#12503)
 
@@ -1210,16 +1227,16 @@ index 0f1c8be2..eeccd3f2 100644
 +  # telemetryPath: /metrics
 +  # Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator
 +  # labels:
+
 ```
 
 ## 0.4.2
 
 **Release date:** 2019-02-20
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fix default service port and target port.  (#11264)
 
@@ -1239,16 +1256,16 @@ index 6117ea98..0f1c8be2 100644
    portName: http
    annotations: {}
    labels: {}
+
 ```
 
 ## 0.4.1
 
 **Release date:** 2019-02-18
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] Adjust service targetPort to reference container port name. (#11462)
 
@@ -1262,10 +1279,9 @@ index 6117ea98..0f1c8be2 100644
 
 **Release date:** 2019-01-29
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add support for pre-created secrets and AWS STS session tokens (#10878)
 
@@ -1297,16 +1313,16 @@ index e26ef687..6117ea98 100644
    aws_access_key_id:
    aws_secret_access_key:
  
+
 ```
 
 ## 0.3.0
 
 **Release date:** 2019-01-24
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Use entrypoint from Docker image and fix probe paths (#10873)
 
@@ -1325,16 +1341,16 @@ index c089a7d1..e26ef687 100644
    portName: http
    annotations: {}
    labels: {}
+
 ```
 
 ## 0.2.1
 
 **Release date:** 2018-10-16
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * cloudwatch-exporter - Support custom service labels and portName (#8488)
 
@@ -1355,16 +1371,16 @@ index bb986cfd..c089a7d1 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2018-09-13
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] health/liveness endpoints added (#7681)
 
@@ -1403,16 +1419,16 @@ index 68dda8c2..bb986cfd 100644
 +  timeoutSeconds: 5
 +  successThreshold: 1
 +  failureThreshold: 3
+
 ```
 
 ## 0.1.4
 
 **Release date:** 2018-07-10
 
-![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success&logo=)
+![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-cloudwatch-exporter] Fixed secret variable parsing for access/secret keys. (#6511)
 
@@ -1426,10 +1442,9 @@ index 68dda8c2..bb986cfd 100644
 
 **Release date:** 2018-06-29
 
-![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success&logo=)
+![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fixed image configuration in README for the prometheus-cloudwatch-exporter (#6400)
 
@@ -1443,10 +1458,9 @@ index 68dda8c2..bb986cfd 100644
 
 **Release date:** 2018-04-16
 
-![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success&logo=)
+![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Annotations and checksum (#5067)
 
@@ -1465,16 +1479,16 @@ index 2c4a90ce..68dda8c2 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 0.1.1
 
-**Release date:** 2018-04-03
+**Release date:** 2018-04-02
 
-![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success&logo=)
+![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update table/prometheus-cloudwatch-exporte (#4551)
 
@@ -1488,10 +1502,9 @@ index 2c4a90ce..68dda8c2 100644
 
 **Release date:** 2018-03-30
 
-![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success&logo=)
+![AppVersion: 0.1.0](https://img.shields.io/static/v1?label=AppVersion&message=0.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add cloudwatch exporter (#4022)
 
@@ -1580,6 +1593,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
 ```
 
 ---

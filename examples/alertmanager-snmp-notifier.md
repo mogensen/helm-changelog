@@ -1,12 +1,39 @@
 # Change Log
 
+## 0.1.1
+
+**Release date:** 2023-05-26
+
+![AppVersion: v1.4.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [alertmanager-snmp-notifier] Values json schema (#3407)
+
+### Default value changes
+
+```diff
+diff --git a/charts/alertmanager-snmp-notifier/values.yaml b/charts/alertmanager-snmp-notifier/values.yaml
+index bfa6dad7..aefdd090 100644
+--- a/charts/alertmanager-snmp-notifier/values.yaml
++++ b/charts/alertmanager-snmp-notifier/values.yaml
+@@ -146,7 +146,7 @@ serviceMonitor:
+   # Set path to cloudwatch-exporter telemtery-path
+   telemetryPath: /metrics
+   # Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator
+-  labels:
++  labels: {}
+   # Set timeout for scrape
+   timeout: 10s
+   # Set of labels to transfer from the Kubernetes Service onto the target
+
+```
+
 ## 0.1.0
 
 **Release date:** 2023-02-01
 
-![AppVersion: v1.4.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.0&color=success&logo=)
+![AppVersion: v1.4.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.4.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [alertmanager-snmp-notifier] add SNMP notifer chart (#2898)
 
@@ -170,6 +197,7 @@ serviceMonitor:
   metricRelabelings: []
   # Set relabel_configs as per https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config
   relabelings: []
+
 ```
 
 ---

@@ -4,10 +4,9 @@
 
 **Release date:** 2021-09-13
 
-![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success&logo=)
+![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-pingdom-exporter] Minor tweaks to README (#1335)
 
@@ -21,10 +20,9 @@
 
 **Release date:** 2021-04-12
 
-![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success&logo=)
+![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-pingdom-exporter] Add secret override for pingdom exporter (#741)
 
@@ -45,16 +43,16 @@ index 9be0fc8c..5e4bfb21 100644
  secret:
    annotations: {}
      # key: "true"
+
 ```
 
 ## 2.3.2
 
 **Release date:** 2021-01-20
 
-![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success&logo=)
+![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * update version (#561)
 
@@ -68,10 +66,9 @@ index 9be0fc8c..5e4bfb21 100644
 
 **Release date:** 2020-11-06
 
-![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success&logo=)
+![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * charts/prometheus-pingdom-exporter: fix typo (#317)
 * fix yaml lint
@@ -87,10 +84,9 @@ index 9be0fc8c..5e4bfb21 100644
 
 **Release date:** 2020-10-07
 
-![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success&logo=)
+![AppVersion: 20190610-1](https://img.shields.io/static/v1?label=AppVersion&message=20190610-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * update pingdom exporter
 
@@ -110,16 +106,16 @@ index 7a9bdcc4..9be0fc8c 100644
    pullPolicy: IfNotPresent
  
  nameOverride: ""
+
 ```
 
 ## 2.2.0
 
 **Release date:** 2019-09-23
 
-![AppVersion: 20180821-1](https://img.shields.io/static/v1?label=AppVersion&message=20180821-1&color=success&logo=)
+![AppVersion: 20180821-1](https://img.shields.io/static/v1?label=AppVersion&message=20180821-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add annotations to secret (#187)
 
@@ -141,16 +137,16 @@ index 26fd9a0e..7a9bdcc4 100644
 +  annotations: {}
 +    # key: "true"
 +    # example: "false"
+
 ```
 
 ## 2.1.0
 
 **Release date:** 2019-09-21
 
-![AppVersion: 20180821-1](https://img.shields.io/static/v1?label=AppVersion&message=20180821-1&color=success&logo=)
+![AppVersion: 20180821-1](https://img.shields.io/static/v1?label=AppVersion&message=20180821-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add pod annotations (#186)
 
@@ -170,16 +166,16 @@ index 06b0c6e7..26fd9a0e 100644
 +  annotations: {}
 +    # key: "true"
 +  # example: "false"
+
 ```
 
 ## 2.0.0
 
 **Release date:** 2019-01-14
 
-![AppVersion: 20180821-1](https://img.shields.io/static/v1?label=AppVersion&message=20180821-1&color=success&logo=)
+![AppVersion: 20180821-1](https://img.shields.io/static/v1?label=AppVersion&message=20180821-1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prometheus pingdom exporter (#18)
 
@@ -238,6 +234,7 @@ pingdom:
   accountEmail: somebodyorelse@invalid
   # time (in seconds) between accessing the Pingdom  API
   wait: 10
+
 ```
 
 ---

@@ -1,12 +1,144 @@
 # Change Log
 
-## 4.3.0
+## 4.5.0
 
-**Release date:** 2023-03-02
+**Release date:** 2023-06-15
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
+* [prometheus-postgres-exporter] user from secret (#3492)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-postgres-exporter/values.yaml b/charts/prometheus-postgres-exporter/values.yaml
+index 9177e9f4..af33ea33 100644
+--- a/charts/prometheus-postgres-exporter/values.yaml
++++ b/charts/prometheus-postgres-exporter/values.yaml
+@@ -133,6 +133,11 @@ config:
+     # Specify one of both datasource or datasourceSecret
+     host:
+     user: postgres
++    userSecret: {}
++    # Secret name
++    #  name:
++    # User key inside secret
++    #  key:
+     # Only one of password, passwordFile, passwordSecret and pgpassfile can be specified
+     password:
+     # Specify passwordFile if DB password is stored in a file.
+
+```
+
+## 4.4.4
+
+**Release date:** 2023-05-20
+
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-postgres-exporter] Correct role (#3395)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 4.4.3
+
+**Release date:** 2023-05-04
+
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-postgres-exporter] template apiVersion based on capabilities for the pod disruption budget (#3322)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 4.4.2
+
+**Release date:** 2023-05-04
+
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-postgres-exporter] Add a maintainer (#3312)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 4.4.1
+
+**Release date:** 2023-04-06
+
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-postgres-exporter] Add comments regarding excludeDatabases and includeDatabases (#3173)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-postgres-exporter/values.yaml b/charts/prometheus-postgres-exporter/values.yaml
+index 47d2f6ac..9177e9f4 100644
+--- a/charts/prometheus-postgres-exporter/values.yaml
++++ b/charts/prometheus-postgres-exporter/values.yaml
+@@ -164,7 +164,9 @@ config:
+   disableSettingsMetrics: false
+   autoDiscoverDatabases: false
+   excludeDatabases: []
++  # autoDiscoverDatabases must be true for excludeDatabases to be considered
+   includeDatabases: []
++  # autoDiscoverDatabases must be true for includeDatabases to be considered
+   constantLabels: {}
+   # possible values debug, info, warn, error, fatal
+   logLevel: ""
+
+```
+
+## 4.4.0
+
+**Release date:** 2023-03-09
+
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-postgres-exporter] Add automountServiceAccountToken (#3104)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-postgres-exporter/values.yaml b/charts/prometheus-postgres-exporter/values.yaml
+index 15fb5286..47d2f6ac 100644
+--- a/charts/prometheus-postgres-exporter/values.yaml
++++ b/charts/prometheus-postgres-exporter/values.yaml
+@@ -26,6 +26,8 @@ service:
+   labels: {}
+   annotations: {}
+ 
++automountServiceAccountToken: false
++
+ serviceMonitor:
+   # When set true then use a ServiceMonitor to configure scraping
+   enabled: false
+
+```
+
+## 4.3.0
+
+**Release date:** 2023-03-01
+
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
 
 * [prometheus-postgres-exporter] Add option to change deployment command (#3070)
 
@@ -26,15 +158,15 @@ index d847bc53..15fb5286 100644
  service:
    type: ClusterIP
    port: 80
+
 ```
 
 ## 4.2.1
 
 **Release date:** 2023-01-26
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix(postgres-exporter): fix flag format (#2952)
 
@@ -48,9 +180,8 @@ index d847bc53..15fb5286 100644
 
 **Release date:** 2023-01-24
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] add parameters to helm (#2943)
 
@@ -78,15 +209,15 @@ index b0f31b5b..d847bc53 100644
    # Enable queries from an external configmap, enable it will disable inline queries below
    externalQueries:
      enabled: false
+
 ```
 
 ## 4.1.4
 
 **Release date:** 2023-01-24
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Fix bug in targetPort (#2942)
 
@@ -100,9 +231,8 @@ index b0f31b5b..d847bc53 100644
 
 **Release date:** 2022-12-24
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [postgres-exporter] Fix placement of securityContext (#2853)
 
@@ -116,9 +246,8 @@ index b0f31b5b..d847bc53 100644
 
 **Release date:** 2022-12-23
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [postgres-exporter] Fix indentation at securityContext (#2840) (#2850)
 
@@ -199,15 +328,15 @@ index bf91f88f..b0f31b5b 100644
  # Uncomment for mounting custom ca-certificates file into container
  #  - name: ssl-certs
  #    mountPath: /etc/ssl/certs/ca-certificates.crt
+
 ```
 
 ## 4.1.1
 
 **Release date:** 2022-12-23
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [postgres-exporter] feat: propagate pg_stats_statement WARNING (#2838)
 
@@ -226,15 +355,15 @@ index 97b54f86..bf91f88f 100644
      pg_stat_statements:
        query: "SELECT t2.rolname, t3.datname, queryid, calls, ( total_plan_time + total_exec_time ) / 1000 as total_time_seconds, ( min_plan_time + min_exec_time ) / 1000 as min_time_seconds, ( max_plan_time + max_exec_time ) / 1000 as max_time_seconds, ( mean_plan_time + mean_exec_time ) / 1000 as mean_time_seconds, ( stddev_plan_time + stddev_exec_time )  / 1000 as stddev_time_seconds, rows, shared_blks_hit, shared_blks_read, shared_blks_dirtied, shared_blks_written, local_blks_hit, local_blks_read, local_blks_dirtied, local_blks_written, temp_blks_read, temp_blks_written, blk_read_time / 1000 as blk_read_time_seconds, blk_write_time / 1000 as blk_write_time_seconds FROM pg_stat_statements t1 JOIN pg_roles t2 ON (t1.userid=t2.oid) JOIN pg_database t3 ON (t1.dbid=t3.oid) WHERE t2.rolname != 'rdsadmin' AND queryid IS NOT NULL"
        master: true
+
 ```
 
 ## 4.1.0
 
 **Release date:** 2022-12-22
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Refactor extra envs (#2844)
 
@@ -261,15 +390,15 @@ index e571d53d..97b54f86 100644
  
  # Init containers, e. g. for secrets creation before the exporter
  initContainers: []
+
 ```
 
 ## 4.0.0
 
 **Release date:** 2022-12-13
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Remove pg_database query (#2752)
 
@@ -299,15 +428,15 @@ index 7e119454..e571d53d 100644
      pg_stat_statements:
        query: "SELECT t2.rolname, t3.datname, queryid, calls, ( total_plan_time + total_exec_time ) / 1000 as total_time_seconds, ( min_plan_time + min_exec_time ) / 1000 as min_time_seconds, ( max_plan_time + max_exec_time ) / 1000 as max_time_seconds, ( mean_plan_time + mean_exec_time ) / 1000 as mean_time_seconds, ( stddev_plan_time + stddev_exec_time )  / 1000 as stddev_time_seconds, rows, shared_blks_hit, shared_blks_read, shared_blks_dirtied, shared_blks_written, local_blks_hit, local_blks_read, local_blks_dirtied, local_blks_written, temp_blks_read, temp_blks_written, blk_read_time / 1000 as blk_read_time_seconds, blk_write_time / 1000 as blk_write_time_seconds FROM pg_stat_statements t1 JOIN pg_roles t2 ON (t1.userid=t2.oid) JOIN pg_database t3 ON (t1.dbid=t3.oid) WHERE t2.rolname != 'rdsadmin' AND queryid IS NOT NULL"
        master: true
+
 ```
 
 ## 3.3.0
 
 **Release date:** 2022-11-22
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgre-exporter] new securityContext for POD (#2698)
 
@@ -348,15 +477,15 @@ index 7da996dd..7e119454 100644
  
  hostAliases: []
    # Set Host Aliases as per https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/
+
 ```
 
 ## 3.2.0
 
 **Release date:** 2022-11-22
 
-![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success&logo=)
+![AppVersion: 0.11.1](https://img.shields.io/static/v1?label=AppVersion&message=0.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgre-exporter] Add extraEnvs to deployment (#2715)
 
@@ -386,15 +515,15 @@ index e0b937e5..7da996dd 100644
  
  # Init containers, e. g. for secrets creation before the exporter
  initContainers: []
+
 ```
 
 ## 3.1.5
 
-**Release date:** 2022-10-20
+**Release date:** 2022-10-21
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Allow user queries to merge with default queries (#2592)
 
@@ -415,15 +544,15 @@ index e06ea955..e0b937e5 100644
  nodeSelector: {}
  
  tolerations: []
+
 ```
 
 ## 3.1.4
 
 **Release date:** 2022-10-16
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Align PSP deprecation with other charts (#2573)
 
@@ -437,9 +566,8 @@ index e06ea955..e0b937e5 100644
 
 **Release date:** 2022-09-09
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] DATA_SOURCE_PASS_FILE support (#2437)
 
@@ -463,15 +591,15 @@ index bd8c2f38..e06ea955 100644
      # Specify passwordSecret if DB password is stored in secret.
      passwordSecret: {}
      # Secret name
+
 ```
 
 ## 3.1.2
 
 **Release date:** 2022-08-23
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Fix indentation (#2388)
 
@@ -539,15 +667,15 @@ index 27e14c02..bd8c2f38 100644
        metrics:
          - datname:
              usage: "LABEL"
+
 ```
 
 ## 3.1.1
 
 **Release date:** 2022-08-18
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix(prometheus-postgres-exporter): convert port variable to int (#2372)
 
@@ -561,9 +689,8 @@ index 27e14c02..bd8c2f38 100644
 
 **Release date:** 2022-08-06
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add possibility to have hostAliases defined in deployment spec (#2351)
 
@@ -588,15 +715,15 @@ index a2ab8ff3..27e14c02 100644
  config:
    datasource:
      # Specify one of both datasource or datasourceSecret
+
 ```
 
 ## 3.0.3
 
 **Release date:** 2022-06-29
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * uses policy/v1 when available (#2208)
 
@@ -610,9 +737,8 @@ index a2ab8ff3..27e14c02 100644
 
 **Release date:** 2022-06-24
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Use correct port in port-forward command (#2189)
 
@@ -626,9 +752,8 @@ index a2ab8ff3..27e14c02 100644
 
 **Release date:** 2022-06-12
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] fix cve-2021-25742 (#2149)
 
@@ -642,9 +767,8 @@ index a2ab8ff3..27e14c02 100644
 
 **Release date:** 2022-05-05
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter]:  use new time column scheme of PG13 (#2021)
 
@@ -664,15 +788,15 @@ index ea33595c..a2ab8ff3 100644
        master: true
        metrics:
          - rolname:
+
 ```
 
 ## 2.10.1
 
 **Release date:** 2022-05-02
 
-![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success&logo=)
+![AppVersion: 0.10.1](https://img.shields.io/static/v1?label=AppVersion&message=0.10.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * chore(postgres-exporter): update image to 0.10.1 (#2019)
 
@@ -692,15 +816,15 @@ index 51969102..ea33595c 100644
    pullPolicy: IfNotPresent
  
    ## Optionally specify an array of imagePullSecrets.
+
 ```
 
 ## 2.10.0
 
 **Release date:** 2022-04-12
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add simple Ingress to make service.targetPort available in namespace (#1973)
 
@@ -726,15 +850,15 @@ index 10739694..51969102 100644
  securityContext: {}
    # The securityContext this Pod should use. See https://kubernetes.io/docs/concepts/policy/security-context/ for more.
    # runAsUser: 65534
+
 ```
 
 ## 2.9.0
 
 **Release date:** 2022-04-08
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add poddisruptionbudget for prometheus-postgres-exporter chart (#1964)
 
@@ -753,15 +877,15 @@ index 659a1b6b..10739694 100644
 +podDisruptionBudget:
 +  enabled: false
 +  maxUnavailable: 1
+
 ```
 
 ## 2.8.0
 
 **Release date:** 2022-03-31
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus-postgres-exporter added pgpassfile configuration value (#1937)
 
@@ -791,15 +915,15 @@ index 1330bc6f..659a1b6b 100644
      port: "5432"
      database: ''
      sslmode: disable
+
 ```
 
 ## 2.7.0
 
 **Release date:** 2022-03-22
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add relabelings to servicemonitor (#1895)
 
@@ -819,15 +943,15 @@ index 433d3540..1330bc6f 100644
  
  prometheusRule:
    enabled: false
+
 ```
 
 ## 2.6.1
 
 **Release date:** 2022-03-11
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix(postgres-exporter): trimmed data_source_uri if no extra options are provided (#1865)
 
@@ -841,9 +965,8 @@ index 433d3540..1330bc6f 100644
 
 **Release date:** 2022-03-07
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Support custom DB connection parameters (#1850)
 
@@ -862,15 +985,15 @@ index 55b7829f..433d3540 100644
    datasourceSecret: {}
      # Specifies if datasource should be sourced from secret value in format: postgresql://login:password@hostname:port/dbname?sslmode=disable
      # Multiple Postgres databases can be configured by comma separated postgres connection strings
+
 ```
 
 ## 2.5.0
 
 **Release date:** 2022-01-18
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add log.format args  (#1719)
 
@@ -890,15 +1013,15 @@ index f9307859..55b7829f 100644
    # Enable queries from an external configmap, enable it will disable inline queries below
    externalQueries:
      enabled: false
+
 ```
 
 ## 2.4.0
 
 **Release date:** 2021-12-02
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add support for queries in external configmap (#1545)
 
@@ -920,15 +1043,15 @@ index ef023792..f9307859 100644
    # These are the default queries that the exporter will run, extracted from: https://github.com/prometheus-community/postgres_exporter/blob/master/queries.yaml
    queries: |-
      pg_replication:
+
 ```
 
 ## 2.3.7
 
 **Release date:** 2021-09-23
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix(postgres-exporter): ignore pg_stat_statememts with empty queryId (#1364)
 
@@ -948,15 +1071,15 @@ index efe7e135..ef023792 100644
        master: true
        metrics:
          - rolname:
+
 ```
 
 ## 2.3.6
 
 **Release date:** 2021-08-24
 
-![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success&logo=)
+![AppVersion: 0.10.0](https://img.shields.io/static/v1?label=AppVersion&message=0.10.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Update to v0.10.0 (#1281)
 
@@ -976,15 +1099,15 @@ index 2baec0a2..efe7e135 100644
    pullPolicy: IfNotPresent
  
    ## Optionally specify an array of imagePullSecrets.
+
 ```
 
 ## 2.3.5
 
 **Release date:** 2021-06-23
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add --include-databases arguments to Postgres exporter values (#1099)
 
@@ -1003,15 +1126,15 @@ index b6d3435a..2baec0a2 100644
    constantLabels: {}
    # possible values debug, info, warn, error, fatal
    logLevel: ""
+
 ```
 
 ## 2.3.4
 
-**Release date:** 2021-05-29
+**Release date:** 2021-05-30
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update pg_stat_activity query (#1012)
 
@@ -1063,15 +1186,15 @@ index 4fd3883e..b6d3435a 100644
              usage: "HISTOGRAM"
              description: "Idle time of server processes"
  
+
 ```
 
 ## 2.3.3
 
 **Release date:** 2021-05-21
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * don't apply secret when using existing (#992)
 
@@ -1085,9 +1208,8 @@ index 4fd3883e..b6d3435a 100644
 
 **Release date:** 2021-05-21
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] drop capability on service monitor (#991)
 
@@ -1101,9 +1223,8 @@ index 4fd3883e..b6d3435a 100644
 
 **Release date:** 2021-05-11
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter]Update default password or passwordSecret in values.yaml (#958)
 * prometheus-postgres-exporter - Allow readiness timeout to be configurable via config (#815)
@@ -1137,15 +1258,15 @@ index 32a0fdfa..4fd3883e 100644
  
  # Init containers, e. g. for secrets creation before the exporter
  initContainers: []
+
 ```
 
 ## 2.3.0
 
 **Release date:** 2021-04-17
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Use arrays instead of strings for extraContainers, extraVolumes and extraVolumeMounts (#856)
 
@@ -1178,15 +1299,15 @@ index 47cc9561..32a0fdfa 100644
  
  # Uncomment for mounting custom ca-certificates file into container
  #  - name: ssl-certs
+
 ```
 
 ## 2.2.0
 
 **Release date:** 2021-03-19
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Update to the latest default queries.yaml (#775)
 
@@ -1313,15 +1434,15 @@ index af280051..47cc9561 100644
  nodeSelector: {}
  
  tolerations: []
+
 ```
 
 ## 2.1.0
 
 **Release date:** 2021-03-18
 
-![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success&logo=)
+![AppVersion: 0.9.0](https://img.shields.io/static/v1?label=AppVersion&message=0.9.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Update to postgres_exporter 0.9.0 (#773)
 
@@ -1343,15 +1464,15 @@ index 802afdf2..af280051 100644
    pullPolicy: IfNotPresent
  
    ## Optionally specify an array of imagePullSecrets.
+
 ```
 
 ## 2.0.0
 
 **Release date:** 2021-03-07
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Migrate to chart v2 (#540)
 
@@ -1365,10 +1486,9 @@ index 802afdf2..af280051 100644
 
 **Release date:** 2021-02-20
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add annotations to postgres-exporter ServiceAccount (#679)
 
@@ -1388,16 +1508,16 @@ index 2346320d..802afdf2 100644
  
  securityContext: {}
    # The securityContext this Pod should use. See https://kubernetes.io/docs/concepts/policy/security-context/ for more.
+
 ```
 
 ## 1.9.1
 
 **Release date:** 2021-02-12
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] add opportunity to specify log.level in args (#672)
 
@@ -1417,16 +1537,16 @@ index 40ae3434..2346320d 100644
    # this are the defaults queries that the exporter will run, extracted from: https://github.com/wrouesnel/postgres_exporter/blob/master/queries.yaml
    queries: |-
      pg_replication:
+
 ```
 
 ## 1.9.0
 
 **Release date:** 2021-01-26
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] add initialDelaySeconds configuration for probes (#612)
 
@@ -1451,16 +1571,16 @@ index 17a95efc..40ae3434 100644
  # Init containers, e. g. for secrets creation before the exporter
  initContainers: []
    # - name:
+
 ```
 
 ## 1.8.0
 
 **Release date:** 2021-01-20
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter]add optional constantLabels (#600)
 
@@ -1479,16 +1599,16 @@ index 5752d76c..17a95efc 100644
    # this are the defaults queries that the exporter will run, extracted from: https://github.com/wrouesnel/postgres_exporter/blob/master/queries.yaml
    queries: |-
      pg_replication:
+
 ```
 
 ## 1.7.0
 
 **Release date:** 2021-01-16
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [postgresql] (feat): add imagePullSecrets (#587)
 
@@ -1513,16 +1633,16 @@ index 51ba92ea..5752d76c 100644
  service:
    type: ClusterIP
    port: 80
+
 ```
 
 ## 1.6.0
 
 **Release date:** 2020-12-22
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add ServiceMonitor metricRelabeling and targetLabels (#512)
 
@@ -1544,16 +1664,16 @@ index 58577a92..51ba92ea 100644
  
  prometheusRule:
    enabled: false
+
 ```
 
 ## 1.5.0
 
 **Release date:** 2020-11-30
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] add initContainers (#425)
 
@@ -1579,16 +1699,16 @@ index 5d0f1bc9..58577a92 100644
  # Additional sidecar containers, e. g. for a database proxy, such as Google's cloudsql-proxy
  extraContainers: |
  
+
 ```
 
 ## 1.4.0
 
 **Release date:** 2020-11-18
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(prometheus-postgres-exporter): add configurable apiVersion (#377)
 
@@ -1602,10 +1722,9 @@ index 5d0f1bc9..58577a92 100644
 
 **Release date:** 2020-11-10
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add prometheusrule support (#337)
 
@@ -1639,16 +1758,16 @@ index fe15a627..5d0f1bc9 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 1.3.3
 
 **Release date:** 2020-09-17
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] add extraVolumeMounts and examples (#107)
 
@@ -1680,16 +1799,16 @@ index bcd9d53c..fe15a627 100644
 +#  - name: ssl-certs
 +#    mountPath: /etc/ssl/certs/ca-certificates.crt
 +#    subPath: ca-certificates.crt
+
 ```
 
 ## 1.3.2
 
 **Release date:** 2020-09-09
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] Add zanhsieh as maintainer (#71)
 
@@ -1703,10 +1822,9 @@ index bcd9d53c..fe15a627 100644
 
 **Release date:** 2020-08-20
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -1720,10 +1838,9 @@ index bcd9d53c..fe15a627 100644
 
 **Release date:** 2020-04-20
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Add support to configure dataso… (#21804)
 
@@ -1756,16 +1873,16 @@ index 6c62ce75..bcd9d53c 100644
    disableDefaultMetrics: false
    disableSettingsMetrics: false
    autoDiscoverDatabases: false
+
 ```
 
 ## 1.2.0
 
 **Release date:** 2019-12-23
 
-![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success&logo=)
+![AppVersion: 0.8.0](https://img.shields.io/static/v1?label=AppVersion&message=0.8.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter] update app to v0.8.0 (#19749)
 
@@ -1925,16 +2042,16 @@ index f770b4a4..6c62ce75 100644
  nodeSelector: {}
  
  tolerations: []
+
 ```
 
 ## 1.1.1
 
 **Release date:** 2019-11-12
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update README of prometheus-postgres-exporter (#18475)
 
@@ -1948,10 +2065,9 @@ index f770b4a4..6c62ce75 100644
 
 **Release date:** 2019-10-11
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Add feature 'auto-discover-databases' (#17826)
 
@@ -1971,16 +2087,16 @@ index f24fcfa2..f770b4a4 100644
    # this are the defaults queries that the exporter will run, extracted from: https://github.com/wrouesnel/postgres_exporter/blob/master/queries.yaml
    queries: |-
      pg_replication:
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2019-10-06
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Fix compatibility with k8s 1.16 (#17694)
 
@@ -1994,10 +2110,9 @@ index f24fcfa2..f770b4a4 100644
 
 **Release date:** 2019-08-13
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter]: add the ability to create a ServiceMonitor (#14918)
 
@@ -2029,16 +2144,16 @@ index 816d5f3f..f24fcfa2 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 0.7.1
 
-**Release date:** 2019-07-22
+**Release date:** 2019-07-23
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Bump to prometheus-postgres-exporter v0.5.1 + use prometheus-postgres-exporter.chart (#15502)
 
@@ -2058,16 +2173,16 @@ index 2a01c159..816d5f3f 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 0.7.0
 
 **Release date:** 2019-07-05
 
-![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success&logo=)
+![AppVersion: 0.5.0](https://img.shields.io/static/v1?label=AppVersion&message=0.5.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] upgrade to new version of postgres exporter (#15239)
 
@@ -2087,16 +2202,16 @@ index e40cae10..2a01c159 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 0.6.3
 
 **Release date:** 2019-06-27
 
-![AppVersion: 0.4.7](https://img.shields.io/static/v1?label=AppVersion&message=0.4.7&color=success&logo=)
+![AppVersion: 0.4.7](https://img.shields.io/static/v1?label=AppVersion&message=0.4.7&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Allow specifying a securityContext (#15074)
 
@@ -2118,16 +2233,16 @@ index d71cf852..e40cae10 100644
  config:
    datasource:
      host:
+
 ```
 
 ## 0.6.2
 
 **Release date:** 2019-03-16
 
-![AppVersion: 0.4.7](https://img.shields.io/static/v1?label=AppVersion&message=0.4.7&color=success&logo=)
+![AppVersion: 0.4.7](https://img.shields.io/static/v1?label=AppVersion&message=0.4.7&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Allow to specify secret for database password (#11392)
 
@@ -2156,16 +2271,16 @@ index 3373cf55..d71cf852 100644
      port: "5432"
      database: ''
      sslmode: disable
+
 ```
 
 ## 0.6.1
 
-**Release date:** 2018-12-17
+**Release date:** 2018-12-18
 
-![AppVersion: 0.4.7](https://img.shields.io/static/v1?label=AppVersion&message=0.4.7&color=success&logo=)
+![AppVersion: 0.4.7](https://img.shields.io/static/v1?label=AppVersion&message=0.4.7&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update postgres-exporter to app v0.4.7 (#10079)
 
@@ -2226,16 +2341,16 @@ index 14f11a55..3373cf55 100644
      pg_database:
        query: " SELECT pg_database.datname, pg_database_size(pg_database.datname) as size FROM pg_database"
        metrics:
+
 ```
 
 ## 0.6.0
 
 **Release date:** 2018-12-17
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * postgres-exporter labels and port name (#10027)
 
@@ -2264,16 +2379,16 @@ index c3de2355..14f11a55 100644
  # Additional sidecar containers, e. g. for a database proxy, such as Google's cloudsql-proxy
  extraContainers: |
  
+
 ```
 
 ## 0.5.1
 
 **Release date:** 2018-12-16
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Add .Values.service.annotations (#10038)
 
@@ -2292,16 +2407,16 @@ index b54dd067..c3de2355 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 0.5.0
 
 **Release date:** 2018-10-13
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Added flag for disabling default metrics (#8134)
 
@@ -2320,16 +2435,16 @@ index b740095d..b54dd067 100644
    # this are the defaults queries that the exporter will run, extracted from: https://github.com/wrouesnel/postgres_exporter/blob/master/queries.yaml
    queries: |-
      pg_replication:
+
 ```
 
 ## 0.4.0
 
 **Release date:** 2018-06-24
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] add support for Google Cloud SQL (#6009)
 
@@ -2358,16 +2473,16 @@ index 885153d7..b740095d 100644
 +
 +# Additional volumes, e. g. for secrets used in an extraContainer
 +extraVolumes: |
+
 ```
 
 ## 0.3.0
 
 **Release date:** 2018-06-17
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] add RBAC resources (#6008)
 
@@ -2390,16 +2505,16 @@ index c84faa4b..885153d7 100644
  serviceAccount:
    # Specifies whether a ServiceAccount should be created
    create: true
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2018-06-11
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * adding annotations (#5607)
 
@@ -2416,16 +2531,16 @@ index 91272671..c84faa4b 100644
  affinity: {}
 +
 +annotations: {}
+
 ```
 
 ## 0.1.3
 
 **Release date:** 2018-05-27
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-postgres-exporter]Typo fix: tables lists->table lists (#5720)
 
@@ -2439,10 +2554,9 @@ index 91272671..c84faa4b 100644
 
 **Release date:** 2018-05-25
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix url which not exist anymore (#4589)
 
@@ -2456,10 +2570,9 @@ index 91272671..c84faa4b 100644
 
 **Release date:** 2018-05-24
 
-![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success&logo=)
+![AppVersion: 0.4.6](https://img.shields.io/static/v1?label=AppVersion&message=0.4.6&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-postgres-exporter] Fixes #5059, #5472, version update (#5473)
 
@@ -2479,16 +2592,16 @@ index 63e96829..91272671 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 0.1.0
 
 **Release date:** 2018-03-16
 
-![AppVersion: 0.4.4](https://img.shields.io/static/v1?label=AppVersion&message=0.4.4&color=success&logo=)
+![AppVersion: 0.4.4](https://img.shields.io/static/v1?label=AppVersion&message=0.4.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Create prometheus postgres exporter chart (#4076)
 
@@ -2635,6 +2748,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
 ```
 
 ---

@@ -1,12 +1,250 @@
 # Change Log
 
+## 4.17.5
+
+**Release date:** 2023-06-06
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-node-exporter] remove prometheus scrape annotation (#3123)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-node-exporter/values.yaml b/charts/prometheus-node-exporter/values.yaml
+index ca9b77ed..45acd897 100644
+--- a/charts/prometheus-node-exporter/values.yaml
++++ b/charts/prometheus-node-exporter/values.yaml
+@@ -71,8 +71,7 @@ service:
+   nodePort:
+   portName: metrics
+   listenOnAllInterfaces: true
+-  annotations:
+-    prometheus.io/scrape: "true"
++  annotations: {}
+ 
+ # Set a NetworkPolicy with:
+ # ingress only on service.port
+
+```
+
+## 4.17.4
+
+**Release date:** 2023-06-01
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-node-exporter] Patch nodeSelector on node-exporter daemonset (#3190)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-node-exporter/values.yaml b/charts/prometheus-node-exporter/values.yaml
+index 87deb273..ca9b77ed 100644
+--- a/charts/prometheus-node-exporter/values.yaml
++++ b/charts/prometheus-node-exporter/values.yaml
+@@ -341,9 +341,9 @@ dnsConfig: {}
+ 
+ ## Assign a nodeSelector if operating a hybrid cluster
+ ##
+-nodeSelector: {}
+-#   beta.kubernetes.io/arch: amd64
+-#   beta.kubernetes.io/os: linux
++nodeSelector:
++  kubernetes.io/os: linux
++  #  kubernetes.io/arch: amd64
+ 
+ tolerations:
+   - effect: NoSchedule
+
+```
+
+## 4.17.3
+
+**Release date:** 2023-05-23
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-node-exporter] added fullnameOverride to values.yaml (#3419)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-node-exporter/values.yaml b/charts/prometheus-node-exporter/values.yaml
+index 643b9c85..87deb273 100644
+--- a/charts/prometheus-node-exporter/values.yaml
++++ b/charts/prometheus-node-exporter/values.yaml
+@@ -11,6 +11,8 @@ image:
+ 
+ imagePullSecrets: []
+ # - name: "image-pull-secret"
++nameOverride: ""
++fullnameOverride: ""
+ 
+ global:
+   # To help compatibility with other charts which use global.imagePullSecrets.
+
+```
+
+## 4.17.2
+
+**Release date:** 2023-05-07
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* fix node-exporter listen address with kubeRBACProxy enabled (#3336)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 4.17.1
+
+**Release date:** 2023-05-03
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-node-exporter] Add a maintainer (#3314)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 4.17.0
+
+**Release date:** 2023-04-21
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-node-exporter] set readOnlyRootFilesystem=true (#3272)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-node-exporter/values.yaml b/charts/prometheus-node-exporter/values.yaml
+index ff1e53f8..643b9c85 100644
+--- a/charts/prometheus-node-exporter/values.yaml
++++ b/charts/prometheus-node-exporter/values.yaml
+@@ -264,7 +264,8 @@ securityContext:
+   runAsNonRoot: true
+   runAsUser: 65534
+ 
+-containerSecurityContext: {}
++containerSecurityContext:
++  readOnlyRootFilesystem: true
+   # capabilities:
+   #   add:
+   #   - SYS_TIME
+
+```
+
+## 4.16.0
+
+**Release date:** 2023-04-12
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* add an optional `NetworkPolicy` (#3212)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-node-exporter/values.yaml b/charts/prometheus-node-exporter/values.yaml
+index 1236b9e1..ff1e53f8 100644
+--- a/charts/prometheus-node-exporter/values.yaml
++++ b/charts/prometheus-node-exporter/values.yaml
+@@ -72,6 +72,12 @@ service:
+   annotations:
+     prometheus.io/scrape: "true"
+ 
++# Set a NetworkPolicy with:
++# ingress only on service.port
++# no egress permitted
++networkPolicy:
++  enabled: false
++
+ # Additional environment variables that will be passed to the daemonset
+ env: {}
+ ##  env:
+
+```
+
+## 4.15.1
+
+**Release date:** 2023-04-11
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-node-exporter]  Use digest instead of sha (#3130)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-node-exporter/values.yaml b/charts/prometheus-node-exporter/values.yaml
+index b498a208..1236b9e1 100644
+--- a/charts/prometheus-node-exporter/values.yaml
++++ b/charts/prometheus-node-exporter/values.yaml
+@@ -7,7 +7,7 @@ image:
+   # Overrides the image tag whose default is {{ printf "v%s" .Chart.AppVersion }}
+   tag: ""
+   pullPolicy: IfNotPresent
+-  sha: ""
++  digest: ""
+ 
+ imagePullSecrets: []
+ # - name: "image-pull-secret"
+
+```
+
+## 4.15.0
+
+**Release date:** 2023-04-06
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-node-exporter] add attachMetadata to ServiceMonitor (#3176)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-node-exporter/values.yaml b/charts/prometheus-node-exporter/values.yaml
+index eb7dc6b1..b498a208 100644
+--- a/charts/prometheus-node-exporter/values.yaml
++++ b/charts/prometheus-node-exporter/values.yaml
+@@ -102,6 +102,11 @@ prometheus:
+     ##
+     selectorOverride: {}
+ 
++    ## Attach node metadata to discovered targets. Requires Prometheus v2.35.0 and above.
++    ##
++    attachMetadata:
++      node: false
++
+     relabelings: []
+     metricRelabelings: []
+     interval: ""
+
+```
+
 ## 4.14.0
 
 **Release date:** 2023-02-22
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Allow parent charts to override registry hostname (#3044)
 
@@ -46,15 +284,15 @@ index ae43c00d..eb7dc6b1 100644
      tag: v0.14.0
      sha: ""
      pullPolicy: IfNotPresent
+
 ```
 
 ## 4.13.1
 
 **Release date:** 2023-02-15
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Update VPA containerPolicies container name to match DaemonSet (#2999)
 
@@ -68,9 +306,8 @@ index ae43c00d..eb7dc6b1 100644
 
 **Release date:** 2023-01-23
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add udev path arg (#2941)
 
@@ -84,9 +321,8 @@ index ae43c00d..eb7dc6b1 100644
 
 **Release date:** 2023-01-11
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Allow to enable kube-rbac-proxy for node-exporter (#2892)
 
@@ -136,15 +372,15 @@ index db55144f..ae43c00d 100644
  service:
    type: ClusterIP
    port: 9100
+
 ```
 
 ## 4.11.0
 
 **Release date:** 2023-01-10
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add a pod monitor (#2861) (#2866)
 
@@ -252,15 +488,15 @@ index 4df845bb..db55144f 100644
  ## Customize the updateStrategy if set
  updateStrategy:
    type: RollingUpdate
+
 ```
 
 ## 4.10.0
 
-**Release date:** 2023-01-11
+**Release date:** 2023-01-10
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Adds podTargetLabels configuration to service monitor (#2785)
 
@@ -282,15 +518,15 @@ index 3036bed7..4df845bb 100644
      scheme: http
      basicAuth: {}
      bearerTokenFile:
+
 ```
 
 ## 4.9.0
 
 **Release date:** 2023-01-07
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add support for global imagePullSecrets values (#2772)
 
@@ -322,15 +558,15 @@ index f491bdfa..3036bed7 100644
  service:
    type: ClusterIP
    port: 9100
+
 ```
 
 ## 4.8.1
 
 **Release date:** 2022-12-21
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Fix variable scope for sidecar volume mounts (#2825)
 
@@ -344,9 +580,8 @@ index f491bdfa..3036bed7 100644
 
 **Release date:** 2022-12-01
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] updates the Prometheus Node Exporter image to v1.5.0 (#2766)
 
@@ -360,9 +595,8 @@ index f491bdfa..3036bed7 100644
 
 **Release date:** 2022-11-28
 
-![AppVersion: 1.4.0](https://img.shields.io/static/v1?label=AppVersion&message=1.4.0&color=success&logo=)
+![AppVersion: 1.4.0](https://img.shields.io/static/v1?label=AppVersion&message=1.4.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Correct indentation of environment variables (#2744)
 
@@ -376,9 +610,8 @@ index f491bdfa..3036bed7 100644
 
 **Release date:** 2022-11-22
 
-![AppVersion: 1.4.0](https://img.shields.io/static/v1?label=AppVersion&message=1.4.0&color=success&logo=)
+![AppVersion: 1.4.0](https://img.shields.io/static/v1?label=AppVersion&message=1.4.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Update image to v1.4.0 (#2696)
 
@@ -390,11 +623,10 @@ index f491bdfa..3036bed7 100644
 
 ## 4.6.0
 
-**Release date:** 2022-11-17
+**Release date:** 2022-11-18
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add daemonset annotations (#2632) (#2701)
 
@@ -415,15 +647,15 @@ index c4f2b571..f491bdfa 100644
  ## set to true to add the release label so scraping of the servicemonitor with kube-prometheus-stack works out of the box
  releaseLabel: false
  
+
 ```
 
 ## 4.5.2
 
 **Release date:** 2022-11-15
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Line break issue in labels (#2682)
 
@@ -437,9 +669,8 @@ index c4f2b571..f491bdfa 100644
 
 **Release date:** 2022-11-11
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Refactor (#2650)
 
@@ -453,9 +684,8 @@ index c4f2b571..f491bdfa 100644
 
 **Release date:** 2022-11-01
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] add servicemonitor/podmonitor scrape limits (#2609)
 
@@ -493,15 +723,15 @@ index 3da0a2f4..c4f2b571 100644
  ## Customize the updateStrategy if set
  updateStrategy:
    type: RollingUpdate
+
 ```
 
 ## 4.4.2
 
 **Release date:** 2022-10-28
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] ServiceMonitor selectorOverride fix (#2618)
 
@@ -515,9 +745,8 @@ index 3da0a2f4..c4f2b571 100644
 
 **Release date:** 2022-10-16
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Fix PSP deprecation after k8s 1.25+ (#2574)
 
@@ -531,9 +760,8 @@ index 3da0a2f4..c4f2b571 100644
 
 **Release date:** 2022-10-12
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add Vertical Pod Autoscaler support (#2553)
 
@@ -568,15 +796,15 @@ index a00ae4d3..3da0a2f4 100644
 +    # Specifies whether recommended updates are applied when a Pod is started and whether recommended updates
 +    # are applied during the life of a Pod. Possible values are "Off", "Initial", "Recreate", and "Auto".
 +    # updateMode: Auto
+
 ```
 
 ## 4.3.1
 
 **Release date:** 2022-10-12
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] use recent version of PSP API in K8S 1.25 (#2520)
 
@@ -590,9 +818,8 @@ index a00ae4d3..3da0a2f4 100644
 
 **Release date:** 2022-09-16
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] custom servicemonitor apiversion (#2407)
 
@@ -612,15 +839,15 @@ index ac22d28e..a00ae4d3 100644
  
  ## Customize the updateStrategy if set
  updateStrategy:
+
 ```
 
 ## 4.2.0
 
 **Release date:** 2022-09-13
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add releaseLabel (#2453)
 
@@ -641,15 +868,15 @@ index a584f528..ac22d28e 100644
  # Custom DNS configuration to be added to prometheus-node-exporter pods
  dnsConfig: {}
  # nameservers:
+
 ```
 
 ## 4.1.0
 
 **Release date:** 2022-09-12
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add sidecarHostVolumeMounts (#2441)
 
@@ -685,15 +912,15 @@ index dba5750a..a584f528 100644
  ## Additional InitContainers to initialize the pod
  ##
  extraInitContainers: []
+
 ```
 
 ## 4.0.0
 
 **Release date:** 2022-08-22
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Update labels to match best practices (#2212)
 
@@ -705,11 +932,10 @@ index dba5750a..a584f528 100644
 
 ## 3.4.0
 
-**Release date:** 2022-08-16
+**Release date:** 2022-08-17
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat[prometheus-node-exporter]: add image sha support for image specified (#2377)
 
@@ -728,15 +954,15 @@ index 80b399a0..dba5750a 100644
  
  imagePullSecrets: []
  # - name: "image-pull-secret"
+
 ```
 
 ## 3.3.1
 
 **Release date:** 2022-07-24
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Removing me as maintainer (#2301)
 
@@ -750,9 +976,8 @@ index 80b399a0..dba5750a 100644
 
 **Release date:** 2022-05-26
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Make liveness and readiness probes customi… (#2053)
 
@@ -791,15 +1016,15 @@ index ef994353..80b399a0 100644
 +  periodSeconds: 10
 +  successThreshold: 1
 +  timeoutSeconds: 1
+
 ```
 
 ## 3.2.0
 
 **Release date:** 2022-05-17
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add basicAuth configuration to ServiceMonitor (#2061)
 
@@ -818,15 +1043,15 @@ index 2f303747..ef994353 100644
      bearerTokenFile:
      tlsConfig: {}
  
+
 ```
 
 ## 3.1.1
 
-**Release date:** 2022-04-14
+**Release date:** 2022-04-13
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] enables adding imagePullSecrets in node exporter chart. (#1982)
 
@@ -847,15 +1072,15 @@ index 7e02e211..2f303747 100644
  service:
    type: ClusterIP
    port: 9100
+
 ```
 
 ## 3.1.0
 
 **Release date:** 2022-03-28
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] be able to set environment variables (#1920)
 
@@ -878,15 +1103,15 @@ index 714dc9bd..7e02e211 100644
  prometheus:
    monitor:
      enabled: false
+
 ```
 
 ## 3.0.2
 
 **Release date:** 2022-03-24
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Bracket $HOST_IP to enable IPv6 support (#1906)
 
@@ -900,9 +1125,8 @@ index 714dc9bd..7e02e211 100644
 
 **Release date:** 2022-03-01
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add zanhsieh as one of maintainers (#1823)
 
@@ -916,9 +1140,8 @@ index 714dc9bd..7e02e211 100644
 
 **Release date:** 2022-02-10
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Parameterise host root FS mount propagation (#1583)
 
@@ -948,15 +1171,15 @@ index adcf6b59..714dc9bd 100644
  
  ## Assign a group of affinity scheduling rules
  ##
+
 ```
 
 ## 2.5.0
 
 **Release date:** 2022-01-13
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] reintroduce service monitor selectorOverride (#1699)
 
@@ -978,15 +1201,15 @@ index 62a74738..adcf6b59 100644
      relabelings: []
      metricRelabelings: []
      interval: ""
+
 ```
 
 ## 2.4.1
 
 **Release date:** 2021-12-22
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Fix yaml comments prometheus node exporter (#1612)
 
@@ -1000,9 +1223,8 @@ index 62a74738..adcf6b59 100644
 
 **Release date:** 2021-12-17
 
-![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success&logo=)
+![AppVersion: 1.3.1](https://img.shields.io/static/v1?label=AppVersion&message=1.3.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Update image to v1.3.1 & enable custom ServiceMonitor jobLabel (#1591)
 
@@ -1033,15 +1255,15 @@ index 6f70b8ee..62a74738 100644
      scheme: http
      bearerTokenFile:
      tlsConfig: {}
+
 ```
 
 ## 2.3.0
 
 **Release date:** 2021-12-09
 
-![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success&logo=)
+![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [promethus-node-exporter] Improve ServiceMonitor (#1566)
 
@@ -1061,15 +1283,15 @@ index 0d2c9aa8..6f70b8ee 100644
      scrapeTimeout: 10s
  
  ## Customize the updateStrategy if set
+
 ```
 
 ## 2.2.2
 
 **Release date:** 2021-12-06
 
-![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success&logo=)
+![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Remove me as maintainer (#1563)
 
@@ -1083,9 +1305,8 @@ index 0d2c9aa8..6f70b8ee 100644
 
 **Release date:** 2021-11-27
 
-![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success&logo=)
+![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter]Add availability to deploy ServiceMonitor onto a specific namespace.  (#1526)
 
@@ -1099,9 +1320,8 @@ index 0d2c9aa8..6f70b8ee 100644
 
 **Release date:** 2021-10-07
 
-![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success&logo=)
+![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Allow to set service port name (#1406)
 
@@ -1120,15 +1340,15 @@ index 203020ce..0d2c9aa8 100644
    listenOnAllInterfaces: true
    annotations:
      prometheus.io/scrape: "true"
+
 ```
 
 ## 2.1.0
 
 **Release date:** 2021-09-17
 
-![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success&logo=)
+![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Allow for specifying automountServiceAccountToken (#1350)
 
@@ -1147,15 +1367,15 @@ index 27b87831..203020ce 100644
  
  securityContext:
    fsGroup: 65534
+
 ```
 
 ## 2.0.4
 
 **Release date:** 2021-08-19
 
-![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success&logo=)
+![AppVersion: 1.2.2](https://img.shields.io/static/v1?label=AppVersion&message=1.2.2&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Version bump to 1.2.2 (#1258)
 
@@ -1175,15 +1395,15 @@ index ac6416d6..27b87831 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.0.3
 
 **Release date:** 2021-08-06
 
-![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success&logo=)
+![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Version bump to 1.2.1 (#1230)
 
@@ -1203,15 +1423,15 @@ index 8b5f1587..ac6416d6 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 2.0.2
 
 **Release date:** 2021-07-26
 
-![AppVersion: 1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=1.2.0&color=success&logo=)
+![AppVersion: 1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=1.2.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add configurable host PID (#1202)
 
@@ -1232,15 +1452,15 @@ index 8c88bb91..8b5f1587 100644
  ## If true, node-exporter pods mounts host / at /host/root
  ##
  hostRootFsMount: true
+
 ```
 
 ## 2.0.1
 
 **Release date:** 2021-07-21
 
-![AppVersion: 1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=1.2.0&color=success&logo=)
+![AppVersion: 1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=1.2.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * node-exporter: do not automount service account token (#1167)
 
@@ -1254,9 +1474,8 @@ index 8c88bb91..8b5f1587 100644
 
 **Release date:** 2021-07-19
 
-![AppVersion: 1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=1.2.0&color=success&logo=)
+![AppVersion: 1.2.0](https://img.shields.io/static/v1?label=AppVersion&message=1.2.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Version bump to 1.2.0; drop helm2 support (#1176)
 
@@ -1276,16 +1495,16 @@ index f4e927fa..8c88bb91 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 1.18.2
 
 **Release date:** 2021-06-19
 
-![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success&logo=)
+![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add the ability to define a proxyUrl via values (#1091)
 
@@ -1307,16 +1526,16 @@ index 400ce113..f4e927fa 100644
      relabelings: []
      scrapeTimeout: 10s
  
+
 ```
 
 ## 1.18.1
 
 **Release date:** 2021-06-03
 
-![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success&logo=)
+![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fix PSP annotation identation (#1030)
 
@@ -1330,10 +1549,9 @@ index 400ce113..f4e927fa 100644
 
 **Release date:** 2021-04-14
 
-![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success&logo=)
+![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] - feat: added psp annotations (#848)
 
@@ -1352,16 +1570,16 @@ index 5cb6981a..400ce113 100644
  
  # for deployments that have node_exporter deployed outside of the cluster, list
  # their addresses here
+
 ```
 
 ## 1.17.0
 
 **Release date:** 2021-04-14
 
-![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success&logo=)
+![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] 1.16.0 Allow to configure init containers (#748)
 
@@ -1380,16 +1598,16 @@ index 93f8ef80..5cb6981a 100644
 +## Additional InitContainers to initialize the pod
 +##
 +extraInitContainers: []
+
 ```
 
 ## 1.16.2
 
 **Release date:** 2021-03-18
 
-![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success&logo=)
+![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus-node-exporter - use custom service accounts (#755)
 
@@ -1403,10 +1621,9 @@ index 93f8ef80..5cb6981a 100644
 
 **Release date:** 2021-03-18
 
-![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success&logo=)
+![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Allow to opt-out node exporter rootfs mount (#757)
 
@@ -1428,16 +1645,16 @@ index 63ff1364..93f8ef80 100644
  ## Assign a group of affinity scheduling rules
  ##
  affinity: {}
+
 ```
 
 ## 1.16.0
 
 **Release date:** 2021-03-18
 
-![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success&logo=)
+![AppVersion: 1.1.2](https://img.shields.io/static/v1?label=AppVersion&message=1.1.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] AppVersion bump to 1.1.2 (#774)
 
@@ -1457,16 +1674,16 @@ index 966e4174..63ff1364 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 1.15.0
 
 **Release date:** 2021-02-10
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Ability for custom dnsConfig on prometheus-node-exporter (#644)
 
@@ -1496,16 +1713,16 @@ index 4be3f9c2..966e4174 100644
  ## Assign a nodeSelector if operating a hybrid cluster
  ##
  nodeSelector: {}
+
 ```
 
 ## 1.14.2
 
 **Release date:** 2021-02-03
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add containerSecurityContext to node-exporter (#544)
 
@@ -1528,16 +1745,16 @@ index 2b2205ce..4be3f9c2 100644
  rbac:
    ## If true, create & use RBAC resources
    ##
+
 ```
 
 ## 1.14.1
 
 **Release date:** 2021-02-01
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add bismarck as maintainer (#625)
 
@@ -1551,10 +1768,9 @@ index 2b2205ce..4be3f9c2 100644
 
 **Release date:** 2021-02-01
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Fix very slow GKE cluster upgrades (#485)
 
@@ -1576,16 +1792,16 @@ index 8ef77484..2b2205ce 100644
  
  # Extra labels to be added to node exporter pods
  podLabels: {}
+
 ```
 
 ## 1.13.0
 
 **Release date:** 2021-01-29
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Adding secret support for oauth psidecar (#486)
 
@@ -1625,16 +1841,16 @@ index 7edd8936..8ef77484 100644
  ## Override the deployment namespace
  ##
  namespaceOverride: ""
+
 ```
 
 ## 1.12.0
 
 **Release date:** 2020-10-30
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add rootfs mount by default (#80)
 
@@ -1648,10 +1864,9 @@ index 7edd8936..8ef77484 100644
 
 **Release date:** 2020-08-20
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -1665,10 +1880,9 @@ index 7edd8936..8ef77484 100644
 
 **Release date:** 2020-07-15
 
-![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success&logo=)
+![AppVersion: 1.0.1](https://img.shields.io/static/v1?label=AppVersion&message=1.0.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Version bump to 1.0.1 (#23151)
 
@@ -1688,16 +1902,16 @@ index 3e0acd07..7edd8936 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 1.11.0
 
 **Release date:** 2020-06-16
 
-![AppVersion: 1.0.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0.0&color=success&logo=)
+![AppVersion: 1.0.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add relabelings config for node-exporter ServiceMonitor (#22764)
 
@@ -1716,16 +1930,16 @@ index 5e4b2f2b..3e0acd07 100644
      scrapeTimeout: 10s
  
  ## Customize the updateStrategy if set
+
 ```
 
 ## 1.10.0
 
 **Release date:** 2020-05-31
 
-![AppVersion: 1.0.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0.0&color=success&logo=)
+![AppVersion: 1.0.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Upgrade to 1.0.0 & set group to non-root (#22603)
 
@@ -1754,16 +1968,16 @@ index 868bfcd7..5e4b2f2b 100644
    runAsNonRoot: true
    runAsUser: 65534
  
+
 ```
 
 ## 1.9.1
 
 **Release date:** 2020-03-19
 
-![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success&logo=)
+![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus node exporter: Configure exposing IP (#21490)
 
@@ -1782,16 +1996,16 @@ index 1567c872..868bfcd7 100644
    annotations:
      prometheus.io/scrape: "true"
  
+
 ```
 
 ## 1.9.0
 
 **Release date:** 2020-02-22
 
-![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success&logo=)
+![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] node-exporter add sidecar (#20952)
 
@@ -1827,16 +2041,16 @@ index 10746628..1567c872 100644
 +##  - name: collector-textfiles
 +##    mountPath: /run/prometheus
 +##    readOnly: false
+
 ```
 
 ## 1.8.2
 
 **Release date:** 2020-02-19
 
-![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success&logo=)
+![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Add updateStrategy to template (#20858)
 
@@ -1860,16 +2074,16 @@ index bdac9906..10746628 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 1.8.1
 
 **Release date:** 2019-12-17
 
-![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success&logo=)
+![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] - add podAnnotations value (#17740)
 
@@ -1893,16 +2107,16 @@ index cf793673..bdac9906 100644
  ## Assign a nodeSelector if operating a hybrid cluster
  ##
  nodeSelector: {}
+
 ```
 
 ## 1.8.0
 
 **Release date:** 2019-11-19
 
-![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success&logo=)
+![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prometheus node exporter namespace override (#18982)
 
@@ -1921,16 +2135,16 @@ index 900111cc..cf793673 100644
 +## Override the deployment namespace
 +##
 +namespaceOverride: ""
+
 ```
 
 ## 1.7.3
 
 **Release date:** 2019-11-04
 
-![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success&logo=)
+![AppVersion: 0.18.1](https://img.shields.io/static/v1?label=AppVersion&message=0.18.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Fix maps -> slices, bump version (#18527)
 
@@ -1973,16 +2187,16 @@ index 9fa06863..900111cc 100644
 +configmaps: []
  # - name: <configMapName>
  #   mountPath: <mountPath>
+
 ```
 
 ## 1.7.2
 
 **Release date:** 2019-10-31
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Add vsliouniaev as owner (#18461)
 
@@ -1994,12 +2208,11 @@ index 9fa06863..900111cc 100644
 
 ## 1.7.1
 
-**Release date:** 2019-10-28
+**Release date:** 2019-10-27
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] update NOTES.txt to show correct port (#17931)
 
@@ -2013,10 +2226,9 @@ index 9fa06863..900111cc 100644
 
 **Release date:** 2019-10-10
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Use latest API versions (#17785)
 
@@ -2030,10 +2242,9 @@ index 9fa06863..900111cc 100644
 
 **Release date:** 2019-07-28
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * allow mounting configmaps (#15356)
 
@@ -2054,16 +2265,16 @@ index b73b75c5..9fa06863 100644
 +configmaps: {}
 +# - name: <configMapName>
 +#   mountPath: <mountPath>
+
 ```
 
 ## 1.5.2
 
 **Release date:** 2019-07-26
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * removed errant space in commented line (#15661)
 
@@ -2083,16 +2294,16 @@ index 2da6571c..b73b75c5 100644
    # requests:
    #   cpu: 100m
    #   memory: 30Mi
+
 ```
 
 ## 1.5.1
 
-**Release date:** 2019-06-27
+**Release date:** 2019-06-28
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] add scrapeTimeout for the service monitor (#14293)
 
@@ -2112,16 +2323,16 @@ index 7ca723ff..2da6571c 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 1.5.0
 
 **Release date:** 2019-05-20
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Upgrade to 0.18.0 (#13739)
 
@@ -2141,16 +2352,16 @@ index 09261c4f..7ca723ff 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 1.4.2
 
 **Release date:** 2019-04-03
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] configurable host network (#12747)
 
@@ -2171,16 +2382,16 @@ index 14bcfc53..09261c4f 100644
  ## Assign a group of affinity scheduling rules
  ##
  affinity: {}
+
 ```
 
 ## 1.3.2
 
 **Release date:** 2019-03-07
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add prometheus service monitor to prometheus node exporter (#12004)
 
@@ -2204,16 +2415,16 @@ index fcd7acbd..14bcfc53 100644
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
    # choice for the user. This also increases chances charts run on environments with little
+
 ```
 
 ## 1.3.1
 
-**Release date:** 2019-03-08
+**Release date:** 2019-03-07
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Fix imagePullSecrets value path (#11222)
 
@@ -2227,10 +2438,9 @@ index fcd7acbd..14bcfc53 100644
 
 **Release date:** 2019-02-18
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Add options to change volume mount propagation  (#11194)
 
@@ -2246,16 +2456,16 @@ index 5f4298c6..fcd7acbd 100644
  #    mountPath: <mountPath>
  #    readOnly: true|false
 +#    mountPropagation: None|HostToContainer|Bidirectional
+
 ```
 
 ## 1.2.0
 
 **Release date:** 2019-01-31
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Add nodeSelector to DaemonSet (#10952)
 
@@ -2291,16 +2501,16 @@ index 6df24368..5f4298c6 100644
  tolerations:
    - effect: NoSchedule
      operator: Exists
+
 ```
 
 ## 1.1.0
 
 **Release date:** 2018-12-31
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] Node exporter endpoints (#10243)
 
@@ -2314,10 +2524,9 @@ index 6df24368..5f4298c6 100644
 
 **Release date:** 2018-12-20
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] - Bump app version to 0.17.0 ADDENDUM (#10125)
 
@@ -2337,16 +2546,16 @@ index 31694243..6df24368 100644
    pullPolicy: IfNotPresent
  
  service:
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2018-12-17
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter]Add support for nodePort (#9754)
 
@@ -2365,16 +2574,16 @@ index 7d3fc76a..31694243 100644
    annotations:
      prometheus.io/scrape: "true"
  
+
 ```
 
 ## 0.6.2
 
 **Release date:** 2018-12-17
 
-![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success&logo=)
+![AppVersion: 0.17.0](https://img.shields.io/static/v1?label=AppVersion&message=0.17.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] - Bump app version to 0.17.0 (#10058)
 
@@ -2386,12 +2595,11 @@ index 7d3fc76a..31694243 100644
 
 ## 0.6.1
 
-**Release date:** 2018-12-03
+**Release date:** 2018-12-02
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-node-exporter] add securityContext value (#9618)
 
@@ -2413,16 +2621,16 @@ index 38a70597..7d3fc76a 100644
  rbac:
    ## If true, create & use RBAC resources
    ##
+
 ```
 
 ## 0.6.0
 
 **Release date:** 2018-11-22
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add priorityClassName option to values (#9483)
 
@@ -2443,16 +2651,16 @@ index 6fac1b1b..38a70597 100644
  ## Additional container arguments
  ##
  extraArgs: {}
+
 ```
 
 ## 0.5.1
 
 **Release date:** 2018-11-05
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fix typo causing RBAC resources not being created (#8991)
 
@@ -2466,10 +2674,9 @@ index 6fac1b1b..38a70597 100644
 
 **Release date:** 2018-10-04
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] allow setting additional host mounts (#8117)
 
@@ -2492,16 +2699,16 @@ index effe0b42..6fac1b1b 100644
 +#    hostPath: <hostPath>
 +#    mountPath: <mountPath>
 +#    readOnly: true|false
+
 ```
 
 ## 0.4.0
 
 **Release date:** 2018-10-02
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * added service annotations with the default value (#8086)
 
@@ -2529,16 +2736,16 @@ index 18a6693c..effe0b42 100644
  
  resources: {}
    # We usually recommend not to specify default resources and to leave this as a conscious
+
 ```
 
 ## 0.3.0
 
 **Release date:** 2018-07-26
 
-![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success&logo=)
+![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-node-exporter] Add ability to customize labels and endpoints, Pod security policy (#6742)
 
@@ -2576,16 +2783,16 @@ index 30db7c53..18a6693c 100644
 -# extraArgs:
 +extraArgs: {}
  #   - --collector.diskstats.ignored-devices=^(ram|loop|fd|(h|s|v)d[a-z]|nvme\\d+n\\d+p)\\d+$
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2018-05-23
 
-![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success&logo=)
+![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [Node-exporter] Add extra flags arguments and rollingUpdate strategy (#5699)
 
@@ -2605,16 +2812,16 @@ index 0a635369..30db7c53 100644
 +##
 +# extraArgs:
 +#   - --collector.diskstats.ignored-devices=^(ram|loop|fd|(h|s|v)d[a-z]|nvme\\d+n\\d+p)\\d+$
+
 ```
 
 ## 0.1.2
 
 **Release date:** 2018-04-27
 
-![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success&logo=)
+![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/promehteus-node-exporter] Fix health checks (#5295)
 
@@ -2628,10 +2835,9 @@ index 0a635369..30db7c53 100644
 
 **Release date:** 2018-04-03
 
-![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success&logo=)
+![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * stable/prometheus-node-exporter/README.md (#4550)
 
@@ -2645,10 +2851,9 @@ index 0a635369..30db7c53 100644
 
 **Release date:** 2018-03-30
 
-![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success&logo=)
+![AppVersion: 0.15.2](https://img.shields.io/static/v1?label=AppVersion&message=0.15.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add prometheus node exporter chart (#4260)
 
@@ -2690,6 +2895,7 @@ serviceAccount:
 tolerations:
   - effect: NoSchedule
     operator: Exists
+
 ```
 
 ---

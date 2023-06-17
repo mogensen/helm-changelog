@@ -4,9 +4,8 @@
 
 **Release date:** 2023-02-07
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-consul-exporter] Increment Helm apiVersion (#2991)
 
@@ -20,10 +19,9 @@
 
 **Release date:** 2022-10-16
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-consul-exporter] Fix PSP deprecation after k8s 1.25+ (#2567)
 
@@ -35,12 +33,11 @@
 
 ## 0.5.0
 
-**Release date:** 2021-11-10
+**Release date:** 2021-11-09
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-consul-exporter] Add Pod Annotations Value (#1416)
 
@@ -61,16 +58,16 @@ index 22cad251..d4ad38ae 100644
  # Init Containers for Exporter Pod
  initContainers: []
  
+
 ```
 
 ## 0.4.0
 
 **Release date:** 2020-12-02
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add service monitor for consul exporter (#439)
 
@@ -105,16 +102,16 @@ index 868a7507..22cad251 100644
  nodeSelector: {}
  
  tolerations: []
+
 ```
 
 ## 0.3.0
 
 **Release date:** 2020-11-18
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(prometheus-consul-exporter): add configurable apiVersion (#383)
 
@@ -128,10 +125,9 @@ index 868a7507..22cad251 100644
 
 **Release date:** 2020-10-04
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-consul-exporter] Support extra containers, environment variables and volumes (#162)
 
@@ -166,16 +162,16 @@ index 0a8939f5..868a7507 100644
 +extraVolumeMounts: []
 +# - name: example
 +#   mountPath: /example
+
 ```
 
 ## 0.1.7
 
 **Release date:** 2020-09-07
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-consul-exporter] add gkarthiks as additional maintainers (#50)
 
@@ -189,10 +185,9 @@ index 0a8939f5..868a7507 100644
 
 **Release date:** 2020-08-20
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -206,10 +201,9 @@ index 0a8939f5..868a7507 100644
 
 **Release date:** 2020-07-18
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-consul-exporter] Fix PSP apiVersion (#22834)
 
@@ -223,10 +217,9 @@ index 0a8939f5..868a7507 100644
 
 **Release date:** 2019-06-28
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-consul-exporter] 14589: Bugfix to support boolean flags in prometheus-consul-exporter (#14694)
 
@@ -246,16 +239,16 @@ index e4e87ac8..0a8939f5 100644
  
  service:
    type: ClusterIP
+
 ```
 
 ## 0.1.3
 
 **Release date:** 2019-03-18
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add possibility to disable apparmor podsecuritypolicy annotations. (#11934)
 
@@ -274,16 +267,16 @@ index 72049c61..e4e87ac8 100644
  serviceAccount:
    # Specifies whether a ServiceAccount should be created
    create: true
+
 ```
 
 ## 0.1.2
 
-**Release date:** 2018-12-18
+**Release date:** 2018-12-17
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-consul-exporter] Fix service selector (#9958)
 
@@ -295,12 +288,11 @@ index 72049c61..e4e87ac8 100644
 
 ## 0.1.1
 
-**Release date:** 2018-12-13
+**Release date:** 2018-12-12
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add service annotations for prometheus-consul-exporter (#9882)
 
@@ -312,12 +304,11 @@ index 72049c61..e4e87ac8 100644
 
 ## 0.1.0
 
-**Release date:** 2018-12-07
+**Release date:** 2018-12-06
 
-![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success&logo=)
+![AppVersion: 0.4.0](https://img.shields.io/static/v1?label=AppVersion&message=0.4.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add chart for consul-exporter (#9686)
 
@@ -390,6 +381,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
 ```
 
 ---

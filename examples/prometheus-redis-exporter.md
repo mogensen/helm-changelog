@@ -1,12 +1,41 @@
 # Change Log
 
+## 5.3.2
+
+**Release date:** 2023-04-13
+
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-redis-exporter] explicit default for metricRelabelings[].action (#3224)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.3.1
+
+**Release date:** 2023-03-22
+
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-redis-exporter] Added additionalLabels for service monitor (#3121)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 5.3.0
 
 **Release date:** 2022-11-08
 
-![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success&logo=)
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(deployment): support tls config using secrets (#2660)
 
@@ -58,15 +87,15 @@ index 7ad918a1..d0ff352f 100644
  serviceMonitor:
    # When set true then use a ServiceMonitor to configure scraping
    enabled: false
+
 ```
 
 ## 5.2.1
 
 **Release date:** 2022-10-16
 
-![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success&logo=)
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Fix PSP deprecation after k8s 1.25+ (#2572)
 
@@ -80,9 +109,8 @@ index 7ad918a1..d0ff352f 100644
 
 **Release date:** 2022-09-26
 
-![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success&logo=)
+![AppVersion: v1.44.0](https://img.shields.io/static/v1?label=AppVersion&message=v1.44.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometehus-redis-exporter] update exporter to 1.44 & use appVersion as image tag (#2490)
 
@@ -105,15 +133,15 @@ index 97d0320e..7ad918a1 100644
  extraArgs: {}
  
  # global custom labels, applied to all resrouces
+
 ```
 
 ## 5.1.0
 
 **Release date:** 2022-08-28
 
-![AppVersion: 1.43.0](https://img.shields.io/static/v1?label=AppVersion&message=1.43.0&color=success&logo=)
+![AppVersion: 1.43.0](https://img.shields.io/static/v1?label=AppVersion&message=1.43.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] support redis password file secret volume mount (#2401)
 
@@ -139,15 +167,15 @@ index e7df3a2a..97d0320e 100644
 +    secret:
 +      name: ""
 +      key: ""
+
 ```
 
 ## 5.0.0
 
 **Release date:** 2022-06-30
 
-![AppVersion: 1.43.0](https://img.shields.io/static/v1?label=AppVersion&message=1.43.0&color=success&logo=)
+![AppVersion: 1.43.0](https://img.shields.io/static/v1?label=AppVersion&message=1.43.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] support multiple targets (#2199)
 
@@ -207,15 +235,15 @@ index e94e3fda..e7df3a2a 100644
    # telemetryPath: /metrics
    # Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator
    # labels:
+
 ```
 
 ## 4.8.0
 
 **Release date:** 2022-06-15
 
-![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Add tls config options for servicemonitor (#2158)
 
@@ -244,15 +272,15 @@ index 060ec474..e94e3fda 100644
  
  ## Custom PrometheusRules to be defined
  ## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
+
 ```
 
 ## 4.7.0
 
 **Release date:** 2022-05-17
 
-![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Add support for REDIS_USER (#2063)
 
@@ -269,15 +297,15 @@ index 658029e9..060ec474 100644
    redisPassword: ""
 +  # Redis user (version 6.X and above)
 +  redisUser: ""
+
 ```
 
 ## 4.6.0
 
 **Release date:** 2021-09-10
 
-![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] allow using securityContext in containers (#1329)
 
@@ -297,15 +325,15 @@ index d39d8a7b..658029e9 100644
  # Additional Environment variables
  env: {}
  # - name: REDIS_PASSWORD
+
 ```
 
 ## 4.5.0
 
 **Release date:** 2021-09-09
 
-![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * allow using annotations in deployment (#1325)
 
@@ -319,9 +347,8 @@ index d39d8a7b..658029e9 100644
 
 **Release date:** 2021-09-07
 
-![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * allow using custom labels (#1322)
 
@@ -342,15 +369,15 @@ index 2dc3548d..d39d8a7b 100644
  # Additional Environment variables
  env: {}
  # - name: REDIS_PASSWORD
+
 ```
 
 ## 4.3.0
 
 **Release date:** 2021-08-31
 
-![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success&logo=)
+![AppVersion: 1.27.0](https://img.shields.io/static/v1?label=AppVersion&message=1.27.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Version bump to 1.27.0 (#1297)
 
@@ -370,15 +397,15 @@ index 5b28ff50..2dc3548d 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 4.2.0
 
 **Release date:** 2021-07-23
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] address via configmap (#1203)
 
@@ -404,15 +431,15 @@ index ccbdd43f..5b28ff50 100644
  serviceMonitor:
    # When set true then use a ServiceMonitor to configure scraping
    enabled: false
+
 ```
 
 ## 4.1.0
 
 **Release date:** 2021-06-23
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Add custom labels support (#1102)
 
@@ -431,15 +458,15 @@ index a65310a8..ccbdd43f 100644
  #  prometheus.io/path: /metrics
  #  prometheus.io/port: "9121"
  #  prometheus.io/scrape: "true"
+
 ```
 
 ## 4.0.2
 
 **Release date:** 2021-04-20
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus-redis-exporter : add relabeling configs for redis exporter (#866)
 
@@ -459,15 +486,15 @@ index 967184e3..a65310a8 100644
    # Set of labels to transfer on the Kubernetes Service onto the target.
    # targetLabels: []
    # metricRelabelings: []
+
 ```
 
 ## 4.0.1
 
 **Release date:** 2021-04-12
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix readme (#831)
 
@@ -481,9 +508,8 @@ index 967184e3..a65310a8 100644
 
 **Release date:** 2020-11-23
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Migrate to chart v2 (#389)
 
@@ -497,10 +523,9 @@ index 967184e3..a65310a8 100644
 
 **Release date:** 2020-11-18
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(prometheus-redis-exporter): add configurable apiVersion (#369)
 
@@ -512,12 +537,11 @@ index 967184e3..a65310a8 100644
 
 ## 3.6.0
 
-**Release date:** 2020-09-11
+**Release date:** 2020-09-12
 
-![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success&logo=)
+![AppVersion: 1.11.1](https://img.shields.io/static/v1?label=AppVersion&message=1.11.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Upgrade exporter image to version 1.11.1 (#87)
 
@@ -537,16 +561,16 @@ index 68151d3a..967184e3 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 3.5.2
 
 **Release date:** 2020-09-06
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] Add zanhsieh as maintainer (#46)
 
@@ -560,10 +584,9 @@ index 68151d3a..967184e3 100644
 
 **Release date:** 2020-08-20
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -577,10 +600,9 @@ index 68151d3a..967184e3 100644
 
 **Release date:** 2020-07-22
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Add ServiceMonitor metricRelabelings (#23289)
 
@@ -599,16 +621,16 @@ index c19f7a4a..68151d3a 100644
  
  ## Custom PrometheusRules to be defined
  ## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
+
 ```
 
 ## 3.4.1
 
 **Release date:** 2020-05-28
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] fix targetLabels (#22541)
 
@@ -622,10 +644,9 @@ index c19f7a4a..68151d3a 100644
 
 **Release date:** 2020-04-09
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Add support for tolerations and affinity (#21848)
 
@@ -650,16 +671,16 @@ index ba021953..c19f7a4a 100644
  redisAddress: redis://myredis:6379
  annotations: {}
  #  prometheus.io/path: /metrics
+
 ```
 
 ## 3.3.3
 
 **Release date:** 2020-03-11
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Add support for Prometheus Operator Rules (#21387)
 
@@ -719,16 +740,16 @@ index 2fce50cd..ba021953 100644
  # Used to mount a LUA-Script via config map and use it for metrics-collection
  # script:
  #   configmap: prometheus-redis-exporter-script
+
 ```
 
 ## 3.2.3
 
 **Release date:** 2020-03-05
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Fix secret key path in deployment (#21259)
 
@@ -740,12 +761,11 @@ index 2fce50cd..ba021953 100644
 
 ## 3.2.2
 
-**Release date:** 2020-02-03
+**Release date:** 2020-02-04
 
-![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success&logo=)
+![AppVersion: 1.3.4](https://img.shields.io/static/v1?label=AppVersion&message=1.3.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Update image for exporter (#19317)
 
@@ -765,16 +785,16 @@ index aacdb14e..2fce50cd 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 3.2.1
 
 **Release date:** 2019-12-23
 
-![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success&logo=)
+![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter]Add redis authoration configuration in chart (#19447)
 
@@ -799,16 +819,16 @@ index 439d8c5c..aacdb14e 100644
 +    key: ""
 +  # Redis password (when not stored in a secret)
 +  redisPassword: ""
+
 ```
 
 ## 3.2.0
 
 **Release date:** 2019-11-13
 
-![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success&logo=)
+![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/promethues-redis-exporter] Add target labels (#18818)
 
@@ -828,16 +848,16 @@ index 8bab250b..439d8c5c 100644
  
  # Used to mount a LUA-Script via config map and use it for metrics-collection
  # script:
+
 ```
 
 ## 3.1.0
 
 **Release date:** 2019-10-03
 
-![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success&logo=)
+![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update api versions to support k8s 1.16 (#17640)
 
@@ -851,10 +871,9 @@ index 8bab250b..439d8c5c 100644
 
 **Release date:** 2019-08-08
 
-![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success&logo=)
+![AppVersion: 1.0.4](https://img.shields.io/static/v1?label=AppVersion&message=1.0.4&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Updated version of redis_exporter by oliver006 to version 1.0.4 (#16179)
 
@@ -874,16 +893,16 @@ index 0886ae5d..8bab250b 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 3.0.0
 
 **Release date:** 2019-07-08
 
-![AppVersion: 1.0.3](https://img.shields.io/static/v1?label=AppVersion&message=1.0.3&color=success&logo=)
+![AppVersion: 1.0.3](https://img.shields.io/static/v1?label=AppVersion&message=1.0.3&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update image (#15217)
 
@@ -913,16 +932,16 @@ index 50bc214c..0886ae5d 100644
  annotations: {}
  #  prometheus.io/path: /metrics
  #  prometheus.io/port: "9121"
+
 ```
 
 ## 2.0.2
 
 **Release date:** 2019-06-30
 
-![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success&logo=)
+![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Adding acondrat to prometheus-redis-exporter owners (#14826)
 
@@ -936,10 +955,9 @@ index 50bc214c..0886ae5d 100644
 
 **Release date:** 2019-06-22
 
-![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success&logo=)
+![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Adding abbility to use custom script (#14552)
 
@@ -976,16 +994,16 @@ index 0790d82d..50bc214c 100644
 +# script:
 +#   configmap: prometheus-redis-exporter-script
 +#   keyname: script
+
 ```
 
 ## 2.0.0
 
 **Release date:** 2019-06-11
 
-![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success&logo=)
+![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * - Make redisAddress value a list instead of comma serparated string (#14696)
 
@@ -1006,16 +1024,16 @@ index 917078e4..0790d82d 100644
  annotations: {}
  #  prometheus.io/path: /metrics
  #  prometheus.io/port: "9121"
+
 ```
 
 ## 1.1.0
 
 **Release date:** 2019-06-09
 
-![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success&logo=)
+![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Add servicemonitor support (#14534)
 
@@ -1052,16 +1070,16 @@ index ea0869f1..917078e4 100644
 +  # labels:
 +  # Set timeout for scrape
 +  # timeout: 10s
+
 ```
 
 ## 1.0.3
 
 **Release date:** 2019-06-05
 
-![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success&logo=)
+![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] Support image pullSecrets (#14517)
 
@@ -1075,10 +1093,9 @@ index ea0869f1..917078e4 100644
 
 **Release date:** 2019-02-12
 
-![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success&logo=)
+![AppVersion: 0.28.0](https://img.shields.io/static/v1?label=AppVersion&message=0.28.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update image (#11314)
 
@@ -1098,16 +1115,16 @@ index f42021a8..ea0869f1 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 1.0.1
 
 **Release date:** 2019-01-02
 
-![AppVersion: 0.25.0](https://img.shields.io/static/v1?label=AppVersion&message=0.25.0&color=success&logo=)
+![AppVersion: 0.25.0](https://img.shields.io/static/v1?label=AppVersion&message=0.25.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update image to 0.25.0 (#10272)
 
@@ -1127,16 +1144,16 @@ index fdc93ae5..f42021a8 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2018-12-02
 
-![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success&logo=)
+![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update image to 0.22.1, and chart to 1.0.0 because stable (#9683)
 
@@ -1166,16 +1183,16 @@ index deec2444..fdc93ae5 100644
  resources: {}
  redisAddress: redis://myredis:6379
  annotations: {}
+
 ```
 
 ## 0.3.4
 
 **Release date:** 2018-11-06
 
-![AppVersion: 0.21.2](https://img.shields.io/static/v1?label=AppVersion&message=0.21.2&color=success&logo=)
+![AppVersion: 0.21.2](https://img.shields.io/static/v1?label=AppVersion&message=0.21.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Updating image of prometheus-redis-exporter to latest version (#8994)
 
@@ -1195,16 +1212,16 @@ index 62c6f824..deec2444 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 0.3.3
 
 **Release date:** 2018-11-04
 
-![AppVersion: 0.21.1](https://img.shields.io/static/v1?label=AppVersion&message=0.21.1&color=success&logo=)
+![AppVersion: 0.21.1](https://img.shields.io/static/v1?label=AppVersion&message=0.21.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Set redis-exporter name for port in service (#6547)
 
@@ -1218,10 +1235,9 @@ index 62c6f824..deec2444 100644
 
 **Release date:** 2018-09-11
 
-![AppVersion: 0.21.1](https://img.shields.io/static/v1?label=AppVersion&message=0.21.1&color=success&logo=)
+![AppVersion: 0.21.1](https://img.shields.io/static/v1?label=AppVersion&message=0.21.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Update image (#7630)
 
@@ -1241,16 +1257,16 @@ index 9f34cc15..62c6f824 100644
    pullPolicy: IfNotPresent
  extraArgs: {}
  # Additional Environment variables
+
 ```
 
 ## 0.3.1
 
 **Release date:** 2018-09-02
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * adding additional env variable for redis (#7482)
 
@@ -1275,16 +1291,16 @@ index a8881202..9f34cc15 100644
  service:
    type: ClusterIP
    port: 9121
+
 ```
 
 ## 0.3.0
 
 **Release date:** 2018-07-25
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add option to supply extra arguments (#6516)
 
@@ -1303,16 +1319,16 @@ index adecdb98..a8881202 100644
  service:
    type: ClusterIP
    port: 9121
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2018-06-17
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/prometheus-redis-exporter] add RBAC resources (#6083)
 
@@ -1339,16 +1355,16 @@ index 76840cf8..adecdb98 100644
  replicaCount: 1
  image:
    repository: oliver006/redis_exporter
+
 ```
 
 ## 0.1.2
 
 **Release date:** 2018-05-25
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-redis-exporter] typo fix: tables lists->table lists (#5721)
 
@@ -1362,10 +1378,9 @@ index 76840cf8..adecdb98 100644
 
 **Release date:** 2018-05-02
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Added prometheus scrape annotations (#5256)
 
@@ -1384,16 +1399,16 @@ index e00b48d3..76840cf8 100644
 +#  prometheus.io/path: /metrics
 +#  prometheus.io/port: "9121"
 +#  prometheus.io/scrape: "true"
+
 ```
 
 ## 0.1.0
 
 **Release date:** 2018-04-08
 
-![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success&logo=)
+![AppVersion: 0.16.0](https://img.shields.io/static/v1?label=AppVersion&message=0.16.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * adding redis-exporter chart (#2743)
 
@@ -1411,6 +1426,7 @@ service:
   annotations: {}
 resources: {}
 redisAddress: redis://myredis:6379
+
 ```
 
 ---

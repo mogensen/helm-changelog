@@ -1,12 +1,26 @@
 # Change Log
 
+## 0.1.1
+
+**Release date:** 2023-05-01
+
+![AppVersion: 1.18.0](https://img.shields.io/static/v1?label=AppVersion&message=1.18.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-pgbouncer-exporter] Add a maintainer (#3313)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 0.1.0
 
 **Release date:** 2023-03-06
 
-![AppVersion: 1.18.0](https://img.shields.io/static/v1?label=AppVersion&message=1.18.0&color=success&logo=)
+![AppVersion: 1.18.0](https://img.shields.io/static/v1?label=AppVersion&message=1.18.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-pgbouncer-exporter] add initial helm chart for pgbouncer (#3049)
 
@@ -230,6 +244,7 @@ extraVolumeMounts: []
 podDisruptionBudget:
   enabled: false
   maxUnavailable: 1
+
 ```
 
 ---

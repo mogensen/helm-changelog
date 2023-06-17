@@ -1,13 +1,44 @@
 # Change Log
 
+## 4.3.0
+
+**Release date:** 2023-05-08
+
+![AppVersion: 0.13.0](https://img.shields.io/static/v1?label=AppVersion&message=0.13.0&color=success)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-stackdriver-exporter] Add prometheusRule support (#3115)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-stackdriver-exporter/values.yaml b/charts/prometheus-stackdriver-exporter/values.yaml
+index 07aa8a13..b6f06365 100644
+--- a/charts/prometheus-stackdriver-exporter/values.yaml
++++ b/charts/prometheus-stackdriver-exporter/values.yaml
+@@ -146,3 +146,11 @@ serviceMonitor:
+   metricRelabelings: []
+   # RelabelConfigs to apply to samples before scraping. https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
+   relabelings: []
++
++## Custom PrometheusRules to be defined
++## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
++prometheusRule:
++  enabled: false
++  additionalLabels: {}
++  namespace: ""
++  rules: []
+
+```
+
 ## 4.2.0
 
 **Release date:** 2023-02-04
 
-![AppVersion: 0.13.0](https://img.shields.io/static/v1?label=AppVersion&message=0.13.0&color=success&logo=)
+![AppVersion: 0.13.0](https://img.shields.io/static/v1?label=AppVersion&message=0.13.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Adding new params: aggregate-deltas and aggregate-deltas-ttl (#2987)
 
@@ -38,16 +69,16 @@ index 774c5d05..07aa8a13 100644
  
  web:
    # Port to listen on
+
 ```
 
 ## 4.1.0
 
 **Release date:** 2022-09-26
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Adding support for container-level security context settings. (#2486)
 
@@ -67,16 +98,16 @@ index 7681ac26..774c5d05 100644
  service:
    type: ClusterIP
    httpPort: 9255
+
 ```
 
 ## 4.0.1
 
 **Release date:** 2022-08-18
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Fix spec.serviceAccountName (#2378)
 
@@ -90,10 +121,9 @@ index 7681ac26..774c5d05 100644
 
 **Release date:** 2022-08-01
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver] Allow passing multiple metric filter values. (#2330)
 
@@ -118,16 +148,16 @@ index e7e9175d..7681ac26 100644
      # The frequency to request
      interval: '5m'
      # How far into the past to offset
+
 ```
 
 ## 3.0.2
 
 **Release date:** 2022-07-28
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Stackdriver exporter: Add monitoring filters (#2314)
 
@@ -147,16 +177,16 @@ index bd0c754d..e7e9175d 100644
      # The frequency to request
      interval: '5m'
      # How far into the past to offset
+
 ```
 
 ## 3.0.1
 
 **Release date:** 2022-06-13
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Add: README instructions to upgrade 2.x to 3.x (#2146)
 
@@ -170,10 +200,9 @@ index bd0c754d..e7e9175d 100644
 
 **Release date:** 2022-06-10
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Add: Kubernetes recommended labels and custom labels (#2125)
 
@@ -195,16 +224,16 @@ index eae5db4e..bd0c754d 100644
  secret:
    labels: {}
  
+
 ```
 
 ## 2.2.0
 
 **Release date:** 2022-03-03
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Add option to enable metrics ingest delay (#1844)
 
@@ -224,16 +253,16 @@ index f2c5de62..eae5db4e 100644
  
  web:
    # Port to listen on
+
 ```
 
 ## 2.1.1
 
 **Release date:** 2022-03-02
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] ServiceMonitor: allow to specify scrapeTimeout independently (#1841)
 
@@ -247,10 +276,9 @@ index f2c5de62..eae5db4e 100644
 
 **Release date:** 2022-02-15
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Add support for imagePullSecrets (#1794)
 
@@ -275,16 +303,16 @@ index 7bb17758..f2c5de62 100644
  resources: {}
    # requests:
    #   cpu: 100m
+
 ```
 
 ## 2.0.0
 
 **Release date:** 2022-02-15
 
-![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success&logo=)
+![AppVersion: 0.12.0](https://img.shields.io/static/v1?label=AppVersion&message=0.12.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Switch exporter config to agrs instead of env variables. (#1790)
 
@@ -304,16 +332,16 @@ index 4c220197..7bb17758 100644
    pullPolicy: IfNotPresent
  
  resources: {}
+
 ```
 
 ## 1.12.2
 
 **Release date:** 2022-02-08
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Fix servicemonitor name (#1777)
 
@@ -327,10 +355,9 @@ index 4c220197..7bb17758 100644
 
 **Release date:** 2021-12-07
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] fix chart name in source url. (#1569)
 
@@ -344,10 +371,9 @@ index 4c220197..7bb17758 100644
 
 **Release date:** 2021-12-02
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] add support for secret labels (#1553)
 
@@ -368,16 +394,16 @@ index 20116abf..4c220197 100644
  stackdriver:
    # The Google Project ID to gather metrics for
    projectId: "FALSE"
+
 ```
 
 ## 1.11.0
 
 **Release date:** 2021-10-07
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * allow using securityContext (#1402)
 
@@ -397,16 +423,16 @@ index 9f4be034..20116abf 100644
  service:
    type: ClusterIP
    httpPort: 9255
+
 ```
 
 ## 1.10.0
 
 **Release date:** 2021-09-07
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add honorTimestamps config to stackdriver-exporter serviceMonitor (#1321)
 
@@ -426,16 +452,16 @@ index 90efe1ac..9f4be034 100644
    # MetricRelabelConfigs to apply to samples before ingestion https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
    metricRelabelings: []
    # RelabelConfigs to apply to samples before scraping. https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
+
 ```
 
 ## 1.9.0
 
 **Release date:** 2021-06-09
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Add possiblity to pass extra args to the exporter (#1051)
 
@@ -457,16 +483,16 @@ index 944b4c06..90efe1ac 100644
  ## Node labels for stackdriver-exporter pod assignment
  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
  ##
+
 ```
 
 ## 1.8.3
 
 **Release date:** 2021-05-29
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add nameOverride and fullnameOverride to values.yaml (#1011)
 
@@ -487,16 +513,16 @@ index d615e3c7..944b4c06 100644
  # Number of exporters to run
  replicaCount: 1
  
+
 ```
 
 ## 1.8.2
 
 **Release date:** 2021-03-04
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Moving scrapeTimeout to the correct location. (#728)
 
@@ -525,16 +551,16 @@ index a956dcba..d615e3c7 100644
    # fallback to the prometheus default unless specified
    # interval: 10s
    ## Defaults to what's used if you follow CoreOS [Prometheus Install Instructions](https://github.com/helm/charts/tree/master/stable/prometheus-operator#tldr)
+
 ```
 
 ## 1.8.1
 
 **Release date:** 2021-03-03
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add feature for custom key. (#723)
 
@@ -554,16 +580,16 @@ index e974512b..a956dcba 100644
    # A service account key JSON file. Must be provided when no existing secret is used, in this case a new secret will be created holding this service account
    serviceAccountKey: ""
    # Max number of retries that should be attempted on 503 errors from Stackdriver
+
 ```
 
 ## 1.8.0
 
 **Release date:** 2021-01-28
 
-![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success&logo=)
+![AppVersion: 0.11.0](https://img.shields.io/static/v1?label=AppVersion&message=0.11.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Using prometheus community docker image instead of deprecated version (#618)
 
@@ -585,16 +611,16 @@ index 5bcd02ca..e974512b 100644
    pullPolicy: IfNotPresent
  
  resources: {}
+
 ```
 
 ## 1.7.0
 
 **Release date:** 2021-01-22
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stackdriver-exporter] feat: Adding relabeling config to serviceMonitor (#605)
 
@@ -613,16 +639,16 @@ index 917b4882..5bcd02ca 100644
 +  metricRelabelings: []
 +  # RelabelConfigs to apply to samples before scraping. https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
 +  relabelings: []
+
 ```
 
 ## 1.6.1
 
 **Release date:** 2021-01-09
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix: scrapeTimeout value (#527)
 
@@ -642,16 +668,16 @@ index 55b2985d..917b4882 100644
      # How far into the past to offset
      offset: '0s'
  
+
 ```
 
 ## 1.6.0
 
 **Release date:** 2020-12-29
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stackdriver-exporter] add scrapeTimeout parameter (#522)
 
@@ -671,16 +697,16 @@ index f8eb9171..55b2985d 100644
      # How far into the past to offset
      offset: '0s'
  
+
 ```
 
 ## 1.5.0
 
 **Release date:** 2020-11-10
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-stackdriver-exporter] Add dropDelegatedProjects to stackdriver-exporter (#296)
 * Fix CI + add rpahli as maintainer
@@ -702,16 +728,16 @@ index 601c0cdc..f8eb9171 100644
    metrics:
      # The prefixes to gather metrics for, we default to just CPU metrics.
      typePrefixes: 'compute.googleapis.com/instance/cpu'
+
 ```
 
 ## 1.4.0
 
 **Release date:** 2020-10-06
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Bump Chart versions, adjust README
 
@@ -725,10 +751,9 @@ index 601c0cdc..f8eb9171 100644
 
 **Release date:** 2020-08-23
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/stackdriver-exporter] Allow to specify service account annotations (#23182)
 
@@ -747,16 +772,16 @@ index 668ba02e..601c0cdc 100644
  
  # Enable this if you're using https://github.com/coreos/prometheus-operator
  serviceMonitor:
+
 ```
 
 ## 1.2.3
 
 **Release date:** 2020-06-06
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/stackdriver-exporter] update k8s deployement api version (#21720)
 
@@ -770,10 +795,9 @@ index 668ba02e..601c0cdc 100644
 
 **Release date:** 2019-12-30
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/stackdriver-exporter] - Add prometheus rule additionalLabels in servicemonitor.yaml  (#19802)
 
@@ -793,16 +817,16 @@ index 75d6d261..668ba02e 100644
    # fallback to the prometheus default unless specified
    # interval: 10s
    ## Defaults to what's used if you follow CoreOS [Prometheus Install Instructions](https://github.com/helm/charts/tree/master/stable/prometheus-operator#tldr)
+
 ```
 
 ## 1.2.1
 
 **Release date:** 2019-09-04
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/stackdriver-exporter] Correct servicemonitor name (#16750)
 
@@ -816,10 +840,9 @@ index 75d6d261..668ba02e 100644
 
 **Release date:** 2019-09-01
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/stackdriver-exporter] Add support for Prometheus Operator ServiceMonitor (#16372)
 
@@ -843,16 +866,16 @@ index cb91ccf8..75d6d261 100644
 +  # interval: 10s
 +  ## Defaults to what's used if you follow CoreOS [Prometheus Install Instructions](https://github.com/helm/charts/tree/master/stable/prometheus-operator#tldr)
 +  honorLabels: true
+
 ```
 
 ## 1.1.1
 
 **Release date:** 2019-07-29
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * stable/stackdriver-exporter: Allow setting of pod ServiceAccount name (#15931)
 
@@ -878,16 +901,16 @@ index ec3b8d9a..cb91ccf8 100644
 +  # If not set and create is false, 'default' is used
 +  # If not set and create is true, a name is generated using the fullname template
 +  name:
+
 ```
 
 ## 1.1.0
 
 **Release date:** 2019-04-26
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * stackdriver-exporter: allow google service account (#13214)
 
@@ -909,16 +932,16 @@ index 06612e83..ec3b8d9a 100644
    # Max number of retries that should be attempted on 503 errors from Stackdriver
    maxRetries: 0
    # How long should Stackdriver_exporter wait for a result from the Stackdriver API
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2019-03-05
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add tolerations, affinity and nodeSelector to stackdriver-exporter (#11854)
 
@@ -952,16 +975,16 @@ index 931b02aa..06612e83 100644
 +  #   operator: "Equal|Exists"
 +  #   value: "value"
 +  #   effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
+
 ```
 
 ## 0.0.6
 
 **Release date:** 2019-01-02
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/stackdriver-exporter] fix duplicated 'livenessProbe', add 'readinessProbe' (#10321)
 
@@ -989,16 +1012,16 @@ index 07cc92ee..931b02aa 100644
    backoffJitter: 1s
    # The HTTP statuses that should trigger a retry
    retryStatuses: 503
+
 ```
 
 ## 0.0.5
 
 **Release date:** 2018-12-19
 
-![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success&logo=)
+![AppVersion: 0.6.0](https://img.shields.io/static/v1?label=AppVersion&message=0.6.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * update stackdriver-exporter to 0.6.0 with new options (#10142)
 
@@ -1035,16 +1058,16 @@ index 9e75bd3a..07cc92ee 100644
    metrics:
      # The prefixes to gather metrics for, we default to just CPU metrics.
      typePrefixes: 'compute.googleapis.com/instance/cpu'
+
 ```
 
 ## 0.0.4
 
 **Release date:** 2018-04-27
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * adding annotations (#5170)
 
@@ -1061,16 +1084,16 @@ index 61c906ea..9e75bd3a 100644
    path: /metrics
 +
 +annotations: {}
+
 ```
 
 ## 0.0.3
 
-**Release date:** 2018-04-19
+**Release date:** 2018-04-18
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Typo fix in stackdriver-exporter/README.md: "for this to exporter to work"->"for this exporter to work" (#4940)
 
@@ -1084,10 +1107,9 @@ index 61c906ea..9e75bd3a 100644
 
 **Release date:** 2018-04-05
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add home key for stackdriver-exporter (#4626)
 
@@ -1101,10 +1123,9 @@ index 61c906ea..9e75bd3a 100644
 
 **Release date:** 2018-03-27
 
-![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success&logo=)
+![AppVersion: 0.5.1](https://img.shields.io/static/v1?label=AppVersion&message=0.5.1&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add stackdriver-exporter (#4167)
 
@@ -1151,6 +1172,7 @@ web:
   listenAddress: ':9255'
   # Path under which to expose metrics.
   path: /metrics
+
 ```
 
 ---

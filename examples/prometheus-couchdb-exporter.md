@@ -1,13 +1,27 @@
 # Change Log
 
+## 1.0.0
+
+**Release date:** 2023-05-11
+
+![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-couchdb-exporter] fix Chart.yaml - remove engine: gotpl (#3319)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 0.2.1
 
 **Release date:** 2022-10-16
 
-![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success&logo=)
+![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-couchdb-exporter] Fix PSP deprecation after k8s 1.25+ (#2568)
 
@@ -21,10 +35,9 @@
 
 **Release date:** 2020-11-18
 
-![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success&logo=)
+![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(prometheus-couchdb-exporter): add configurable apiVersion (#384)
 
@@ -38,10 +51,9 @@
 
 **Release date:** 2020-11-06
 
-![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success&logo=)
+![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * charts/prometheus-couchdb-exporter: fix typos (#316)
 
@@ -67,16 +79,16 @@ index 773a7ddf..9a575e97 100644
    ## or to get stats for every database, please use "_all_dbs"
    databases: _all_dbs
    ## CouchDB username
+
 ```
 
 ## 0.1.2
 
 **Release date:** 2020-08-20
 
-![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success&logo=)
+![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Prep initial charts indexing (#14)
 
@@ -90,10 +102,9 @@ index 773a7ddf..9a575e97 100644
 
 **Release date:** 2019-06-18
 
-![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success&logo=)
+![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Run couchdb-exporter with username and password (#14704)
 
@@ -107,10 +118,9 @@ index 773a7ddf..9a575e97 100644
 
 **Release date:** 2018-10-04
 
-![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success&logo=)
+![AppVersion: 1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * adding chart for prometheus-couchdb-exporters (#7494)
 
@@ -186,6 +196,7 @@ couchdb:
   # username:
   ## CouchDB Password
   # password:
+
 ```
 
 ---

@@ -1,14 +1,141 @@
 # Change Log
 
+## 5.2.0
+
+**Release date:** 2023-06-12
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-elasticsearch-exporter] Add init containers (#3482)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-elasticsearch-exporter/values.yaml b/charts/prometheus-elasticsearch-exporter/values.yaml
+index 0e28b7b1..720070e3 100644
+--- a/charts/prometheus-elasticsearch-exporter/values.yaml
++++ b/charts/prometheus-elasticsearch-exporter/values.yaml
+@@ -67,6 +67,8 @@ podLabels: {}
+ 
+ affinity: {}
+ 
++initContainers: []
++
+ service:
+   type: ClusterIP
+   httpPort: 9108
+
+```
+
+## 5.1.3
+
+**Release date:** 2023-06-12
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-elasticsearch-exporter] fix preStop command (#3466)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.1.2
+
+**Release date:** 2023-06-12
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-elasticsearch-exporter] Add a chart maintainer (#3483)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.1.1
+
+**Release date:** 2023-04-08
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* Set Pod container name to Service port name (#3157)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
+## 5.1.0
+
+**Release date:** 2023-03-30
+
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
+![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-elasticsearch-exporter] add setters for missed out exporters (#3109)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-elasticsearch-exporter/values.yaml b/charts/prometheus-elasticsearch-exporter/values.yaml
+index 4821a2e8..0e28b7b1 100644
+--- a/charts/prometheus-elasticsearch-exporter/values.yaml
++++ b/charts/prometheus-elasticsearch-exporter/values.yaml
+@@ -155,6 +155,10 @@ es:
+   ##
+   indices_mappings: true
+ 
++  ## If true, query stats for aliases.
++  ##
++  aliases: false
++
+   ## If true, query stats for shards in the cluster.
+   ##
+   shards: true
+@@ -167,6 +171,14 @@ es:
+   ##
+   cluster_settings: false
+ 
++  ## If true, query stats for SLM snapshots.
++  ##
++  slm: false
++
++  ## If true, query stats for data streams.
++  ##
++  data_stream: false
++
+   ## Timeout for trying to get stats from Elasticsearch. (ex: 20s)
+   ##
+   timeout: 30s
+
+```
+
 ## 5.0.0
 
 **Release date:** 2022-12-01
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Refactor securityContext configuration (#2694)
 
@@ -44,17 +171,17 @@ index 3a2c918a..4821a2e8 100644
  
  # Custom DNS configuration to be added to prometheus-elasticsearch-exporter pods
  dnsConfig: {}
+
 ```
 
 ## 4.15.1
 
 **Release date:** 2022-10-16
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Fix PSP deprecation after k8s 1.25+ (#2569)
 
@@ -68,11 +195,10 @@ index 3a2c918a..4821a2e8 100644
 
 **Release date:** 2022-09-21
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] allow configuration of deployment labels (#2085)
 
@@ -91,17 +217,17 @@ index d0da9a11..3a2c918a 100644
  
  ## Extra environment variables that will be passed into the exporter pod
  ## example:
+
 ```
 
 ## 4.14.1
 
 **Release date:** 2022-09-13
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feature(prometheus-elasticsearch-exporter): Added option to use tpl to define secret name. (#2423)
 
@@ -115,11 +241,10 @@ index d0da9a11..3a2c918a 100644
 
 **Release date:** 2022-08-04
 
-![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.5.0](https://img.shields.io/static/v1?label=AppVersion&message=1.5.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Bump exporter to 1.5.0 (#2342)
 
@@ -139,17 +264,17 @@ index 2a32b714..d0da9a11 100644
    pullPolicy: IfNotPresent
    pullSecret: ""
  
+
 ```
 
 ## 4.13.0
 
 **Release date:** 2022-06-13
 
-![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Allow to set global imagePullSecrets (#2039)
 
@@ -170,17 +295,17 @@ index 9bf17c0f..2a32b714 100644
  ## number of exporter instances
  ##
  replicaCount: 1
+
 ```
 
 ## 4.12.0
 
 **Release date:** 2022-05-19
 
-![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Allow jobLabel configuration (#2017)
 
@@ -223,17 +348,17 @@ index 7f61fc1e..9bf17c0f 100644
    scrapeTimeout: 10s
    scheme: http
    relabelings: []
+
 ```
 
 ## 4.11.2
 
 **Release date:** 2022-05-10
 
-![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] remove me from elasticsearch chart (#2040)
 
@@ -247,11 +372,10 @@ index 7f61fc1e..9bf17c0f 100644
 
 **Release date:** 2022-03-27
 
-![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fixed prometheus-elasticsearch-exporter pre-stop lifecycle hook (#1857)
 
@@ -263,13 +387,12 @@ index 7f61fc1e..9bf17c0f 100644
 
 ## 4.11.0
 
-**Release date:** 2022-01-03
+**Release date:** 2022-01-02
 
-![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Support extra arguments to the pod's container (#1547)
 
@@ -294,17 +417,17 @@ index 6727a0ee..7f61fc1e 100644
  ## The name of a secret in the same kubernetes namespace which contain values to be added to the environment
  ## This can be useful for auth tokens, etc
  envFromSecret: ""
+
 ```
 
 ## 4.10.0
 
 **Release date:** 2021-12-20
 
-![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Add support for indices mappings (#1610)
 
@@ -326,17 +449,17 @@ index fafd9460..6727a0ee 100644
    ## If true, query stats for shards in the cluster.
    ##
    shards: true
+
 ```
 
 ## 4.9.0
 
 **Release date:** 2021-11-30
 
-![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.3.0](https://img.shields.io/static/v1?label=AppVersion&message=1.3.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Bump exporter to 1.3.0 (#1546)
 
@@ -356,17 +479,17 @@ index 6050825f..fafd9460 100644
    pullPolicy: IfNotPresent
    pullSecret: ""
  
+
 ```
 
 ## 4.8.0
 
 **Release date:** 2021-11-27
 
-![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * add support for serviceaccount annotations (#1529)
 
@@ -385,17 +508,17 @@ index e2af0005..6050825f 100644
  
  # Creates a PodSecurityPolicy and the role/rolebinding
  # allowing the serviceaccount to use it
+
 ```
 
 ## 4.7.0
 
 **Release date:** 2021-09-24
 
-![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Use appropriate apiVersion for rbac (#1146)
 
@@ -409,11 +532,10 @@ index e2af0005..6050825f 100644
 
 **Release date:** 2021-09-12
 
-![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fixes: #1226 by using tpl funcion at es.uri injection (#1227)
 * [prometheus-elasticsearch-exporter] add optional annotations to deployment (#1224)
@@ -435,17 +557,17 @@ index fb42ecef..e2af0005 100644
  ## Extra environment variables that will be passed into the exporter pod
  ## example:
  ## env:
+
 ```
 
 ## 4.6.0
 
 **Release date:** 2021-08-11
 
-![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Add ability to use values from secrets for basic-auth (#1182)
 
@@ -459,11 +581,10 @@ index fb42ecef..e2af0005 100644
 
 **Release date:** 2021-07-20
 
-![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.2.1](https://img.shields.io/static/v1?label=AppVersion&message=1.2.1&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] update image version (#1126)
 
@@ -485,17 +606,17 @@ index 62f98ad6..fb42ecef 100644
    pullPolicy: IfNotPresent
    pullSecret: ""
  
+
 ```
 
 ## 4.4.0
 
 **Release date:** 2021-04-02
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Allows to set automountServiceAccountToken on ServiceAccount (#808)
 
@@ -514,17 +635,17 @@ index 0da12320..62f98ad6 100644
  
  # Creates a PodSecurityPolicy and the role/rolebinding
  # allowing the serviceaccount to use it
+
 ```
 
 ## 4.3.0
 
 **Release date:** 2021-02-23
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * feat(extraVolume\Mounts): introduction (#698)
 
@@ -560,17 +681,17 @@ index 00a22034..0da12320 100644
  es:
    ## Address (host and port) of the Elasticsearch node we should connect to.
    ## This could be a local node (localhost:9200, for instance), or the address
+
 ```
 
 ## 4.2.0
 
 **Release date:** 2021-02-09
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Ability for custom dnsConfig in prometheus-elasticsearch-exporter (#641)
 
@@ -600,17 +721,17 @@ index 00caa62e..00a22034 100644
  log:
    format: logfmt
    level: info
+
 ```
 
 ## 4.1.0
 
 **Release date:** 2021-01-22
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] Add additional pod labels support (#578)
 
@@ -630,17 +751,17 @@ index 82a5f1e2..00caa62e 100644
  affinity: {}
  
  service:
+
 ```
 
 ## 4.0.1
 
 **Release date:** 2020-12-10
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-elasticsearch-exporter] change tolerations from map to list (#476)
 * Update charts/prometheus-elasticsearch-exporter/README.md
@@ -662,17 +783,17 @@ index 385ff4e1..82a5f1e2 100644
  
  podAnnotations: {}
  
+
 ```
 
 ## 4.0.0
 
 **Release date:** 2020-10-23
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Added upgrade instructions to migrate from stable chart
 * Update charts/prometheus-elasticsearch-exporter/README.md
@@ -688,11 +809,10 @@ index 385ff4e1..82a5f1e2 100644
 
 **Release date:** 2020-10-06
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Bump Chart versions, adjust README
 
@@ -706,11 +826,10 @@ index 385ff4e1..82a5f1e2 100644
 
 **Release date:** 2020-08-08
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Make sampleLimit adjustable (#23454)
 
@@ -729,17 +848,17 @@ index 9b8d524c..385ff4e1 100644
  
  prometheusRule:
    ## If true, a PrometheusRule CRD is created for a prometheus operator
+
 ```
 
 ## 3.6.0
 
 **Release date:** 2020-07-22
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Add ServiceMonitor metricRelabeling (#23291)
 
@@ -758,17 +877,17 @@ index 453deef2..9b8d524c 100644
  
  prometheusRule:
    ## If true, a PrometheusRule CRD is created for a prometheus operator
+
 ```
 
 ## 3.5.0
 
 **Release date:** 2020-07-17
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter]: customize log flags (#23216)
 
@@ -790,17 +909,17 @@ index 579c8198..453deef2 100644
  resources: {}
    # requests:
    #   cpu: 100m
+
 ```
 
 ## 3.4.0
 
 **Release date:** 2020-06-26
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Add serviceMonitor targetLabels (#22951)
 
@@ -819,17 +938,17 @@ index 0fd2a632..579c8198 100644
  
  prometheusRule:
    ## If true, a PrometheusRule CRD is created for a prometheus operator
+
 ```
 
 ## 3.3.0
 
 **Release date:** 2020-05-04
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Add options to set relabel configuration for metrics (#21636)
 
@@ -848,17 +967,17 @@ index bf92a297..0fd2a632 100644
  
  prometheusRule:
    ## If true, a PrometheusRule CRD is created for a prometheus operator
+
 ```
 
 ## 3.2.0
 
 **Release date:** 2020-05-02
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Add option to disable client cert auth in Elasticsearch exporter (#21900)
 
@@ -907,17 +1026,17 @@ index 441b05d3..bf92a297 100644
  web:
    ## Path under which to expose metrics.
    ##
+
 ```
 
 ## 3.1.0
 
 **Release date:** 2020-04-28
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] add extraEnvSecrets (#22067)
 
@@ -944,17 +1063,17 @@ index 4afdcf86..441b05d3 100644
  # A list of secrets and their paths to mount inside the pod
  # This is useful for mounting certificates for security
  secretMounts: []
+
 ```
 
 ## 3.0.0
 
 **Release date:** 2020-02-12
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Allow PrometheusRules to be templated. (#20322)
 
@@ -1008,17 +1127,17 @@ index 4c5ca779..4afdcf86 100644
  
  # Create a service account
  # To use a service account not handled by the chart, set the name here
+
 ```
 
 ## 2.3.0
 
 **Release date:** 2020-02-07
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Feature flap the flag es.uri (#20589)
 
@@ -1032,11 +1151,10 @@ index 4c5ca779..4afdcf86 100644
 
 **Release date:** 2020-01-15
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Enabling environment from secrets (#19115)
 
@@ -1060,17 +1178,17 @@ index 2ddce73d..4c5ca779 100644
  
  # A list of secrets and their paths to mount inside the pod
  # This is useful for mounting certificates for security
+
 ```
 
 ## 2.1.1
 
 **Release date:** 2019-11-15
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add option es.indices_settings (#18909)
 
@@ -1092,17 +1210,17 @@ index 69bca7f2..2ddce73d 100644
    ## If true, query stats for shards in the cluster.
    ##
    shards: true
+
 ```
 
 ## 2.1.0
 
 **Release date:** 2019-10-31
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter]: improved healthchecks (#16808)
 
@@ -1116,11 +1234,10 @@ index 69bca7f2..2ddce73d 100644
 
 **Release date:** 2019-10-15
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
-![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=%3E%3D1.10.0-0&color=informational&logo=kubernetes)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
+![Kubernetes: >=1.10.0-0](https://img.shields.io/static/v1?label=Kubernetes&message=>=1.10.0-0&color=informational&logo=kubernetes)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Update api versions to support k8s 1.16 (#17644)
 
@@ -1134,10 +1251,9 @@ index 69bca7f2..2ddce73d 100644
 
 **Release date:** 2019-10-09
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add support for PodSecurityPolicies, ServiceAccounts (#16361)
 
@@ -1164,16 +1280,16 @@ index 1afdf51c..69bca7f2 100644
 +# allowing the serviceaccount to use it
 +podSecurityPolicies:
 +  enabled: false
+
 ```
 
 ## 1.10.1
 
-**Release date:** 2019-09-11
+**Release date:** 2019-09-12
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fix space issue in volume mount (#17087)
 
@@ -1212,16 +1328,16 @@ index 1abe10cd..1afdf51c 100644
      client:
  
        ## PEM that contains the client cert to connect to Elasticsearch.
+
 ```
 
 ## 1.10.0
 
 **Release date:** 2019-09-04
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add ability to use existing secrets for SSL certs (#16817)
 
@@ -1286,16 +1402,16 @@ index 3f156d7b..1abe10cd 100644
  web:
    ## Path under which to expose metrics.
    ##
+
 ```
 
 ## 1.9.0
 
 **Release date:** 2019-08-23
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter]: adding affinity support (#16571)
 
@@ -1315,16 +1431,16 @@ index 3231d088..3f156d7b 100644
  service:
    type: ClusterIP
    httpPort: 9108
+
 ```
 
 ## 1.8.1
 
 **Release date:** 2019-08-21
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter]: adding myself as a maintainer (#16456)
 
@@ -1338,10 +1454,9 @@ index 3231d088..3f156d7b 100644
 
 **Release date:** 2019-08-20
 
-![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success&logo=)
+![AppVersion: 1.1.0](https://img.shields.io/static/v1?label=AppVersion&message=1.1.0&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter]: shards, snapshots, update to 1.1.0 (#16409)
 
@@ -1380,16 +1495,16 @@ index 4a1ebdca..3231d088 100644
    ## Timeout for trying to get stats from Elasticsearch. (ex: 20s)
    ##
    timeout: 30s
+
 ```
 
 ## 1.7.0
 
 **Release date:** 2019-07-19
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add possibility to provide a PrometheusRule resource (#15698)
 
@@ -1435,16 +1550,16 @@ index 74b93fa3..4a1ebdca 100644
 +    #   annotations:
 +    #     description: The heap usage is over 90% for 15m
 +    #     summary: ElasticSearch node {{$labels.node}} heap usage is high
+
 ```
 
 ## 1.6.0
 
 **Release date:** 2019-07-12
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Add envs to deployment template (#13981)
 
@@ -1469,16 +1584,16 @@ index ff6c48bb..74b93fa3 100644
  es:
    ## Address (host and port) of the Elasticsearch node we should connect to.
    ## This could be a local node (localhost:9200, for instance), or the address
+
 ```
 
 ## 1.5.0
 
 **Release date:** 2019-06-27
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Add imagePullSecret support (#14887)
 
@@ -1497,16 +1612,16 @@ index 03ac2531..ff6c48bb 100644
  
  ## Set enabled to false if you don't want securityContext
  ## in your Deployment.
+
 ```
 
 ## 1.4.1
 
 **Release date:** 2019-06-20
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elastic-exporter] Fix wrong default value (#13996)
 
@@ -1526,16 +1641,16 @@ index 8ace3c3d..03ac2531 100644
  
    ## If true, query stats for all nodes in the cluster, rather than just the
    ## node we connect to.
+
 ```
 
 ## 1.4.0
 
 **Release date:** 2019-06-14
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [elasticsearch-exporter] Support ssl-skip-verify option (and make securitycontext configurable) (#14748)
 
@@ -1574,16 +1689,16 @@ index 0f4cc052..8ace3c3d 100644
    ssl:
      ## If true, a secure connection to ES cluster is used (requires SSL certs below)
      ##
+
 ```
 
 ## 1.3.1
 
 **Release date:** 2019-06-05
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * stable/elasticsearch-exporter: fix bug in template (#14486)
 
@@ -1597,10 +1712,9 @@ index 0f4cc052..8ace3c3d 100644
 
 **Release date:** 2019-06-03
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stabled/elasticsearch-exporter] add custom labels to the service and set service http port name (#14395)
 
@@ -1622,16 +1736,16 @@ index 310fc607..0f4cc052 100644
  
  es:
    ## Address (host and port) of the Elasticsearch node we should connect to.
+
 ```
 
 ## 1.2.0
 
 **Release date:** 2019-04-18
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Extending Prometheus ServiceMonitor configuration (#12711)
 
@@ -1651,16 +1765,16 @@ index 8245f87e..310fc607 100644
 +  interval: 10s
 +  scrapeTimeout: 10s
 +  scheme: http
+
 ```
 
 ## 1.1.3
 
 **Release date:** 2019-03-11
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Fix ServiceMonitor to use service port name instead of service port number. (#11609)
 
@@ -1674,10 +1788,9 @@ index 8245f87e..310fc607 100644
 
 **Release date:** 2019-02-20
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Add scheme to the ServiceMonitor. Cannot fetch metrics from exporter if prometheus has a different default scheme. (#11421)
 
@@ -1691,10 +1804,9 @@ index 8245f87e..310fc607 100644
 
 **Release date:** 2019-02-11
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] ServiceMonitor: set namespace to monitor + Add OWNER and add myself to owners. (#11323)
 
@@ -1708,10 +1820,9 @@ index 8245f87e..310fc607 100644
 
 **Release date:** 2019-01-26
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [elasticsearch-exporter] add ServiceMonitor (#10759)
 
@@ -1733,16 +1844,16 @@ index 16a74f7d..8245f87e 100644
 +  ##
 +  enabled: false
 +  labels: {}
+
 ```
 
 ## 1.0.0
 
 **Release date:** 2019-01-18
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix fullname (#10752)
 
@@ -1756,10 +1867,9 @@ index 16a74f7d..8245f87e 100644
 
 **Release date:** 2018-10-30
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Fix typo - Add Readiness probe to exporter deployment (#8799)
 
@@ -1771,12 +1881,11 @@ index 16a74f7d..8245f87e 100644
 
 ## 0.4.0
 
-**Release date:** 2018-09-30
+**Release date:** 2018-09-29
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add support for deployment tolerations and update helpers (#7706)
 
@@ -1796,16 +1905,16 @@ index 949b4415..16a74f7d 100644
  podAnnotations: {}
  
  service:
+
 ```
 
 ## 0.3.0
 
 **Release date:** 2018-09-25
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] Adding pod annotations (#7960)
 
@@ -1825,16 +1934,16 @@ index eaa3d442..949b4415 100644
  service:
    type: ClusterIP
    httpPort: 9108
+
 ```
 
 ## 0.2.2
 
-**Release date:** 2018-09-01
+**Release date:** 2018-08-31
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fix nodeSelector indent (#7458)
 
@@ -1848,10 +1957,9 @@ index eaa3d442..949b4415 100644
 
 **Release date:** 2018-08-31
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add nodeSelector to make pods run on specific nodes (#7456)
 
@@ -1871,16 +1979,16 @@ index 25ec4e69..eaa3d442 100644
  service:
    type: ClusterIP
    httpPort: 9108
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2018-07-15
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [stable/elasticsearch-exporter] add support for priorityClasses (#6584)
 
@@ -1900,16 +2008,16 @@ index f6572cc9..25ec4e69 100644
  service:
    type: ClusterIP
    httpPort: 9108
+
 ```
 
 ## 0.1.4
 
 **Release date:** 2018-04-19
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Typo fix in elasticsearch-exporter/README.md: a->an (#4988)
 
@@ -1923,10 +2031,9 @@ index f6572cc9..25ec4e69 100644
 
 **Release date:** 2018-04-07
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add home key for elasticsearch-exporter (#4756)
 
@@ -1938,12 +2045,11 @@ index f6572cc9..25ec4e69 100644
 
 ## 0.1.2
 
-**Release date:** 2018-02-28
+**Release date:** 2018-03-01
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus service annotations for elastisearch-exporter (#3842)
 
@@ -1962,16 +2068,16 @@ index b603bca1..f6572cc9 100644
  
  es:
    ## Address (host and port) of the Elasticsearch node we should connect to.
+
 ```
 
 ## 0.1.1
 
 **Release date:** 2018-02-10
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Adjust README to use stable chart repo (#3533)
 
@@ -1985,10 +2091,9 @@ index b603bca1..f6572cc9 100644
 
 **Release date:** 2018-02-02
 
-![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success&logo=)
+![AppVersion: 1.0.2](https://img.shields.io/static/v1?label=AppVersion&message=1.0.2&color=success)
 ![Helm: v2](https://img.shields.io/static/v1?label=Helm&message=v2&color=inactive&logo=helm)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Add chart elasticsearch-exporter (#2525)
 
@@ -2066,6 +2171,7 @@ web:
   ## Path under which to expose metrics.
   ##
   path: /metrics
+
 ```
 
 ---

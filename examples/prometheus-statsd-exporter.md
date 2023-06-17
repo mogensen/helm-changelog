@@ -1,12 +1,40 @@
 # Change Log
 
+## 0.8.0
+
+**Release date:** 2023-03-23
+
+![AppVersion: v0.22.8](https://img.shields.io/static/v1?label=AppVersion&message=v0.22.8&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-statsd-exporter] add podLabels to add extra labels to pods (#3090)
+
+### Default value changes
+
+```diff
+diff --git a/charts/prometheus-statsd-exporter/values.yaml b/charts/prometheus-statsd-exporter/values.yaml
+index 8e1d51af..279bac8f 100644
+--- a/charts/prometheus-statsd-exporter/values.yaml
++++ b/charts/prometheus-statsd-exporter/values.yaml
+@@ -106,6 +106,9 @@ serviceAccount:
+ 
+ podAnnotations: {}
+ 
++# Extra labels to be added to pods
++podLabels: {}
++
+ podSecurityContext: {}
+   # fsGroup: 2000
+ 
+
+```
+
 ## 0.7.0
 
 **Release date:** 2022-11-07
 
-![AppVersion: v0.22.8](https://img.shields.io/static/v1?label=AppVersion&message=v0.22.8&color=success&logo=)
+![AppVersion: v0.22.8](https://img.shields.io/static/v1?label=AppVersion&message=v0.22.8&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter] add PodMonitoring for Google Managed Prometheus (#2596)
 
@@ -64,15 +92,15 @@ index f5705dcc..8e1d51af 100644
  
  serviceAccount:
    # Specifies whether a service account should be created
+
 ```
 
 ## 0.6.2
 
 **Release date:** 2022-10-09
 
-![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success&logo=)
+![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter] override key in mapping ConfigMap (#2532)
 
@@ -93,15 +121,15 @@ index c2386a76..f5705dcc 100644
    # Metric mapping configuration
  #  mappingConfig: |-
  
+
 ```
 
 ## 0.6.1
 
 **Release date:** 2022-10-09
 
-![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success&logo=)
+![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter] support relabelings and metricsRelabelings in ServiceMonitor (#2531)
 
@@ -124,15 +152,15 @@ index 5fe85fea..c2386a76 100644
  
  serviceAccount:
    # Specifies whether a service account should be created
+
 ```
 
 ## 0.6.0
 
 **Release date:** 2022-08-10
 
-![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success&logo=)
+![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter]: parameterize readiness and liveness pro… (#2355)
 
@@ -160,15 +188,15 @@ index 56d78442..5fe85fea 100644
  serviceMonitor:
    enabled: false
    interval: 30s
+
 ```
 
 ## 0.5.0
 
 **Release date:** 2022-07-14
 
-![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success&logo=)
+![AppVersion: 0.22.7](https://img.shields.io/static/v1?label=AppVersion&message=0.22.7&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter] Add extraEnv and extraArgs (#2253)
 
@@ -201,15 +229,15 @@ index 93b6dc3f..56d78442 100644
  
  statsd:
    # The UDP port on which to receive statsd metric lines.
+
 ```
 
 ## 0.4.2
 
 **Release date:** 2021-11-15
 
-![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success&logo=)
+![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * Fixed a bug that does not add mapping config when configuring a config map using mappingConfigMapName field (#1508)
 
@@ -223,9 +251,8 @@ index 93b6dc3f..56d78442 100644
 
 **Release date:** 2021-10-05
 
-![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success&logo=)
+![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * fix statsd exporter ingress for k8s >= 1.19 & mappingConfigMapName (#1355)
 
@@ -254,15 +281,15 @@ index b84b9417..93b6dc3f 100644
    tls: []
    #  - secretName: chart-example-tls
    #    hosts:
+
 ```
 
 ## 0.4.0
 
 **Release date:** 2021-09-20
 
-![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success&logo=)
+![AppVersion: 0.22.1](https://img.shields.io/static/v1?label=AppVersion&message=0.22.1&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter] Bump statsd-exporter to version to 0.22.1 (#1303)
 
@@ -282,15 +309,15 @@ index 26a99a0d..b84b9417 100644
  
  imagePullSecrets: []
  nameOverride: ""
+
 ```
 
 ## 0.3.1
 
 **Release date:** 2021-03-10
 
-![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success&logo=)
+![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * prometheus-statsd-exporter - Fix statsd service monitor config (#732)
 
@@ -304,9 +331,8 @@ index 26a99a0d..b84b9417 100644
 
 **Release date:** 2021-02-09
 
-![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success&logo=)
+![AppVersion: 0.20.0](https://img.shields.io/static/v1?label=AppVersion&message=0.20.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * update statsd-exporter version (#658)
 
@@ -326,15 +352,15 @@ index a7fc28f0..26a99a0d 100644
  
  imagePullSecrets: []
  nameOverride: ""
+
 ```
 
 ## 0.2.0
 
 **Release date:** 2021-01-09
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter] Adding `honorLabels` to `statsd-exporter` `ServiceMonitor` (#534)
 
@@ -353,15 +379,15 @@ index d10d3d10..a7fc28f0 100644
    additionalLabels: {}
  
  serviceAccount:
+
 ```
 
 ## 0.1.0
 
 **Release date:** 2020-12-08
 
-![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success&logo=)
+![AppVersion: 0.18.0](https://img.shields.io/static/v1?label=AppVersion&message=0.18.0&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-statsd-exporter] add first release (#449)
 
@@ -487,6 +513,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
 ```
 
 ---

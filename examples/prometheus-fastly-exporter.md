@@ -1,12 +1,26 @@
 # Change Log
 
+## 0.1.2
+
+**Release date:** 2023-05-21
+
+![AppVersion: 7.2.4](https://img.shields.io/static/v1?label=AppVersion&message=7.2.4&color=success)
+![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
+
+* [prometheus-fastly-exporter] Update README.md (#3346)
+
+### Default value changes
+
+```diff
+# No changes in this release
+```
+
 ## 0.1.1
 
 **Release date:** 2022-10-16
 
-![AppVersion: 7.2.4](https://img.shields.io/static/v1?label=AppVersion&message=7.2.4&color=success&logo=)
+![AppVersion: 7.2.4](https://img.shields.io/static/v1?label=AppVersion&message=7.2.4&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-fastly-exporter] Fix PSP deprecation after k8s 1.25+ (#2576)
 
@@ -20,9 +34,8 @@
 
 **Release date:** 2022-08-08
 
-![AppVersion: 7.2.4](https://img.shields.io/static/v1?label=AppVersion&message=7.2.4&color=success&logo=)
+![AppVersion: 7.2.4](https://img.shields.io/static/v1?label=AppVersion&message=7.2.4&color=success)
 ![Helm: v3](https://img.shields.io/static/v1?label=Helm&message=v3&color=informational&logo=helm)
-
 
 * [prometheus-fastly-exporter] Add fastly exporter (#2278)
 
@@ -148,6 +161,7 @@ extraVolumes: []
 extraVolumeMounts: []
 # - name: example
 #   mountPath: /example
+
 ```
 
 ---
