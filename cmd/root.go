@@ -29,12 +29,6 @@ var rootCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		if chartsDirectory != "." {
-			currentDir = filepath.Join(currentDir, chartsDirectory)
-		} else {
-			log.Infof("Scanning all subdirectories for Helm Charts")
-		}
-
 		g := git.Git{Log: log}
 
 		gitBaseDir, err := g.FindGitRepositoryRoot()
@@ -42,7 +36,9 @@ var rootCmd = &cobra.Command{
 			log.Fatalf("Could not determine git root directory. helm-changelog depends largely on git history.")
 		}
 
-		fileList, err := helm.FindCharts(currentDir)
+		chartsDirectoryFullPath := filepath.Join(currentDir, chartsDirectory)
+
+		fileList, err := helm.FindCharts(chartsDirectoryFullPath)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -51,9 +47,16 @@ var rootCmd = &cobra.Command{
 			log.Infof("Handling: %s\n", chartFileFullPath)
 
 			fullChartDir := filepath.Dir(chartFileFullPath)
+			log.Infof("Chart directory: %s\n", fullChartDir)
+
 			chartFile := strings.TrimPrefix(chartFileFullPath, gitBaseDir+"/")
+			log.Infof("Chart file: %s\n", chartFile)
+
 			relativeChartFile := strings.TrimPrefix(chartFileFullPath, currentDir+"/")
+			log.Infof("Relative chart file: %s\n", relativeChartFile)
+
 			relativeChartDir := filepath.Dir(relativeChartFile)
+			log.Infof("Relative chart directory: %s\n", relativeChartDir)
 
 			allCommits, err := g.GetAllCommits(fullChartDir)
 			if err != nil {

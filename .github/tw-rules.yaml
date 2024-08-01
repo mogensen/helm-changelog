@@ -1,0 +1,20 @@
+runChecks: true
+
+actions:
+  repo-settings:
+    deleteBranchOnMerge: true
+    allowForking: false
+  branch-protection-settings:
+    branches:
+      - name: main
+        dismissStaleReviews: true
+        numRequiredReviews: 1
+        requireLinearHistory: true
+        requireConversationResolution: true
+        requireBranchUpToDate: true
+        restrictMerge:
+          teams:
+            - name: security-platform
+  sync-codeowners:
+    extraWriters:
+      - full-time-technical-staff
